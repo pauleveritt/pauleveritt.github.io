@@ -1,6 +1,8 @@
 Welcome to Paul Everitt's Blog!
 ===============================
 
+Yes.
+
 Hello World! Find more about me here: :ref:`about`
 
 
