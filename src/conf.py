@@ -8,10 +8,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-import sys
 import ablog
-import alabaster
 import sphinx_bootstrap_theme
 
 # -- General ABlog Options ----------------------------------------------------
@@ -337,3 +334,5 @@ html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'PaulEverittBlogdoc'
+
+github_pages = 'pauleveritt'
