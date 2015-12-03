@@ -1,0 +1,15 @@
+{
+  "name": "pylyglot-todo",
+  "version": "1.0.0",
+  "description": "Demonstration of Python and frontend development with PyCharm",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Everitt <paul@agendaless.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4"
+  }
+}
