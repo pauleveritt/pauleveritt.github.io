@@ -27,6 +27,7 @@ Articles
     type_hinting/index
     pyrva-type-hinting/index
     pylyglot/index
+    docker_intro/index
 
 .. toctree::
    :hidden:
