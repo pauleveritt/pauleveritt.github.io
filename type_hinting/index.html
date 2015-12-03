@@ -179,7 +179,7 @@ teams, such help is quite valuable.</p>
 function. Wouldn&#8217;t it be great if you could get that help once
 typed, or even as you are typing (autocompletion)? Other
 languages have some concept of type checking. We don&#8217;t want to turn
-Python into a strongly-typed language. But can&#8217;t we get a little help?</p>
+Python into a statically-typed language. But can&#8217;t we get a little help?</p>
 <p>Python&#8217;s <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0484"><strong>PEP 484</strong></a> brings <em>optional</em> type <em>hinting</em> to Python 3.5.
 Using the <a class="reference external" href="https://docs.python.org/3.5/library/typing.html#module-typing" title="(in Python v3.5)"><code class="xref py py-mod docutils literal"><span class="pre">typing</span></code></a> module, you can provide type hint
 information in your code. This can be used by yourself or others to
@@ -198,8 +198,8 @@ of its
 <p>This example shows the most important part of type hinting: it is
 <em>optional</em>. Python hasn&#8217;t changed to suddenly require static typing.
 But if we add a little more:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="hll"><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span>    <span class="k">return</span> <span class="s">&#39;Hello, {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="hll"><span class="k">def</span> <span class="nf">greeting</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span>    <span class="k">return</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>...then we can let an IDE such as PyCharm help us:</p>
