@@ -18,7 +18,7 @@ These mistakes can include passing the wrong type of value to a
 function. Wouldn't it be great if you could get that help once
 typed, or even as you are typing (autocompletion)? Other
 languages have some concept of type checking. We don't want to turn
-Python into a strongly-typed language. But can't we get a little help?
+Python into a statically-typed language. But can't we get a little help?
 
 Python's :pep:`484` brings *optional* type *hinting* to Python 3.5.
 Using the :mod:`typing <typing>` module, you can provide type hint
