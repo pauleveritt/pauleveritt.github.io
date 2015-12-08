@@ -170,11 +170,6 @@ The value in the ``CONTAINER ID`` column, as well as the ``NAMES``
 value, is different from the previous values we got from running
 ``docker ps -l``.
 
-manage.py
-=========
-
-Requires a version after 5.0.2
-
 Current Limitations
 ===================
 
@@ -202,7 +197,12 @@ start. Much more is being done for future releases. For example:
 - *Only Django for web ports*. If you want a container with HTTP (or
   any other) ports available, the Django run configuration is the only
   one, and that is only for HTTP. Other run configurations (Flask,
-  Pyramid, etc.) won't forward any ports.
+  Pyramid, etc.) won't forward any ports. Nor will attaching to a
+  database, or orchestrating multi-container apps (unless your
+  Dockerfile forwards the ports.)
+
+- *Run manage.py tasks*. Running Django management tasks isn't support
+  in 5.0.2 but is fixed and should be in 5.0.3.
 
 Conclusion
 ==========

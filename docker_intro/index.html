@@ -111,7 +111,6 @@
 <li><a class="reference internal" href="#create-django-project">Create Django Project</a></li>
 <li><a class="reference internal" href="#make-docker-interpreter">Make Docker Interpreter</a></li>
 <li><a class="reference internal" href="#run-django">Run Django</a></li>
-<li><a class="reference internal" href="#manage-py">manage.py</a></li>
 <li><a class="reference internal" href="#current-limitations">Current Limitations</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 </ul>
@@ -300,10 +299,6 @@ type:</p>
 value, is different from the previous values we got from running
 <code class="docutils literal"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-l</span></code>.</p>
 </div>
-<div class="section" id="manage-py">
-<h2>manage.py<a class="headerlink" href="#manage-py" title="Permalink to this headline">¶</a></h2>
-<p>Requires a version after 5.0.2</p>
-</div>
 <div class="section" id="current-limitations">
 <h2>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h2>
 <p>Docker integration in PyCharm is already useful, but is still only a
@@ -326,7 +321,11 @@ this in the run configuration.</li>
 <li><em>Only Django for web ports</em>. If you want a container with HTTP (or
 any other) ports available, the Django run configuration is the only
 one, and that is only for HTTP. Other run configurations (Flask,
-Pyramid, etc.) won&#8217;t forward any ports.</li>
+Pyramid, etc.) won&#8217;t forward any ports. Nor will attaching to a
+database, or orchestrating multi-container apps (unless your
+Dockerfile forwards the ports.)</li>
+<li><em>Run manage.py tasks</em>. Running Django management tasks isn&#8217;t support
+in 5.0.2 but is fixed and should be in 5.0.3.</li>
 </ul>
 </div>
 <div class="section" id="conclusion">
