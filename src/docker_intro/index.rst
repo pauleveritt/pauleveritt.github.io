@@ -133,6 +133,9 @@ What does PyCharm do when it runs this configuration:
    ``/opt/project`` in the container. *Note: On Linux, you currently
    have to perform this volume mapping manually.*
 
+#. This container also mounts volumes needed for PyCharm to do its
+   work: Python skeletons and Python library sources.
+
 #. It then executes the run configuration's Python command.
 
 If you are running PyCharm 5.0.2 or older, there is one fix you need to
@@ -179,27 +182,24 @@ start. Much more is being done for future releases. For example:
 - *Docker Compose*. This is a big item and a frequently-requested
   feature. The discussion is happening in a
   `YouTrack ticket <https://youtrack.jetbrains.com/issue/PY-17573>`_
-  in the PyCharm ticket system.
-
-- *Always creates a new container*. Each time you execute a run
-  configuration, it creates *and then destroys* a container. PyCharm
-  doesn't currently support re-using a previously- (or
-  separately-) created and managed container.
+  in the PyCharm ticket system and work is already being scheduled.
 
 - *Linux mounts*. As noted in the PyCharm online help, on Linux, you have
-  to mount your project directory manually via VirtualBox.
+  to mount your project directory manually via VirtualBox. This issue
+  is obviated by work on the next point.
 
 - *Customizing the container*. Docker lets you pass arguments when
   creating/running a container. These arguments include volumes to mount
   and ports to forward. PyCharm doesn't currently let you customize
-  this in the run configuration.
+  this in the run configuration, but this is being worked on.
 
 - *Only Django for web ports*. If you want a container with HTTP (or
   any other) ports available, the Django run configuration is the only
   one, and that is only for HTTP. Other run configurations (Flask,
   Pyramid, etc.) won't forward any ports. Nor will attaching to a
   database, or orchestrating multi-container apps (unless your
-  Dockerfile forwards the ports.)
+  Dockerfile forwards the ports.) This is really just emphasizing the
+  previous point, and as said there, help is on its way.
 
 - *Run manage.py tasks*. Running Django management tasks isn't support
   in 5.0.2 but is fixed and should be in 5.0.3.
