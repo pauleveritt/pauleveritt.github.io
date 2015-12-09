@@ -216,8 +216,9 @@ project. You can fetch that onto your system with this command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>docker pull minimum/docker-django-mysite
 </pre></div>
 </div>
-<p>Once that Docker image is locally available, PyCharm can make Docker
-interpreters for your project, as containers based on that image.</p>
+<p>Once that Docker image is locally available <em>and</em> the Docker &#8220;host&#8221; is
+running and knows about it, PyCharm can make Docker interpreters for
+your project, as containers based on that image.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You have the option of making your own image as well, using a
@@ -244,10 +245,9 @@ runs in a Docker container.</p>
 gear to the right of <code class="docutils literal"><span class="pre">Project</span> <span class="pre">Interpreter</span></code> near the top. In the
 <code class="docutils literal"><span class="pre">Configure</span> <span class="pre">Remote</span> <span class="pre">Python</span> <span class="pre">Interpreter</span></code> dialog, click the <code class="docutils literal"><span class="pre">Docker</span></code>
 button. You should see the following:</p>
-<p>TODO screenshot</p>
 <p>Click the menu dropdown for <code class="docutils literal"><span class="pre">Machine</span> <span class="pre">Name</span></code>. It will likely have one
 entry named <code class="docutils literal"><span class="pre">default</span></code>. Choose that, and you will see the following:</p>
-<p>TODO screenshot</p>
+<img alt="../_images/docker_interpreter.png" src="../_images/docker_interpreter.png" />
 <p>Choosing <code class="docutils literal"><span class="pre">default</span></code> gives PyCharm a way to find the Docker daemon, which
 can let PyCharm know which images are available locally. Hence the
 dropdown for <code class="docutils literal"><span class="pre">Images</span></code>. Click on the dropdown and choose
@@ -269,6 +269,8 @@ named when creating the project interpreter.</li>
 <li>This container mounts your project directory into the container at
 <code class="docutils literal"><span class="pre">/opt/project</span></code> in the container. <em>Note: On Linux, you currently
 have to perform this volume mapping manually.</em></li>
+<li>This container also mounts volumes needed for PyCharm to do its
+work: Python skeletons and Python library sources.</li>
 <li>It then executes the run configuration&#8217;s Python command.</li>
 </ol>
 <p>If you are running PyCharm 5.0.2 or older, there is one fix you need to
@@ -307,23 +309,21 @@ start. Much more is being done for future releases. For example:</p>
 <li><em>Docker Compose</em>. This is a big item and a frequently-requested
 feature. The discussion is happening in a
 <a class="reference external" href="https://youtrack.jetbrains.com/issue/PY-17573">YouTrack ticket</a>
-in the PyCharm ticket system.</li>
-<li><em>Always creates a new container</em>. Each time you execute a run
-configuration, it creates <em>and then destroys</em> a container. PyCharm
-doesn&#8217;t currently support re-using a previously- (or
-separately-) created and managed container.</li>
+in the PyCharm ticket system and work is already being scheduled.</li>
 <li><em>Linux mounts</em>. As noted in the PyCharm online help, on Linux, you have
-to mount your project directory manually via VirtualBox.</li>
+to mount your project directory manually via VirtualBox. This issue
+is obviated by work on the next point.</li>
 <li><em>Customizing the container</em>. Docker lets you pass arguments when
 creating/running a container. These arguments include volumes to mount
 and ports to forward. PyCharm doesn&#8217;t currently let you customize
-this in the run configuration.</li>
+this in the run configuration, but this is being worked on.</li>
 <li><em>Only Django for web ports</em>. If you want a container with HTTP (or
 any other) ports available, the Django run configuration is the only
 one, and that is only for HTTP. Other run configurations (Flask,
 Pyramid, etc.) won&#8217;t forward any ports. Nor will attaching to a
 database, or orchestrating multi-container apps (unless your
-Dockerfile forwards the ports.)</li>
+Dockerfile forwards the ports.) This is really just emphasizing the
+previous point, and as said there, help is on its way.</li>
 <li><em>Run manage.py tasks</em>. Running Django management tasks isn&#8217;t support
 in 5.0.2 but is fixed and should be in 5.0.3.</li>
 </ul>
