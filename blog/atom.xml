@@ -8,10 +8,10 @@
   <generator uri="http://ablog.readthedocs.org" version="0.8.1">ABlog</generator>
   <entry xml:base="True/blog/atom.xml">
     <title type="text">First Post</title>
-    <id>True/pauleveritt.github.io/src/first-post/</id>
+    <id>True/first-post/</id>
     <updated>2015-11-22T00:00:00Z</updated>
     <published>2015-11-22T00:00:00Z</published>
-    <link href="True/pauleveritt.github.io/src/first-post/" />
+    <link href="True/first-post/" />
     <author>
       <name>Paul Everitt</name>
     </author>
@@ -24,10 +24,10 @@ in &lt;a class=&quot;reference internal&quot; href=&quot;../pauleveritt.github.i
   </entry>
   <entry xml:base="True/blog/atom.xml">
     <title type="text">First Post</title>
-    <id>True/first-post/</id>
+    <id>True/pauleveritt.github.io/src/first-post/</id>
     <updated>2015-11-22T00:00:00Z</updated>
     <published>2015-11-22T00:00:00Z</published>
-    <link href="True/first-post/" />
+    <link href="True/pauleveritt.github.io/src/first-post/" />
     <author>
       <name>Paul Everitt</name>
     </author>
