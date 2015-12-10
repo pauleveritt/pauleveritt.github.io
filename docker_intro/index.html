@@ -109,7 +109,7 @@
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#preparation">Preparation</a></li>
 <li><a class="reference internal" href="#create-django-project">Create Django Project</a></li>
-<li><a class="reference internal" href="#make-docker-interpreter">Make Docker Interpreter</a></li>
+<li><a class="reference internal" href="#make-pycharm-docker-interpreter">Make PyCharm Docker Interpreter</a></li>
 <li><a class="reference internal" href="#run-django">Run Django</a></li>
 <li><a class="reference internal" href="#current-limitations">Current Limitations</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
@@ -199,9 +199,11 @@ project interpreters that are executed in a Docker container.</p>
 <div class="section" id="preparation">
 <h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h2>
 <p>First, make sure <code class="docutils literal"><span class="pre">docker</span></code> and <code class="docutils literal"><span class="pre">docker-machine</span></code> are setup in your
-environment. The Docker installation is painless and the website docs
-are quite friendly. On non-Linux systems, you&#8217;ll need a Docker &#8220;host&#8221;
-virtual machine setup and running.</p>
+environment. The Docker installation is painless and the
+<a class="reference external" href="https://docs.docker.com/machine/install-machine/">website docs</a>
+are quite friendly. You&#8217;ll need a Docker &#8220;host&#8221; virtual machine setup
+and running, including on Linux. On Windows and OS X, installing the
+Docker Toolbox is effortless.</p>
 <p>Next, we have to decide what software we want in our containers. In
 Docker, containers are built using &#8220;images&#8221;: collections of
 pre-installed software plus configuration that is called during
@@ -237,10 +239,10 @@ you can only use a local interpreter.</p>
 <p>The result of this step is a directory on your local computer with
 sample Django code and a Django-specific PyCharm Run Configuration.</p>
 </div>
-<div class="section" id="make-docker-interpreter">
-<h2>Make Docker Interpreter<a class="headerlink" href="#make-docker-interpreter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="make-pycharm-docker-interpreter">
+<h2>Make PyCharm Docker Interpreter<a class="headerlink" href="#make-pycharm-docker-interpreter" title="Permalink to this headline">¶</a></h2>
 <p>On to the important part. We need to define a &#8220;remote interpreter&#8221; that
-runs in a Docker container.</p>
+runs in a PyCharm Docker container.</p>
 <p>First, go to <code class="docutils literal"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Project</span> <span class="pre">Interpreter</span></code> and click on the
 gear to the right of <code class="docutils literal"><span class="pre">Project</span> <span class="pre">Interpreter</span></code> near the top. In the
 <code class="docutils literal"><span class="pre">Configure</span> <span class="pre">Remote</span> <span class="pre">Python</span> <span class="pre">Interpreter</span></code> dialog, click the <code class="docutils literal"><span class="pre">Docker</span></code>
@@ -253,8 +255,8 @@ can let PyCharm know which images are available locally. Hence the
 dropdown for <code class="docutils literal"><span class="pre">Images</span></code>. Click on the dropdown and choose
 <code class="docutils literal"><span class="pre">minimum/docker-django-mysite:latest</span></code> as the image, then click <code class="docutils literal"><span class="pre">Ok</span></code>.</p>
 <p>You now have a Docker container that will be used as your project
-interpreter. PyCharm features like autocomplete will be driven by this
-interpreter.</p>
+interpreter. PyCharm features like autocompletion, code inspections,
+and checks will be driven by this interpreter.</p>
 </div>
 <div class="section" id="run-django">
 <h2>Run Django<a class="headerlink" href="#run-django" title="Permalink to this headline">¶</a></h2>
@@ -280,9 +282,11 @@ do:</p>
 configuration</li>
 <li>In the <code class="docutils literal"><span class="pre">Host</span></code> field, enter <code class="docutils literal"><span class="pre">0.0.0.0</span></code></li>
 </ul>
-<p>When you click the &#8220;Run&#8221; button, Djano will be started. Yay, we are
-running a container! You can confirm this using the
-following Docker commands:</p>
+<p>When you click the &#8220;Run&#8221; button, Django will be started. Yay, we are
+running a container! In fact, we can go on to test running, debugging,
+code coverage, profiling, and all the other ways to run a configuration.</p>
+<img alt="../_images/django_admin.png" src="../_images/django_admin.png" />
+<p>You can confirm this using the following Docker commands:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>docker ps -l
 </pre></div>
 </div>
@@ -324,8 +328,6 @@ Pyramid, etc.) won&#8217;t forward any ports. Nor will attaching to a
 database, or orchestrating multi-container apps (unless your
 Dockerfile forwards the ports.) This is really just emphasizing the
 previous point, and as said there, help is on its way.</li>
-<li><em>Run manage.py tasks</em>. Running Django management tasks isn&#8217;t support
-in 5.0.2 but is fixed and should be in 5.0.3.</li>
 </ul>
 </div>
 <div class="section" id="conclusion">
