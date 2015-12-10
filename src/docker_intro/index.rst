@@ -45,9 +45,11 @@ Preparation
 ===========
 
 First, make sure ``docker`` and ``docker-machine`` are setup in your
-environment. The Docker installation is painless and the website docs
-are quite friendly. On non-Linux systems, you'll need a Docker "host"
-virtual machine setup and running.
+environment. The Docker installation is painless and the
+`website docs <https://docs.docker.com/machine/install-machine/>`_
+are quite friendly. You'll need a Docker "host" virtual machine setup
+and running, including on Linux. On Windows and OS X, installing the
+Docker Toolbox is effortless.
 
 Next, we have to decide what software we want in our containers. In
 Docker, containers are built using "images": collections of
@@ -66,8 +68,9 @@ project. You can fetch that onto your system with this command:
 
     $ docker pull minimum/docker-django-mysite
 
-Once that Docker image is locally available, PyCharm can make Docker
-interpreters for your project, as containers based on that image.
+Once that Docker image is locally available *and* the Docker "host" is
+running and knows about it, PyCharm can make Docker interpreters for
+your project, as containers based on that image.
 
 .. note::
 
@@ -89,23 +92,21 @@ you can only use a local interpreter.
 The result of this step is a directory on your local computer with
 sample Django code and a Django-specific PyCharm Run Configuration.
 
-Make Docker Interpreter
-=======================
+Make PyCharm Docker Interpreter
+===============================
 
 On to the important part. We need to define a "remote interpreter" that
-runs in a Docker container.
+runs in a PyCharm Docker container.
 
 First, go to ``Preferences -> Project Interpreter`` and click on the
 gear to the right of ``Project Interpreter`` near the top. In the
 ``Configure Remote Python Interpreter`` dialog, click the ``Docker``
 button. You should see the following:
 
-TODO screenshot
-
 Click the menu dropdown for ``Machine Name``. It will likely have one
 entry named ``default``. Choose that, and you will see the following:
 
-TODO screenshot
+.. image:: screenshots/docker_interpreter.png
 
 Choosing ``default`` gives PyCharm a way to find the Docker daemon, which
 can let PyCharm know which images are available locally. Hence the
@@ -113,8 +114,8 @@ dropdown for ``Images``. Click on the dropdown and choose
 ``minimum/docker-django-mysite:latest`` as the image, then click ``Ok``.
 
 You now have a Docker container that will be used as your project
-interpreter. PyCharm features like autocomplete will be driven by this
-interpreter.
+interpreter. PyCharm features like autocompletion, code inspections,
+and checks will be driven by this interpreter.
 
 Run Django
 ==========
@@ -146,9 +147,13 @@ do:
 
 - In the ``Host`` field, enter ``0.0.0.0``
 
-When you click the "Run" button, Djano will be started. Yay, we are
-running a container! You can confirm this using the
-following Docker commands:
+When you click the "Run" button, Django will be started. Yay, we are
+running a container! In fact, we can go on to test running, debugging,
+code coverage, profiling, and all the other ways to run a configuration.
+
+.. image:: screenshots/django_admin.png
+
+You can confirm this using the following Docker commands:
 
 .. code-block:: bash
 
@@ -200,9 +205,6 @@ start. Much more is being done for future releases. For example:
   database, or orchestrating multi-container apps (unless your
   Dockerfile forwards the ports.) This is really just emphasizing the
   previous point, and as said there, help is on its way.
-
-- *Run manage.py tasks*. Running Django management tasks isn't support
-  in 5.0.2 but is fixed and should be in 5.0.3.
 
 Conclusion
 ==========
