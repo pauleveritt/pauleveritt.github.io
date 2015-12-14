@@ -58,11 +58,10 @@ container creation. Unlike other interpreters in PyCharm, you don't
 visit the ``Project Interpreter`` preferences to add Python packages.
 All dependencies need to be baked into the Docker image you choose.
 
-PyCharm doesn't manage Docker images, which makes sense, as Docker has
-plenty of tools for that. This blog post is based on the
-``minimum/docker-django-mysite`` Docker image, which includes enough
-Python/Django software to run the PyCharm-generated Django starter
-project. You can fetch that onto your system with this command:
+This blog post is based on the ``minimum/docker-django-mysite`` Docker
+image, which includes enough Python/Django software to run the
+PyCharm-generated Django starter project. You can fetch that onto your
+system with this command:
 
 .. code-block:: bash
 
@@ -71,6 +70,10 @@ project. You can fetch that onto your system with this command:
 Once that Docker image is locally available *and* the Docker "host" is
 running and knows about it, PyCharm can make Docker interpreters for
 your project, as containers based on that image.
+
+Alternatively, you can skip this step and later pull in the image while
+creating the Docker-based remote interpreter by simply typing in
+the image name during creation.
 
 .. note::
 
@@ -149,7 +152,9 @@ do:
 
 When you click the "Run" button, Django will be started. Yay, we are
 running a container! In fact, we can go on to test running, debugging,
-code coverage, profiling, and all the other ways to run a configuration.
+code coverage, profiling, and all the other ways to run a
+configuration. But first, let's click the link in the console to open
+the Django site in our browser:
 
 .. image:: screenshots/django_admin.png
 
