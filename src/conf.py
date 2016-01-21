@@ -125,7 +125,7 @@ html_sidebars = {
 
 # Link to `Font Awesome`_ at `Bootstrap CDN`_ and use icons in sidebars
 # and post footers.  Default: ``False``
-fontawesome_link_cdn = True
+fontawesome_link_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
 
 # Sphinx_ theme already links to `Font Awesome`_.  Default: ``False``
 # fontawesome_included = False
@@ -344,3 +344,4 @@ github_pages = 'pauleveritt'
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'python': ('https://docs.python.org/3.5', None)}
+

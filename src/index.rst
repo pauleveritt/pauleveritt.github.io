@@ -14,7 +14,8 @@ Recent Blog Posts
 
 
 .. toctree::
-   :hidden:
+    :maxdepth: 1
+    :hidden:
 
    articles/index.rst
    about.rst
