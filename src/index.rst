@@ -1,36 +1,21 @@
-Welcome to Paul Everitt's Blog!
-===============================
+Paul's Blog
+===========
 
-Hello World! Find more about me here: :ref:`about`
+Chitter-chatter about Python, PyCharm, and personal stuff. Blog posts for
+one-offs, articles and series with source code for tutorial-style content.
 
 
 
-Here is a list of most recent posts:
+Recent Blog Posts
+-----------------
 
 .. postlist:: 5
     :excerpts:
 
 
-.. `toctree` directive, below, contains list of non-post `.rst` files.
-   This is how they appear in Navigation sidebar. Note that directive
-   also contains `:hidden:` option so that it is not included inside the page.
-
-   Posts are excluded from this directive so that they aren't double listed
-   in the sidebar both under Navigation and Recent Posts.
-
-Articles
-========
-
-.. toctree::
-    :maxdepth: 1
-
-    type_hinting/index
-    pyrva-type-hinting/index
-    pylyglot/index
-    docker_intro/index
-
 .. toctree::
    :hidden:
 
+   articles/index.rst
    about.rst
 
