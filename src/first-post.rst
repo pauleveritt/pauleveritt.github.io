@@ -1,7 +1,7 @@
 
 .. Paul Everitt Blog post example, created by `ablog start` on Nov 22, 2015.
 
-.. post:: Nov 29, 2015
+.. post:: Nov 28, 2015
    :author: Paul Everitt
    :category: python
 
