@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pylyglot: Frontend Development for Python Developers &mdash; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="top" title="Paul Everitt  documentation" href="../../" />
+    <link rel="up" title="Articles" href="../" />
+    <link rel="next" title="Ditch the Browser, Go With Node" href="ditch-browser/" />
+    <link rel="prev" title="PyRVA Meetup and Type Hinting" href="../pyrva-type-hinting/" />
+  
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pylyglot-frontend-development-for-python-developers">
+<h1>Pylyglot: Frontend Development for Python Developers<a class="headerlink" href="#pylyglot-frontend-development-for-python-developers" title="Permalink to this headline">¶</a></h1>
+<p>Python has long been a stable of web development. In the recent world
+of “web apps”, though, the browser is playing a larger role. More of the
+application in a web app is done in JavaScript, in the “frontend”, with
+Python running UI-less data services in the “backend”.</p>
+<p>This is a series aimed at the Python developer, to explain this
+JavaScript frontend world, from the perspective of Python. It’s a
+polyglot view, aimed at a Python perspective, hence the series name of
+“Pylyglot”. We&#8217;ll be using PyCharm throughout, showing how it excels at
+both the backend (Python) and the frontend (JS, HTML, CSS) due to its
+IntelliJ foundation.</p>
+<div class="section" id="remain-calm">
+<h2>Remain Calm<a class="headerlink" href="#remain-calm" title="Permalink to this headline">¶</a></h2>
+<p>I&#8217;m the oldest of oldsters in Python. I&#8217;m sympathetic. Python is
+beautiful, and this new world...well, isn&#8217;t. At every step along the
+way, you&#8217;ll say &#8220;This is stupid.&#8221; I feel ya&#8217;. But rather than howl at
+the moon in defiance, embrace the suck and dive in, because
+realistically, you don&#8217;t have a choice.</p>
+<p>I think you&#8217;ll find that, much to your surprise, there&#8217;s a lot of
+normalcy in modern JavaScript development. And in fact, there are
+places where their toolchain excels in areas where we are banging
+multiple heads against various walls. But, as this series will show, it
+is a universe that is rebuilding the airplane in mid-flight, on a
+minutely basis, and thus it takes a thick skin to get to a decently
+Pythonic happy spot.</p>
+<p>So with that inspirational message, let&#8217;s press on.</p>
+<div class="section" id="contents">
+<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ditch-browser/">Ditch the Browser, Go With Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package-json/">Packaged Environments with <code class="docutils literal"><span class="pre">package.json</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tooling-npm/">Developer Tooling with NPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules-commonjs/">Modules with CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tdd-mocha/">TDD with Mocha</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scripting-with-npm">
+<h3>Scripting with npm<a class="headerlink" href="#scripting-with-npm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>npm run script for test</li>
+<li>You could hook this up to Travis and point at npm test</li>
+<li>PyCharm npm integration</li>
+</ul>
+</div>
+<div class="section" id="linting-with-eslint">
+<h3>Linting with eslint<a class="headerlink" href="#linting-with-eslint" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Hook into PyCharm</li>
+<li>npm run script</li>
+<li>Consider making part of TravisCI build test case</li>
+</ul>
+</div>
+<div class="section" id="modules-with-commonjs-and-webpack">
+<h3>Modules with CommonJS and Webpack<a class="headerlink" href="#modules-with-commonjs-and-webpack" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Refactor tests to import</li>
+<li>Explain why we are ignoring ES6 imports for now</li>
+<li>Update npm run scripts</li>
+<li>Webpack-dev-server for super-cool development cycle</li>
+<li>For now, ignore sourcemaps and minify</li>
+<li>JS debugger</li>
+</ul>
+</div>
+<div class="section" id="using-npm-packages-in-web-apps">
+<h3>Using npm Packages in Web Apps<a class="headerlink" href="#using-npm-packages-in-web-apps" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Let&#8217;s do an Angular alert</li>
+<li>Get Angular via npm and add to dependencies</li>
+<li>Explain you can also get browserless NodeJS packages</li>
+</ul>
+</div>
+<div class="section" id="convert-to-package-structure">
+<h3>Convert to Package Structure<a class="headerlink" href="#convert-to-package-structure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>src (or app) directory</li>
+<li>index.js as equivalent of __init__</li>
+<li>I like to put my browser-bits in there</li>
+<li>Sort out the test implications</li>
+</ul>
+</div>
+<div class="section" id="classes-with-es6">
+<h3>Classes with ES6<a class="headerlink" href="#classes-with-es6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Prove that you can do ES6 in browsers as well as Node</li>
+<li>Explain kangax</li>
+</ul>
+</div>
+<div class="section" id="es6-template-strings">
+<h3>ES6 Template Strings<a class="headerlink" href="#es6-template-strings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Multi-line</li>
+<li>Parameterized</li>
+</ul>
+</div>
+<div class="section" id="more-es6">
+<h3>More ES6<a class="headerlink" href="#more-es6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Arrow functions</li>
+<li>Array stuff</li>
+<li>rest parameter stuff</li>
+<li>ES6 Array extras</li>
+<li>Rest operator and “extended iterable unpacking&#8221;</li>
+<li>Maps and Sets</li>
+<li><a class="reference external" href="https://github.com/bevacqua/es6">https://github.com/bevacqua/es6</a></li>
+<li>let and const (and this one really pushes the ES6 browser compat
+envelope)</li>
+</ul>
+</div>
+<div class="section" id="mocking-the-rest-api">
+<h3>Mocking the REST API<a class="headerlink" href="#mocking-the-rest-api" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Switch from dummy data to REST calls</li>
+</ul>
+</div>
+<div class="section" id="flask">
+<h3>Flask<a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Plug back in Python</li>
+<li>No authentication for now</li>
+<li>Use PyCharm&#8217;s &#8220;Test REST service&#8221;</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="transpiling-with-babel">
+<h3>Transpiling with Babel<a class="headerlink" href="#transpiling-with-babel" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><dl class="first docutils">
+<dt>Explain</dt>
+<dd><ul class="first last simple">
+<li>You just cut off old browsers, and maybe you didn&#8217;t want to</li>
+<li>There are great ES7 features, like decorators, not in either
+context (Node or browser)</li>
+<li>I wouldn&#8217;t bring it up if it wasn&#8217;t for modules</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Add to &#8220;dev&#8221; dependencies</p>
+</li>
+<li><dl class="first docutils">
+<dt>Change both contexts to use Babel</dt>
+<dd><ul class="first last simple">
+<li>npm run script</li>
+<li>PyCharm mocha options</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">.babelrc</p>
+</li>
+<li><dl class="first docutils">
+<dt>Commentary</dt>
+<dd><ul class="first last simple">
+<li>Downside: CPU fan</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="es6-next">
+<h3>ES6 Next<a class="headerlink" href="#es6-next" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Iterators</li>
+<li>Generators</li>
+<li>Decorators</li>
+<li>async/await</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="optional-typing-with-typescript">
+<h3>Optional Typing with TypeScript<a class="headerlink" href="#optional-typing-with-typescript" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Interfaces</li>
+<li>Optional typing</li>
+<li>tslint</li>
+<li>Automatic assignment of constructor</li>
+<li>Using type inferencing with dependency injection</li>
+</ul>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/articles/pylyglot/';
+        var disqus_title = 'Pylyglot: Frontend Development for Python Developers';
+        var disqus_url = 'http://pauleveritt.github.io/articles/pylyglot/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/headshot.jpg" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Paul Everitt</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=&repo=&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Articles</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../type_hinting/">Python Type Hinting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pyrva-type-hinting/">PyRVA Meetup and Type Hinting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Pylyglot: Frontend Development for Python Developers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#remain-calm">Remain Calm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contents">Contents</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ditch-browser/">Ditch the Browser, Go With Node</a></li>
+<li class="toctree-l5"><a class="reference internal" href="package-json/">Packaged Environments with <code class="docutils literal"><span class="pre">package.json</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tooling-npm/">Developer Tooling with NPM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules-commonjs/">Modules with CommonJS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="tdd-mocha/">TDD with Mocha</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#scripting-with-npm">Scripting with npm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linting-with-eslint">Linting with eslint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-with-commonjs-and-webpack">Modules with CommonJS and Webpack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-npm-packages-in-web-apps">Using npm Packages in Web Apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#convert-to-package-structure">Convert to Package Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classes-with-es6">Classes with ES6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#es6-template-strings">ES6 Template Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-es6">More ES6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mocking-the-rest-api">Mocking the REST API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flask">Flask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transpiling-with-babel">Transpiling with Babel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#es6-next">ES6 Next</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-typing-with-typescript">Optional Typing with TypeScript</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../docker_intro/">Using Docker in PyCharm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../first-post/">Nov 27 - Welcome to new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/python/">python (1)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2015/">2015 (1)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../../_sources/articles/pylyglot/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
