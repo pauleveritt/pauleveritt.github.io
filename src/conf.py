@@ -9,7 +9,7 @@
 # serve to show the default.
 
 import ablog
-import sphinx_bootstrap_theme
+import alabaster
 
 # -- General ABlog Options ----------------------------------------------------
 
@@ -17,7 +17,7 @@ import sphinx_bootstrap_theme
 # blog_path = 'blog'
 
 # The “title” for the blog, used in acthive pages.  Default is ``'Blog'``.
-blog_title = u'Paul Everitt Blog Blog'
+blog_title = u'Paul Everitt'
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
@@ -90,11 +90,11 @@ blog_authors = {
 # sidebars that link to author and location archive pages.
 html_sidebars = {
     '**': [
-        # 'about.html',
-        # 'postcard.html', 'navigation.html',
-        # 'recentposts.html', 'tagcloud.html',
-        # 'categories.html', 'archives.html',
-        # 'searchbox.html',
+        'about.html',
+        'postcard.html', 'navigation.html',
+        'recentposts.html', 'tagcloud.html',
+        'categories.html', 'archives.html',
+        'searchbox.html',
     ],
 }
 
@@ -178,7 +178,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Paul Everitt Blog'
+project = u'Paul Everitt'
 copyright = u'2015, Paul Everitt'
 author = u'Paul Everitt'
 
@@ -206,7 +206,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['pauleveritt.github.io']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -239,17 +239,22 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'bootstrap'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    # 'github_button': False,
+    'logo': 'headshot.jpg',
+    'logo_name': True,
+    'github_button': True,
+    'page_width': '990px',
+    'sidebar_width': '270px'
+
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -270,7 +275,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-#html_static_path = ['_static']
+html_static_path = ['_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
