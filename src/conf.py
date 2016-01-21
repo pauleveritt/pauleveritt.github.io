@@ -21,7 +21,7 @@ blog_title = u'Paul Everitt'
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = u'True'
+blog_baseurl = 'http://pauleveritt.github.io'
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
@@ -140,10 +140,10 @@ fontawesome_link_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/f
 
 # You can enable Disqus_ by setting ``disqus_shortname`` variable.
 # Disqus_ short name for the blog.
-# disqus_shortname = None
+disqus_shortname = 'pauleveritt'
 
 # Choose to disqus pages that are not posts, default is ``False``.
-# disqus_pages = False
+disqus_pages = True
 
 # Choose to disqus posts that are drafts (without a published date),
 # default is ``False``.
