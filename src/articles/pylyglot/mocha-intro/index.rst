@@ -315,18 +315,32 @@ at the test-suite scope. The ``before`` function runs once,
 loading our application code once a DOM is setup and initialized. Then,
 before each test, the ``<body>`` is reset to ``<div>1</div>``.
 
-Does this look like boilerplate that you'll repeat in each test?
-Mocha has a convention where
+Does this look like boilerplate that you'll repeat in each test? Let's
+make a ``helper.js`` module that we can import at the top of all of
+our tests, to provide such initialization:
 
-Notes
-=====
+.. literalinclude:: test5.js
+    :language: js
+    :linenos:
+    :caption: test5.js
+    :emphasize-lines: 1
 
-- npm scripts for test
+Our tests now look a lot nicer.
 
-- jsdom
+TDD with PyCharm
+================
+
+- Automatically executing
+
+- Debugging
+
+- Coverage
+
 
 TODO
 ====
+
+- Links to previous articles for: npm scripts, etc.
 
 - Get package.json and npm init written up then link from here
 
@@ -336,4 +350,4 @@ TODO
 
 - Do an "intro" for the hello_node
 
-- Make things more Pythonic
+- Make things more Pythonic and PyCharmic
