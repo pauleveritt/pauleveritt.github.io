@@ -7,7 +7,7 @@ Packaged Environments with ``package.json``
     - name: pylyglot-todo
     - version: 1.0.0 (explain semver)
     - description: anything
-    - entry point: app.js
+    - entry point: app1.js
     - test command: enter
     - git repository: enter
     - keywords: enter

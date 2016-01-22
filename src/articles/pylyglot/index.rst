@@ -33,6 +33,18 @@ Pythonic happy spot.
 
 So with that inspirational message, let's press on.
 
+Introductory Articles
+=====================
+
+These are single-topic articles that can be done in isolation. They
+have a lot of background explanation on the topics.
+
+.. toctree::
+    :maxdepth: 1
+
+    mocha-intro/index
+
+
 Contents
 ========
 
