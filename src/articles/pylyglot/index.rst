@@ -42,6 +42,7 @@ have a lot of background explanation on the topics.
 .. toctree::
     :maxdepth: 1
 
+    hello_node/index
     mocha_intro/index
 
 
@@ -56,7 +57,6 @@ Contents
     package-json/index
     tooling-npm/index
     modules-commonjs/index
-    tdd-mocha/index
 
 
 Scripting with npm
