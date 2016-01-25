@@ -397,6 +397,8 @@ PyCharm orchestrate your JavaScript testing.
 TODO
 ====
 
+- Emphasize "frontend development"
+
 - Links to previous articles for: npm scripts, etc.
 
 - Get package.json and npm init written up then link from here
