@@ -1,6 +1,6 @@
-======================
-Introduction to NodeJS
-======================
+========================================
+NodeJS for Python and PyCharm Developers
+========================================
 
 If you're a Python veteran, you probably don't think too much about
 the Python interpreter itself. Sure, you think about different
