@@ -90,3 +90,5 @@ To Do
 =====
 
 - Link to WebStorm, IntelliJ, etc.
+
+- Link to package.json section
