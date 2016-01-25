@@ -43,6 +43,7 @@ have a lot of background explanation on the topics.
     :maxdepth: 1
 
     hello_node/index
+    package_json/index
     mocha_intro/index
 
 
