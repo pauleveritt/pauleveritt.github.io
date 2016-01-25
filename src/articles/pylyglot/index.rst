@@ -44,6 +44,7 @@ have a lot of background explanation on the topics.
 
     hello_node/index
     package_json/index
+    eslint_intro/index
     mocha_intro/index
 
 
