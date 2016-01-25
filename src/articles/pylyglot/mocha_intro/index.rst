@@ -16,7 +16,7 @@ Test Runners, Assertions, Mocks
 
 The Python standard library has long had the ``unittest`` module
 as the de-facto unit testing option for test suites, fixtures,
-and assertions. While recently alternatives such as ``pytest``
+and assertions. While recent alternatives such as ``pytest``
 have gained traction, most Python developers are familiar with
 the built-in test support.
 
@@ -98,7 +98,6 @@ let's write and run a test. Save the following as as ``test1.js``:
 
 .. literalinclude:: test1.js
     :language: js
-    :linenos:
     :caption: test1.js
 
 We use a NodeJS ``require`` to import the ``expect`` function from
@@ -194,7 +193,9 @@ incrementing a value, then test that it works.
     We are using NodeJS-style (aka CommonJS) module syntax.
     Other examples use ES6 (aka ES2015) modules transpiled
     via Babel. We don't want that transpiler complexity
-    polluting this example.
+    polluting this example. For background, read up on
+    the why and how of ` JavaScript modules
+    <https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc`_.
 
 First we create our module, ``app1.js``:
 
@@ -209,7 +210,6 @@ cases, everything in the top-level scope can be imported.
 
 .. literalinclude:: test2.js
     :language: js
-    :linenos:
     :caption: test2.js
     :emphasize-lines: 2,6,7
 
@@ -234,7 +234,6 @@ returns an incremented value, we increment the value of a ``<div>``:
 
 .. literalinclude:: app2.js
     :language: js
-    :linenos:
     :caption: app2.js
     :emphasize-lines: 1,4
 
@@ -247,9 +246,9 @@ When we run the test now, though, armageddon ensues:
 .. code-block:: bash
 
     Error: jQuery requires a window with a document
-        at module.exports (src/articles/pylyglot/mocha-intro/node_modules/jquery/dist/jquery.js:29:12)
-        at incrementer (src/articles/pylyglot/mocha-intro/app2.js:4:5)
-        at Context.<anonymous> (src/articles/pylyglot/mocha-intro/test3.js:6:22)
+        at module.exports (mocha_intro/node_modules/jquery/dist/jquery.js:29:12)
+        at incrementer (mocha_intro/app2.js:4:5)
+        at Context.<anonymous> (mocha_intro/test3.js:6:22)
 
 Our first thought is: go get a browser. We could use `PhantomJS <http://phantomjs.or>`_
 which has good package for Mocha support. We could start over with the
@@ -273,7 +272,6 @@ global variables that ``jQuery`` expects. With that in place, we can import
 
 .. literalinclude:: test3.js
     :language: js
-    :linenos:
     :caption: test3.js
 
 This test suite has a test that ensures we are setup correctly by
@@ -292,7 +290,6 @@ test as a copy of the first, we'd see that:
 
 .. literalinclude:: test4.js
     :language: js
-    :linenos:
     :caption: test4.js
     :emphasize-lines: 14-17
 
@@ -306,7 +303,6 @@ up the ``<body>`` before each test. ``test5.js`` shows this:
 
 .. literalinclude:: test5.js
     :language: js
-    :linenos:
     :caption: test5.js
     :emphasize-lines: 6-15
 
@@ -319,23 +315,84 @@ Does this look like boilerplate that you'll repeat in each test? Let's
 make a ``helper.js`` module that we can import at the top of all of
 our tests, to provide such initialization:
 
-.. literalinclude:: test5.js
+.. literalinclude:: helper.js
     :language: js
-    :linenos:
-    :caption: test5.js
-    :emphasize-lines: 1
+    :caption: helper.js
 
-Our tests now look a lot nicer.
+Our tests, as shown in ``test6.js``, now look a lot nicer by importing
+``helper.js`` at the top:
+
+.. literalinclude:: test6.js
+    :language: js
+    :caption: test6.js
+    :emphasize-lines: 1
 
 TDD with PyCharm
 ================
 
-- Automatically executing
+We now have a good basis for Pythonic testing in JavaScript, without
+needing a browser. How can we get into test-driven development (TDD)
+mode? Let's get PyCharm to help us with automatically-executing tests
+and test debugging.
 
-- Debugging
+First, let's get into the flow by having our test re-run on each change
+to our source. In the Mocha tool window, click the button below the
+green "Rerun" button, the "Toggle auto-test" button. Then click the
+green "Rerun" button:
 
-- Coverage
+- TODO Animated GIF for re-run
 
+With this in place, PyCharm will re-run tests when your source or test
+code changes:
+
+- TODO Animated GIF showing a change that breaks, then fixes,
+  test6.js
+
+As a note, PyCharm doesn't require that you actually save the file
+before it detects the change.
+
+PyCharm has many options for controlling the JavaScript testing
+experience. For example, we can change the delay used between
+a pause in typing and re-running the tests:
+
+- TODO Animated GIF showing changing the delay
+
+Here's a great way to be productive: split the screen, with your
+application code on the left and your tests on the right:
+
+- TODO GIF split screen
+
+Just like for its Python testing, PyCharm has a stupendous number of
+options organizing the display of the test window:
+
+- Hide/show passing tests
+
+- Sort alphabetically on test name
+
+- Show (and sort based on) duration of test run
+
+- Automatically open at the line of an error
+
+PyCharm also makes debugging easy during TDD. You can set a breakpoint
+in your JavaScript code or your tests, step through your code, and set
+watches:
+
+- TODO Animated gif debugging breakpoint
+
+JavaScript TDD and PyCharm Are For Real
+=======================================
+
+This only scratches the surface of what PyCharm can add for
+test-driven development and JavaScript. There's much more: for
+example, you can install code coverage packages and PyCharm will give
+you a button and a visual display of the coverage information.
+
+If you are a TDD-oriented Python developer, you likely
+know how `PyCharm can boost Python testing productivity
+<https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc>`_.
+With JavaScript, you might not even have considered TDD.
+Once you think headless with NodeJS and Mocha, though, you can let
+PyCharm orchestrate your JavaScript testing.
 
 TODO
 ====
@@ -351,3 +408,9 @@ TODO
 - Do an "intro" for the hello_node
 
 - Make things more Pythonic and PyCharmic
+
+- Links to PyCharm docs
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:

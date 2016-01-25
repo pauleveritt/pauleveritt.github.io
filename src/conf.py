@@ -247,9 +247,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'logo': 'headshot.jpg',
     'logo_name': True,
-    'github_button': True,
-    'page_width': '990px',
-    'sidebar_width': '270px'
+    'github_button': True
 
 }
 

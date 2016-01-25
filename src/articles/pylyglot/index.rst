@@ -42,13 +42,14 @@ have a lot of background explanation on the topics.
 .. toctree::
     :maxdepth: 1
 
-    mocha-intro/index
+    mocha_intro/index
 
 
 Contents
 ========
 
 .. toctree::
+    :hidden:
     :maxdepth: 1
 
     ditch-browser/index
