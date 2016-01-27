@@ -45,6 +45,7 @@ have a lot of background explanation on the topics.
     hello_node/index
     package_json/index
     eslint_intro/index
+    npm_run/index
     mocha_intro/index
 
 
@@ -55,9 +56,6 @@ Contents
     :hidden:
     :maxdepth: 1
 
-    ditch-browser/index
-    package-json/index
-    tooling-npm/index
     modules-commonjs/index
 
 

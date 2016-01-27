@@ -397,6 +397,8 @@ PyCharm orchestrate your JavaScript testing.
 TODO
 ====
 
+- Explain the "why"
+
 - Add a "Goals" section
 
 - Emphasize "frontend development"
