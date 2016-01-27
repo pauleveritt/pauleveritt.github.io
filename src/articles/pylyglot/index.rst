@@ -46,6 +46,7 @@ have a lot of background explanation on the topics.
     package_json/index
     eslint_intro/index
     npm_run/index
+    modules_intro/index
     mocha_intro/index
 
 
@@ -57,6 +58,7 @@ Contents
     :maxdepth: 1
 
     modules-commonjs/index
+
 
 
 Scripting with npm

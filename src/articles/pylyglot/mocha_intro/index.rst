@@ -389,7 +389,7 @@ you a button and a visual display of the coverage information.
 
 If you are a TDD-oriented Python developer, you likely
 know how `PyCharm can boost Python testing productivity
-<https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc>`_.
+<https://www.youtube.com/watch?v=-VzJvNLooj4&index=8&list=PLQ176FUIyIUZ1mwB-uImQE-gmkwzjNLjP>`_.
 With JavaScript, you might not even have considered TDD.
 Once you think headless with NodeJS and Mocha, though, you can let
 PyCharm orchestrate your JavaScript testing.

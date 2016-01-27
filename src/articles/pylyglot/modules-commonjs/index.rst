@@ -20,3 +20,7 @@ Modules with CommonJS
 - In PyCharm, you don't have to save before running tests
 
 - Make a test fail
+
+- Fix .eslintrc
+
+- https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc
