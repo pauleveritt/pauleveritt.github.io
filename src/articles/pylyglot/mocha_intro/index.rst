@@ -1,6 +1,6 @@
-=====================
-Introduction to Mocha
-=====================
+==============
+TDD with Mocha
+==============
 
 Python has a strong history with unit testing. In JavaScript? Not so
 much, as driving a browser is a pain. But with the emergence of
@@ -50,35 +50,20 @@ browser, and only check the browser when you needed to? Even better,
 wouldn't it be great if we could get into a zen-like TDD mode of
 web application development?
 
-We can, and that's what we'll look at in this step. Two key points:
+In our :doc:`previous step <../modules_intro/index>` we saw
+modular development, *without* a browser. This is a very Pythonic
+way of JavaScript development.  Writing reusuable code as modules
+is one Pythonic technique. But writing code that is productively
+testable during development is another part of Pythonic development.
 
-- *Fake DOM*. Many frameworks, such as jQuery, expect there to be
-  a DOM. Your code won't even load without it. Fortunately there
-  are solutions, such as `jsdom <https://github.com/tmpvar/jsdom>`_
-  which simulate what you need.
+Mocha and Chai Installation
+===========================
 
-- *Written for unit testing*. Just like with Python, you can
-  write your code in a way that promotes testability by isolating
-  the connection to external libraries. Ideally your framework
-  would support this as well, through things like Dependency
-  Injection.
-
-Installation
-============
-
-Let's start with an empty directory. As we explained in
-**The Other Step**, we make a "package" in NodeJS using the
-``npm init`` command. We'll pass the ``--yes`` flag to let ``npm``
-answer yes to all the questions:
-
-.. code-block:: bash
-
-    $ npm init --yes
-
-Remember that this directory is like a virtual environment in
-Python, albeit like one that has ``with-site-packages`` set to
-true. That is, NodeJS looks in your local ``node_modules`` first
-and then in the global environment for a package.
+Let's start with a new directory containing the ``package.json``
+and ``.eslintrc`` from the previous step. Remember that this directory
+is like a virtual environment in Python, albeit like one that has
+``with-site-packages`` set to true. That is, NodeJS looks in your local
+``node_modules`` first and then in the global environment for a package.
 
 Let's install Mocha and Chai *locally* and save them as development
 dependencies in our ``package.json``:
@@ -90,6 +75,13 @@ dependencies in our ``package.json``:
 After doing this command, we now have a ``node_modules`` directory
 with 21 packages in it, for the Mocha and Chai dependencies.
 
+Our ``package.json`` should now contain these development dependencies:
+
+.. literalinclude:: package.json
+    :language: js
+    :caption: package.json development dependencies
+    :lines: 19-22
+
 Hello Test
 ==========
 
@@ -100,20 +92,25 @@ let's write and run a test. Save the following as as ``test1.js``:
     :language: js
     :caption: test1.js
 
-We use a NodeJS ``require`` to import the ``expect`` function from
-the ``chai`` package. In Python, this would be:
+Tests need "assertions", which are statements about what should be a
+result. The ``chai`` package provides an ``expect`` function for our
+assertions. We use a Node ``require`` to import these functions. In
+Python, this would be:
 
 .. code-block:: python
 
+    from mocha import describe, it
     from chai import expect
 
 We then have a ``Hello World`` test suite with 1 test and one assertion.
-In JS testing, functions are the way of nesting scopes.
+In JS testing, functions are the way of nesting scopes. The Mocha test
+runner puts this to use in test running.
 
-We can run this from the command line. When you install a package with
-``npm``, it often puts executable wrappers in ``node_modules/.bin``,
-similar to how ``setuptools`` creates console scripts in your
-virtual environments ``bin``. We can run Mocha to execute this test:
+The ``expect`` function wraps a JavaScript expression as an assertion
+and returns an object with methods used for testing. We use ``.eql``
+to assert equality.
+
+We can run this test from the command-line:
 
 .. code-block:: bash
 
@@ -121,20 +118,13 @@ virtual environments ``bin``. We can run Mocha to execute this test:
 
 We should get the following output:
 
-screenshot1
+ - TODO screenshot of terminal output
 
-That's fairly barbaric. As discussed in **NPM RUN SCRIPTS**, we can make
-it easy for ourselves and others to discover and run important,
+That's fairly barbaric. As discussed in :doc:`../npm_run/index`, we can
+make it easy for ourselves and others to discover and run important,
 frequent commands by adding ``package.json`` entries under ``scripts``.
-In fact, ``npm init --yes`` left us a placeholder:
 
-.. code-block:: js
-
-      "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-
-Let's change it to run our Mocha test:
+Let's add an entry in ``scripts`` to run our Mocha test:
 
 .. code-block:: js
 
@@ -142,7 +132,7 @@ Let's change it to run our Mocha test:
         "test": "mocha test1.js"
       },
 
-Note that we didn't have to put ``node_modules/.bin`` in front of
+Remember that we didn't have to put ``node_modules/.bin`` in front of
 ``mocha``, as ``npm`` knows that ``npm run`` scripts probably should
 have that in the path.
 
@@ -164,26 +154,29 @@ But hey, this is *PyCharm*. Can't we do better than a console?
 Mocha Integration for PyCharm
 =============================
 
-PyCharm has run configurations with presets for a bunch of
-things you might want to run. We saw in **Hello Node** that
-PyCharm has run configuration templates for NodeJS. We also
-know that PyCharm supports run configurations for a number
-of Python test runners.
+PyCharm has run configurations with presets for a bunch of things you
+might want to run. We saw in :doc:`../hello_node/index` that PyCharm has
+run configuration templates for NodeJS. We also know that PyCharm
+supports run configurations for a number of Python test runners.
 
 Any chance PyCharm can put a nice UI on Mocha tests? Yes
 indeed:
 
-- TODO animated gif for adding a mocha test
+- TODO GIF on right-click run test1.js
 
-As long as you have Mocha in your ``node_modules``, it's quite
-simple:
+Right-click on the tab for ``test1.js`` and click ``Run``, and PyCharm
+will run your tests. Along the way, it will create a Mocha-based
+Run Configuration. We can see that run configuration via
+``Edit Configurations``:
 
-- TODO provide steps for adding a run configuration
+- TODO GIF for edit mocha run configuration
 
 Now when we run our tests, instead of text output in a console,
-we get a managed GUI for test running:
+we get a managed UI for test running, with the same UI used for
+running Python tests.
 
-- Screenshot of test run
+Testing Application Code
+========================
 
 We're not really testing anything, though. Let's write a function for
 incrementing a value, then test that it works.
@@ -193,9 +186,8 @@ incrementing a value, then test that it works.
     We are using NodeJS-style (aka CommonJS) module syntax.
     Other examples use ES6 (aka ES2015) modules transpiled
     via Babel. We don't want that transpiler complexity
-    polluting this example. For background, read up on
-    the why and how of ` JavaScript modules
-    <https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc`_.
+    polluting this example, but we'll get to that in
+    *TODO Link to Babel article*.
 
 First we create our module, ``app1.js``:
 
@@ -204,133 +196,25 @@ First we create our module, ``app1.js``:
     :linenos:
     :caption: app1.js
 
-This module exports our ``incrementer`` function as its default. Python
-doesn't have a similar concept of default exports. With Python, in most
-cases, everything in the top-level scope can be imported.
+This module exports our ``incrementer`` function as its default export,
+which we then import into our test code:
 
 .. literalinclude:: test2.js
     :language: js
     :caption: test2.js
-    :emphasize-lines: 2,6,7
+    :emphasize-lines: 4,8,9
 
 Line 2 imports the code we want to test. The two lines in the test
-execute this code and test the result.
+execute this code and test the result. Let's right-click on the
+``test2.js`` tab and run this test file. We should see this output:
 
 - TODO Show PyCharm screenshot
-
-Getting a DOM
-=============
-
-Web apps aren't this simple. Let's mix jQuery into the mix and see what
-happens. First we install it from npm and save it as a dependency in
-our ``package.json``:
-
-.. code-block:: bash
-
-    $ npm install --save jquery
-
-We can now change our application code: instead of a function that
-returns an incremented value, we increment the value of a ``<div>``:
-
-.. literalinclude:: app2.js
-    :language: js
-    :caption: app2.js
-    :emphasize-lines: 1,4
-
-Our application code imports ``jquery`` using NodesJS/CommonJS
-module imports, then changes the ``<div>`` content to equal
-the incremented value.
-
-When we run the test now, though, armageddon ensues:
-
-.. code-block:: bash
-
-    Error: jQuery requires a window with a document
-        at module.exports (mocha_intro/node_modules/jquery/dist/jquery.js:29:12)
-        at incrementer (mocha_intro/app2.js:4:5)
-        at Context.<anonymous> (mocha_intro/test3.js:6:22)
-
-Our first thought is: go get a browser. We could use `PhantomJS <http://phantomjs.or>`_
-which has good package for Mocha support. We could start over with the
-`Karma test runner <http://https://karma-runner.github.io/0.13/index.html>`_. But
-these are *big* solutions. Slow, lots of fiddling necessary, and not
-headless.
-
-Enter `jsdom <https://github.com/tmpvar/jsdom>`_. This package simulates a
-DOM, in your browser. While jsdom isn't perfect in simulating a browser, it is
-fast and, relatively speaking, lightweight.
-
-Let's install it as a development dependency:
-
-.. code-block:: bash
-
-    $ npm install --save-dev
-
-We now can write a ``test3.js`` which imports ``jsdom`` and sets some
-global variables that ``jQuery`` expects. With that in place, we can import
-``jQuery``:
-
-.. literalinclude:: test3.js
-    :language: js
-    :caption: test3.js
-
-This test suite has a test that ensures we are setup correctly by
-reading the initial text value of the ``<div>``. The second test
-executes our function and checks the updated value of the ``<div>``.
-
-And our tests pass! All is good...except, it isn't.
-
-Mocha Setup and Teardown
-========================
-
-Python unit testers will spot the problem quickly: we aren't testing
-in isolation! The second test modifies the ``<div>``. Any subsequent
-tests wouldn't be against a fresh ``<div>``. If we added a third
-test as a copy of the first, we'd see that:
-
-.. literalinclude:: test4.js
-    :language: js
-    :caption: test4.js
-    :emphasize-lines: 14-17
-
-This third test fails, as the ``<div>`` has the value from the second
-test, not the initial value.
-
-Like Python's ``unittest``, Mocha has concepts of ``before``,
-``beforeEach``, and ``afterEach``. Let's say we want to balance speed
-and isolation. We'd like to make a DOM once for all tests, but clean
-up the ``<body>`` before each test. ``test5.js`` shows this:
-
-.. literalinclude:: test5.js
-    :language: js
-    :caption: test5.js
-    :emphasize-lines: 6-15
-
-Our ``Hello World`` test suite initializes ``$`` and ``incrementer``
-at the test-suite scope. The ``before`` function runs once,
-loading our application code once a DOM is setup and initialized. Then,
-before each test, the ``<body>`` is reset to ``<div>1</div>``.
-
-Does this look like boilerplate that you'll repeat in each test? Let's
-make a ``helper.js`` module that we can import at the top of all of
-our tests, to provide such initialization:
-
-.. literalinclude:: helper.js
-    :language: js
-    :caption: helper.js
-
-Our tests, as shown in ``test6.js``, now look a lot nicer by importing
-``helper.js`` at the top:
-
-.. literalinclude:: test6.js
-    :language: js
-    :caption: test6.js
-    :emphasize-lines: 1
 
 TDD with PyCharm
 ================
 
-We now have a good basis for Pythonic testing in JavaScript, without
+With modules, a Mocha run configuration, and PyCharm's testing UI, we
+now have a good basis for Pythonic testing in JavaScript, *without*
 needing a browser. How can we get into test-driven development (TDD)
 mode? Let's get PyCharm to help us with automatically-executing tests
 and test debugging.
@@ -346,7 +230,7 @@ With this in place, PyCharm will re-run tests when your source or test
 code changes:
 
 - TODO Animated GIF showing a change that breaks, then fixes,
-  test6.js
+  test2.js
 
 As a note, PyCharm doesn't require that you actually save the file
 before it detects the change.
@@ -417,6 +301,4 @@ TODO
 
 - Links to PyCharm docs
 
-.. toctree::
-    :maxdepth: 1
-    :hidden:
+- Remove inter-intro dependencies on package.json etc.

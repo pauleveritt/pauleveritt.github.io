@@ -1,4 +1,8 @@
-var expect = require('chai').expect,
+var describe = require('mocha').describe,
+    it = require('mocha').it,
+    expect = require('chai').expect,
+    before = require('mocha').before,
+    beforeEach = require('mocha').beforeEach,
     jsdom = require('jsdom');
 
 

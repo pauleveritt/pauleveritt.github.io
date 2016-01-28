@@ -1,6 +1,4 @@
-var describe = require('mocha').describe,
-    it = require('mocha').it,
-    expect = require('chai').expect,
+var expect = require('chai').expect,
     incrementer = require('./app1');
 
 describe('Hello World', function () {

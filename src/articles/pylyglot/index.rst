@@ -48,18 +48,7 @@ have a lot of background explanation on the topics.
     npm_run/index
     modules_intro/index
     mocha_intro/index
-
-
-Contents
-========
-
-.. toctree::
-    :hidden:
-    :maxdepth: 1
-
-    modules-commonjs/index
-
-
+    jsdom_intro/index
 
 Scripting with npm
 ==================
