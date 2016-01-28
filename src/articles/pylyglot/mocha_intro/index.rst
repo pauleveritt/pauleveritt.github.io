@@ -302,3 +302,6 @@ TODO
 - Links to PyCharm docs
 
 - Remove inter-intro dependencies on package.json etc.
+
+- Provide a standard boilerplate about filing tickets for problems
+  suggestions

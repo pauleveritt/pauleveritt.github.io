@@ -1,7 +1,11 @@
-var expect = require('chai').expect;
+var describe = require('mocha').describe,
+    it = require('mocha').it,
+    expect = require('chai').expect,
+    incrementer = require('./app');
 
 describe('Hello World', function () {
-    it('should ensure 1 is 1', function () {
-        expect(1).eql(1);
+    it('should increment a value', function () {
+        var result = incrementer(8);
+        expect(result).eql(9);
     });
 });

@@ -60,22 +60,9 @@ Scripting with npm
 - PyCharm npm integration
 
 
-
-Linting with eslint
-===================
-
-- Hook into PyCharm
-- npm run script
-- Consider making part of TravisCI build test case
-
-
 Modules with CommonJS and Webpack
 =================================
 
-- Refactor tests to import
-- Explain why we are ignoring ES6 imports for now
-- Update npm run scripts
-- Webpack-dev-server for super-cool development cycle
 - For now, ignore sourcemaps and minify
 - JS debugger
 
