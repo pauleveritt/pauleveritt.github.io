@@ -56,7 +56,7 @@ Let's take a look at the auto-generated ``package.json`` file from the
 
 .. literalinclude:: ../eslint_intro/package.json
     :language: js
-    :caption: ESLint package.json
+    :caption: Earlier ESLint package.json
     :emphasize-lines: 6-8
 
 By default, ``npm init`` created a ``scripts`` section in your package

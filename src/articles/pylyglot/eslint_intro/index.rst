@@ -56,7 +56,7 @@ in our resulting ``package.json``:
 
 .. literalinclude:: package.json
     :language: js
-    :caption: package.json
+    :caption: ESLint package.json
     :emphasize-lines: 19-21
 
 If we didn't want to open a console, or couldn't remember the package
@@ -80,7 +80,7 @@ For example:
 
 .. literalinclude:: .eslintrc
     :language: js
-    :caption: .eslintrc
+    :caption: ESLint .eslintrc
 
 This configuration says: "In this project, everyone should use single
 quotes in JavaScript files".
@@ -95,7 +95,7 @@ naughty and nice. This source file has double quotes:
 
 .. literalinclude:: app1.js
     :language: js
-    :caption: app1.js
+    :caption: ESLint app1.js
 
 If we "lint" it with the ``eslint`` command:
 
