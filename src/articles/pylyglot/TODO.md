@@ -2,9 +2,6 @@
 
 ## First
 
-- "Frontend development" as canonical jargon
-
-- Spell checking
 
 ## Second
 
@@ -13,6 +10,10 @@
 - Consider doing some movies
 
 ## Third
+
+- "Frontend development" as canonical jargon
+
+- Spell checking
 
 - Lesson inter-article code dependencies, try to start from scratch
 
