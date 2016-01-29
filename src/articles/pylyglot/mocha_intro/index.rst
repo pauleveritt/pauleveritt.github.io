@@ -281,27 +281,4 @@ PyCharm orchestrate your JavaScript testing.
 TODO
 ====
 
-- Explain the "why"
-
-- Add a "Goals" section
-
-- Emphasize "frontend development"
-
-- Links to previous articles for: npm scripts, etc.
-
-- Get package.json and npm init written up then link from here
-
 - Intersphinx link to unittest module
-
-- Make screenshots
-
-- Do an "intro" for the hello_node
-
-- Make things more Pythonic and PyCharmic
-
-- Links to PyCharm docs
-
-- Remove inter-intro dependencies on package.json etc.
-
-- Provide a standard boilerplate about filing tickets for problems
-  suggestions

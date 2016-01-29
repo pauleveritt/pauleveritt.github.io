@@ -47,6 +47,6 @@ have a lot of background explanation on the topics.
     eslint_intro/index
     npm_run/index
     modules_intro/index
-    mocha_intro/index
     webpack_intro/index
+    mocha_intro/index
     jsdom_intro/index
