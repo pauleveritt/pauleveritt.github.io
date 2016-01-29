@@ -45,3 +45,5 @@
 - pauleveritt.org
 
 - Remove photo from sub-pages
+
+- Edit and re-write for brevity

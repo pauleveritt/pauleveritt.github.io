@@ -16,6 +16,17 @@ Finally, we end in a super spot: we switch to using Webpack's
 development server, which re-bundles in-memory on every change *and*
 automatically updates your browser, hands-free.
 
+Overview
+========
+
+- Show problem with using modules in a browser *without* a module loader
+
+- Introduce and install Webpack
+
+- Generate and use a bundle, including with external dependency
+
+- Show live bundling and reloading with ``webpack-dev-server``
+
 The Problem
 ===========
 
@@ -228,3 +239,8 @@ learning (constantly changing) tools and fighting the problems they introduce.
 
 There are solutions to this. If you don't want to be bleeding edge, stick to
 the minimum, such as the scope in this article.
+
+TODO
+====
+
+- Link to part 2 of the beginner's guide Medium article on modules

@@ -9,6 +9,17 @@ In this section we show how frontend tooling can combine to provide
 a TDD workflow targeted at browsers, using a fake DOM from the
 `jsdom <https://github.com/tmpvar/jsdom>`_ project.
 
+Overview
+========
+
+- Explain the need for a DOM in frontend TDD
+
+- Install and setup ``jsdom``
+
+- Use Mocha setup/teardown hooks
+
+- Make a "helpers" file to re-use common setup
+
 Fake DOM
 ========
 

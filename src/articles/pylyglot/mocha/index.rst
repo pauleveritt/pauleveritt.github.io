@@ -11,6 +11,17 @@ This article introduces a small amount of Mocha, apart from any
 particular application. Like our other Polyglot articles, it's
 written from a Python perspective.
 
+Overview
+========
+
+- Explain the virtue of browserless-first frontend development
+
+- Introduce JavaScript testing in the context of Python testing
+
+- Install Mocha and Chai plus a simple test
+
+- Show PyCharm as a UI for Frontend TDD
+
 Test Runners, Assertions, Mocks
 ===============================
 
@@ -263,8 +274,8 @@ watches:
 
 - TODO Animated gif debugging breakpoint
 
-JavaScript TDD and PyCharm Are For Real
-=======================================
+Frontend TDD and PyCharm Are For Real
+=====================================
 
 This only scratches the surface of what PyCharm can add for
 test-driven development and JavaScript. There's much more: for

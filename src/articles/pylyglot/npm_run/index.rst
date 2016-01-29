@@ -4,8 +4,19 @@ Automation with ``npm run`` Scripts
 
 Python has several ways to register custom scripts to execute during
 development in a workspace. In this section we look at ``npm run``
-scripts, registered in ``pacakge.json`` for centralizing repeatable
-tasks.
+scripts, registered in ``package.json``, for centralizing repeatable
+frontend tasks.
+
+Overview
+========
+
+- Explain ``npm run`` scripts in the  ``scripts`` block of ``package.json``
+
+- Install a linter and hook into an ``npm run`` script
+
+- Show how PyCharm puts a friendly face on such task scripts
+
+- Explain the subtle benefit to ``npm run`` as a uniform interface
 
 Python Command Line Scripts
 ===========================
@@ -163,3 +174,8 @@ uniform interface.
 
 Because tasks are in a data file in a predictable place, tools such as
 PyCharm can scan, list, and launch your project's tasks.
+
+TODO
+====
+
+- Add some screenshots

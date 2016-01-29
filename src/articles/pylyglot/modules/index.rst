@@ -10,8 +10,8 @@ imports to include them in other modules.
 In this section we look at one popular way in JavaScript to modularize
 your code, based on the CommonJS specification from Node.js modules.
 
-Goals
-=====
+Overview
+========
 
 - Modularize our JavaScript application into two files
 
@@ -148,7 +148,7 @@ caveats:
 
 - *We just broke the browser*. The code runs in Node.js but won't
   work in browser-based JavaScript engines. We'll fix that in
-  *TODO link to Webpack*.
+  :doc:`../webpack/index`.
 
 - *Wrong module system*. Some frontend developers are adopting
   ES2015 (aka ES6) modules. Teaching that, however, requires teaching
@@ -163,7 +163,8 @@ browser, and perhaps...dare we dream...start on test-driven development
 
 TODO
 ====
-
+w
 - Link to bundlers polyglot article, and in there, link to part two of
   modules beginners guide
 
+- More linking to ES6 stuff
