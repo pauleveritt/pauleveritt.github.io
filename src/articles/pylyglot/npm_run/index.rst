@@ -51,10 +51,10 @@ article, the ``package.json`` configuration file can contain more than
 just package name and dependency information.
 
 Let's take a look at the auto-generated ``package.json`` file from the
-:doc:`ESLint article <../eslint_intro/index>`:
+:doc:`ESLint article <../eslint/index>`:
 
 
-.. literalinclude:: ../eslint_intro/package.json
+.. literalinclude:: ../eslint/package.json
     :language: js
     :caption: Earlier ESLint package.json
     :emphasize-lines: 6-8
@@ -99,7 +99,7 @@ a script for ``lint``:
 
 Presuming we still have the same ``.eslintrc`` file configured:
 
-.. literalinclude:: ../eslint_intro/.eslintrc
+.. literalinclude:: ../eslint/.eslintrc
     :language: js
     :caption: .eslintrc
 

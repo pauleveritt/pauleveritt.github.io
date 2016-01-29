@@ -31,9 +31,9 @@ Contents
     intro
     hello_node/index
     package_json/index
-    eslint_intro/index
+    eslint/index
     npm_run/index
-    modules_intro/index
-    webpack_intro/index
-    mocha_intro/index
-    jsdom_intro/index
+    modules/index
+    webpack/index
+    mocha/index
+    jsdom/index

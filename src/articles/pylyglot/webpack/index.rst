@@ -20,23 +20,23 @@ The Problem
 ===========
 
 Let's write a small web application, based around the ``incrementer`` in
-:doc:`../modules_intro/index`. First, an ``index1.html`` file:
+:doc:`../modules/index`. First, an ``index1.html`` file:
 
 .. literalinclude:: index1.html
     :language: html
-    :caption: index1.html
+    :caption: Webpack index1.html
 
 This loads a file ``app1.js``:
 
 .. literalinclude:: app1.js
     :language: js
-    :caption: app1.js
+    :caption: Webpack app1.js
 
 ...which uses CommonJS modules to import ``incrementer`` from ``./lib.js``:
 
 .. literalinclude:: lib.js
     :language: js
-    :caption: lib.js
+    :caption: Webpack lib.js
 
 PyCharm makes this easy to run. In the editor tab for ``index1.html``,
 mouse-over the symbol for one of the browsers and click it to open in
@@ -77,7 +77,7 @@ If we change our HTML to point at this ``bundle.js`` file:
 
 .. literalinclude:: index2.html
     :language: html
-    :caption: index2.html
+    :caption: Webpack index2.html
     :emphasize-lines: 8
 
 ...then we can see ``4`` in the browser console with no errors:
@@ -102,7 +102,7 @@ via a ``<script>`` that pointed at a CDN:
 
 .. literalinclude:: index3.html
     :language: html
-    :caption: index3.html
+    :caption: Webpack index3.html
     :emphasize-lines: 9
 
 Instead of logging the ``incrementer`` value to the console, we might
@@ -110,7 +110,7 @@ use jQuery to save it to the ``<h1>`` text node:
 
 .. literalinclude:: app2.js
     :language: js
-    :caption: app2.js
+    :caption: Webpack app2.js
     :emphasize-lines: 4
 
 This works fine in our browser:
@@ -138,13 +138,13 @@ This gets the code into ``node_modules`` and adds an entry in
 
 .. literalinclude:: app3.js
     :language: js
-    :caption: app3.js
+    :caption: Webpack app3.js
 
 We can now eliminate the ``<script>`` that loads jQuery from CDN:
 
 .. literalinclude:: index4.html
     :language: html
-    :caption: index4.html
+    :caption: Webpack index4.html
 
 Loading ``index4.html`` in your browser via PyCharm shows this still
 works. How did jQuery get in there? Webpack saw it imported, fetched
@@ -198,7 +198,7 @@ line options to a config file. By default, Webpack looks in
 
 .. literalinclude:: webpack.config.js
     :language: js
-    :caption: webpack.config.js
+    :caption: Webpack webpack.config.js
 
 We put in the options to drive both ``webpack`` and ``webpack-dev-server``.
 Next, let's automate this task by adding an ``npm run`` script in
@@ -206,7 +206,7 @@ Next, let's automate this task by adding an ``npm run`` script in
 
 .. literalinclude:: package.json
     :language: js
-    :caption: package.json
+    :caption: Webpack package.json
     :emphasize-lines: 7
 
 Because ``start`` is a pre-defined shortcut, we can run ``npm start`` from

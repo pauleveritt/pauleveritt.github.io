@@ -1,6 +1,6 @@
-=======================
-Introduction to Modules
-=======================
+=====================
+Modules with CommonJS
+=====================
 
 Not all code is in one file. You might have a Python application that
 includes code from Flask. Or, you might split your large Python code
@@ -44,7 +44,7 @@ everything into a global namespace, spawning a litany of
 <https://en.wikipedia.org/wiki/Immediately-invoked_function_expression>`_.
 Since everything is async, you can't be sure ``lib.js`` is loaded
 before your ``app.js`` code is executed, spawning another litany of
-`obscure workarounds
+`more obscure workarounds
 <https://learn.jquery.com/using-jquery-core/document-ready/>`_.
 
 Server-side JavaScript via Node.js gained popularity, and Node added
@@ -68,12 +68,12 @@ If this was Python, well, this really couldn't be much easier. Our
 ``lib.py``:
 
 .. literalinclude:: lib.py
-    :caption: lib.py
+    :caption: Modules lib.py
 
 This ``incrementer`` function is then imported into ``app.py``:
 
 .. literalinclude:: app.py
-    :caption: app.py
+    :caption: Modules app.py
 
 Of course there could be some rough edges. If I import from a
 different directory, I'll need a ``__init__.py`` file to make
@@ -90,7 +90,7 @@ global ``module.exports``:
 
 .. literalinclude:: lib.js
     :language: js
-    :caption: lib.js
+    :caption: Modules lib.js
 
 In a nutshell, CommonJS "exports" definitions, available for
 import from other files, via a ``module.exports`` built-in variable.
@@ -102,7 +102,7 @@ Our application can now import this:
 
 .. literalinclude:: app.js
     :language: js
-    :caption: app.js
+    :caption: Modules app.js
 
 Our application imports our function from ``./lib``. Two important points:
 

@@ -50,7 +50,7 @@ browser, and only check the browser when you needed to? Even better,
 wouldn't it be great if we could get into a zen-like TDD mode of
 web application development?
 
-In our :doc:`previous step <../modules_intro/index>` we saw
+In our :doc:`previous step <../modules/index>` we saw
 modular development, *without* a browser. This is a very Pythonic
 way of JavaScript development.  Writing reusuable code as modules
 is one Pythonic technique. But writing code that is productively
@@ -90,7 +90,7 @@ let's write and run a test. Save the following as as ``test1.js``:
 
 .. literalinclude:: test1.js
     :language: js
-    :caption: test1.js
+    :caption: Mocha test1.js
 
 Tests need "assertions", which are statements about what should be a
 result. The ``chai`` package provides an ``expect`` function for our
@@ -194,14 +194,14 @@ First we create our module, ``app1.js``:
 .. literalinclude:: app1.js
     :language: js
     :linenos:
-    :caption: app1.js
+    :caption:  Mocha app1.js
 
 This module exports our ``incrementer`` function as its default export,
 which we then import into our test code:
 
 .. literalinclude:: test2.js
     :language: js
-    :caption: test2.js
+    :caption: Mocha  test2.js
     :emphasize-lines: 4,8,9
 
 Line 2 imports the code we want to test. The two lines in the test

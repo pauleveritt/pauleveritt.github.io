@@ -2,9 +2,8 @@
 DOM TDD with JSDOM
 ==================
 
-We earlier saw, in :doc:`../mocha_intro/index`, how we can start on
-JavaScript TDD using Mocha. We used a very simple application and
-test.
+We earlier saw, in :doc:`../mocha/index`, how we can start on JavaScript
+TDD using Mocha. We used a very simple application and test.
 
 In this section we show how frontend tooling can combine to provide
 a TDD workflow targeted at browsers, using a fake DOM from the
@@ -42,7 +41,7 @@ incremented value, we increment the text node value of a ``<div>``:
 
 .. literalinclude:: app.js
     :language: js
-    :caption: app.js
+    :caption: JSDOM app.js
     :emphasize-lines: 1,4
 
 Our application code imports ``jquery`` using NodesJS/CommonJS
@@ -54,16 +53,16 @@ article:
 
 .. literalinclude:: test1.js
     :language: js
-    :caption: test1.js
+    :caption: JSDOM test1.js
 
 When we run the test now, though, armageddon ensues:
 
 .. code-block:: bash
 
     Error: jQuery requires a window with a document
-        at module.exports (jsdom_intro/node_modules/jquery/dist/jquery.js:29:12)
-        at incrementer (jsdom_intro/app.js:4:5)
-        at Context.<anonymous> (jsdom_intro/test1.js:6:22)
+        at module.exports (jsdom/node_modules/jquery/dist/jquery.js:29:12)
+        at incrementer (jsdom/app.js:4:5)
+        at Context.<anonymous> (jsdom/test1.js:6:22)
 
 Our first thought is: go get a browser. We could use
 `PhantomJS <http://phantomjs.org>`_ which has good package for Mocha
@@ -87,7 +86,7 @@ global variables that ``jQuery`` expects. With that in place, we can import
 
 .. literalinclude:: test2.js
     :language: js
-    :caption: test2.js
+    :caption: JSDOM test2.js
     :emphasize-lines: 6-8
 
 This test suite has a test that ensures we are setup correctly by
@@ -106,7 +105,7 @@ test as a copy of the first, we'd see that:
 
 .. literalinclude:: test3.js
     :language: js
-    :caption: test3.js
+    :caption: JSDOM test3.js
     :emphasize-lines: 20-22
 
 This third test fails, as the ``<div>`` has the value from the second
@@ -119,7 +118,7 @@ up the ``<body>`` before each test. ``test4.js`` shows this:
 
 .. literalinclude:: test4.js
     :language: js
-    :caption: test4.js
+    :caption: JSDOM test4.js
     :emphasize-lines: 10-19
 
 Our ``Hello World`` test suite initializes ``$`` and ``incrementer``
@@ -133,14 +132,14 @@ our tests, to provide such initialization:
 
 .. literalinclude:: helper.js
     :language: js
-    :caption: helper.js
+    :caption: JSDOM helper.js
 
 Our tests, as shown in ``test5.js``, now look a lot nicer by importing
 ``helper.js`` at the top:
 
 .. literalinclude:: test5.js
     :language: js
-    :caption: test5.js
+    :caption: JSDOM test5.js
     :emphasize-lines: 1
 
 Wrapup

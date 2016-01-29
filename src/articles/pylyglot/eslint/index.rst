@@ -1,6 +1,6 @@
-================
-Intro to Linting
-================
+===================
+Linting with ESLint
+===================
 
 Are you picky about Python code styling? A big believer in `PEP 8
 <https://www.python.org/dev/peps/pep-0008/>`_? The world of JavaScript
