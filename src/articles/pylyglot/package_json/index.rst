@@ -157,11 +157,3 @@ Wrapup
 With ``package.json``, we have a way to make a project area,
 record package information, install packages, and record dependencies.
 This gives us most of what we need for reproducible builds.
-
-TODO
-====
-
-- Add in PyCharm automation points
-
-    - Like Python, GUI for installing and saving packages
-

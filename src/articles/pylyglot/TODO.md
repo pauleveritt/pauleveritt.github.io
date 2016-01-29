@@ -2,21 +2,15 @@
 
 ## First
 
-- Do all screenshots and GIFs
+- "Frontend development" as canonical jargon
 
-- Fix all the TODO for referencing each article
+- Spell checking
 
 ## Second
 
-- Move some of polyglot/index.rst to intro.rst
+- Do all screenshots and GIFs
 
 - Consider doing some movies
-
-- "Frontend development" as canonical jargon
-
-- Overview and Wrapup on each section
-
-- Spell checking
 
 ## Third
 

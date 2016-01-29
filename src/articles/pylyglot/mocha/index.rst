@@ -274,10 +274,13 @@ watches:
 
 - TODO Animated gif debugging breakpoint
 
-Frontend TDD and PyCharm Are For Real
-=====================================
+Wrapup
+======
 
-This only scratches the surface of what PyCharm can add for
+Hopefully this article showed: Frontend TDD and PyCharm are
+for real.
+
+We only scratched the surface of what PyCharm can add for
 test-driven development and JavaScript. There's much more: for
 example, you can install code coverage packages and PyCharm will give
 you a button and a visual display of the coverage information.

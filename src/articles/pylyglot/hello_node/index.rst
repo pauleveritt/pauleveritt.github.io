@@ -39,7 +39,28 @@ Running JavaScript Code
 Let's presume I've installed Node via their installer, Homebrew, or
 one of the many other ways. If we have a ``hello_node.js`` file in
 my project, we can execute it via the Node interpreter exactly the
-same ways we do Python code:
+same ways we do Python code. For example, this ``hello_node.js``
+file:
+
+
+.. literalinclude:: hello_node.js
+    :language: js
+    :caption: hello_node.js
+
+...can be executed from the command line with the ``node`` command,
+just like we use for ``python``:
+
+
+.. code-block:: bash
+
+    $ node hello_node.js
+    Hello Node
+
+In PyCharm we can easily
+`run Python code
+<https://www.youtube.com/watch?v=JLfd9LOdu_U&list=PLQ176FUIyIUZ1mwB-uImQE-gmkwzjNLjP&index=4>`_
+using an installed Python interpreter. The same is true for JavaScript
+code with an installed Node interpreter:
 
 .. image:: hello_node_run.gif
     :alt: Running JavaScript Code
@@ -100,3 +121,11 @@ both IDEs share the same
 foundations and JavaScript
 machinery. As such, you can do your frontend development while
 staying in PyCharm.
+
+Wrapup
+======
+
+In this article we showed how the world of JavaScript exists outside
+of the browser, in a command-line interpreter that should be familiar
+to Python developers. JavaScript can be executed by the Node interpreter
+as a first-class part of PyCharm, just like running Python code.

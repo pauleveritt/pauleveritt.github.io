@@ -139,8 +139,8 @@ is correctly presented:
 
 - TODO GIF showing disable core library, './libx', enable, warning
 
-This Was a Big Step
-===================
+Wrapup
+======
 
 It's odd in a way to say it, but this article is a big step in the
 process towards Polyglot Python with PyCharm. It comes with many
@@ -150,7 +150,7 @@ caveats:
   work in browser-based JavaScript engines. We'll fix that in
   :doc:`../webpack/index`.
 
-- *Wrong module system*. Some frontend developers are adopting
+- *Older module system*. Some frontend developers are adopting
   ES2015 (aka ES6) modules. Teaching that, however, requires teaching
   the Babel transpiler, as Node.js doesn't natively support ES2015
   modules (because Chrome v8 doesn't support it, because the spec is
@@ -163,8 +163,5 @@ browser, and perhaps...dare we dream...start on test-driven development
 
 TODO
 ====
-w
-- Link to bundlers polyglot article, and in there, link to part two of
-  modules beginners guide
 
 - More linking to ES6 stuff

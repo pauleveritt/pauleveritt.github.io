@@ -7,12 +7,11 @@ of “web apps”, though, the browser is playing a larger role. More of the
 application in a web app is done in JavaScript, in the “frontend”, with
 Python running UI-less data services in the “backend”.
 
-This is a series aimed at the Python developer, to explain this
-JavaScript frontend world, from the perspective of Python. It’s a
-polyglot view, aimed at a Python perspective, hence the series name of
-“Pylyglot”. We'll be using PyCharm throughout, showing how it excels at
-both the backend (Python) and the frontend (JS, HTML, CSS) due to its
-IntelliJ foundation.
+This is a series aimed at the Python developer, to explain this JavaScript
+frontend world, from the perspective of Python. It’s a polyglot view,
+aimed at a Python perspective. We'll be using PyCharm throughout, showing
+how it excels at both the backend (Python) and the frontend (JS, HTML,
+CSS) due to its IntelliJ foundation.
 
 Remain Calm
 -----------

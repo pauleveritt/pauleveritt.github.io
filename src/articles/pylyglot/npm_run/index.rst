@@ -79,7 +79,10 @@ via ``npm``:
 
     $ npm run test
 
-Note how similar this is to Python's ``python setup.py test``.
+- TODO Screenshot of output
+
+Note how similar this command looks to Python's ``python setup.py
+test``.
 
 As explained in the `npm run <https://docs.npmjs.com/misc/scripts>`_
 documentation, certain
@@ -120,6 +123,8 @@ predicatable way:
 .. code-block:: bash
 
     $ npm run lint
+
+- TODO Screenshot of console
 
 Not in our ``scripts`` block that we didn't have to specify the full
 path to ``node_modules/.bin/eslint``. When you run a script with
@@ -175,7 +180,10 @@ uniform interface.
 Because tasks are in a data file in a predictable place, tools such as
 PyCharm can scan, list, and launch your project's tasks.
 
-TODO
-====
+Wrapup
+======
 
-- Add some screenshots
+In this article we introduced task automation via ``npm run`` scripts
+registered in our package configuration file. We hooked up our linter
+command to an automation script and showed the convenience PyCharm
+adds for task automation.
