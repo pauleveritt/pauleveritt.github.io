@@ -96,7 +96,8 @@ of ``lib/python3.5/site-packages``, though, packages are installed
 in a ``node_modules`` subdirectory under the location of
 ``package.json``.
 
-- TODO show a screenshot of node_modules/jquery
+.. image:: node_modules.png
+    :alt: jQuery in node_modules
 
 There's a lot to talk about for `npm install
 <https://docs.npmjs.com/cli/install>`_. Just a few points for this
@@ -126,7 +127,8 @@ for finding and adding packages, removing them, etc. The same is true for
 <https://www.jetbrains.com/pycharm/help/node-js-and-npm.html>`_
 for these as well:
 
-- TODO Screenshot of Node.js
+.. image:: preferences.png
+    :alt: Node.js and NPM Preferences
 
 You can reach this UI at Preferences -> Node.js and NPM. With this, you
 don't have to use the command line and learn the ``npm`` interface for

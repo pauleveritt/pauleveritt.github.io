@@ -1,2 +1,3 @@
 ablog
 watchdog
+git+git://github.com/shomah4a/sphinxcontrib.youtube.git#egg=sphinxcontrib.youtube

@@ -22,6 +22,7 @@ comment on the articles using Disqus and file bug reportes in the
 After each technology is introduced, we also show building a TodoMVC
 application from scratch.
 
+
 Contents
 ========
 
