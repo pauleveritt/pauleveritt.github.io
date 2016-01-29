@@ -1,47 +1,34 @@
-====================================================
-Pylyglot: Frontend Development for Python Developers
-====================================================
+============================
+Polyglot Python with PyCharm
+============================
 
-Python has long been a stable of web development. In the recent world
-of “web apps”, though, the browser is playing a larger role. More of the
-application in a web app is done in JavaScript, in the “frontend”, with
-Python running UI-less data services in the “backend”.
+If you're a long-time Python web developer, you are used to web
+technologies. But modern frontend web development might seem alien
+and un-Pythonic.
 
-This is a series aimed at the Python developer, to explain this
-JavaScript frontend world, from the perspective of Python. It’s a
-polyglot view, aimed at a Python perspective, hence the series name of
-“Pylyglot”. We'll be using PyCharm throughout, showing how it excels at
-both the backend (Python) and the frontend (JS, HTML, CSS) due to its
-IntelliJ foundation.
+This series of articles is aimed at you. These frontend ideas are
+important, but you need a Python guide through the thicket. You also
+need a tool that can support your Python *and* frontend development.
+PyCharm, with the foundation it shares with WebStorm, is uniquely
+suited for this.
 
-Remain Calm
------------
+In this series we will introduce ideas and packages in isolation,
+with hands-on code, screenshots, and more. Each article's code is
+`in GitHub
+<https://github.com/pauleveritt/pauleveritt.github.io>`_. You can
+comment on the articles using Disqus and file bug reportes in the
+`issue tracker
+<https://github.com/pauleveritt/pauleveritt.github.io/issues>`_.
+After each technology is introduced, we also show building a TodoMVC
+application from scratch.
 
-I'm the oldest of oldsters in Python. I'm sympathetic. Python is
-beautiful, and this new world...well, isn't. At every step along the
-way, you'll say "This is stupid." I feel ya'. But rather than howl at
-the moon in defiance, embrace the suck and dive in, because
-realistically, you don't have a choice.
-
-I think you'll find that, much to your surprise, there's a lot of
-normalcy in modern JavaScript development. And in fact, there are
-places where their toolchain excels in areas where we are banging
-multiple heads against various walls. But, as this series will show, it
-is a universe that is rebuilding the airplane in mid-flight, on a
-minutely basis, and thus it takes a thick skin to get to a decently
-Pythonic happy spot.
-
-So with that inspirational message, let's press on.
-
-Introductory Articles
-=====================
-
-These are single-topic articles that can be done in isolation. They
-have a lot of background explanation on the topics.
+Contents
+========
 
 .. toctree::
     :maxdepth: 1
 
+    intro
     hello_node/index
     package_json/index
     eslint_intro/index
