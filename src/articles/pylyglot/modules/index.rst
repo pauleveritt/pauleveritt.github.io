@@ -7,8 +7,8 @@ includes code from Flask. Or, you might split your large Python code
 into multiple Python modules, each in a separate file, and use Python
 imports to include them in other modules.
 
-In this section we look at one popular way in JavaScript to modularize
-your code, based on the CommonJS specification from Node.js modules.
+In this section we look at one popular way to modularize your frontend
+code, based on the Node's CommonJS specification.
 
 Overview
 ========

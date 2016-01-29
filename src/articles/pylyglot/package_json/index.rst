@@ -4,20 +4,21 @@ JavaScript Packaging with ``package.json``
 
 
 Python has infrastructure for installing libraries with dependencies.
-JavaScript does as well, based on `npm <https://npmjs.org/>`_.
+The frontend world does as well, based on `npm <https://npmjs.org/>`_.
 
-In this article we turn a directory into a project by creating a
-``package.json`` file. We then use this to hold dependency information
-as we install packages.
+In this article we will turn a directory into a project by creating a
+``package.json`` file. We will then use this to hold dependency
+information as we install packages needed both for the running of our
+frontend and tooling packages needed in the building of the frontend.
 
 Overview
 ========
 
-- Learn about browser-dev tooling using the NodeJS universe
+- Learn about frontend tooling using the NodeJS universe
 
-- Convenient way to get all dependencies
+- Show the convenient way to get all dependencies
 
-- Reproducible builds
+- Discuss reproducible builds
 
 Installing Dependencies: The Shootout
 =====================================

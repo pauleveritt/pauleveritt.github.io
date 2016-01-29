@@ -4,8 +4,10 @@ Linting with ESLint
 
 Are you picky about Python code styling? A big believer in `PEP 8
 <https://www.python.org/dev/peps/pep-0008/>`_? The world of JavaScript
-has linting too. In this article we take a look at frontend tooling
-for JavaScript, namely linting, and how we can hook this into PyCharm.
+has linting too.
+
+In this article we take a look at frontend tooling for JavaScript,
+namely linting, and how we can hook this into PyCharm.
 
 Overview
 ========

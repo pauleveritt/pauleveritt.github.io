@@ -6,9 +6,9 @@ If you're a long-time Python web developer, you are used to web
 technologies. But modern frontend web development might seem alien
 and un-Pythonic.
 
-This series of articles is aimed at you. These frontend ideas are
-important, but you need a Python guide through the thicket. You also
-need a tool that can support your Python *and* frontend development.
+If so, this series of articles is aimed at you. These frontend ideas
+are important, but you need a Python guide through the thicket. You
+also need a tool that can support your Python *and* frontend development.
 PyCharm, with the foundation it shares with WebStorm, is uniquely
 suited for this.
 
