@@ -19,7 +19,9 @@ bundled `npm <https://www.npmjs.com>`_ as a package manager, the
 world of Node provides a way to do JavaScript development,
 targeting a browser, but without a browser.
 
-In this article we'll take a quick look at how PyCharm works as an
+In this article we'll take a quick look at how
+`PyCharm <https://www.jetbrains.com/pycharm/>`_
+works as an
 IDE for JavaScript development.
 
 Running JavaScript Code
@@ -77,18 +79,15 @@ Isn't This Like WebStorm?
 
 This is just a brief introduction of Node.js for Python developers,
 showing how it hooks up in PyCharm. We'll cover much more,
-particularly in the section on *TODO package.json* files.
+particularly in the section on :doc:`package.json files
+<../package_json/index>`.
 
-Many Python developers might ask: should I use WebStorm for my
-frontend development and PyCharm for my backend development? While
-WebStorm does provide a UI more focused on JavaScript development,
-both IDEs share the same IntelliJ foundations and JavaScript
+Many Python developers might ask: should I use
+`WebStorm <https://www.jetbrains.com/webstorm/>`_
+for my frontend development and PyCharm for my backend development?
+While WebStorm does provide a UI more focused on JavaScript development,
+both IDEs share the same
+`IntelliJ <https://www.jetbrains.com/idea/>`_
+foundations and JavaScript
 machinery. As such, you can do your frontend development while
 staying in PyCharm.
-
-To Do
-=====
-
-- Link to WebStorm, IntelliJ, etc.
-
-- Link to package.json section

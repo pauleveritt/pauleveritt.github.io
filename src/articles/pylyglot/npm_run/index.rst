@@ -51,7 +51,7 @@ article, the ``package.json`` configuration file can contain more than
 just package name and dependency information.
 
 Let's take a look at the auto-generated ``package.json`` file from the
-:doc:`ESLint article <../eslint/index>`:
+:doc:`the ESLint article <../eslint/index>`:
 
 
 .. literalinclude:: ../eslint/package.json

@@ -2,8 +2,6 @@
 
 ## First
 
-- Take "intro" out of names
-
 - Do all screenshots and GIFs
 
 - Fix all the TODO for referencing each article
@@ -42,3 +40,5 @@
   suggestions
 
 - pauleveritt.org
+
+- Remove photo from sub-pages
