@@ -14,7 +14,9 @@
 
 - "Frontend development" as canonical jargon
 
-- Overview section in each article
+- Overview and Wrapup on each section
+
+- Spell checking
 
 ## Third
 
@@ -31,6 +33,7 @@
 - Better Intersphinx linking to outside stuff
 
 - More links to PyCharm docs and Getting Started videos
+
 
 ## Fourth
 

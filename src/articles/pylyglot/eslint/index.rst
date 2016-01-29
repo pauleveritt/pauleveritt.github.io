@@ -7,8 +7,8 @@ Are you picky about Python code styling? A big believer in `PEP 8
 has linting too. In this article we take a look at frontend tooling
 for JavaScript, namely linting, and how we can hook this into PyCharm.
 
-Goals
------
+Overview
+========
 
 - Show more JS tooling and its support in PyCharm
 
@@ -145,5 +145,5 @@ to warn during package building and hook it up to Travis during
 continous integration.
 
 As we'll see in a later section, ESLint has another distinguishing
-characterstic: its first two letters mean it is focused on
+characteristic: its first two letters (ECMAScript) mean it is focused on
 future syntaxes in JavaScript, ES2015 and beyond.

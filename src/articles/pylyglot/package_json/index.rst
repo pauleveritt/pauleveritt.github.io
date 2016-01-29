@@ -4,21 +4,20 @@ JavaScript Packaging with ``package.json``
 
 
 Python has infrastructure for installing libraries with dependencies.
-JavaScript does as well, based on npm.
+JavaScript does as well, based on `npm <https://npmjs.org/>`_.
 
 In this article we turn a directory into a project by creating a
 ``package.json`` file. We then use this to hold dependency information
 as we install packages.
 
-Goals
-=====
+Overview
+========
 
 - Learn about browser-dev tooling using the NodeJS universe
 
 - Convenient way to get all dependencies
 
 - Reproducible builds
-
 
 Installing Dependencies: The Shootout
 =====================================
@@ -49,9 +48,9 @@ In the world of Node, a `package.json
 <https://docs.npmjs.com/files/package.json>`_ file performs this role.
 Since it is JSON and not JavaScript, it can only hold configuration data.
 
-You interact with this file primarily through the `npm
-<https://npmjs.org/>`_ command and toolchain. For example, you can
-let ``npm`` ask you question to create a new ``package.json`` file:
+You interact with this file primarily through the ``npm`` command and
+toolchain. For example, you can let ``npm`` ask you question to create a
+new ``package.json`` file:
 
 .. code-block:: bash
 
@@ -115,6 +114,22 @@ article:
     One reason ``npm`` has gotten so big, so powerful, so quickly: it's
     a company. In 2014 and 2015 it raised $10M in funding. For
     better or worse.
+
+PyCharm's Friendly Face
+=======================
+
+For Python, we know that `PyCharm provides a UI
+<https://www.jetbrains.com/pycharm/help/installing-uninstalling-and-upgrading-packages.html>`_
+for finding and adding packages, removing them, etc. The same is true for
+``npm`` packages: PyCharm `provides an npm UI
+<https://www.jetbrains.com/pycharm/help/node-js-and-npm.html>`_
+for these as well:
+
+- TODO Screenshot of Node.js
+
+You can reach this UI at Preferences -> Node.js and NPM. With this, you
+don't have to use the command line and learn the ``npm`` interface for
+installing, updating, and removing ``npm`` packages into ``node_modules``.
 
 Virtual Environment?
 ====================

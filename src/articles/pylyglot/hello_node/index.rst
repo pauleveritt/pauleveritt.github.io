@@ -24,6 +24,15 @@ In this article we'll take a quick look at how
 works as an
 IDE for JavaScript development.
 
+Overview
+========
+
+- Run the Node.js interpreter from PyCharm
+
+- Configure interpreter settings and packages
+
+- Discuss Node-style virtual environments
+
 Running JavaScript Code
 =======================
 
