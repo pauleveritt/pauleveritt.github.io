@@ -1,7 +1,7 @@
 var describe = require('mocha').describe,
     it = require('mocha').it,
     expect = require('chai').expect,
-    incrementer = require('./app1');
+    incrementer = require('./lib1');
 
 describe('Hello World', function () {
     it('should increment a value', function () {
