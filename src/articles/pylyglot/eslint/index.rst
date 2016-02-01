@@ -44,16 +44,18 @@ Let's plug it in and hook it up to PyCharm.
 Installation
 ============
 
-ESLint is written in JavaScript and installable with ``npm``:
+ESLint is written in JavaScript and installable with ``npm``. Let's make
+a new ``package.json`` and install ``eslint``:
 
 .. code-block:: bash
 
+    $ npm init --yes
     $ npm install --save-dev eslint
 
-This command downloads ESLint into our ``node_modules`` local packages
-and records in ``package.json`` that it is a *development* dependency.
-Meaning, the software isn't needed for our application, but is used
-by developers when making a sandbox. This distinction can be seen
+The ``npm install`` command downloads ESLint into our ``node_modules``
+local packages and records in ``package.json`` that it is a *development*
+dependency. Meaning, the software isn't needed for our application, but
+is used by developers when making a sandbox. This distinction can be seen
 in our resulting ``package.json``:
 
 .. literalinclude:: package.json
@@ -65,7 +67,7 @@ If we didn't want to open a console, or couldn't remember the package
 name, we could ask PyCharm to find, install, and record the
 dependency:
 
-- TODO GIF for npm install with save-dev
+.. youtube:: 2R7JGBoZPKw
 
 That is, we visit Preferences -> Languages & Frameworks -> Node.js
 and NPM, then click the ``+`` to search for and install ``eslint``.
@@ -107,7 +109,8 @@ If we "lint" it with the ``eslint`` command:
 
 ...we get *warnings* that ``Strings must use singlequote``:
 
-- TODO screenshot of output
+.. image:: command_line.png
+    :alt: ESLint command line
 
 Remember, ESLint is written in JavaScript as part of the frontend,
 Node toolchain. It fits in with the various standards we have been
@@ -130,12 +133,14 @@ by visiting Preferences -> Languages & Frameworks -> JavaScript
 installed ``node_module``, and let it search for the ``.eslintrc``
 file:
 
-- TODO GIF for setup
+.. image:: eslint_prefs.png
+    :alt: ESLint Preferences
 
 Now when editing a file with a rule violation, PyCharm will provide
 real-time warning and errors as you type:
 
-- TODO GIF for warnings as typing
+.. image:: eslint_warnings.png
+    :alt: ESLint Warnings
 
 Wrapup
 ======
