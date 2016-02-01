@@ -53,7 +53,8 @@ PyCharm makes this easy to run. In the editor tab for ``index1.html``,
 mouse-over the symbol for one of the browsers and click it to open in
 the internal PyCharm webserver:
 
-- TODO Screenshot of running in Chrome with console visible
+.. image:: chrome_console.png
+    :alt: Screenshot Chrome console
 
 As the screenshot shows, the browser console tells us we have a JavaScript
 error ``Uncaught ReferenceError: require is not defined``. Not surprising:
@@ -78,7 +79,7 @@ We can now run Webpack to "bundle" our files together:
 
 .. code-block:: bash
 
-    $ webpack app1.js -o bundle.js
+    $ node_modules/.bin/webpack app1.js -o bundle.js
 
 With this command, Webpack looks in ``app1.js`` for any ``require``
 imports, then in any of those imported files for more imports, and
@@ -93,7 +94,8 @@ If we change our HTML to point at this ``bundle.js`` file:
 
 ...then we can see ``4`` in the browser console with no errors:
 
-- TODO Screenshot
+.. image:: chrome_console_works.png
+    :alt: Screenshot Chrome console works
 
 .. note::
 
@@ -124,9 +126,10 @@ use jQuery to save it to the ``<h1>`` text node:
     :caption: Webpack app2.js
     :emphasize-lines: 4
 
-This works fine in our browser:
+After re-bundling, this works fine in our browser:
 
-- TODO Screenshot
+.. image:: after_jquery1.png
+    :alt: Screenshot After jQuery
 
 However, we're not doing anything that feels like Pythonic development:
 
@@ -191,13 +194,14 @@ using it:
 
 .. code-block:: bash
 
-    $  webpack-dev-server app3.js
+    $  node_modules/.bin/webpack-dev-server app3.js
 
 As logged to your console, this starts a web server on port 8080, so you can
 now load ``http://localhost:8080/webpack-dev-server/index4.html``. You
 should see:
 
-- TODO Screenshot
+.. image:: webpack_dev_server.png
+    :alt: Screenshot webpack dev server
 
 Now, every time you make a change, the bundle will be regenerated *and* the
 browser will reload the page. It's a seemingly-small, but in practice huge,
@@ -239,8 +243,3 @@ learning (constantly changing) tools and fighting the problems they introduce.
 
 There are solutions to this. If you don't want to be bleeding edge, stick to
 the minimum, such as the scope in this article.
-
-TODO
-====
-
-- Link to part 2 of the beginner's guide Medium article on modules

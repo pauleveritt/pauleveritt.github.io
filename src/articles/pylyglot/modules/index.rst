@@ -112,9 +112,9 @@ Our application imports our function from ``./lib``. Two important points:
 - We left ``.js`` off the end of the filename...Node support either
 
 As we saw in :doc:`../hello_node/index`, we can run ``app.js`` from the
-command line or from PyCharm.
+command line or from PyCharm:
 
-- TODO GIF of running in PyCharm
+.. youtube:: qscLx2mLtzo
 
 PyCharm and Modules
 ===================
@@ -124,20 +124,22 @@ little bit. In PyCharm Preferences, go to Languages & Frameworks ->
 Node.js and NPM. Under ``Code Insight``, click the "Enable" button
 beside ``Node.js Core library is not enabled``:
 
-- TODO GIF on the setup
+.. image:: node_core_modules.png
+    :alt: Screenshot node core modules
 
 This will, for example, fix the warning about ``module`` being
 undefined. With the Node.js library enabled, not only is ``module``
 defined, but it can be code-completed:
 
-- TODO GIF showing module.ex listing exports
+.. image:: module_exports.png
+    :alt: Screenshot module exports
 
 Enable the library also let PyCharm help us on import mistakes. For
 example, with the Node.js core *disabled*, PyCharm doesn't spot
 import failures from bad filenames. But with it enabled, a warning
 is correctly presented:
 
-- TODO GIF showing disable core library, './libx', enable, warning
+.. youtube:: h7nbfvNf-VM
 
 Wrapup
 ======
@@ -160,8 +162,3 @@ With that said, this is still a big step towards developing Pythonically.
 We can work in isolation, with some of our code disassociated from a
 browser, and perhaps...dare we dream...start on test-driven development
 (TDD).
-
-TODO
-====
-
-- More linking to ES6 stuff

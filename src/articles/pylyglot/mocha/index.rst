@@ -129,11 +129,13 @@ We can run this test from the command-line:
 
 We should get the following output:
 
- - TODO screenshot of terminal output
+.. image:: mocha_test1.png
+    :alt: Screenshot mocha test1.js
 
-That's fairly barbaric. As discussed in :doc:`../npm_run/index`, we can
-make it easy for ourselves and others to discover and run important,
-frequent commands by adding ``package.json`` entries under ``scripts``.
+That's command line...well, it's fairly barbaric. As discussed in
+:doc:`../npm_run/index`, we can make it easy for ourselves and others to
+discover and run important, frequent commands by adding ``package.json``
+entries under ``scripts``.
 
 Let's add an entry in ``scripts`` to run our Mocha test:
 
@@ -173,14 +175,14 @@ supports run configurations for a number of Python test runners.
 Any chance PyCharm can put a nice UI on Mocha tests? Yes
 indeed:
 
-- TODO GIF on right-click run test1.js
+.. youtube:: yvd_n7TEjlE
 
 Right-click on the tab for ``test1.js`` and click ``Run``, and PyCharm
 will run your tests. Along the way, it will create a Mocha-based
 Run Configuration. We can see that run configuration via
 ``Edit Configurations``:
 
-- TODO GIF for edit mocha run configuration
+.. youtube:: FWWHZmex9-8
 
 Now when we run our tests, instead of text output in a console,
 we get a managed UI for test running, with the same UI used for
@@ -219,7 +221,8 @@ Line 2 imports the code we want to test. The two lines in the test
 execute this code and test the result. Let's right-click on the
 ``test2.js`` tab and run this test file. We should see this output:
 
-- TODO Show PyCharm screenshot
+.. image:: mocha_test2.png
+    :alt: Screenshot Mocha test2.png
 
 TDD with PyCharm
 ================
@@ -233,29 +236,23 @@ and test debugging.
 First, let's get into the flow by having our test re-run on each change
 to our source. In the Mocha tool window, click the button below the
 green "Rerun" button, the "Toggle auto-test" button. Then click the
-green "Rerun" button:
+green "Rerun" button. With this in place, PyCharm will re-run tests when
+your source or test code changes:
 
-- TODO Animated GIF for re-run
-
-With this in place, PyCharm will re-run tests when your source or test
-code changes:
-
-- TODO Animated GIF showing a change that breaks, then fixes,
-  test2.js
+.. youtube:: oilW1Gp1_FU
 
 As a note, PyCharm doesn't require that you actually save the file
 before it detects the change.
 
 PyCharm has many options for controlling the JavaScript testing
-experience. For example, we can change the delay used between
-a pause in typing and re-running the tests:
-
-- TODO Animated GIF showing changing the delay
+experience. In the video above, we saw changing the delay from
+3 seconds to two seconds.
 
 Here's a great way to be productive: split the screen, with your
 application code on the left and your tests on the right:
 
-- TODO GIF split screen
+.. image:: mocha_split_screen.png
+    :alt: Screenshot Mocha split screen
 
 Just like for its Python testing, PyCharm has a stupendous number of
 options organizing the display of the test window:
@@ -272,7 +269,7 @@ PyCharm also makes debugging easy during TDD. You can set a breakpoint
 in your JavaScript code or your tests, step through your code, and set
 watches:
 
-- TODO Animated gif debugging breakpoint
+.. youtube:: VpI_R102BIo
 
 Wrapup
 ======
@@ -291,8 +288,3 @@ know how `PyCharm can boost Python testing productivity
 With JavaScript, you might not even have considered TDD.
 Once you think headless with NodeJS and Mocha, though, you can let
 PyCharm orchestrate your JavaScript testing.
-
-TODO
-====
-
-- Intersphinx link to unittest module
