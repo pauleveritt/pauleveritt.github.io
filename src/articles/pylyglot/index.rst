@@ -37,5 +37,7 @@ Contents
     modules/index
     webpack/index
     chrome_debugging/index
+    es6_imports/index
+    pythonic_js/index
     mocha/index
     jsdom/index
