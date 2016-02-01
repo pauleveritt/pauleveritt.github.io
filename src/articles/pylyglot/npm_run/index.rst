@@ -79,10 +79,12 @@ via ``npm``:
 
     $ npm run test
 
-- TODO Screenshot of output
+.. image:: npm_run_test.png
+    :alt: Screenshot npm run test
 
-Note how similar this command looks to Python's ``python setup.py
-test``.
+Note how similar this command's structure looks to Python's ``python
+setup.py test``: an executable, followed by an argument, followed by the
+custom, plugged-in target.
 
 As explained in the `npm run <https://docs.npmjs.com/misc/scripts>`_
 documentation, certain
@@ -124,7 +126,10 @@ predicatable way:
 
     $ npm run lint
 
-- TODO Screenshot of console
+This gives the same resulting ``eslint`` output from the previous article:
+
+.. image:: npm_run_lint.png
+    :alt: Screenshot npm run lint
 
 Not in our ``scripts`` block that we didn't have to specify the full
 path to ``node_modules/.bin/eslint``. When you run a script with
@@ -146,8 +151,7 @@ a UI on finding and running these tasks. Right-click on your
 ``Show npm scripts``. You then get a panel showing the registered
 run scripts. Double-clicking them runs that script in a tool window:
 
-.. image:: npm_run_scripts.gif
-    :alt: Launch npm run Scripts
+.. youtube:: 4HVy4CKcBp4
 
 This workflow is very helpful. It's nice to have the ``npm`` tool
 window to browse your tasks, and of course, running a task in its
