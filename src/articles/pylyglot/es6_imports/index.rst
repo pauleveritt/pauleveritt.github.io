@@ -43,3 +43,8 @@ ES6 Modules
 
 - Mocha run config fails, add .babelrc and change run config and
   package.json to use --compilers
+
+- Mocha run config now runs
+
+- webpackconfig module loader, didn't need to configure babel options, as
+  they are in .babelrc, point at webpack.config2.js
