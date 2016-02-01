@@ -36,5 +36,6 @@ Contents
     npm_run/index
     modules/index
     webpack/index
+    chrome_debugging/index
     mocha/index
     jsdom/index
