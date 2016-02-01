@@ -1,0 +1,40 @@
+============================
+Polyglot Python with PyCharm
+============================
+
+If you're a long-time Python web developer, you are used to web
+technologies. But modern frontend web development might seem alien
+and un-Pythonic.
+
+If so, this series of articles is aimed at you. These frontend ideas
+are important, but you need a Python guide through the thicket. You
+also need a tool that can support your Python *and* frontend development.
+PyCharm, with the foundation it shares with WebStorm, is uniquely
+suited for this.
+
+In this series we will introduce ideas and packages in isolation,
+with hands-on code, screenshots, and more. Each article's code is
+`in GitHub
+<https://github.com/pauleveritt/pauleveritt.github.io>`_. You can
+comment on the articles using Disqus and file bug reportes in the
+`issue tracker
+<https://github.com/pauleveritt/pauleveritt.github.io/issues>`_.
+After each technology is introduced, we also show building a TodoMVC
+application from scratch.
+
+
+Contents
+========
+
+.. toctree::
+    :maxdepth: 1
+
+    intro
+    hello_node/index
+    package_json/index
+    eslint/index
+    npm_run/index
+    modules/index
+    webpack/index
+    mocha/index
+    jsdom/index

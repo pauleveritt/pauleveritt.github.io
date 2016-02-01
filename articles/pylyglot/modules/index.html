@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modules with CommonJS &mdash; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="top" title="Paul Everitt  documentation" href="../../../" />
+    <link rel="up" title="Polyglot Python with PyCharm" href="../" />
+    <link rel="next" title="Browser Bundling with Webpack" href="../webpack/" />
+    <link rel="prev" title="Automation with npm run Scripts" href="../npm_run/" />
+  
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modules-with-commonjs">
+<h1>Modules with CommonJS<a class="headerlink" href="#modules-with-commonjs" title="Permalink to this headline">¶</a></h1>
+<p>Not all code is in one file. You might have a Python application that
+includes code from Flask. Or, you might split your large Python code
+into multiple Python modules, each in a separate file, and use Python
+imports to include them in other modules.</p>
+<p>In this section we look at one popular way to modularize your frontend
+code, based on the Node&#8217;s CommonJS specification.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Modularize our JavaScript application into two files</li>
+<li>Import code from one file, into the other</li>
+<li>See how PyCharm helps on this</li>
+</ul>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Python has had modules for..well, if not forever, then a long time. The
+earliest available documentation, for Python 1.4 in 1996, explains
+<a class="reference external" href="https://docs.python.org/release/1.4/tut/node41.html#SECTION00700000000000000000">modules and imports</a>.
+Later came packages, eggs, wheels, and lots more.</p>
+<p>JavaScript historically has had none of this. If you have a function
+<code class="docutils literal"><span class="pre">incrementer</span></code> in a file <code class="docutils literal"><span class="pre">lib.js</span></code>, and you wanted to use
+<code class="docutils literal"><span class="pre">incrementer</span></code> in a file <code class="docutils literal"><span class="pre">app.js</span></code>, you would do something like:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;lib.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>That is, you&#8217;d tell your browser to load the first file, then the
+second file, and you&#8217;d hope it all worked out. The browser would jam
+everything into a global namespace, spawning a litany of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">obscure workarounds</a>.
+Since everything is async, you can&#8217;t be sure <code class="docutils literal"><span class="pre">lib.js</span></code> is loaded
+before your <code class="docutils literal"><span class="pre">app.js</span></code> code is executed, spawning another litany of
+<a class="reference external" href="https://learn.jquery.com/using-jquery-core/document-ready/">more obscure workarounds</a>.</p>
+<p>Server-side JavaScript via Node.js gained popularity, and Node added
+its own module export/import system to JavaScript. As explained in
+<a class="reference external" href="https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc">JavaScript Modules: A Beginner’s Guide</a>,
+this &#8220;specification&#8221;, known as &#8220;CommonJS&#8221;, works great on a Node.js,
+which has a module loader, as well as fast I/O. Browsers have no
+module loader and wildly-unpredictable I/O, and thus require
+<em>bundlers</em> (the topic of the next article.)</p>
+<p>Let&#8217;s get started writing modular JavaScript code.</p>
+</div>
+<div class="section" id="python-modules-for-incrementer">
+<h2>Python Modules for Incrementer<a class="headerlink" href="#python-modules-for-incrementer" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s say we want a function <code class="docutils literal"><span class="pre">incrementer</span></code> which can be re-used in
+multiple files. It takes a number and returns that number, incremented.</p>
+<p>If this was Python, well, this really couldn&#8217;t be much easier. Our
+<code class="docutils literal"><span class="pre">lib.py</span></code>:</p>
+<div class="literal-block-wrapper container" id="modules-lib-py">
+<div class="code-block-caption"><span class="caption-text">Modules lib.py</span><a class="headerlink" href="#modules-lib-py" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">incrementer</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>This <code class="docutils literal"><span class="pre">incrementer</span></code> function is then imported into <code class="docutils literal"><span class="pre">app.py</span></code>:</p>
+<div class="literal-block-wrapper container" id="modules-app-py">
+<div class="code-block-caption"><span class="caption-text">Modules app.py</span><a class="headerlink" href="#modules-app-py" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">incrementer</span>
+<span class="k">print</span><span class="p">(</span><span class="n">incrementer</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Of course there could be some rough edges. If I import from a
+different directory, I&#8217;ll need a <code class="docutils literal"><span class="pre">__init__.py</span></code> file to make
+this directory a package. If I want to use relative imports,
+I can&#8217;t directly invoke <code class="docutils literal"><span class="pre">app.py</span></code>. But it&#8217;s clear that modules
+and imports are a first class part of Python.</p>
+</div>
+<div class="section" id="node-js-modules-for-incrementer">
+<h2>Node.js Modules for Incrementer<a class="headerlink" href="#node-js-modules-for-incrementer" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s take a look at this in JavaScript for Node. Our <code class="docutils literal"><span class="pre">lib.js</span></code>
+defines the function, and importantly, attaches it to the Node.js
+global <code class="docutils literal"><span class="pre">module.exports</span></code>:</p>
+<div class="literal-block-wrapper container" id="modules-lib-js">
+<div class="code-block-caption"><span class="caption-text">Modules lib.js</span><a class="headerlink" href="#modules-lib-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>In a nutshell, CommonJS &#8220;exports&#8221; definitions, available for
+import from other files, via a <code class="docutils literal"><span class="pre">module.exports</span></code> built-in variable.
+There are lots of semantics we are skipping over: named versus
+default exports, dynamic exports, and more. This example shows a
+default export.</p>
+<p>Our application can now import this:</p>
+<div class="literal-block-wrapper container" id="modules-app-js">
+<div class="code-block-caption"><span class="caption-text">Modules app.js</span><a class="headerlink" href="#modules-app-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./lib&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">incrementer</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<p>Our application imports our function from <code class="docutils literal"><span class="pre">./lib</span></code>. Two important points:</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">./</span></code> in front tells Node to get this not from a pacakge in
+<code class="docutils literal"><span class="pre">node_modules</span></code> but instead, from a file in the local directory</li>
+<li>We left <code class="docutils literal"><span class="pre">.js</span></code> off the end of the filename...Node support either</li>
+</ul>
+<p>As we saw in <a class="reference internal" href="../hello_node/"><em>NodeJS for Python and PyCharm Developers</em></a>, we can run <code class="docutils literal"><span class="pre">app.js</span></code> from the
+command line or from PyCharm:</p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/qscLx2mLtzo" frameborder="0" allowfullscreen="1">&nbsp;</iframe></div>
+<div class="section" id="pycharm-and-modules">
+<h2>PyCharm and Modules<a class="headerlink" href="#pycharm-and-modules" title="Permalink to this headline">¶</a></h2>
+<p>PyCharm understands Node.js import syntax, but you have to help it a
+little bit. In PyCharm Preferences, go to Languages &amp; Frameworks -&gt;
+Node.js and NPM. Under <code class="docutils literal"><span class="pre">Code</span> <span class="pre">Insight</span></code>, click the &#8220;Enable&#8221; button
+beside <code class="docutils literal"><span class="pre">Node.js</span> <span class="pre">Core</span> <span class="pre">library</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">enabled</span></code>:</p>
+<img alt="Screenshot node core modules" src="../../../_images/node_core_modules.png" />
+<p>This will, for example, fix the warning about <code class="docutils literal"><span class="pre">module</span></code> being
+undefined. With the Node.js library enabled, not only is <code class="docutils literal"><span class="pre">module</span></code>
+defined, but it can be code-completed:</p>
+<img alt="Screenshot module exports" src="../../../_images/module_exports.png" />
+<p>Enable the library also let PyCharm help us on import mistakes. For
+example, with the Node.js core <em>disabled</em>, PyCharm doesn&#8217;t spot
+import failures from bad filenames. But with it enabled, a warning
+is correctly presented:</p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/h7nbfvNf-VM" frameborder="0" allowfullscreen="1">&nbsp;</iframe></div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>It&#8217;s odd in a way to say it, but this article is a big step in the
+process towards Polyglot Python with PyCharm. It comes with many
+caveats:</p>
+<ul class="simple">
+<li><em>We just broke the browser</em>. The code runs in Node.js but won&#8217;t
+work in browser-based JavaScript engines. We&#8217;ll fix that in
+<a class="reference internal" href="../webpack/"><em>Browser Bundling with Webpack</em></a>.</li>
+<li><em>Older module system</em>. Some frontend developers are adopting
+ES2015 (aka ES6) modules. Teaching that, however, requires teaching
+the Babel transpiler, as Node.js doesn&#8217;t natively support ES2015
+modules (because Chrome v8 doesn&#8217;t support it, because the spec is
+still in progress.)</li>
+</ul>
+<p>With that said, this is still a big step towards developing Pythonically.
+We can work in isolation, with some of our code disassociated from a
+browser, and perhaps...dare we dream...start on test-driven development
+(TDD).</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/articles/pylyglot/modules/';
+        var disqus_title = 'Modules with CommonJS';
+        var disqus_url = 'http://pauleveritt.github.io/articles/pylyglot/modules/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../../">
+    <img class="logo" src="../../../_static/headshot.jpg" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Paul Everitt</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=&repo=&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Articles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../first-post/">Nov 27 - Welcome to new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/category/python/">python (1)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2015/">2015 (1)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../../../_sources/articles/pylyglot/modules/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
