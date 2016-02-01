@@ -25,12 +25,21 @@ Installation
 
 - npm install --save-dev babel-preset-es2015 babel-loader
 
-- Edit package.json scripts
+Instead of fixing the machinery in advance, we'll make things break, so
+you can see how to fix it
 
-- Confirm npm start still works
 
 ES6 Modules
 ===========
 
-- Convert lib and app
+- Create lib2.js and app2.js (and the places that reference it) and make
+  them use ES6
 
+- PyCharm immediately fails...need to set to JavaScript ECMAScript 6
+
+- Make test2.js
+
+- Need to fix .eslintrc
+
+- Mocha run config fails, add .babelrc and change run config and
+  package.json to use --compilers
