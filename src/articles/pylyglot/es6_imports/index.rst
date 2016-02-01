@@ -42,7 +42,7 @@ ES6 Modules
 - Need to fix .eslintrc
 
 - Mocha run config fails, add .babelrc and change run config and
-  package.json to use --compilers
+  package.json to use --compilers js:babel-core/register
 
 - Mocha run config now runs
 

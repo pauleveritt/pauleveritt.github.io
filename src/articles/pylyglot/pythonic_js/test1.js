@@ -1,6 +1,6 @@
 import { describe, before, it } from 'mocha';
 import {expect} from 'chai';
-import incrementer from './lib2';
+import incrementer from './lib1';
 
 describe('Hello World', function () {
     it('should increment a value', function () {
