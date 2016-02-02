@@ -71,7 +71,7 @@ Webinar 2
     :maxdepth: 1
 
     todo_tdd/index
-    todo_commonjs/index
     todo_webpack/index
+    todo_commonjs/index
     todo_es6_imports/index
     todo_pythonic_js/index
