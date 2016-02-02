@@ -2,6 +2,10 @@
 Polyglot Python with PyCharm
 ============================
 
+.. note::
+
+    This series is a work-in-progress.
+
 If you're a long-time Python web developer, you are used to web
 technologies. But modern frontend web development might seem alien
 and un-Pythonic.
