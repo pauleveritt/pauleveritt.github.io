@@ -52,17 +52,26 @@ ToDo MVC Tutorial
 
 Based on the topics covered above in isolation, we put it all together
 and write a ToDo application, with a Flask backend and a modern frontend.
+Each article builds on the previous article.
+
+Webinar 1
+---------
 
 .. toctree::
     :maxdepth: 1
 
     todo_initial/index
+    todo_tooling/index
+    todo_frontend/index
 
-- todo_tools
-- todo_frontend
+Webinar 2
+---------
 
-- todo_tdd
-- todo_commonjs
-- todo_webpack
-- todo_es6_imports
-- todo_pythonic_js
+.. toctree::
+    :maxdepth: 1
+
+    todo_tdd/index
+    todo_commonjs/index
+    todo_webpack/index
+    todo_es6_imports/index
+    todo_pythonic_js/index
