@@ -70,8 +70,7 @@ Webinar 2
 .. toctree::
     :maxdepth: 1
 
-    todo_commonjs/index
-    todo_tdd/index
+    todo_commonjs_tdd/index
     todo_webpack/index
     todo_es6_imports/index
     todo_pythonic_js/index
