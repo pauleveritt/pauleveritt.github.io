@@ -11,26 +11,8 @@
     <h1>ToDos</h1>
     <p><input id="newName" placeholder="Add todo..." class="form-control"/></p>
 
-    <div id="todoList">
-        <ul></ul>
-    </div>
+    <ul id="todoList" class="list-group"></ul>
 </div>
 <script src="bundle.js"></script>
-<script type="text/html" id="list_todos">
-    <ul class="list-group">
-        <% for ( var i = 0; i < todos.length; i++ ) { %>
-        <li class="list-group-item" id="<%= todos[i].id %>">
-            <span><%= todos[i].name %></span>
-            <input class="form-control input-sm" title="Edit title"
-                   value="<%= todos[i].name %>"/>
-
-            <div class="btn-group pull-right" role="group">
-                <button class="btn btn-xs btn-default edit">Edit</button>
-                <button class="btn btn-xs btn-default delete">Delete</button>
-            </div>
-        </li>
-        <% } %>
-    </ul>
-</script>
 </body>
 </html>
