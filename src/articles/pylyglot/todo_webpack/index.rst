@@ -35,3 +35,4 @@ Bundling ToDoMVC with WebPack
         devtool: 'source-map'
        };
 
+- Re-arrange to show PyCharm and Chrome side-by-side, make a change, see result
