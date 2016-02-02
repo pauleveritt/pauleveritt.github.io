@@ -11,7 +11,11 @@ export default class Incrementer {
         // Return a string of <li> nodes
         return this.items
             .map(
-                (item) => `<li>${item}</li>`
+                (item) => `
+                <li>
+                  Number: ${item}
+                </li>
+                `
             )
             .join('\n');
     }

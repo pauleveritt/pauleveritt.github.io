@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document
         .querySelector('#add')
         .addEventListener('click', () => {
-            // Add a random number to the list
+            // Add a random number to the list, re-render
             incrementer.add(Math.floor((Math.random() * 100) + 1));
             incremented.innerHTML = incrementer.toHtml();
         });
