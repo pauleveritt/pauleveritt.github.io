@@ -8,3 +8,7 @@ Frontend Tooling for ToDoMVC
 - Change Flask to export /lib/
 
 - npm install
+
+- npm run lint
+
+- Surround Resig template engine with /*eslint-disable */   /*eslint-enable */

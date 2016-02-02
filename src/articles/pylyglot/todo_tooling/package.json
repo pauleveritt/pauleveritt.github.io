@@ -7,12 +7,15 @@
     "doc": "doc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint todo/static/*.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "jquery": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3"
   }
 }
