@@ -5,7 +5,10 @@ Pythonic JavaScript with ES2015
 Starting Point
 ==============
 
-- range
+Additions
+=========
+
+- DOMContentLoaded with arrow function
 
 - template strings
 
@@ -13,3 +16,6 @@ Starting Point
 
 - array methods
 
+- arrow functions
+
+- let instead of var
