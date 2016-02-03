@@ -5,6 +5,6 @@ import $ from 'jquery';
 
 describe('ToDo', () => {
     it('should import', () => {
-        expect(1).eql(1);
+        expect(ToDos).to.be.a('function');
     });
 });
