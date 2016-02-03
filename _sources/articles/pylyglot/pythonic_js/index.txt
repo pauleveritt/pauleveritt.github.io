@@ -158,7 +158,7 @@ could do TDD natively, directly on our test code and our application
 code.
 
 With the move to ES2015, none of our code will run without the
-transpiling step. We faced that in :doc:`../es6_imports` but
+transpiling step. We faced that in :doc:`../es6_imports/index` but
 we could always chicken-out and go back to ``require`` for
 CommonJS modules and imports.
 
