@@ -5,57 +5,63 @@ ES6 Imports for ToDoMVC
 `Source code
 <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_es6_imports>`_
 
+As we saw in :doc:`../es6_imports/index`, Babel is a transpiler that opens
+the door to Pythonic JS. Let's switch our ToDoMVC codebase over to use
+a tiny part: ES6 Modules and imports. Along the way, we'll refactor our
+``todo.js`` code a bit.
+
 Steps
 =====
 
-- npm install babel-preset-es2015 babel-loader --save-dev
+#. Install dependencies:
 
-- Add to webpack.config.js::
+    .. code-block:: bash
 
-      module: {
-            loaders: [
-                {
-                    test: /\.js$/,
-                    loader: 'babel-loader'
-                }
-            ]
-        },
+        npm install babel-preset-es2015 babel-loader --save-dev
 
-- babel-loader needs a Babel configuration, set it at project level in .babelrc::
+#. Our ``webpack.config.js`` needs to be taught to transpile code using
+   Babel when Webpack does its bundling:
 
-    {
-      "presets": ["es2015"]
-    }
+    .. literalinclude:: webpack.config.js
+        :language: js
+        :caption: ToDo webpack.config.js
+        :emphasize-lines: 7-15
 
-- .eslintrc::
+#. Webpack's use of Babel requires a ``.babelrc`` configuration file:
 
-  "ecmaFeatures": {
-    "modules": true
-  },
-  "env": {
-    "browser": true,
-    "jquery": true,
-    "es6": true
-  }
+    .. literalinclude:: .babelrc
+        :language: js
+        :caption: ToDo .babelrc
 
-- app.js::
+#. Our ``.eslintrc`` file needs to be told to lint using ES6 features:
 
-    import $ from 'jquery';
-    import initToDo from './todo';
+    .. literalinclude:: .eslintrc
+        :language: js
+        :caption: ToDo .eslintrc
+        :emphasize-lines: 9-16
 
-        initToDo();
+#. The tooling is setup, let's change ``app/todo.js`` to use ES6 imports
+   and export a function. Let's also re-organize the code to get rid of
+   the ``$(document).ready`` top-level handler:
 
+    .. literalinclude:: app/todo.js
+        :language: js
+        :caption: ToDo app/todo.js
+        :emphasize-lines: 1-2, 4
 
-- todo.js::
+#. ``app/tmpl.js`` now exports its ``tmpl`` function via an ES6 module
+   default:
 
-    import $ from 'jquery';
-    import tmpl from './tmpl';
+    .. literalinclude:: app/tmpl.js
+        :language: js
+        :caption: ToDo app/tmpl.js
+        :emphasize-lines: 4
 
+#. Finally, ``app/app.js`` switches to ES6 imports. Plus, it runs the
+   function exported by ``todo.js``. Note that we can name this function
+   whatever we want on the import side:
 
-
-- tmpl.js::
-
-    export default function (str, data) {
-
-
-- Re-organize todo.js to have an init
+    .. literalinclude:: app/app.js
+        :language: js
+        :caption: ToDo app/app.js
+        :emphasize-lines: 1-2, 13
