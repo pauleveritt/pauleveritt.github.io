@@ -62,13 +62,12 @@ export default class ToDos {
     }
 
     refresh () {
-        $.get('http://localhost:5000/api/todo', (data) => {
-            this.todoList
+        $.get('http://localhost:5000/api/todo')
+            .done((data) => this.todoList
                 .html(
                     data['objects']
                         .map(todo => this.renderToDo(todo))
                         .join('\n')
-                );
-        });
+                ));
     }
 };
