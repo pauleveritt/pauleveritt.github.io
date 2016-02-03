@@ -2,6 +2,12 @@
 ES6 Imports for ToDoMVC
 =======================
 
+`Source code
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_es6_imports>`_
+
+Steps
+=====
+
 - npm install babel-preset-es2015 babel-loader --save-dev
 
 - Add to webpack.config.js::

@@ -2,6 +2,12 @@
 Bundling ToDoMVC with WebPack
 =============================
 
+`Source code
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_webpack>`_
+
+Steps
+=====
+
 - npm install --save-dev webpack webpack-dev-server
 
 - index.html
@@ -27,9 +33,9 @@ Bundling ToDoMVC with WebPack
 
     - Add script "start": "webpack-dev-server --content-base app/"
 
-- webpack.config.js
+- webpack.config.js::
 
-    -  module.exports = {
+     module.exports = {
         context: __dirname + '/app',
         entry: './app.js',
         devtool: 'source-map'

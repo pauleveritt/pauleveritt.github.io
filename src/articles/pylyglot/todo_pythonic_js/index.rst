@@ -2,6 +2,12 @@
 Pythonic JavaScript for ToDoMVC
 ===============================
 
+`Source code
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_pythonic_js>`_
+
+Steps
+=====
+
 - app.js
 
     - Arrow functions in two places

@@ -49,7 +49,6 @@ describe('ToDo', () => {
         });
         todos.delete(2);
         expect($('#todoList li').length).eql(sampleData.length - 1);
-
     });
 
 
