@@ -89,7 +89,7 @@ Let's install it as a development dependency:
 
 .. code-block:: bash
 
-    $ npm install --save-dev
+    $ npm install jsdom --save-dev
 
 We now can write a ``test2.js`` which imports ``jsdom`` and sets some
 global variables that ``jQuery`` expects. With that in place, we can import
