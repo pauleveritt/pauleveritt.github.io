@@ -14,7 +14,7 @@ Steps
 
 #. Our ``app/app.js`` switches to use "arrow functions" in two places:
 
-    .. literalinclude:: app/app.js
+   .. literalinclude:: app/app.js
         :language: js
         :caption: ToDo Pythonic JS app.js
         :emphasize-lines: 4,8
@@ -38,7 +38,7 @@ Steps
 
     - Cut-and-paste from // Create a new to do
 
-    - let, arrow function, name: newName
+    - let, arrow function, name: newName, this.newName
 
     - Demonstrate it failing
 
@@ -56,6 +56,14 @@ Steps
     - template -> this.template
 
     - Add a this.todoList and this.template
+
+    - Replace ``refreshToDos()`` with ``this.refresh()``
+
+    - Hook up to event handler::
+
+        // Event handlers
+        this.newName.change(() => this.create(this.newName.val()));
+
 
 #. *Delete*. Bind for event and call a method.
 

@@ -67,38 +67,33 @@ a tiny part: ES6 Modules and imports. Along the way, we&#8217;ll refactor our
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Install dependencies:</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>npm install babel-preset-es2015 babel-loader --save-dev
+<div class="highlight-bash"><div class="highlight"><pre>npm install babel-preset-es2015 babel-loader --save-dev
 </pre></div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first">Our <code class="docutils literal"><span class="pre">webpack.config.js</span></code> needs to be taught to transpile code using
 Babel when Webpack does its bundling:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-webpack-config-js">
+<div class="literal-block-wrapper container" id="todo-webpack-config-js">
 <div class="code-block-caption"><span class="caption-text">ToDo webpack.config.js</span><a class="headerlink" href="#todo-webpack-config-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">context</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/app&#39;</span><span class="p">,</span>
     <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./app.js&#39;</span><span class="p">,</span>
-    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-<span class="hll">                <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span>
+<span class="hll">    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span>
 </span><span class="hll">                <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span>
 </span><span class="hll">            <span class="p">}</span>
 </span><span class="hll">        <span class="p">]</span>
 </span><span class="hll">    <span class="p">},</span>
-</span><span class="hll">    <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;source-map&#39;</span>
-</span><span class="hll"><span class="p">};</span>
-</span></pre></div>
+</span>    <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;source-map&#39;</span>
+<span class="p">};</span>
+</pre></div>
 </div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first">Webpack&#8217;s use of Babel requires a <code class="docutils literal"><span class="pre">.babelrc</span></code> configuration file:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-babelrc">
+<div class="literal-block-wrapper container" id="todo-babelrc">
 <div class="code-block-caption"><span class="caption-text">ToDo .babelrc</span><a class="headerlink" href="#todo-babelrc" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;presets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;es2015&quot;</span><span class="p">]</span>
@@ -106,11 +101,9 @@ Babel when Webpack does its bundling:</p>
 </pre></div>
 </div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first">Our <code class="docutils literal"><span class="pre">.eslintrc</span></code> file needs to be told to lint using ES6 features:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-eslintrc">
+<div class="literal-block-wrapper container" id="todo-eslintrc">
 <div class="code-block-caption"><span class="caption-text">ToDo .eslintrc</span><a class="headerlink" href="#todo-eslintrc" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -132,13 +125,11 @@ Babel when Webpack does its bundling:</p>
 </pre></div>
 </div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first">The tooling is setup, let&#8217;s change <code class="docutils literal"><span class="pre">app/todo.js</span></code> to use ES6 imports
 and export a function. Let&#8217;s also re-organize the code to get rid of
 the <code class="docutils literal"><span class="pre">$(document).ready</span></code> top-level handler:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-app-todo-js">
+<div class="literal-block-wrapper container" id="todo-app-todo-js">
 <div class="code-block-caption"><span class="caption-text">ToDo app/todo.js</span><a class="headerlink" href="#todo-app-todo-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 </span><span class="hll"><span class="kr">import</span> <span class="nx">tmpl</span> <span class="nx">from</span> <span class="s1">&#39;./tmpl&#39;</span><span class="p">;</span>
@@ -196,16 +187,14 @@ the <code class="docutils literal"><span class="pre">$(document).ready</span></c
 
     <span class="c1">// On startup, go fetch the list of todos and re-draw</span>
     <span class="nx">refreshToDos</span><span class="p">();</span>
-<span class="p">};</span>
-</pre></div>
+<span class="hll"><span class="p">};</span>
+</span></pre></div>
 </div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">app/tmpl.js</span></code> now exports its <code class="docutils literal"><span class="pre">tmpl</span></code> function via an ES6 module
 default:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-app-tmpl-js">
+<div class="literal-block-wrapper container" id="todo-app-tmpl-js">
 <div class="code-block-caption"><span class="caption-text">ToDo app/tmpl.js</span><a class="headerlink" href="#todo-app-tmpl-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="c1">// John Resig jQuery Microtemplating</span>
 
@@ -245,13 +234,11 @@ default:</p>
 </pre></div>
 </div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first">Finally, <code class="docutils literal"><span class="pre">app/app.js</span></code> switches to ES6 imports. Plus, it runs the
 function exported by <code class="docutils literal"><span class="pre">todo.js</span></code>. Note that we can name this function
 whatever we want on the import side:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-app-app-js">
+<div class="literal-block-wrapper container" id="todo-app-app-js">
 <div class="code-block-caption"><span class="caption-text">ToDo app/app.js</span><a class="headerlink" href="#todo-app-app-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 </span><span class="hll"><span class="kr">import</span> <span class="nx">initToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
@@ -271,7 +258,10 @@ whatever we want on the import side:</p>
 </pre></div>
 </div>
 </div>
-</div></blockquote>
+</li>
+<li><p class="first"><em>Restart/reload</em>. Webpack needs to get the new configuration changes
+in <code class="docutils literal"><span class="pre">webpack.config.js</span></code>. Restart your <code class="docutils literal"><span class="pre">npm</span> <span class="pre">start</span></code> tool window,
+then reload your browser.</p>
 </li>
 </ol>
 </div>

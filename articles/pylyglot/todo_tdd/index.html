@@ -90,12 +90,14 @@ pointed at this <code class="docutils literal"><span class="pre">tests</span></c
 </pre></div>
 </div>
 </li>
+<li><p class="first"><em>Run it</em>.</p>
+</li>
 <li><p class="first"><em>Add test setup</em>. Make a function inside <code class="docutils literal"><span class="pre">describe</span></code> to setup each
 test:</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="sb">`</span>
 <span class="sb">        &lt;input id=&quot;newName&quot;/&gt;</span>
-<span class="sb">        &lt;ul id=&quot;todoList&quot;&lt;/ul&gt;</span>
+<span class="sb">        &lt;ul id=&quot;todoList&quot;&gt;&lt;/ul&gt;</span>
 <span class="sb">        `</span>
     <span class="p">);</span>
 

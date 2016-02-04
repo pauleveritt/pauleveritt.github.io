@@ -66,8 +66,7 @@ in <a class="reference internal" href="../pythonic_js/"><em>Pythonic JavaScript 
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Our <code class="docutils literal"><span class="pre">app/app.js</span></code> switches to use &#8220;arrow functions&#8221; in two places:</p>
-<blockquote>
-<div><div class="literal-block-wrapper container" id="todo-pythonic-js-app-js">
+<div class="literal-block-wrapper container" id="todo-pythonic-js-app-js">
 <div class="code-block-caption"><span class="caption-text">ToDo Pythonic JS app.js</span><a class="headerlink" href="#todo-pythonic-js-app-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">ToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
@@ -87,7 +86,6 @@ in <a class="reference internal" href="../pythonic_js/"><em>Pythonic JavaScript 
 </pre></div>
 </div>
 </div>
-</div></blockquote>
 </li>
 <li><p class="first">We now have a number of <code class="docutils literal"><span class="pre">app/todo.js</span></code> changes which we will
 will discuss, then show the final result.</p>
@@ -108,7 +106,7 @@ start with <code class="docutils literal"><span class="pre">newName</span></code
 <li>var newName -&gt; this.newName</li>
 <li>create (newName) {</li>
 <li>Cut-and-paste from // Create a new to do</li>
-<li>let, arrow function, name: newName</li>
+<li>let, arrow function, name: newName, this.newName</li>
 <li>Demonstrate it failing</li>
 </ul>
 </div></blockquote>
@@ -116,13 +114,27 @@ start with <code class="docutils literal"><span class="pre">newName</span></code
 <li><p class="first"><em>Refresh method</em>. Our CRUD operations finish by refreshing the list.
 Let&#8217;s copy <code class="docutils literal"><span class="pre">renderToDos</span></code> into a new method:</p>
 <blockquote>
-<div><ul class="simple">
-<li>Copy-and-paste renderToDos</li>
-<li>Arrow function</li>
-<li>Get rid of intermediate todos = and paste directly</li>
-<li>todoList.find -&gt; this.todoList.find</li>
-<li>template -&gt; this.template</li>
-<li>Add a this.todoList and this.template</li>
+<div><ul>
+<li><p class="first">Copy-and-paste renderToDos</p>
+</li>
+<li><p class="first">Arrow function</p>
+</li>
+<li><p class="first">Get rid of intermediate todos = and paste directly</p>
+</li>
+<li><p class="first">todoList.find -&gt; this.todoList.find</p>
+</li>
+<li><p class="first">template -&gt; this.template</p>
+</li>
+<li><p class="first">Add a this.todoList and this.template</p>
+</li>
+<li><p class="first">Replace <code class="docutils literal"><span class="pre">refreshToDos()</span></code> with <code class="docutils literal"><span class="pre">this.refresh()</span></code></p>
+</li>
+<li><p class="first">Hook up to event handler:</p>
+<div class="highlight-python"><div class="highlight"><pre>// Event handlers
+this.newName.change(() =&gt; this.create(this.newName.val()));
+</pre></div>
+</div>
+</li>
 </ul>
 </div></blockquote>
 </li>
