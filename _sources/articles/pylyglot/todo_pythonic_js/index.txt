@@ -5,20 +5,32 @@ Pythonic JavaScript for ToDoMVC
 `Source code
 <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_pythonic_js>`_
 
+With Babel in place, we can refactor our code to use ES2015 language
+features: classes, array methods, arrow functions, and more, as seen
+in :doc:`../pythonic_js/index`.
+
 Steps
 =====
 
-- app.js
+#. Our ``app/app.js`` switches to use "arrow functions" in two places:
 
-    - Arrow functions in two places
+    .. literalinclude:: app/app.js
+        :language: js
+        :caption: ToDo Pythonic JS app.js
+        :emphasize-lines: 4,8
 
-- class
+#. We now have a number of ``app/todo.js`` changes which we will
+   will discuss, then show the final result.
+
+#. *Class*. In the first step, we convert to a basic class:
 
     - Convert to a class and put everything in the constructor
 
     - Change app.js to import class and new ToDo()
 
-- newName -> create method
+#. *Methods for events*. We want our event handlers to be methods,
+   for create/delete etc. This is a big code re-organization. Let's
+   start with ``newName`` -> ``create``:
 
     - var newName -> this.newName
 
@@ -30,9 +42,10 @@ Steps
 
     - Demonstrate it failing
 
-- refresh method
+#. *Refresh method*. Our CRUD operations finish by refreshing the list.
+   Let's copy ``renderToDos`` into a new method:
 
-    - Cut-and-paste renderToDos
+    - Copy-and-paste renderToDos
 
     - Arrow function
 
@@ -44,7 +57,7 @@ Steps
 
     - Add a this.todoList and this.template
 
-- delete
+#. *Delete*. Bind for event and call a method.
 
     - Event handler::
 
@@ -54,7 +67,8 @@ Steps
 
     - Make a delete method, passed in todoId, arrow function
 
-- editing
+- *Editing*. Close any currently-editing and open this one
+  for editing:
 
     - Cut and paste existing handler
 
@@ -64,7 +78,7 @@ Steps
 
     - $(this) -> $(evt.target)
 
-- change
+- *Edit*. Make an event listener that calls a method:
 
     - Cut and paste existing handler
 
@@ -80,7 +94,7 @@ Steps
 
         - .done(() => this.refresh());
 
-- Use ES6 template strings
+- *ES6 template strings*. Switch to multi-line template strings:
 
     - Add a renderToDo(todo) method
 
@@ -102,8 +116,7 @@ Steps
 
         - .join('\n')
 
-
-- Get rid of template strings
+- *Remove tmpl*. It's not used:
 
     - Remove <script> template from index.html
 

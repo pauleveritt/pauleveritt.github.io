@@ -5,27 +5,43 @@ TDD for ToDoMVC
 `Source code
 <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_tdd>`_
 
+In :doc:`../jsdom/index` we saw using Mocha and Chai for frontend unit
+tests, with jsdom as a fake "browser", to let jQuery work. Let's write
+some tests for our ToDoMVC frontend.
+
 Source Code
 ===========
 
-- npm install --save-dev mocha chai jsdom
+#. *Install dependencies*. We need mocha, chai, and jsdom:
 
-- test.js::
+   .. code-block:: bash
 
-    import $ from 'jquery';
-    import {describe, it, beforeEach} from 'mocha';
-    import {expect} from 'chai';
-    import ToDos from './todo';
+        $ npm install --save-dev mocha chai jsdom
 
-    describe('ToDo', () => {
-        it('should import', () => {
-            expect(ToDos).to.be.a('function');
+#. *Small first test*. Let's make a file ``tests.js`` with one test:
+
+   .. code-block:: js
+
+        import $ from 'jquery';
+        import {describe, it, beforeEach} from 'mocha';
+        import {expect} from 'chai';
+        import ToDos from './todo';
+
+        describe('ToDo', () => {
+            it('should import', () => {
+                expect(ToDos).to.be.a('function');
+            });
         });
-    });
 
-- Mocha run configuration with --compilers js:babel-core/register
+#. *PyCharm run configuration*. Make a ``Mocha`` run configuration,
+   pointed at this ``tests`` file, with ``Extra Mocha options`` set to::
 
-- Add beforeEach::
+    --compilers js:babel-core/register
+
+#. *Add test setup*. Make a function inside ``describe`` to setup each
+   test:
+
+   .. code-block:: js
 
     beforeEach(() => {
         $('body').html(`
@@ -39,6 +55,20 @@ Source Code
         $.ajax = null;
     });
 
-- Make helper.js and add import './helper';
+#. *Helper module*. jQuery wants some globals before import. Let's
+   make a ``helper.js`` module which we import before any other
+   imports:
 
-- Add each test
+   .. code-block:: js
+
+        import jsdom from 'jsdom';
+        global.document = jsdom.jsdom('<body></body>');
+        global.window = document.defaultView;
+
+#. *Import helper.js*.
+
+#. *Add tests*. Add, one-by-one, each of the tests:
+
+   .. literalinclude:: app/tests.js
+        :language: js
+        :caption: ToDoMVC TDD tests.js

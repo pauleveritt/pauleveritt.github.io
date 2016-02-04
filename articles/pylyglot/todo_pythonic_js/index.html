@@ -59,17 +59,40 @@
   <div class="section" id="pythonic-javascript-for-todomvc">
 <h1>Pythonic JavaScript for ToDoMVC<a class="headerlink" href="#pythonic-javascript-for-todomvc" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_pythonic_js">Source code</a></p>
+<p>With Babel in place, we can refactor our code to use ES2015 language
+features: classes, array methods, arrow functions, and more, as seen
+in <a class="reference internal" href="../pythonic_js/"><em>Pythonic JavaScript with ES2015</em></a>.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">app.js</p>
+<ol class="arabic">
+<li><p class="first">Our <code class="docutils literal"><span class="pre">app/app.js</span></code> switches to use &#8220;arrow functions&#8221; in two places:</p>
 <blockquote>
-<div><ul class="simple">
-<li>Arrow functions in two places</li>
-</ul>
+<div><div class="literal-block-wrapper container" id="todo-pythonic-js-app-js">
+<div class="code-block-caption"><span class="caption-text">ToDo Pythonic JS app.js</span><a class="headerlink" href="#todo-pythonic-js-app-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
+
+<span class="hll"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span>
+    <span class="c1">// All REST requests should send content type, and log failures</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajaxSetup</span><span class="p">({</span><span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">});</span>
+<span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxError</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span>        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Ajax call failed:&#39;</span><span class="p">,</span>
+            <span class="nx">settings</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">new</span> <span class="nx">ToDo</span><span class="p">();</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
 </div></blockquote>
 </li>
-<li><p class="first">class</p>
+<li><p class="first">We now have a number of <code class="docutils literal"><span class="pre">app/todo.js</span></code> changes which we will
+will discuss, then show the final result.</p>
+</li>
+<li><p class="first"><em>Class</em>. In the first step, we convert to a basic class:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Convert to a class and put everything in the constructor</li>
@@ -77,7 +100,9 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">newName -&gt; create method</p>
+<li><p class="first"><em>Methods for events</em>. We want our event handlers to be methods,
+for create/delete etc. This is a big code re-organization. Let&#8217;s
+start with <code class="docutils literal"><span class="pre">newName</span></code> -&gt; <code class="docutils literal"><span class="pre">create</span></code>:</p>
 <blockquote>
 <div><ul class="simple">
 <li>var newName -&gt; this.newName</li>
@@ -88,10 +113,11 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">refresh method</p>
+<li><p class="first"><em>Refresh method</em>. Our CRUD operations finish by refreshing the list.
+Let&#8217;s copy <code class="docutils literal"><span class="pre">renderToDos</span></code> into a new method:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Cut-and-paste renderToDos</li>
+<li>Copy-and-paste renderToDos</li>
 <li>Arrow function</li>
 <li>Get rid of intermediate todos = and paste directly</li>
 <li>todoList.find -&gt; this.todoList.find</li>
@@ -100,7 +126,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">delete</p>
+<li><p class="first"><em>Delete</em>. Bind for event and call a method.</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Event handler:</p>
@@ -115,7 +141,10 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">editing</p>
+</ol>
+<ul>
+<li><p class="first"><em>Editing</em>. Close any currently-editing and open this one
+for editing:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Cut and paste existing handler</li>
@@ -125,7 +154,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">change</p>
+<li><p class="first"><em>Edit</em>. Make an event listener that calls a method:</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Cut and paste existing handler</p>
@@ -148,7 +177,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Use ES6 template strings</p>
+<li><p class="first"><em>ES6 template strings</em>. Switch to multi-line template strings:</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Add a renderToDo(todo) method</p>
@@ -174,7 +203,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Get rid of template strings</p>
+<li><p class="first"><em>Remove tmpl</em>. It&#8217;s not used:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Remove &lt;script&gt; template from index.html</li>
