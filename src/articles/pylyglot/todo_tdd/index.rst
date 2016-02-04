@@ -38,6 +38,8 @@ Source Code
 
     --compilers js:babel-core/register
 
+#. *Run it*.
+
 #. *Add test setup*. Make a function inside ``describe`` to setup each
    test:
 
@@ -46,7 +48,7 @@ Source Code
     beforeEach(() => {
         $('body').html(`
             <input id="newName"/>
-            <ul id="todoList"</ul>
+            <ul id="todoList"></ul>
             `
         );
 
