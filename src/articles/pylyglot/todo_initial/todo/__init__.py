@@ -1,11 +1,12 @@
-from flask import Flask
-import flask.ext.sqlalchemy
-import flask.ext.restless
+from flask import Flask, render_template
+from flask.ext.restless import APIManager
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todos.sqlite'
-db = flask.ext.sqlalchemy.SQLAlchemy(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+db = SQLAlchemy(app)
 
 
 class Todo(db.Model):
@@ -15,7 +16,10 @@ class Todo(db.Model):
 
 db.create_all()
 
-manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
+manager = APIManager(app, flask_sqlalchemy_db=db)
 manager.create_api(Todo, methods=['GET', 'POST', 'DELETE', 'PATCH'])
 
-import todo.views
+
+@app.route('/')
+def index():
+    return render_template('index.html')

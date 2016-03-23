@@ -77,7 +77,7 @@ Steps
 #. *Start Flask*. Right-click on ``run_server.py`` and run it.
 
 #. *Run dev server*. Use PyCharm's ``npm run`` too window to run ``start``,
-   then visit ``http://localhost:5000/
+   then visit ``http://localhost:5000/``.
 
 And now we're in business! To emphasize the workflow, let's resize
 PyCharm and Chrome so they can be side-by-side. As you type,
