@@ -41,4 +41,14 @@
 
 - Remove photo from sub-pages
 
+- Link to recorded webinars
+
 - Edit and re-write for brevity
+
+## Where JS does better than Python
+
+- Packaging
+
+- Virtual environments
+
+- Tooling (releases, etc.)
