@@ -58,7 +58,7 @@
             
   <div class="section" id="dom-tdd-with-jsdom">
 <h1>DOM TDD with JSDOM<a class="headerlink" href="#dom-tdd-with-jsdom" title="Permalink to this headline">¶</a></h1>
-<p>We earlier saw, in <a class="reference internal" href="../mocha/"><em>TDD with Mocha</em></a>, how we can start on JavaScript
+<p>We earlier saw, in <a class="reference internal" href="../mocha/"><span class="doc">TDD with Mocha</span></a>, how we can start on JavaScript
 TDD using Mocha. We used a very simple application and test.</p>
 <p>In this section we show how frontend tooling can combine to provide
 a TDD workflow targeted at browsers, using a fake DOM from the
@@ -90,14 +90,14 @@ writing tests which import code and make assertions.</p>
 <p>Let&#8217;s mix jQuery into the our <code class="docutils literal"><span class="pre">incrementor</span></code> from the Mocha Intro article
 and see what happens. First we install it from npm and save it as a dependency
 in our <code class="docutils literal"><span class="pre">package.json</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ npm install --save jquery
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save jquery
 </pre></div>
 </div>
 <p>We can now change our application code: instead of a function that returns an
 incremented value, we increment the text node value of a <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code>:</p>
 <div class="literal-block-wrapper container" id="jsdom-app-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM app.js</span><a class="headerlink" href="#jsdom-app-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
 </span>
 <span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
@@ -114,7 +114,7 @@ the incremented value.</p>
 article:</p>
 <div class="literal-block-wrapper container" id="jsdom-test1-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM test1.js</span><a class="headerlink" href="#jsdom-test1-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
     <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span>
@@ -129,7 +129,7 @@ article:</p>
 </div>
 </div>
 <p>When we run the test now, though, armageddon ensues:</p>
-<div class="highlight-bash"><div class="highlight"><pre>Error: jQuery requires a window with a document
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Error: jQuery requires a window with a document
     at module.exports <span class="o">(</span>jsdom/node_modules/jquery/dist/jquery.js:29:12<span class="o">)</span>
     at incrementer <span class="o">(</span>jsdom/app.js:4:5<span class="o">)</span>
     at Context.&lt;anonymous&gt; <span class="o">(</span>jsdom/test1.js:6:22<span class="o">)</span>
@@ -143,7 +143,7 @@ support. We could start over with the <a class="reference external" href="http:/
 DOM, in your browser. While jsdom isn&#8217;t perfect in simulating a browser, it is
 fast and, relatively speaking, lightweight.</p>
 <p>Let&#8217;s install it as a development dependency:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ npm install jsdom --save-dev
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install jsdom --save-dev
 </pre></div>
 </div>
 <p>We now can write a <code class="docutils literal"><span class="pre">test2.js</span></code> which imports <code class="docutils literal"><span class="pre">jsdom</span></code> and sets some
@@ -151,7 +151,7 @@ global variables that <code class="docutils literal"><span class="pre">jQuery</s
 <code class="docutils literal"><span class="pre">jQuery</span></code>:</p>
 <div class="literal-block-wrapper container" id="jsdom-test2-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM test2.js</span><a class="headerlink" href="#jsdom-test2-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
     <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
@@ -187,7 +187,7 @@ tests wouldn&#8217;t be against a fresh <code class="docutils literal"><span cla
 test as a copy of the first, we&#8217;d see that:</p>
 <div class="literal-block-wrapper container" id="jsdom-test3-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM test3.js</span><a class="headerlink" href="#jsdom-test3-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
     <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
@@ -221,7 +221,7 @@ and isolation. We&#8217;d like to make a DOM once for all tests, but clean
 up the <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> before each test. <code class="docutils literal"><span class="pre">test4.js</span></code> shows this:</p>
 <div class="literal-block-wrapper container" id="jsdom-test4-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM test4.js</span><a class="headerlink" href="#jsdom-test4-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
     <span class="nx">before</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">before</span><span class="p">,</span>
@@ -263,7 +263,7 @@ make a <code class="docutils literal"><span class="pre">helper.js</span></code> 
 our tests, to provide such initialization:</p>
 <div class="literal-block-wrapper container" id="jsdom-helper-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM helper.js</span><a class="headerlink" href="#jsdom-helper-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
 <span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
 <span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
 </pre></div>
@@ -273,7 +273,7 @@ our tests, to provide such initialization:</p>
 <code class="docutils literal"><span class="pre">helper.js</span></code> at the top:</p>
 <div class="literal-block-wrapper container" id="jsdom-test5-js">
 <div class="code-block-caption"><span class="caption-text">JSDOM test5.js</span><a class="headerlink" href="#jsdom-test5-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./helper&#39;</span><span class="p">);</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./helper&#39;</span><span class="p">);</span>
 </span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
@@ -413,9 +413,6 @@ normal browser development cycle of:</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -426,7 +423,7 @@ normal browser development cycle of:</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

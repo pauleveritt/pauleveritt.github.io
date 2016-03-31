@@ -60,7 +60,7 @@
 <h1>Bundling ToDoMVC with WebPack<a class="headerlink" href="#bundling-todomvc-with-webpack" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_webpack">Source code</a></p>
 <p>We now have the frontend moved out of the back end, served by a static
-web server at a different URL. Great! Let&#8217;s use <a class="reference internal" href="../webpack/"><em>Webpack</em></a>
+web server at a different URL. Great! Let&#8217;s use <a class="reference internal" href="../webpack/"><span class="doc">Webpack</span></a>
 to bundle our JavaScript and run under its development server, giving
 us hands-free browser reloading.</p>
 <p>Webpack gives us browser-side module loading, so we&#8217;ll switch <code class="docutils literal"><span class="pre">app.js</span></code> and
@@ -74,7 +74,7 @@ needed the npm and Python dependencies.</p>
 <li><p class="first">Hook up <code class="docutils literal"><span class="pre">ESLint</span></code> in preferences if necessary.</p>
 </li>
 <li><p class="first">Install our <em>new</em> dependencies:</p>
-<div class="highlight-bash"><div class="highlight"><pre>npm install --save-dev webpack webpack-dev-server
+<div class="highlight-bash"><div class="highlight"><pre><span></span>npm install --save-dev webpack webpack-dev-server
 </pre></div>
 </div>
 </li>
@@ -82,7 +82,7 @@ needed the npm and Python dependencies.</p>
 <code class="docutils literal"><span class="pre">app.js</span></code>, and <code class="docutils literal"><span class="pre">todo.js</span></code> with a single <code class="docutils literal"><span class="pre">bundle.js</span></code>:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-index-html">
 <div class="code-block-caption"><span class="caption-text">ToDo Webpack index.html</span><a class="headerlink" href="#todo-webpack-index-html" title="Permalink to this code">¶</a></div>
-<div class="highlight-html"><div class="highlight"><pre>&lt;!DOCTYPE html&gt;
+<div class="highlight-html"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;title&gt;Flask ToDoMVC&lt;/title&gt;
@@ -126,7 +126,7 @@ needed the npm and Python dependencies.</p>
 into an export:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-tmpl-js">
 <div class="code-block-caption"><span class="caption-text">ToDo Webpack tmpl.js</span><a class="headerlink" href="#todo-webpack-tmpl-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="c1">// John Resig jQuery Microtemplating</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="c1">// John Resig jQuery Microtemplating</span>
 
 <span class="cm">/*eslint-disable */</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">tmpl</span> <span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -169,7 +169,7 @@ into an export:</p>
 <code class="docutils literal"><span class="pre">todo.js</span></code>:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-app-js">
 <div class="code-block-caption"><span class="caption-text">ToDo Webpack app.js</span><a class="headerlink" href="#todo-webpack-app-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">),</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">),</span>
 </span><span class="hll">    <span class="nx">ToDos</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./todo&#39;</span><span class="p">);</span>
 </span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -193,7 +193,7 @@ we don&#8217;t want to refactor too much in this step. It does,
 though, import <code class="docutils literal"><span class="pre">jQuery</span></code> and <code class="docutils literal"><span class="pre">tmpl.js</span></code> at the top:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-todo-js">
 <div class="code-block-caption"><span class="caption-text">ToDo Webpack todo.js</span><a class="headerlink" href="#todo-webpack-todo-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">),</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">),</span>
 </span><span class="hll">    <span class="nx">tmpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./tmpl&#39;</span><span class="p">);</span>
 </span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -258,7 +258,7 @@ though, import <code class="docutils literal"><span class="pre">jQuery</span></c
 to start the dev server, based in <code class="docutils literal"><span class="pre">app/</span></code>:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-package-json">
 <div class="code-block-caption"><span class="caption-text">ToDo Webpack package.json</span><a class="headerlink" href="#todo-webpack-package-json" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;flask_todo&quot;</span><span class="p">,</span>
   <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -289,7 +289,7 @@ to start the dev server, based in <code class="docutils literal"><span class="pr
 <li><p class="first">We need a (simple) <code class="docutils literal"><span class="pre">webpack.config.js</span></code> to drive the dev server:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-webpack-config-js">
 <div class="code-block-caption"><span class="caption-text">ToDo Webpack webpack.config.js</span><a class="headerlink" href="#todo-webpack-webpack-config-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">context</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/app&#39;</span><span class="p">,</span>
     <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./app.js&#39;</span><span class="p">,</span>
     <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;source-map&#39;</span>
@@ -301,7 +301,7 @@ to start the dev server, based in <code class="docutils literal"><span class="pr
 <li><p class="first"><em>Start Flask</em>. Right-click on <code class="docutils literal"><span class="pre">run_server.py</span></code> and run it.</p>
 </li>
 <li><p class="first"><em>Run dev server</em>. Use PyCharm&#8217;s <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> too window to run <code class="docutils literal"><span class="pre">start</span></code>,
-then visit <a href="#id1"><span class="problematic" id="id2">``</span></a><a class="reference external" href="http://localhost:5000/">http://localhost:5000/</a></p>
+then visit <code class="docutils literal"><span class="pre">http://localhost:5000/</span></code>.</p>
 </li>
 </ol>
 <p>And now we&#8217;re in business! To emphasize the workflow, let&#8217;s resize
@@ -403,9 +403,6 @@ you will see the updates automatically.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -416,7 +413,7 @@ you will see the updates automatically.</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

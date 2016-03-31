@@ -59,7 +59,7 @@
   <div class="section" id="es6-imports-for-todomvc">
 <h1>ES6 Imports for ToDoMVC<a class="headerlink" href="#es6-imports-for-todomvc" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_es6_imports">Source code</a></p>
-<p>As we saw in <a class="reference internal" href="../es6_imports/"><em>ES6 Imports with Babel</em></a>, Babel is a transpiler that opens
+<p>As we saw in <a class="reference internal" href="../es6_imports/"><span class="doc">ES6 Imports with Babel</span></a>, Babel is a transpiler that opens
 the door to Pythonic JS. Let&#8217;s switch our ToDoMVC codebase over to use
 a tiny part: ES6 Modules and imports. Along the way, we&#8217;ll refactor our
 <code class="docutils literal"><span class="pre">todo.js</span></code> code a bit.</p>
@@ -67,7 +67,7 @@ a tiny part: ES6 Modules and imports. Along the way, we&#8217;ll refactor our
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Install dependencies:</p>
-<div class="highlight-bash"><div class="highlight"><pre>npm install babel-preset-es2015 babel-loader --save-dev
+<div class="highlight-bash"><div class="highlight"><pre><span></span>npm install babel-preset-es2015 babel-loader --save-dev
 </pre></div>
 </div>
 </li>
@@ -75,7 +75,7 @@ a tiny part: ES6 Modules and imports. Along the way, we&#8217;ll refactor our
 Babel when Webpack does its bundling:</p>
 <div class="literal-block-wrapper container" id="todo-webpack-config-js">
 <div class="code-block-caption"><span class="caption-text">ToDo webpack.config.js</span><a class="headerlink" href="#todo-webpack-config-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">context</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/app&#39;</span><span class="p">,</span>
     <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./app.js&#39;</span><span class="p">,</span>
 <span class="hll">    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
@@ -95,7 +95,7 @@ Babel when Webpack does its bundling:</p>
 <li><p class="first">Webpack&#8217;s use of Babel requires a <code class="docutils literal"><span class="pre">.babelrc</span></code> configuration file:</p>
 <div class="literal-block-wrapper container" id="todo-babelrc">
 <div class="code-block-caption"><span class="caption-text">ToDo .babelrc</span><a class="headerlink" href="#todo-babelrc" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;presets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;es2015&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -105,7 +105,7 @@ Babel when Webpack does its bundling:</p>
 <li><p class="first">Our <code class="docutils literal"><span class="pre">.eslintrc</span></code> file needs to be told to lint using ES6 features:</p>
 <div class="literal-block-wrapper container" id="todo-eslintrc">
 <div class="code-block-caption"><span class="caption-text">ToDo .eslintrc</span><a class="headerlink" href="#todo-eslintrc" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;strict&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s2">&quot;quotes&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -131,7 +131,7 @@ and export a function. Let&#8217;s also re-organize the code to get rid of
 the <code class="docutils literal"><span class="pre">$(document).ready</span></code> top-level handler:</p>
 <div class="literal-block-wrapper container" id="todo-app-todo-js">
 <div class="code-block-caption"><span class="caption-text">ToDo app/todo.js</span><a class="headerlink" href="#todo-app-todo-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 </span><span class="hll"><span class="kr">import</span> <span class="nx">tmpl</span> <span class="nx">from</span> <span class="s1">&#39;./tmpl&#39;</span><span class="p">;</span>
 </span>
 <span class="hll"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -196,7 +196,7 @@ the <code class="docutils literal"><span class="pre">$(document).ready</span></c
 default:</p>
 <div class="literal-block-wrapper container" id="todo-app-tmpl-js">
 <div class="code-block-caption"><span class="caption-text">ToDo app/tmpl.js</span><a class="headerlink" href="#todo-app-tmpl-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="c1">// John Resig jQuery Microtemplating</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="c1">// John Resig jQuery Microtemplating</span>
 
 <span class="cm">/*eslint-disable */</span>
 <span class="hll"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">tmpl</span> <span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -240,7 +240,7 @@ function exported by <code class="docutils literal"><span class="pre">todo.js</s
 whatever we want on the import side:</p>
 <div class="literal-block-wrapper container" id="todo-app-app-js">
 <div class="code-block-caption"><span class="caption-text">ToDo app/app.js</span><a class="headerlink" href="#todo-app-app-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 </span><span class="hll"><span class="kr">import</span> <span class="nx">initToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
 </span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -360,9 +360,6 @@ then reload your browser.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -373,7 +370,7 @@ then reload your browser.</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

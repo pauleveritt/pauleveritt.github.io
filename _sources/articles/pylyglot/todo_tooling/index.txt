@@ -10,5 +10,3 @@ Frontend Tooling for ToDoMVC
 - npm install
 
 - npm run lint
-
-- Surround Resig template engine with /*eslint-disable */   /*eslint-enable */
