@@ -1,2 +1,2 @@
 # pauleveritt.github.io
-Personal weblog for Paul
+Personal weblog for Paul.
