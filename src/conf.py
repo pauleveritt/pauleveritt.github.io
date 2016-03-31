@@ -10,6 +10,7 @@
 
 import ablog
 import alabaster
+import sphinxstrap4
 
 # -- General ABlog Options ----------------------------------------------------
 
@@ -125,7 +126,7 @@ html_sidebars = {
 
 # Link to `Font Awesome`_ at `Bootstrap CDN`_ and use icons in sidebars
 # and post footers.  Default: ``False``
-fontawesome_link_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+#fontawesome_link_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
 
 # Sphinx_ theme already links to `Font Awesome`_.  Default: ``False``
 # fontawesome_included = False
@@ -164,6 +165,7 @@ extensions = [
     'alabaster',
     'ablog',
     'sphinxcontrib.youtube',
+    'sphinxstrap4',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -240,16 +242,18 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+html_theme = 'sphinxstrap4'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'logo': 'headshot.jpg',
+    'logo': 'headshot-closeup.jpg',
     'logo_name': True,
-    'github_button': True
-
+    'github_button': True,
+    'github_user': 'pauleveritt',
+    'twitter_user': 'paulweveritt',
+    'linkedin_user': 'paeveritt'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -264,7 +268,7 @@ html_theme_path = [alabaster.get_path()]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-# html_logo = None
+html_logo = '_static/headshot-closeup.jpg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
