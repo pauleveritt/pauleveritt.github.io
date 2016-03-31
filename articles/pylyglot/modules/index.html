@@ -81,7 +81,7 @@ Later came packages, eggs, wheels, and lots more.</p>
 <p>JavaScript historically has had none of this. If you have a function
 <code class="docutils literal"><span class="pre">incrementer</span></code> in a file <code class="docutils literal"><span class="pre">lib.js</span></code>, and you wanted to use
 <code class="docutils literal"><span class="pre">incrementer</span></code> in a file <code class="docutils literal"><span class="pre">app.js</span></code>, you would do something like:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;lib.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;lib.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -109,7 +109,7 @@ multiple files. It takes a number and returns that number, incremented.</p>
 <code class="docutils literal"><span class="pre">lib.py</span></code>:</p>
 <div class="literal-block-wrapper container" id="modules-lib-py">
 <div class="code-block-caption"><span class="caption-text">Modules lib.py</span><a class="headerlink" href="#modules-lib-py" title="Permalink to this code">¶</a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">incrementer</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">incrementer</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
 </pre></div>
 </div>
@@ -117,8 +117,8 @@ multiple files. It takes a number and returns that number, incremented.</p>
 <p>This <code class="docutils literal"><span class="pre">incrementer</span></code> function is then imported into <code class="docutils literal"><span class="pre">app.py</span></code>:</p>
 <div class="literal-block-wrapper container" id="modules-app-py">
 <div class="code-block-caption"><span class="caption-text">Modules app.py</span><a class="headerlink" href="#modules-app-py" title="Permalink to this code">¶</a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">incrementer</span>
-<span class="k">print</span><span class="p">(</span><span class="n">incrementer</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lib</span> <span class="k">import</span> <span class="n">incrementer</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">incrementer</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -135,7 +135,7 @@ defines the function, and importantly, attaches it to the Node.js
 global <code class="docutils literal"><span class="pre">module.exports</span></code>:</p>
 <div class="literal-block-wrapper container" id="modules-lib-js">
 <div class="code-block-caption"><span class="caption-text">Modules lib.js</span><a class="headerlink" href="#modules-lib-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -151,7 +151,7 @@ default export.</p>
 <p>Our application can now import this:</p>
 <div class="literal-block-wrapper container" id="modules-app-js">
 <div class="code-block-caption"><span class="caption-text">Modules app.js</span><a class="headerlink" href="#modules-app-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./lib&#39;</span><span class="p">);</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./lib&#39;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">incrementer</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -162,7 +162,7 @@ default export.</p>
 <code class="docutils literal"><span class="pre">node_modules</span></code> but instead, from a file in the local directory</li>
 <li>We left <code class="docutils literal"><span class="pre">.js</span></code> off the end of the filename...Node support either</li>
 </ul>
-<p>As we saw in <a class="reference internal" href="../hello_node/"><em>NodeJS for Python and PyCharm Developers</em></a>, we can run <code class="docutils literal"><span class="pre">app.js</span></code> from the
+<p>As we saw in <a class="reference internal" href="../hello_node/"><span class="doc">NodeJS for Python and PyCharm Developers</span></a>, we can run <code class="docutils literal"><span class="pre">app.js</span></code> from the
 command line or from PyCharm:</p>
 <iframe width="640" height="360" src="//www.youtube.com/embed/qscLx2mLtzo" frameborder="0" allowfullscreen="1">&nbsp;</iframe></div>
 <div class="section" id="pycharm-and-modules">
@@ -189,7 +189,7 @@ caveats:</p>
 <ul class="simple">
 <li><em>We just broke the browser</em>. The code runs in Node.js but won&#8217;t
 work in browser-based JavaScript engines. We&#8217;ll fix that in
-<a class="reference internal" href="../webpack/"><em>Browser Bundling with Webpack</em></a>.</li>
+<a class="reference internal" href="../webpack/"><span class="doc">Browser Bundling with Webpack</span></a>.</li>
 <li><em>Older module system</em>. Some frontend developers are adopting
 ES2015 (aka ES6) modules. Teaching that, however, requires teaching
 the Babel transpiler, as Node.js doesn&#8217;t natively support ES2015
@@ -296,9 +296,6 @@ browser, and perhaps...dare we dream...start on test-driven development
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -309,7 +306,7 @@ browser, and perhaps...dare we dream...start on test-driven development
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

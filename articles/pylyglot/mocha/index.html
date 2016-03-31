@@ -105,7 +105,7 @@ back. And heaven help you if you need to debug.</p>
 browser, and only check the browser when you needed to? Even better,
 wouldn&#8217;t it be great if we could get into a zen-like TDD mode of
 web application development?</p>
-<p>In our <a class="reference internal" href="../modules/"><em>previous step</em></a> we saw
+<p>In our <a class="reference internal" href="../modules/"><span class="doc">previous step</span></a> we saw
 modular development, <em>without</em> a browser. This is a very Pythonic
 way of JavaScript development.  Writing reusuable code as modules
 is one Pythonic technique. But writing code that is productively
@@ -120,7 +120,7 @@ is like a virtual environment in Python, albeit like one that has
 <code class="docutils literal"><span class="pre">node_modules</span></code> first and then in the global environment for a package.</p>
 <p>Let&#8217;s install Mocha and Chai <em>locally</em> and save them as development
 dependencies in our <code class="docutils literal"><span class="pre">package.json</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ npm install --save-dev mocha chai
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save-dev mocha chai
 </pre></div>
 </div>
 <p>After doing this command, we now have a <code class="docutils literal"><span class="pre">node_modules</span></code> directory
@@ -128,7 +128,7 @@ with 21 packages in it, for the Mocha and Chai dependencies.</p>
 <p>Our <code class="docutils literal"><span class="pre">package.json</span></code> should now contain these development dependencies:</p>
 <div class="literal-block-wrapper container" id="package-json-development-dependencies">
 <div class="code-block-caption"><span class="caption-text">package.json development dependencies</span><a class="headerlink" href="#package-json-development-dependencies" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre>  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span>  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;chai&quot;</span><span class="o">:</span> <span class="s2">&quot;^3.4.1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;mocha&quot;</span><span class="o">:</span> <span class="s2">&quot;^2.3.4&quot;</span>
   <span class="p">}</span>
@@ -142,7 +142,7 @@ with 21 packages in it, for the Mocha and Chai dependencies.</p>
 let&#8217;s write and run a test. Save the following as as <code class="docutils literal"><span class="pre">test1.js</span></code>:</p>
 <div class="literal-block-wrapper container" id="mocha-test1-js">
 <div class="code-block-caption"><span class="caption-text">Mocha test1.js</span><a class="headerlink" href="#mocha-test1-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">;</span>
 
@@ -158,7 +158,7 @@ let&#8217;s write and run a test. Save the following as as <code class="docutils
 result. The <code class="docutils literal"><span class="pre">chai</span></code> package provides an <code class="docutils literal"><span class="pre">expect</span></code> function for our
 assertions. We use a Node <code class="docutils literal"><span class="pre">require</span></code> to import these functions. In
 Python, this would be:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mocha</span> <span class="kn">import</span> <span class="n">describe</span><span class="p">,</span> <span class="n">it</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mocha</span> <span class="kn">import</span> <span class="n">describe</span><span class="p">,</span> <span class="n">it</span>
 <span class="kn">from</span> <span class="nn">chai</span> <span class="kn">import</span> <span class="n">expect</span>
 </pre></div>
 </div>
@@ -169,17 +169,17 @@ runner puts this to use in test running.</p>
 and returns an object with methods used for testing. We use <code class="docutils literal"><span class="pre">.eql</span></code>
 to assert equality.</p>
 <p>We can run this test from the command-line:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ node_modules/.bin/mocha test1.js
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ node_modules/.bin/mocha test1.js
 </pre></div>
 </div>
 <p>We should get the following output:</p>
 <img alt="Screenshot mocha test1.js" src="../../../_images/mocha_test1.png" />
 <p>That&#8217;s command line...well, it&#8217;s fairly barbaric. As discussed in
-<a class="reference internal" href="../npm_run/"><em>Automation with npm run Scripts</em></a>, we can make it easy for ourselves and others to
+<a class="reference internal" href="../npm_run/"><span class="doc">Automation with npm run Scripts</span></a>, we can make it easy for ourselves and others to
 discover and run important, frequent commands by adding <code class="docutils literal"><span class="pre">package.json</span></code>
 entries under <code class="docutils literal"><span class="pre">scripts</span></code>.</p>
 <p>Let&#8217;s add an entry in <code class="docutils literal"><span class="pre">scripts</span></code> to run our Mocha test:</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
   <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;mocha test1.js&quot;</span>
 <span class="p">},</span>
 </pre></div>
@@ -188,12 +188,12 @@ entries under <code class="docutils literal"><span class="pre">scripts</span></c
 <code class="docutils literal"><span class="pre">mocha</span></code>, as <code class="docutils literal"><span class="pre">npm</span></code> knows that <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> scripts probably should
 have that in the path.</p>
 <p>This is now easier:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ npm run <span class="nb">test</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm run <span class="nb">test</span>
 </pre></div>
 </div>
 <p>In fact, <code class="docutils literal"><span class="pre">test</span></code> is one of the pre-defined script names that gets a
 shortcut, so you can omit the <cite>run</cite> part:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ npm <span class="nb">test</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm <span class="nb">test</span>
 </pre></div>
 </div>
 <p>But hey, this is <em>PyCharm</em>. Can&#8217;t we do better than a console?</p>
@@ -201,7 +201,7 @@ shortcut, so you can omit the <cite>run</cite> part:</p>
 <div class="section" id="mocha-integration-for-pycharm">
 <h2>Mocha Integration for PyCharm<a class="headerlink" href="#mocha-integration-for-pycharm" title="Permalink to this headline">¶</a></h2>
 <p>PyCharm has run configurations with presets for a bunch of things you
-might want to run. We saw in <a class="reference internal" href="../hello_node/"><em>NodeJS for Python and PyCharm Developers</em></a> that PyCharm has
+might want to run. We saw in <a class="reference internal" href="../hello_node/"><span class="doc">NodeJS for Python and PyCharm Developers</span></a> that PyCharm has
 run configuration templates for NodeJS. We also know that PyCharm
 supports run configurations for a number of Python test runners.</p>
 <p>Any chance PyCharm can put a nice UI on Mocha tests? Yes
@@ -233,7 +233,7 @@ polluting this example, but we&#8217;ll get to that in
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -245,7 +245,7 @@ polluting this example, but we&#8217;ll get to that in
 which we then import into our test code:</p>
 <div class="literal-block-wrapper container" id="mocha-test2-js">
 <div class="code-block-caption"><span class="caption-text">Mocha  test2.js</span><a class="headerlink" href="#mocha-test2-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
     <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
     <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
 <span class="hll">    <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app1&#39;</span><span class="p">);</span>
@@ -405,9 +405,6 @@ PyCharm orchestrate your JavaScript testing.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -418,7 +415,7 @@ PyCharm orchestrate your JavaScript testing.</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

@@ -59,19 +59,19 @@
   <div class="section" id="tdd-for-todomvc">
 <h1>TDD for ToDoMVC<a class="headerlink" href="#tdd-for-todomvc" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_tdd">Source code</a></p>
-<p>In <a class="reference internal" href="../jsdom/"><em>DOM TDD with JSDOM</em></a> we saw using Mocha and Chai for frontend unit
+<p>In <a class="reference internal" href="../jsdom/"><span class="doc">DOM TDD with JSDOM</span></a> we saw using Mocha and Chai for frontend unit
 tests, with jsdom as a fake &#8220;browser&#8221;, to let jQuery work. Let&#8217;s write
 some tests for our ToDoMVC frontend.</p>
 <div class="section" id="id1">
 <h2>Source Code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first"><em>Install dependencies</em>. We need mocha, chai, and jsdom:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ npm install --save-dev mocha chai jsdom
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save-dev mocha chai jsdom
 </pre></div>
 </div>
 </li>
 <li><p class="first"><em>Small first test</em>. Let&#8217;s make a file <code class="docutils literal"><span class="pre">tests.js</span></code> with one test:</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span><span class="nx">describe</span><span class="p">,</span> <span class="nx">it</span><span class="p">,</span> <span class="nx">beforeEach</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mocha&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span><span class="nx">expect</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;chai&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">ToDos</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
@@ -86,7 +86,7 @@ some tests for our ToDoMVC frontend.</p>
 </li>
 <li><p class="first"><em>PyCharm run configuration</em>. Make a <code class="docutils literal"><span class="pre">Mocha</span></code> run configuration,
 pointed at this <code class="docutils literal"><span class="pre">tests</span></code> file, with <code class="docutils literal"><span class="pre">Extra</span> <span class="pre">Mocha</span> <span class="pre">options</span></code> set to:</p>
-<div class="highlight-python"><div class="highlight"><pre>--compilers js:babel-core/register
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">compilers</span> <span class="n">js</span><span class="p">:</span><span class="n">babel</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">register</span>
 </pre></div>
 </div>
 </li>
@@ -94,7 +94,7 @@ pointed at this <code class="docutils literal"><span class="pre">tests</span></c
 </li>
 <li><p class="first"><em>Add test setup</em>. Make a function inside <code class="docutils literal"><span class="pre">describe</span></code> to setup each
 test:</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="sb">`</span>
 <span class="sb">        &lt;input id=&quot;newName&quot;/&gt;</span>
 <span class="sb">        &lt;ul id=&quot;todoList&quot;&gt;&lt;/ul&gt;</span>
@@ -111,7 +111,7 @@ test:</p>
 <li><p class="first"><em>Helper module</em>. jQuery wants some globals before import. Let&#8217;s
 make a <code class="docutils literal"><span class="pre">helper.js</span></code> module which we import before any other
 imports:</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">jsdom</span> <span class="nx">from</span> <span class="s1">&#39;jsdom&#39;</span><span class="p">;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">jsdom</span> <span class="nx">from</span> <span class="s1">&#39;jsdom&#39;</span><span class="p">;</span>
 <span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
 <span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
 </pre></div>
@@ -122,7 +122,7 @@ imports:</p>
 <li><p class="first"><em>Add tests</em>. Add, one-by-one, each of the tests:</p>
 <div class="literal-block-wrapper container" id="todomvc-tdd-tests-js">
 <div class="code-block-caption"><span class="caption-text">ToDoMVC TDD tests.js</span><a class="headerlink" href="#todomvc-tdd-tests-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="s1">&#39;./helper&#39;</span><span class="p">;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="s1">&#39;./helper&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span><span class="nx">describe</span><span class="p">,</span> <span class="nx">it</span><span class="p">,</span> <span class="nx">beforeEach</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mocha&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span><span class="nx">expect</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;chai&#39;</span><span class="p">;</span>
@@ -278,9 +278,6 @@ imports:</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -291,7 +288,7 @@ imports:</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

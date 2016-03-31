@@ -108,7 +108,7 @@ All dependencies need to be baked into the Docker image you choose.</p>
 image, which includes enough Python/Django software to run the
 PyCharm-generated Django starter project. You can fetch that onto your
 system with this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ docker pull minimum/docker-django-mysite
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker pull minimum/docker-django-mysite
 </pre></div>
 </div>
 <p>Once that Docker image is locally available <em>and</em> the Docker &#8220;host&#8221; is
@@ -185,7 +185,7 @@ configuration. But first, let&#8217;s click the link in the console to open
 the Django site in our browser:</p>
 <img alt="../../_images/django_admin.png" src="../../_images/django_admin.png" />
 <p>You can confirm this using the following Docker commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ docker ps -l
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps -l
 </pre></div>
 </div>
 <p>This shows the most recently-run container. As you can see, our
@@ -196,7 +196,7 @@ also stops the Docker container. In fact, it deletes the container.
 Each time you run, PyCharm creates a new Docker container and starts it.</p>
 <p>You can confirm this. After re-starting the Django run configuration,
 type:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ docker ps -l
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps -l
 </pre></div>
 </div>
 <p>The value in the <code class="docutils literal"><span class="pre">CONTAINER</span> <span class="pre">ID</span></code> column, as well as the <code class="docutils literal"><span class="pre">NAMES</span></code>
@@ -330,9 +330,6 @@ workflow.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -343,7 +340,7 @@ workflow.</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |

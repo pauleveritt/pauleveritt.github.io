@@ -122,7 +122,7 @@ list in the browser.</p>
 <p>Let&#8217;s jump into the results. We start with an <code class="docutils literal"><span class="pre">index.html</span></code> file:</p>
 <div class="literal-block-wrapper container" id="pythonic-javascript-index-html">
 <div class="code-block-caption"><span class="caption-text">Pythonic JavaScript index.html</span><a class="headerlink" href="#pythonic-javascript-index-html" title="Permalink to this code">¶</a></div>
-<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Incrementer<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
@@ -151,7 +151,7 @@ driven by the <code class="docutils literal"><span class="pre">webpack.config.js
 browser and drives the library:</p>
 <div class="literal-block-wrapper container" id="pythonic-javascript-app-js">
 <div class="code-block-caption"><span class="caption-text">Pythonic JavaScript app.js</span><a class="headerlink" href="#pythonic-javascript-app-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">Incrementer</span> <span class="nx">from</span> <span class="s1">&#39;./lib&#39;</span><span class="p">;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Incrementer</span> <span class="nx">from</span> <span class="s1">&#39;./lib&#39;</span><span class="p">;</span>
 
 <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">incremented</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#incremented&#39;</span><span class="p">);</span>
@@ -173,7 +173,7 @@ browser and drives the library:</p>
 test-able:</p>
 <div class="literal-block-wrapper container" id="pythonic-javascript-lib-js">
 <div class="code-block-caption"><span class="caption-text">Pythonic JavaScript lib.js</span><a class="headerlink" href="#pythonic-javascript-lib-js" title="Permalink to this code">¶</a></div>
-<div class="highlight-js"><div class="highlight"><pre><span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">Incrementer</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">Incrementer</span> <span class="p">{</span>
     <span class="nx">constructor</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[];</span>
     <span class="p">}</span>
@@ -204,7 +204,7 @@ the switch to ES2015, transpiled by Babel into old-style JavaScript.</p>
 <div class="section" id="pythonic-javascript">
 <h2>Pythonic JavaScript<a class="headerlink" href="#pythonic-javascript" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">app.js</span></code> starts with an &#8220;ES6&#8221; import, which we saw in
-<a class="reference internal" href="../es6_imports/"><em>ES6 Imports with Babel</em></a>. We are loading a &#8220;default export&#8221;,
+<a class="reference internal" href="../es6_imports/"><span class="doc">ES6 Imports with Babel</span></a>. We are loading a &#8220;default export&#8221;,
 so the name we choose in <code class="docutils literal"><span class="pre">app.js</span></code> is de-coupled from the name
 used in the exporting library.</p>
 <p>We define a function to execute when the document is loaded. But
@@ -240,7 +240,7 @@ through something before we could use it in a browser. Still, we
 could do TDD natively, directly on our test code and our application
 code.</p>
 <p>With the move to ES2015, none of our code will run without the
-transpiling step. We faced that in <a class="reference internal" href="../es6_imports/"><em>ES6 Imports with Babel</em></a> but
+transpiling step. We faced that in <a class="reference internal" href="../es6_imports/"><span class="doc">ES6 Imports with Babel</span></a> but
 we could always chicken-out and go back to <code class="docutils literal"><span class="pre">require</span></code> for
 CommonJS modules and imports.</p>
 <p>Is the complexity price worth it? As frontend applications get
@@ -342,9 +342,6 @@ hurt your eyeballs means you can write better code the first time.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -355,7 +352,7 @@ hurt your eyeballs means you can write better code the first time.</p>
       &copy;2015, Paul Everitt.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
