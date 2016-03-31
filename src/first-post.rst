@@ -5,7 +5,7 @@
    :author: Paul Everitt
    :category: python
 
-Welcome to new blog
+Welcome to New Blog
 ===================
 
 Another decade, another blog engine. This time I'm trying to scratch a
