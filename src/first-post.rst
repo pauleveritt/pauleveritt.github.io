@@ -16,4 +16,3 @@ What I *really* wanted was Sphinx, which I have grown to love over the
 years as a way to organize a big pile of interlinked stuff, along with
 snippets of working code. So I'm using Ablog, a blog engine for Sphinx
 which includes facilities for pushing to GitHub Pages.r
-

@@ -260,8 +260,11 @@ html_theme_options = {
         {'title': 'About', 'link': '/about/'}
     ],
     'css_files': [
-        '_static/default.css'
-    ]
+        '_static/default.css',
+    ],
+    'description': '''Blog posts and technical articles on <br>
+                    Python and PyCharm, <br>
+                    Web and WebStorm.'''
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
