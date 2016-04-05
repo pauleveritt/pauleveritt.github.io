@@ -256,7 +256,6 @@ html_theme_options = {
     'linkedin_user': 'paeveritt',
     'navigation': [
         {'title': 'Blog', 'link': '/blog/'},
-        {'title': 'Articles', 'link': '/articles/'},
         {'title': 'About', 'link': '/about/'}
     ],
     'css_files': [

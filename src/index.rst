@@ -19,7 +19,7 @@ Recent Blog Posts
     :maxdepth: 1
     :hidden:
 
-    articles/index.rst
+    posts/index.rst
     about.rst
 
 
