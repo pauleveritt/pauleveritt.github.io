@@ -7,7 +7,8 @@ before_install:
   - pip install ablog
 
 script:
-  - ablog build -s src
+  - cd src
+  - ablog build
 
 after_success:
   - git config --global user.name "Paul Everitt"
