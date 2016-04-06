@@ -7,7 +7,7 @@
   <link href="http://pauleveritt.github.io/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.2">ABlog</generator>
   <entry xml:base="http://pauleveritt.github.io/blog/atom.xml">
-    <title type="text">Welcome to new blog</title>
+    <title type="text">Welcome to New Blog</title>
     <id>http://pauleveritt.github.io/first-post/</id>
     <updated>2015-11-27T00:00:00Z</updated>
     <published>2015-11-27T00:00:00Z</published>
