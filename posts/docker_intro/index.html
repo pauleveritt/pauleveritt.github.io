@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Using Docker in PyCharm &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../">
+                <img src="../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/polyglot/">Polyglot</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>Using Docker in PyCharm</h2>
+                        
+                        
+                        <div class="postdate">Dec 08, 2015</div>
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../">Posts</a>
+                                </li>
+
+                            </ol>
+
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../pyrva-type-hinting/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../about/">Next</a>
+                                </li>
+                            </ul>
+
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="using-docker-in-pycharm">
+<h1>Using Docker in PyCharm<a class="headerlink" href="#using-docker-in-pycharm" title="Permalink to this headline">¶</a></h1>
+<p>Modern development workflows emphasize isolation and reproducability
+in development and production. <a class="reference external" href="https://www.docker.com">Docker</a> and
+its platform approach to containers has become very popular. With
+PyCharm Professional Edition 5,
+<a class="reference external" href="http://blog.jetbrains.com/pycharm/2015/10/announcing-pycharm-5-eap-143-165-docker-integration/">Docker is now supported</a>
+as a remote interpreter.</p>
+<p>Let&#8217;s take a look at PyCharm&#8217;s Docker integration in action.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Get a Django-oriented Docker image pulled locally</li>
+<li>Make a sample Django project</li>
+<li>Create a Docker interpeter to run it</li>
+<li>The Django run configuration makes a new container on start and
+removes it on stop</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In Python, when you run an application &#8211; a Django site, a database
+script, etc. &#8211; you are running it in an environment. Python has some
+tools to manage the environment and make it reproducible, such as
+virtual environments, pip <code class="docutils literal"><span class="pre">requirements.txt</span></code> files, and <code class="docutils literal"><span class="pre">setup.py</span></code>
+dependencies. But what about the non-Python parts of application?</p>
+<p>Containers are one solution to this. In Docker, a container is an
+isolated universe with software, running inside your computer. They are
+fast and easy to create, start, stop, and destroy. This is ideal, not
+just for development, but for deployment as well.</p>
+<p>PyCharm 5 provides the beginning of a series of steps towards &#8220;develop
+with pleasure&#8221; using containers and Docker. Namely, PyCharm 5 supports
+project interpreters that are executed in a Docker container.</p>
+</div>
+<div class="section" id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h2>
+<p>First, make sure <code class="docutils literal"><span class="pre">docker</span></code> and <code class="docutils literal"><span class="pre">docker-machine</span></code> are setup in your
+environment. The Docker installation is painless and the
+<a class="reference external" href="https://docs.docker.com/machine/install-machine/">website docs</a>
+are quite friendly. You&#8217;ll need a Docker &#8220;host&#8221; virtual machine setup
+and running, including on Linux. On Windows and OS X, installing the
+Docker Toolbox is effortless.</p>
+<p>Next, we have to decide what software we want in our containers. In
+Docker, containers are built using &#8220;images&#8221;: collections of
+pre-installed software plus configuration that is called during
+container creation. Unlike other interpreters in PyCharm, you don&#8217;t
+visit the <code class="docutils literal"><span class="pre">Project</span> <span class="pre">Interpreter</span></code> preferences to add Python packages.
+All dependencies need to be baked into the Docker image you choose.</p>
+<p>This blog post is based on the <code class="docutils literal"><span class="pre">minimum/docker-django-mysite</span></code> Docker
+image, which includes enough Python/Django software to run the
+PyCharm-generated Django starter project. You can fetch that onto your
+system with this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker pull minimum/docker-django-mysite
+</pre></div>
+</div>
+<p>Once that Docker image is locally available <em>and</em> the Docker &#8220;host&#8221; is
+running and knows about it, PyCharm can make Docker interpreters for
+your project, as containers based on that image.</p>
+<p>Alternatively, you can skip this step and later pull in the image while
+creating the Docker-based remote interpreter by simply typing in
+the image name during creation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You have the option of making your own image as well, using a
+<code class="docutils literal"><span class="pre">Dockerfile</span></code>. Once you make the image, you can tell PyCharm to
+make Docker interpreters based on it.</p>
+</div>
+</div>
+<div class="section" id="create-django-project">
+<h2>Create Django Project<a class="headerlink" href="#create-django-project" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s make a Django project, then make a Docker interpreter for it. In
+PyCharm, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">New</span> <span class="pre">Project</span></code>, click on <code class="docutils literal"><span class="pre">Django</span></code>, and
+follow the normal process for making a Django project.</p>
+<p>During project creation, you&#8217;ll have to use a local interpreter. If you
+try to make a Docker interpreter, PyCharm will give a warning saying
+you can only use a local interpreter.</p>
+<p>The result of this step is a directory on your local computer with
+sample Django code and a Django-specific PyCharm Run Configuration.</p>
+</div>
+<div class="section" id="make-pycharm-docker-interpreter">
+<h2>Make PyCharm Docker Interpreter<a class="headerlink" href="#make-pycharm-docker-interpreter" title="Permalink to this headline">¶</a></h2>
+<p>On to the important part. We need to define a &#8220;remote interpreter&#8221; that
+runs in a PyCharm Docker container.</p>
+<p>First, go to <code class="docutils literal"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Project</span> <span class="pre">Interpreter</span></code> and click on the
+gear to the right of <code class="docutils literal"><span class="pre">Project</span> <span class="pre">Interpreter</span></code> near the top. In the
+<code class="docutils literal"><span class="pre">Configure</span> <span class="pre">Remote</span> <span class="pre">Python</span> <span class="pre">Interpreter</span></code> dialog, click the <code class="docutils literal"><span class="pre">Docker</span></code>
+button. You should see the following:</p>
+<p>Click the menu dropdown for <code class="docutils literal"><span class="pre">Machine</span> <span class="pre">Name</span></code>. It will likely have one
+entry named <code class="docutils literal"><span class="pre">default</span></code>. Choose that, and you will see the following:</p>
+<img alt="../../_images/docker_interpreter.png" src="../../_images/docker_interpreter.png" />
+<p>Choosing <code class="docutils literal"><span class="pre">default</span></code> gives PyCharm a way to find the Docker daemon, which
+can let PyCharm know which images are available locally. Hence the
+dropdown for <code class="docutils literal"><span class="pre">Images</span></code>. Click on the dropdown and choose
+<code class="docutils literal"><span class="pre">minimum/docker-django-mysite:latest</span></code> as the image, then click <code class="docutils literal"><span class="pre">Ok</span></code>.</p>
+<p>You now have a Docker container that will be used as your project
+interpreter. PyCharm features like autocompletion, code inspections,
+and checks will be driven by this interpreter.</p>
+</div>
+<div class="section" id="run-django">
+<h2>Run Django<a class="headerlink" href="#run-django" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a Docker container for our project interpreter, let&#8217;s
+use our Django-flavored Run Configuration to run it. Just to be safe,
+edit the run configuration to make sure it is using the Docker-oriented
+interpreter.</p>
+<p>What does PyCharm do when it runs this configuration:</p>
+<ol class="arabic simple">
+<li>First, it creates and starts a new container based on the image we
+named when creating the project interpreter.</li>
+<li>This container mounts your project directory into the container at
+<code class="docutils literal"><span class="pre">/opt/project</span></code> in the container. <em>Note: On Linux, you currently
+have to perform this volume mapping manually.</em></li>
+<li>This container also mounts volumes needed for PyCharm to do its
+work: Python skeletons and Python library sources.</li>
+<li>It then executes the run configuration&#8217;s Python command.</li>
+</ol>
+<p>If you are running PyCharm 5.0.2 or older, there is one fix you need to
+do:</p>
+<ul class="simple">
+<li>Run -&gt; Edit Configurations and select the PyCharm-generated Djano run
+configuration</li>
+<li>In the <code class="docutils literal"><span class="pre">Host</span></code> field, enter <code class="docutils literal"><span class="pre">0.0.0.0</span></code></li>
+</ul>
+<p>When you click the &#8220;Run&#8221; button, Django will be started. Yay, we are
+running a container! In fact, we can go on to test running, debugging,
+code coverage, profiling, and all the other ways to run a
+configuration. But first, let&#8217;s click the link in the console to open
+the Django site in our browser:</p>
+<img alt="../../_images/django_admin.png" src="../../_images/django_admin.png" />
+<p>You can confirm this using the following Docker commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps -l
+</pre></div>
+</div>
+<p>This shows the most recently-run container. As you can see, our
+<code class="docutils literal"><span class="pre">minimum/docker-django-mysite</span></code>-based container is currently running.</p>
+<p>Likewise, when you click the &#8220;Stop&#8221; button in PyCharm to stop the
+running Django configuration, PyCharm not only stops Django, but it
+also stops the Docker container. In fact, it deletes the container.
+Each time you run, PyCharm creates a new Docker container and starts it.</p>
+<p>You can confirm this. After re-starting the Django run configuration,
+type:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps -l
+</pre></div>
+</div>
+<p>The value in the <code class="docutils literal"><span class="pre">CONTAINER</span> <span class="pre">ID</span></code> column, as well as the <code class="docutils literal"><span class="pre">NAMES</span></code>
+value, is different from the previous values we got from running
+<code class="docutils literal"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-l</span></code>.</p>
+</div>
+<div class="section" id="current-limitations">
+<h2>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h2>
+<p>Docker integration in PyCharm is already useful, but is still only a
+start. Much more is being done for future releases. For example:</p>
+<ul class="simple">
+<li><em>Docker Compose</em>. This is a big item and a frequently-requested
+feature. The discussion is happening in a
+<a class="reference external" href="https://youtrack.jetbrains.com/issue/PY-17573">YouTrack ticket</a>
+in the PyCharm ticket system and work is already being scheduled.</li>
+<li><em>Linux mounts</em>. As noted in the PyCharm online help, on Linux, you have
+to mount your project directory manually via VirtualBox. This issue
+is obviated by work on the next point.</li>
+<li><em>Customizing the container</em>. Docker lets you pass arguments when
+creating/running a container. These arguments include volumes to mount
+and ports to forward. PyCharm doesn&#8217;t currently let you customize
+this in the run configuration, but this is being worked on.</li>
+<li><em>Only Django for web ports</em>. If you want a container with HTTP (or
+any other) ports available, the Django run configuration is the only
+one, and that is only for HTTP. Other run configurations (Flask,
+Pyramid, etc.) won&#8217;t forward any ports. Nor will attaching to a
+database, or orchestrating multi-container apps (unless your
+Dockerfile forwards the ports.) This is really just emphasizing the
+previous point, and as said there, help is on its way.</li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>With this release we&#8217;ve shown the beginnings of what we can do with
+Docker integration, and the results are promising. Docker has the
+potential to be a first-class part of PyCharm&#8217;s &#8220;Develop With Pleasure&#8221;
+workflow.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  Previous: 
+  <a href="../type_hinting/">
+    
+    Python Type Hinting
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/posts/docker_intro/';
+        var disqus_title = 'Using Docker in PyCharm';
+        var disqus_url = 'http://pauleveritt.github.io/posts/docker_intro/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>

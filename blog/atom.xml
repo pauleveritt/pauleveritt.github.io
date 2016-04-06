@@ -2,16 +2,60 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Paul Everitt</title>
   <id>http://pauleveritt.github.io/blog/atom.xml</id>
-  <updated>2015-11-27T00:00:00Z</updated>
+  <updated>2015-12-08T00:00:00Z</updated>
   <link href="http://pauleveritt.github.io" />
   <link href="http://pauleveritt.github.io/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.2">ABlog</generator>
   <entry xml:base="http://pauleveritt.github.io/blog/atom.xml">
-    <title type="text">Welcome to New Blog</title>
-    <id>http://pauleveritt.github.io/first-post/</id>
-    <updated>2015-11-27T00:00:00Z</updated>
-    <published>2015-11-27T00:00:00Z</published>
-    <link href="http://pauleveritt.github.io/first-post/" />
+    <title type="text">Using Docker in PyCharm</title>
+    <id>http://pauleveritt.github.io/posts/docker_intro/</id>
+    <updated>2015-12-08T00:00:00Z</updated>
+    <published>2015-12-08T00:00:00Z</published>
+    <link href="http://pauleveritt.github.io/posts/docker_intro/" />
+    <author>
+      <name>Paul Everitt</name>
+    </author>
+    <content type="html">&lt;p&gt;Modern development workflows emphasize isolation and reproducability
+in development and production. &lt;a class=&quot;reference external&quot; href=&quot;https://www.docker.com&quot;&gt;Docker&lt;/a&gt; and
+its platform approach to containers has become very popular. With
+PyCharm Professional Edition 5,
+&lt;a class=&quot;reference external&quot; href=&quot;http://blog.jetbrains.com/pycharm/2015/10/announcing-pycharm-5-eap-143-165-docker-integration/&quot;&gt;Docker is now supported&lt;/a&gt;
+as a remote interpreter.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://pauleveritt.github.io/blog/atom.xml">
+    <title type="text">Python Type Hinting</title>
+    <id>http://pauleveritt.github.io/posts/type_hinting/</id>
+    <updated>2015-12-01T00:00:00Z</updated>
+    <published>2015-12-01T00:00:00Z</published>
+    <link href="http://pauleveritt.github.io/posts/type_hinting/" />
+    <author>
+      <name>Paul Everitt</name>
+    </author>
+    <content type="html">&lt;p&gt;Python 3.5 introduces &lt;em&gt;type hinting&lt;/em&gt; to help code-writing during
+development. Let&amp;#8217;s take a look at this feature and show it in action.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://pauleveritt.github.io/blog/atom.xml">
+    <title type="text">PyRVA Meetup and Type Hinting</title>
+    <id>http://pauleveritt.github.io/posts/pyrva-type-hinting/</id>
+    <updated>2015-11-18T00:00:00Z</updated>
+    <published>2015-11-18T00:00:00Z</published>
+    <link href="http://pauleveritt.github.io/posts/pyrva-type-hinting/" />
+    <author>
+      <name>Paul Everitt</name>
+    </author>
+    <content type="html">&lt;p&gt;Python&amp;#8217;s community has long been considered as valuable as the
+software, and that extends to Python local meetups. They&amp;#8217;re fun to
+attend, but what&amp;#8217;s even more fun is watching one during its formation.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://pauleveritt.github.io/blog/atom.xml">
+    <title type="text">Welcome to the new blog</title>
+    <id>http://pauleveritt.github.io/posts/first-post/</id>
+    <updated>2015-11-17T00:00:00Z</updated>
+    <published>2015-11-17T00:00:00Z</published>
+    <link href="http://pauleveritt.github.io/posts/first-post/" />
     <author>
       <name>Paul Everitt</name>
     </author>

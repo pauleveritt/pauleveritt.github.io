@@ -1,0 +1,240 @@
+/* GENERAL STYLES
+-------------------------------------------------*/
+body {
+    font-family: 'Lora', Georgia, Times, serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+a, a:hover {
+    color: #563d7c;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Sphinx styles
+-------------------------------------------------*/
+
+a.headerlink {
+    visibility: hidden;
+    font-size: smaller;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink,
+dt:hover > a.headerlink,
+caption:hover > a.headerlink,
+p.caption:hover > a.headerlink,
+div.code-block-caption:hover > a.headerlink {
+    visibility: visible;
+}
+
+/* Header
+-------------------------------------------------*/
+
+.ss4header {
+    font-family: 'Lato', sans-serif;
+    height: 56px;
+}
+
+/* Jumbotron
+-------------------------------------------------*/
+
+.ss4jumbotron {
+    padding: 0 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.ss4montage {
+    background-image: url('../img/pattern.png');
+}
+
+.ss4montage-banner {
+    height: 480px;
+    padding-top: 170px;
+}
+
+.ss4montage-heading {
+    font-size: 60px;
+    line-height: 1;
+    color: #fff
+}
+
+.ss4montage-subheading {
+    font-size: 27px;
+    line-height: 1.4;
+    font-weight: 300;
+    color: #fff;
+}
+
+.parallax {
+    text-align: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed !important;
+    overflow: hidden;
+}
+
+.parallax-pattern-overlay {
+    background: url('../img/pattern.png') repeat;
+}
+
+/* Article
+-------------------------------------------------*/
+
+.ss4article {
+    margin-top: 2em;
+}
+
+#preamble {
+    font-family: 'Lato', serif;
+}
+
+#preamble .postdate {
+    font-weight: 300;
+}
+
+#preamble .nav strong {
+    padding-right: 0.5em;
+}
+
+#preamble .lead {
+    font-size: smaller;
+
+}
+
+#navigation {
+    font-size: smaller;
+    border-bottom: solid lightgray 1px;
+}
+
+#preamble .breadcrumb {
+    padding: 0.5rem 0;
+    background-color: transparent;
+    margin-bottom: 0;
+}
+
+/* Content
+-------------------------------------------------*/
+
+/* sphinx adds the doctitle in the body, we need to hide it */
+#content .section:first-of-type h1:first-of-type {
+    display: none;
+}
+
+div.note {
+    background-color: #EEE;
+    border: 1px solid #CCC;
+}
+
+/* HEADING
+-------------------------------------------------*/
+.heading {
+    padding-bottom: 15px;
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.heading h2 {
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+    font-size: 40px;
+    color: #333;
+    margin: 0;
+    padding: 5px;
+}
+
+.heading h3 {
+    font-size: 1em;
+    line-height: 1.7;
+}
+
+#site-title {
+    max-width: 150px;
+}
+
+/* FOOTER
+-------------------------------------------------*/
+footer {
+    background: #373a3c;
+    margin-top: 120px;
+    position: relative;
+    color: #fff;
+    font-family: 'Lato', serif;
+}
+
+footer .container {
+    padding: 60px 0 20px;
+}
+
+footer ul {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    text-align: center;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+footer ul li {
+    text-align: center;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    line-height: 45px;
+    margin: 0 4px;
+    width: 45px !important;
+    height: 45px !important;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+footer ul li:hover {
+    background: #2a2a2a;
+}
+
+footer ul li:hover a {
+    color: #fff;
+}
+
+footer ul li a {
+    color: #fff;
+    width: 42px !important;
+    height: 42px !important;
+}
+
+footer ul li a i {
+    line-height: 45px;
+    color: #fff;
+}
+
+footer p {
+    color: #fff;
+    font-size: .9em;
+    line-height: 24px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+footer a, footer a:hover {
+    color: #fff;
+}
