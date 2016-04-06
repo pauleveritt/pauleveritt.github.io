@@ -1,3 +1,7 @@
+.. post:: Dec 8, 2015
+   :author: Paul Everitt
+   :category: python
+
 =======================
 Using Docker in PyCharm
 =======================

@@ -3,7 +3,7 @@ Bundling ToDoMVC with WebPack
 =============================
 
 `Source code
-<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_webpack>`_
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/polyglot/todo_webpack>`_
 
 We now have the frontend moved out of the back end, served by a static
 web server at a different URL. Great! Let's use :doc:`Webpack <../webpack/index>`

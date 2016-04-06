@@ -9,17 +9,10 @@ one-offs, articles and series with source code for tutorial-style content.
     This blog is not official yet. Once it is ready, I will switch
     over from my previous blog site.
 
-Recent Blog Posts
------------------
-
-.. postlist:: 5
-    :excerpts:
-
 .. toctree::
     :maxdepth: 1
     :hidden:
 
     posts/index.rst
     about.rst
-
-
+    polyglot/index.rst

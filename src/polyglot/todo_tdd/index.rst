@@ -3,7 +3,7 @@ TDD for ToDoMVC
 ===============
 
 `Source code
-<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_tdd>`_
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/polyglot/todo_tdd>`_
 
 In :doc:`../jsdom/index` we saw using Mocha and Chai for frontend unit
 tests, with jsdom as a fake "browser", to let jQuery work. Let's write

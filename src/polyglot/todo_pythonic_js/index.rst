@@ -3,7 +3,7 @@ Pythonic JavaScript for ToDoMVC
 ===============================
 
 `Source code
-<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_pythonic_js>`_
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/polyglot/todo_pythonic_js>`_
 
 With Babel in place, we can refactor our code to use ES2015 language
 features: classes, array methods, arrow functions, and more, as seen

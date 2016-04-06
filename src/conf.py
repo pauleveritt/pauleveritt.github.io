@@ -144,7 +144,7 @@ html_sidebars = {
 disqus_shortname = 'pauleveritt'
 
 # Choose to disqus pages that are not posts, default is ``False``.
-disqus_pages = True
+disqus_pages = False
 
 # Choose to disqus posts that are drafts (without a published date),
 # default is ``False``.
@@ -256,6 +256,7 @@ html_theme_options = {
     'linkedin_user': 'paeveritt',
     'navigation': [
         {'title': 'Blog', 'link': '/blog/'},
+        {'title': 'Polyglot', 'link': '/polyglot/'},
         {'title': 'About', 'link': '/about/'}
     ],
     'css_files': [

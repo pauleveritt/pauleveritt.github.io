@@ -3,7 +3,7 @@ ES6 Imports for ToDoMVC
 =======================
 
 `Source code
-<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_es6_imports>`_
+<https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/polyglot/todo_es6_imports>`_
 
 As we saw in :doc:`../es6_imports/index`, Babel is a transpiler that opens
 the door to Pythonic JS. Let's switch our ToDoMVC codebase over to use

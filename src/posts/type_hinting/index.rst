@@ -1,3 +1,7 @@
+.. post:: Dec 1, 2015
+   :author: Paul Everitt
+   :category: python
+
 ===================
 Python Type Hinting
 ===================

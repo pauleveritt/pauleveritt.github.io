@@ -1,3 +1,7 @@
+.. post:: Nov 18, 2015
+   :author: Paul Everitt
+   :category: python
+
 =============================
 PyRVA Meetup and Type Hinting
 =============================
