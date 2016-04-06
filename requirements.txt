@@ -1,6 +1,7 @@
 ablog
 watchdog
 git+git://github.com/shomah4a/sphinxcontrib.youtube.git#egg=sphinxcontrib.youtube
+git+git://github.com/pauleveritt/sphinxstrap4.git#egg=sphinxstrap4
 flask
 flask-restless
 sqlalchemy
