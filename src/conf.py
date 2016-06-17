@@ -263,8 +263,8 @@ html_theme_options = {
     'css_files': [
         '_static/default.css',
     ],
-    'description': '''Blog posts and technical articles on <br>
-                    Python and PyCharm, <br>
+    'description': '''Blog posts and technical articles on
+                    Python and PyCharm,
                     Web and WebStorm.'''
 }
 
