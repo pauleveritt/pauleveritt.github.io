@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>ES6 Imports with Babel &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../../">
+                <img src="../../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>ES6 Imports with Babel</h2>
+                        
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Articles</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Polyglot Python with PyCharm</a>
+                                </li>
+
+                            </ol>
+
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../mocha/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../pythonic_js/">Next</a>
+                                </li>
+                            </ul>
+
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="es6-imports-with-babel">
+<h1>ES6 Imports with Babel<a class="headerlink" href="#es6-imports-with-babel" title="Permalink to this headline">¶</a></h1>
+<p>In <a class="reference internal" href="../modules/"><span class="doc">Modules with CommonJS</span></a> we looked at organizing our code into modules,
+with imports similar to Python. That article showed NodeJS&#8217;s native
+module system, called CommonJS. We then showed the use of Webpack to
+solve the problem of browsers which don&#8217;t support modules and module
+loaders.</p>
+<p>In this section we look at a different system for imports, based on
+the emerging new standards in JavaScript. We&#8217;ll use ES6 imports, then
+have the <a class="reference external" href="http://babeljs.io">Babel transpiler</a> convert our code into
+compliant code for Node and the browser.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Why say &#8220;ES6&#8221; instead of ES2015? It&#8217;s true that &#8220;ES6&#8221; is being
+retired as a label, now that the committee managing the
+specifications has switched from a version number to a time-based
+naming scheme. But it turns out that modules and loaders is a
+multi-layered tricky business, with different specs being produced
+over time. We&#8217;ll say &#8220;ES6 Modules&#8221; just to stay out of the details.</p>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install and configure Babel</li>
+<li>Switch modules and imports from CommonJS to ES6</li>
+<li>Get Babel plugged into frontend toolchain (Mocha, Webpack, ESLint)</li>
+</ul>
+</div>
+<div class="section" id="starting-point">
+<h2>Starting Point<a class="headerlink" href="#starting-point" title="Permalink to this headline">¶</a></h2>
+<p>For the code in this article, we need a starting point that contains a
+few pieces from earlier articles:</p>
+<ul class="simple">
+<li>Part webpack, part ESLint, part Mocha</li>
+<li>Ensure ESLint is hooked up in PyCharm</li>
+<li>npm start and npm test, plus Mocha test runner</li>
+</ul>
+<p>Our <code class="docutils literal"><span class="pre">index.html</span></code> file is very simple, from the Webpack article:</p>
+<div class="literal-block-wrapper container" id="es6-imports-index-html">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports index.html</span><a class="headerlink" href="#es6-imports-index-html" title="Permalink to this code">¶</a></div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>ES6 Imports<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Incrementer<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;bundle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>The webpack configuration is also the same:</p>
+<div class="literal-block-wrapper container" id="es6-imports-original-webpack-config-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports original webpack.config.js</span><a class="headerlink" href="#es6-imports-original-webpack-config-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./app.js&#39;</span><span class="p">,</span>
+    <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="nx">__dirname</span><span class="p">,</span>
+        <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;bundle.js&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;source-map&#39;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>With this, Webpack bundles <code class="docutils literal"><span class="pre">app1.js</span></code> and <code class="docutils literal"><span class="pre">lib1.js</span></code> into the bundle
+served by <code class="docutils literal"><span class="pre">webpack-dev-server</span></code>:</p>
+<div class="literal-block-wrapper container" id="es6-imports-original-app1-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports original app1.js</span><a class="headerlink" href="#es6-imports-original-app1-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./lib1&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">newVal</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;newVal&#39;</span><span class="p">,</span> <span class="nx">newVal</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="es6-imports-lib1-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports lib1.js</span><a class="headerlink" href="#es6-imports-lib1-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we have our Mocha test file from the previous section:</p>
+<div class="literal-block-wrapper container" id="es6-imports-test11-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports test11.js</span><a class="headerlink" href="#es6-imports-test11-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+    <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
+    <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
+    <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./lib1&#39;</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment a value&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s install Babel, the transpiler for modern JavaScript, along with
+a &#8220;loader&#8221; that lets Webpack transpile during bundling:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save-dev babel-preset-es2015 babel-loader
+</pre></div>
+</div>
+<p>This gives us a <code class="docutils literal"><span class="pre">package.json</span></code> with the following added to the
+<code class="docutils literal"><span class="pre">devDependencies</span></code>:</p>
+<div class="literal-block-wrapper container" id="es6-imports-package-json">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports package.json</span><a class="headerlink" href="#es6-imports-package-json" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pylyglot&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Series of articles for Polyglot Python with PyCharm&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;webpack-dev-server&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;mocha --compilers js:babel-core/register test*.js&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;repository&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;git+ssh://git@github.com/pauleveritt/pauleveritt.github.io.git&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;Paul Everitt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bugs&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io/issues&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;homepage&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io#readme&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;babel-loader&quot;</span><span class="o">:</span> <span class="s2">&quot;^6.2.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;babel-preset-es2015&quot;</span><span class="o">:</span> <span class="s2">&quot;^6.3.13&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;chai&quot;</span><span class="o">:</span> <span class="s2">&quot;^3.4.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eslint&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.10.3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mocha&quot;</span><span class="o">:</span> <span class="s2">&quot;^2.3.4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;webpack&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.12.12&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;webpack-dev-server&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.14.1&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="es6-modules">
+<h2>ES6 Modules<a class="headerlink" href="#es6-modules" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s change from modules and imports based on CommonJS, to modules based
+on ES6. First, we make an <code class="docutils literal"><span class="pre">app2.js</span></code> that uses a different import syntax:</p>
+<div class="literal-block-wrapper container" id="es6-imports-app2-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports app2.js</span><a class="headerlink" href="#es6-imports-app2-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">import</span> <span class="nx">incrementer</span> <span class="nx">from</span> <span class="s1">&#39;./lib2&#39;</span><span class="p">;</span>
+</span><span class="kd">var</span> <span class="nx">newVal</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;newVal&#39;</span><span class="p">,</span> <span class="nx">newVal</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>When we do this, PyCharm immediately freaks out. It is expecting
+&#8220;ECMAScript 5.1&#8221; as the JavaScript syntax. We have now given it
+non-valid tokens in the syntax. Thus, we need to to change
+Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt;
+JavaScript language version to <code class="docutils literal"><span class="pre">ECMAScript</span> <span class="pre">6</span></code>.</p>
+<p>At this point, ESLint also freaks out. It needs to be told the new syntax.
+Fortunately ESLint, like Babel, is a hugely popular and fast-moving
+open source project. They make it easy to work with new ES2015,
+ES2016, and ES2017 syntax. Let&#8217;s update our <code class="docutils literal"><span class="pre">.eslintrc</span></code> file:</p>
+<div class="literal-block-wrapper container" id="es6-imports-eslintrc">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports .eslintrc</span><a class="headerlink" href="#es6-imports-eslintrc" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;strict&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;quotes&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;single&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;ecmaFeatures&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span>  <span class="p">},</span>
+  <span class="s2">&quot;env&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;browser&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="hll">    <span class="s2">&quot;es6&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Let&#8217;s now make a <code class="docutils literal"><span class="pre">lib2.js</span></code> which exports our function using ES6
+export syntax:</p>
+<div class="literal-block-wrapper container" id="es6-imports-lib2-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports lib2.js</span><a class="headerlink" href="#es6-imports-lib2-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="k">return</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In this case, nothing is importable in this module <em>except</em> the
+function. Because it is a different, incompatible syntax, we can
+avoid the <code class="docutils literal"><span class="pre">module.exports</span></code> indirection, and put the <code class="docutils literal"><span class="pre">export</span>
+<span class="pre">default</span></code> directly on the declaration.</p>
+<p>By saying <code class="docutils literal"><span class="pre">default</span></code> in the export, we are saying that this
+function is the one symbol exported. In fact, you could do the
+export like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<p>That is, with an anonymous, un-named function. With default exports,
+the name comes from the importer, not the exporter.</p>
+<p>We now have modules that use ES6 for exporting and importing. To see
+if this works in Node, we can adapt our test to use ES6 imports:</p>
+<div class="literal-block-wrapper container" id="es6-imports-test2-js">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports test2.js</span><a class="headerlink" href="#es6-imports-test2-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">import</span> <span class="p">{</span> <span class="nx">describe</span><span class="p">,</span> <span class="nx">before</span><span class="p">,</span> <span class="nx">it</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mocha&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="kr">import</span> <span class="p">{</span><span class="nx">expect</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;chai&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="kr">import</span> <span class="nx">incrementer</span> <span class="nx">from</span> <span class="s1">&#39;./lib2&#39;</span><span class="p">;</span>
+</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment a value&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<p>Let&#8217;s give it a whirl:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm run test2.js
+</pre></div>
+</div>
+<p>Uh-oh, we get an error:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>SyntaxError: Unexpected token import
+</pre></div>
+</div>
+<p>It seems that Mocha, which is a Node application, can&#8217;t parse our
+JavaScript. Well, no kidding...it&#8217;s now written in ES6. We need
+something that translates &#8220;future&#8221; JavaScript (ES6 Modules) into
+&#8220;current&#8221; JavaScript (Node).</p>
+</div>
+<div class="section" id="transpiling-with-babel">
+<h2>Transpiling with Babel<a class="headerlink" href="#transpiling-with-babel" title="Permalink to this headline">¶</a></h2>
+<p>This translation is called &#8220;transpiling&#8221; and Babel is the most-used
+tool for transpiling. We talk more about transpiling in
+<a class="reference internal" href="../pythonic_js/"><span class="doc">Pythonic JavaScript with ES2015</span></a>.</p>
+<p>We need to tell Mocha to run our JavaScript &#8211; both our application
+code <em>and</em> our tests , which we also want to write in the new
+style &#8211; through Babel. First, Babel has a configuration, since
+of course all the other cool kids have one:</p>
+<div class="literal-block-wrapper container" id="es6-imports-babelrc">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports .babelrc</span><a class="headerlink" href="#es6-imports-babelrc" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="p">{</span>
+</span>  <span class="s2">&quot;presets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;es2015&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>That configures Babel itself. To tell our PyCharm Mocha run configuration
+to use Babel, edit the run configuration and in <code class="docutils literal"><span class="pre">Extra</span> <span class="pre">Mocha</span> <span class="pre">options</span></code>,
+put this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">compilers</span> <span class="n">js</span><span class="p">:</span><span class="n">babel</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">register</span>
+</pre></div>
+</div>
+<p>Our Mocha tests now run fine. Which also means our <code class="docutils literal"><span class="pre">lib2.js</span></code> also
+runs. To make this change for our <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> script, change <code class="docutils literal"><span class="pre">package.json</span></code>
+to have:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;mocha --compilers js:babel-core/register test*.js&quot;</span>
+</pre></div>
+</div>
+<p>That covers Node. What about the browser? Do we need to teach Webpack to,
+like Mocha, transpile code with Babel when bundling? Yes, and it is
+quite easy:</p>
+<div class="literal-block-wrapper container" id="es6-imports-second-webpack-config">
+<div class="code-block-caption"><span class="caption-text">ES6 Imports Second Webpack config</span><a class="headerlink" href="#es6-imports-second-webpack-config" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./app2.js&#39;</span><span class="p">,</span>
+    <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="nx">__dirname</span><span class="p">,</span>
+        <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;bundle.js&#39;</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span>
+</span><span class="hll">                <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span>
+</span><span class="hll">            <span class="p">}</span>
+</span><span class="hll">        <span class="p">]</span>
+</span><span class="hll">    <span class="p">},</span>
+</span>    <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;source-map&#39;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>We added a <code class="docutils literal"><span class="pre">modules</span></code> section and defined a <code class="docutils literal"><span class="pre">loader</span></code> for our <code class="docutils literal"><span class="pre">.js</span></code>
+files. This loader runs the files through the <code class="docutils literal"><span class="pre">babel-loader</span></code> software,
+which is a Webpack plugin for Babel. <code class="docutils literal"><span class="pre">babel-loader</span></code> uses the shared
+Babel settings in <code class="docutils literal"><span class="pre">.babelrc</span></code>, preventing Mocha and Webpack from
+keeping separate Babel settings.</p>
+</div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>We are now using a tiny, wafer-thin mint of ES6: modules and imports. To
+get there, we needed to introduce a new tool &#8211; Babel &#8211; into the
+frontend toolchain and deal with the ripple effects:</p>
+<ul class="simple">
+<li>PyCharm -&gt; ECMAScript 6</li>
+<li>ESLint</li>
+<li>Mocha</li>
+<li>Webpack</li>
+</ul>
+<p>As you type, your CPU sure will be kept busy, transpiling and bundling
+the universe. There are solutions to this, but for now, trust us...it&#8217;s
+worth it, as you&#8217;ll see in the next article.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/posts/pylyglot/es6_imports/';
+        var disqus_title = 'ES6 Imports with Babel';
+        var disqus_url = 'http://pauleveritt.github.io/posts/pylyglot/es6_imports/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>

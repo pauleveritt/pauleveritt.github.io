@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Linting with ESLint &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../../">
+                <img src="../../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>Linting with ESLint</h2>
+                        
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Articles</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Polyglot Python with PyCharm</a>
+                                </li>
+
+                            </ol>
+
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../package_json/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../npm_run/">Next</a>
+                                </li>
+                            </ul>
+
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="linting-with-eslint">
+<h1>Linting with ESLint<a class="headerlink" href="#linting-with-eslint" title="Permalink to this headline">¶</a></h1>
+<p>Are you picky about Python code styling? A big believer in <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>? The world of JavaScript
+has linting too.</p>
+<p>In this article we take a look at frontend tooling for JavaScript,
+namely linting, and how we can hook this into PyCharm.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Show more JS tooling and its support in PyCharm</li>
+<li>Better, more configurable linting with eslint</li>
+<li>Prep for linting on newer JS features</li>
+</ul>
+</div>
+<div class="section" id="linting-why-and-what">
+<h2>Linting: Why and What<a class="headerlink" href="#linting-why-and-what" title="Permalink to this headline">¶</a></h2>
+<p>Smart editors, and certainly IDEs like PyCharm, can help you when
+coding, spotting things such as unbalanced quotes and other syntactic
+mistakes. They also, though, can tap into tools that help enforce
+<em>style</em> conventions: rules that, while syntactically legal, are
+considered bad form.</p>
+<p>These tools are called <em>linters</em>. Python has linting software such
+as <a class="reference external" href="http://www.pylint.org">pylint</a> and style guides such as the
+centrally-maintained <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>. All hail our style
+overlords!</p>
+<p>The world of JavaScript has linting too, though not as much consensus.
+jshint, jslint, jscs...quite a history, and PyCharm supports all
+of them. Recently, one linter has become the tool of choice
+for the modern node/npm toolchain: <a class="reference external" href="http://eslint.org">ESLint</a>.
+It&#8217;s fast, flexible, modular, and well-maintained.</p>
+<p>Let&#8217;s plug it in and hook it up to PyCharm.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>ESLint is written in JavaScript and installable with <code class="docutils literal"><span class="pre">npm</span></code>. Let&#8217;s make
+a new <code class="docutils literal"><span class="pre">package.json</span></code> and install <code class="docutils literal"><span class="pre">eslint</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm init --yes
+$ npm install --save-dev eslint
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></code> command downloads ESLint into our <code class="docutils literal"><span class="pre">node_modules</span></code>
+local packages and records in <code class="docutils literal"><span class="pre">package.json</span></code> that it is a <em>development</em>
+dependency. Meaning, the software isn&#8217;t needed for our application, but
+is used by developers when making a sandbox. This distinction can be seen
+in our resulting <code class="docutils literal"><span class="pre">package.json</span></code>:</p>
+<div class="literal-block-wrapper container" id="eslint-package-json">
+<div class="code-block-caption"><span class="caption-text">ESLint package.json</span><a class="headerlink" href="#eslint-package-json" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pylyglot&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Series of articles for Polyglot Python with PyCharm&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;repository&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;git+ssh://git@github.com/pauleveritt/pauleveritt.github.io.git&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;Paul Everitt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bugs&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io/issues&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;homepage&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io#readme&quot;</span><span class="p">,</span>
+<span class="hll">  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;eslint&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.10.3&quot;</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>If we didn&#8217;t want to open a console, or couldn&#8217;t remember the package
+name, we could ask PyCharm to find, install, and record the
+dependency:</p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/2R7JGBoZPKw" frameborder="0" allowfullscreen="1">&nbsp;</iframe><p>That is, we visit Preferences -&gt; Languages &amp; Frameworks -&gt; Node.js
+and NPM, then click the <code class="docutils literal"><span class="pre">+</span></code> to search for and install <code class="docutils literal"><span class="pre">eslint</span></code>.
+To save the dependency, check the <code class="docutils literal"><span class="pre">Options</span></code> box and type
+<code class="docutils literal"><span class="pre">save-dev</span></code> into the input.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Style <a class="reference external" href="http://eslint.org/docs/user-guide/configuring">rules</a> are enforced in a
+JSON configuration file <code class="docutils literal"><span class="pre">.eslintrc</span></code> stored at the top of the project.
+For example:</p>
+<div class="literal-block-wrapper container" id="eslint-eslintrc">
+<div class="code-block-caption"><span class="caption-text">ESLint .eslintrc</span><a class="headerlink" href="#eslint-eslintrc" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;quotes&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;single&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>This configuration says: &#8220;In this project, everyone should use single
+quotes in JavaScript files&#8221;.</p>
+</div>
+<div class="section" id="running">
+<h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>That&#8217;s nice to record that, but how do we enforce it? Like <code class="docutils literal"><span class="pre">pylint</span></code>,
+you can run a command against your source files and see who has been
+naughty and nice. This source file has double quotes:</p>
+<div class="literal-block-wrapper container" id="eslint-app1-js">
+<div class="code-block-caption"><span class="caption-text">ESLint app1.js</span><a class="headerlink" href="#eslint-app1-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>If we &#8220;lint&#8221; it with the <code class="docutils literal"><span class="pre">eslint</span></code> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ node_modules/.bin/eslint app1.js
+</pre></div>
+</div>
+<p>...we get <em>warnings</em> that <code class="docutils literal"><span class="pre">Strings</span> <span class="pre">must</span> <span class="pre">use</span> <span class="pre">singlequote</span></code>:</p>
+<img alt="ESLint command line" src="../../../_images/command_line.png" />
+<p>Remember, ESLint is written in JavaScript as part of the frontend,
+Node toolchain. It fits in with the various standards we have been
+discussing. In this case, <code class="docutils literal"><span class="pre">npm</span></code> packages install their console
+scripts in <code class="docutils literal"><span class="pre">node_modules/.bin</span></code>. This is similar to how Python
+and <code class="docutils literal"><span class="pre">setuptools</span></code> entry points create console scripts in your
+virtual environment&#8217;s <code class="docutils literal"><span class="pre">bin</span></code> directory.</p>
+</div>
+<div class="section" id="command-line-pycharm">
+<h2>Command Line? PyCharm!<a class="headerlink" href="#command-line-pycharm" title="Permalink to this headline">¶</a></h2>
+<p>Of course we don&#8217;t want to have to run a command to get help about
+mistakes. If only we had an IDE that supported modern JavaScript
+editing with modern linting?</p>
+<p>PyCharm supports the various JavaScript linters, including
+first-class support for ESLint. First, enable it in your project
+by visiting Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript
+-&gt; Code Quality Tools -&gt; ESLint. Then, enable it, point to the
+installed <code class="docutils literal"><span class="pre">node_module</span></code>, and let it search for the <code class="docutils literal"><span class="pre">.eslintrc</span></code>
+file:</p>
+<img alt="ESLint Preferences" src="../../../_images/eslint_prefs.png" />
+<p>Now when editing a file with a rule violation, PyCharm will provide
+real-time warning and errors as you type:</p>
+<img alt="ESLint Warnings" src="../../../_images/eslint_warnings.png" />
+</div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>Like with Python, we now have a JavaScript style configuration file
+that can be checked into version control. We can check our styles both
+from the command line and in the editor. We can use the command line
+to warn during package building and hook it up to Travis during
+continous integration.</p>
+<p>As we&#8217;ll see in a later section, ESLint has another distinguishing
+characteristic: its first two letters (ECMAScript) mean it is focused on
+future syntaxes in JavaScript, ES2015 and beyond.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/posts/pylyglot/eslint/';
+        var disqus_title = 'Linting with ESLint';
+        var disqus_url = 'http://pauleveritt.github.io/posts/pylyglot/eslint/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>

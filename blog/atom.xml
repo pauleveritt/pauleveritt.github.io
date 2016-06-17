@@ -5,7 +5,7 @@
   <updated>2015-12-08T00:00:00Z</updated>
   <link href="http://pauleveritt.github.io" />
   <link href="http://pauleveritt.github.io/blog/atom.xml" rel="self" />
-  <generator uri="http://ablog.readthedocs.org" version="0.8.2">ABlog</generator>
+  <generator uri="http://ablog.readthedocs.org" version="0.8.3">ABlog</generator>
   <entry xml:base="http://pauleveritt.github.io/blog/atom.xml">
     <title type="text">Using Docker in PyCharm</title>
     <id>http://pauleveritt.github.io/posts/docker_intro/</id>

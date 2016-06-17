@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Browser Debugging from PyCharm &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../../">
+                <img src="../../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>Browser Debugging from PyCharm</h2>
+                        
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Articles</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Polyglot Python with PyCharm</a>
+                                </li>
+
+                            </ol>
+
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../webpack/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../mocha/">Next</a>
+                                </li>
+                            </ul>
+
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="browser-debugging-from-pycharm">
+<h1>Browser Debugging from PyCharm<a class="headerlink" href="#browser-debugging-from-pycharm" title="Permalink to this headline">¶</a></h1>
+<p>We&#8217;ve seen browserless debugging in Node. Later we&#8217;ll see using a fake
+DOM, to keep browserless a little longer. But sometimes you really do
+need to run in a browser. Sure is a shame that you have to lose
+PyCharm as a debugging environment.</p>
+<p>But you don&#8217;t! In this section we show the JetBrains IDE Support
+extension for Chrome. With it you can debug JavaScript, from PyCharm,
+but which is running in Chrome.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Setup the JetBrains IDE Support extension for Chrome</li>
+<li>Start a debug session that uses it</li>
+</ul>
+</div>
+<div class="section" id="about-the-chrome-extension">
+<h2>About the Chrome Extension<a class="headerlink" href="#about-the-chrome-extension" title="Permalink to this headline">¶</a></h2>
+<p>When working with HTML and JavaScript from your IDE, you really want
+to avoid switching to a browser and hitting reload, then looking for
+print output in the console. JetBrains
+<a class="reference external" href="https://www.jetbrains.com/webstorm/help/using-jetbrains-chrome-extension.html">provides a Chrome extension</a>
+which lets PyCharm remote-control the Chrome browser, under IDE
+control.</p>
+<p>This applies to live editing HTML: you make some changes and the browser
+updates, which we also saw in <a class="reference internal" href="../webpack/"><span class="doc">Browser Bundling with Webpack</span></a>. It also applies to
+JavaScript: you can run a debug session, where the interpreter is in
+Chrome, but you stay in the IDE for all of your debugging.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The page above provides more detail, but in summary, you first install
+the Chrome extension <a class="reference external" href="https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji">from the Google App Store</a>.
+You can also just start a debug session and you will get prompted to install,
+but doing it manually is more explicit.</p>
+</div>
+<div class="section" id="start-debugging">
+<h2>Start Debugging<a class="headerlink" href="#start-debugging" title="Permalink to this headline">¶</a></h2>
+<p>Imagine we have an HTML file:</p>
+<div class="literal-block-wrapper container" id="chrome-debugging-index-html">
+<div class="code-block-caption"><span class="caption-text">Chrome Debugging index.html</span><a class="headerlink" href="#chrome-debugging-index-html" title="Permalink to this code">¶</a></div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Debugging in Chrome<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Debugging in Chrome<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>...which loads some JavaScript:</p>
+<div class="literal-block-wrapper container" id="chrome-debugging-app-js">
+<div class="code-block-caption"><span class="caption-text">Chrome Debugging app.js</span><a class="headerlink" href="#chrome-debugging-app-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="c1">// No IIFE, no best practices...smells like the 90&#39;s</span>
+<span class="kd">function</span> <span class="nx">hello</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">hello</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<p>We&#8217;d like to jump into debugging when the browser gets to the <code class="docutils literal"><span class="pre">console.log</span></code>
+line. We could always put the <code class="docutils literal"><span class="pre">debugger</span></code> keyword there, or use the Chrome
+debugger. But we&#8217;d like to stay in our IDE and not context-switch.</p>
+<p>It&#8217;s surprisingly simple. First, in your <code class="docutils literal"><span class="pre">app.js</span></code>, click in the left gutter
+to set a breakpoint one the line you&#8217;d like to stop at:</p>
+<img alt="Screenshot breakpoint" src="../../../_images/breakpoint.png" />
+<p>Next, right-click on the tab for <code class="docutils literal"><span class="pre">index.html</span></code> and choose
+<code class="docutils literal"><span class="pre">Debug</span> <span class="pre">'index.html'</span></code> from the context-menu. Your Chrome browser will open
+in the background with a notice saying:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;JetBrains IDE Support&quot;</span> <span class="ow">is</span> <span class="n">debugging</span> <span class="n">this</span> <span class="n">browser</span>
+</pre></div>
+</div>
+<p>From your perspective, though, the IDE is still focused and you are in the
+debugger:</p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/d1RZcOiQfPM" frameborder="0" allowfullscreen="1">&nbsp;</iframe><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can&#8217;t have the Chrome dev tools window open for the tab that
+is being used by the JetBrains IDE Support plugin. You will get
+a friendly warning telling you to close the tools.</p>
+</div>
+</div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>While not as seamless as full, browserless TDD, this is still a big step
+up from the traditional reload cycle. You stay &#8220;in context&#8221;, in your IDE,
+and use the tools and techniques you&#8217;ve already mastered.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/posts/pylyglot/chrome_debugging/';
+        var disqus_title = 'Browser Debugging from PyCharm';
+        var disqus_url = 'http://pauleveritt.github.io/posts/pylyglot/chrome_debugging/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+============================
+Polyglot Python with PyCharm
+============================
+
+.. note::
+
+    This series is a work-in-progress.
+
+If you're a long-time Python web developer, you are used to web
+technologies: HTML, CSS, a little JavaScript. But modern frontend
+web development might seem alien and un-Pythonic.
+
+If so, this series of articles is aimed at you. These frontend ideas
+are important, but you need a Python guide through the thicket. You
+also need a tool that can support your Python *and* frontend development.
+PyCharm, with the foundation it shares with WebStorm, is uniquely
+suited for this.
+
+In this series we will introduce ideas and packages in isolation,
+with hands-on code, screenshots, and more. Each article's code is
+`in GitHub
+<https://github.com/pauleveritt/pauleveritt.github.io>`_. You can
+comment on the articles using Disqus and file bug reportes in the
+`issue tracker
+<https://github.com/pauleveritt/pauleveritt.github.io/issues>`_.
+
+Introduction to JavaScript Technologies
+=======================================
+
+The frontend world has a dizzying array of choices for each unit of
+functionality. Let's go through each piece, showing the minimum and
+explaining why you should care.
+
+.. toctree::
+    :maxdepth: 1
+
+    intro
+    hello_node/index
+    package_json/index
+    eslint/index
+    npm_run/index
+    modules/index
+    webpack/index
+    chrome_debugging/index
+    mocha/index
+    es6_imports/index
+    pythonic_js/index
+    jsdom/index
+
+ToDo MVC Tutorial
+=================
+
+Based on the topics covered above in isolation, we put it all together
+and write a ToDo application, with a Flask backend and a modern frontend.
+Each article builds on the previous article.
+
+Webinar 1
+---------
+
+.. toctree::
+    :maxdepth: 1
+
+    todo_initial/index
+    todo_tooling/index
+    todo_frontend/index
+
+Webinar 2
+---------
+
+.. toctree::
+    :maxdepth: 1
+
+    todo_webpack/index
+    todo_es6_imports/index
+    todo_pythonic_js/index
+    todo_tdd/index

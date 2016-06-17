@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>ES6 Imports for ToDoMVC &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../">
+                <img src="../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>ES6 Imports for ToDoMVC</h2>
+                        
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="es6-imports-for-todomvc">
+<h1>ES6 Imports for ToDoMVC<a class="headerlink" href="#es6-imports-for-todomvc" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_es6_imports">Source code</a></p>
+<p>As we saw in <a class="reference internal" href="../es6_imports/"><span class="doc">ES6 Imports with Babel</span></a>, Babel is a transpiler that opens
+the door to Pythonic JS. Let&#8217;s switch our ToDoMVC codebase over to use
+a tiny part: ES6 Modules and imports. Along the way, we&#8217;ll refactor our
+<code class="docutils literal"><span class="pre">todo.js</span></code> code a bit.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Install dependencies:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>npm install babel-preset-es2015 babel-loader --save-dev
+</pre></div>
+</div>
+</li>
+<li><p class="first">Our <code class="docutils literal"><span class="pre">webpack.config.js</span></code> needs to be taught to transpile code using
+Babel when Webpack does its bundling:</p>
+<div class="literal-block-wrapper container" id="todo-webpack-config-js">
+<div class="code-block-caption"><span class="caption-text">ToDo webpack.config.js</span><a class="headerlink" href="#todo-webpack-config-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/app&#39;</span><span class="p">,</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./app.js&#39;</span><span class="p">,</span>
+<span class="hll">    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span>
+</span><span class="hll">                <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span>
+</span><span class="hll">            <span class="p">}</span>
+</span><span class="hll">        <span class="p">]</span>
+</span><span class="hll">    <span class="p">},</span>
+</span>    <span class="nx">devtool</span><span class="o">:</span> <span class="s1">&#39;source-map&#39;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Webpack&#8217;s use of Babel requires a <code class="docutils literal"><span class="pre">.babelrc</span></code> configuration file:</p>
+<div class="literal-block-wrapper container" id="todo-babelrc">
+<div class="code-block-caption"><span class="caption-text">ToDo .babelrc</span><a class="headerlink" href="#todo-babelrc" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;presets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;es2015&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Our <code class="docutils literal"><span class="pre">.eslintrc</span></code> file needs to be told to lint using ES6 features:</p>
+<div class="literal-block-wrapper container" id="todo-eslintrc">
+<div class="code-block-caption"><span class="caption-text">ToDo .eslintrc</span><a class="headerlink" href="#todo-eslintrc" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;strict&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;quotes&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;single&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+<span class="hll">  <span class="s2">&quot;ecmaFeatures&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class="hll">  <span class="p">},</span>
+</span><span class="hll">  <span class="s2">&quot;env&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;browser&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;es6&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">The tooling is setup, let&#8217;s change <code class="docutils literal"><span class="pre">app/todo.js</span></code> to use ES6 imports
+and export a function. Let&#8217;s also re-organize the code to get rid of
+the <code class="docutils literal"><span class="pre">$(document).ready</span></code> top-level handler:</p>
+<div class="literal-block-wrapper container" id="todo-app-todo-js">
+<div class="code-block-caption"><span class="caption-text">ToDo app/todo.js</span><a class="headerlink" href="#todo-app-todo-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="kr">import</span> <span class="nx">tmpl</span> <span class="nx">from</span> <span class="s1">&#39;./tmpl&#39;</span><span class="p">;</span>
+</span>
+<span class="hll"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span>
+    <span class="kd">var</span> <span class="nx">newName</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#newName&#39;</span><span class="p">),</span>
+        <span class="nx">todoList</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoList&#39;</span><span class="p">),</span>
+        <span class="nx">template</span> <span class="o">=</span> <span class="nx">tmpl</span><span class="p">(</span><span class="s1">&#39;list_todos&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">todos</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">refreshToDos</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="cm">/* Fetch the list of todos and re-draw the listing */</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:5000/api/todo&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">todos</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">];</span>
+            <span class="nx">todoList</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="nx">template</span><span class="p">({</span><span class="nx">todos</span><span class="o">:</span> <span class="nx">todos</span><span class="p">}));</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create a new to do</span>
+    <span class="nx">newName</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="nx">newName</span><span class="p">.</span><span class="nx">val</span><span class="p">()});</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;http://localhost:5000/api/todo&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">refreshToDos</span><span class="p">();</span>
+            <span class="nx">newName</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Edit a to do</span>
+    <span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;.edit&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Toggle the &lt;input&gt; for this todo</span>
+        <span class="nx">todoList</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="s1">&#39;editing&#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">first</span><span class="p">().</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;editing&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// When the revealed-input changes, update using PATCH</span>
+        <span class="kd">var</span> <span class="nx">todoId</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">,</span>
+            <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">()});</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:5000/api/todo/&#39;</span> <span class="o">+</span> <span class="nx">todoId</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;PATCH&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">refreshToDos</span><span class="p">();</span>
+            <span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Delete an existing to do</span>
+    <span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;.delete&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">todoId</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:5000/api/todo/&#39;</span> <span class="o">+</span> <span class="nx">todoId</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">refreshToDos</span><span class="p">();</span>
+            <span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="c1">// On startup, go fetch the list of todos and re-draw</span>
+    <span class="nx">refreshToDos</span><span class="p">();</span>
+<span class="hll"><span class="p">};</span>
+</span></pre></div>
+</div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">app/tmpl.js</span></code> now exports its <code class="docutils literal"><span class="pre">tmpl</span></code> function via an ES6 module
+default:</p>
+<div class="literal-block-wrapper container" id="todo-app-tmpl-js">
+<div class="code-block-caption"><span class="caption-text">ToDo app/tmpl.js</span><a class="headerlink" href="#todo-app-tmpl-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="c1">// John Resig jQuery Microtemplating</span>
+
+<span class="cm">/*eslint-disable */</span>
+<span class="hll"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">tmpl</span> <span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="c1">// Figure out if we&#39;re getting a template, or if we need to</span>
+    <span class="c1">// load the template - and be sure to cache the result.</span>
+    <span class="kd">var</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="o">!</span><span class="sr">/\W/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">?</span>
+        <span class="nx">cache</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span> <span class="o">=</span> <span class="nx">cache</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span> <span class="o">||</span>
+            <span class="nx">tmpl</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">str</span><span class="p">).</span><span class="nx">innerHTML</span><span class="p">)</span> <span class="o">:</span>
+
+        <span class="c1">// Generate a reusable function that will serve as a template</span>
+        <span class="c1">// generator (and which will be cached).</span>
+        <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">&quot;obj&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;var p=[],print=function(){p.push.apply(p,arguments);};&quot;</span> <span class="o">+</span>
+
+                <span class="c1">// Introduce the data as local variables using with(){}</span>
+            <span class="s2">&quot;with(obj){p.push(&#39;&quot;</span> <span class="o">+</span>
+
+                <span class="c1">// Convert the template into pure JavaScript</span>
+            <span class="nx">str</span>
+                <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\t\n]/g</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;&lt;%&quot;</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\t&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/((^|%&gt;)[^\t]*)&#39;/g</span><span class="p">,</span> <span class="s2">&quot;$1\r&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\t=(.*?)%&gt;/g</span><span class="p">,</span> <span class="s2">&quot;&#39;,$1,&#39;&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\t&quot;</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&#39;);&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;%&gt;&quot;</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;p.push(&#39;&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\r&quot;</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\\&#39;&quot;</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;&#39;);}return p.join(&#39;&#39;);&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Provide some basic currying to the user</span>
+    <span class="k">return</span> <span class="nx">data</span> <span class="o">?</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">:</span> <span class="nx">fn</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="cm">/*eslint-enable */</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Finally, <code class="docutils literal"><span class="pre">app/app.js</span></code> switches to ES6 imports. Plus, it runs the
+function exported by <code class="docutils literal"><span class="pre">todo.js</span></code>. Note that we can name this function
+whatever we want on the import side:</p>
+<div class="literal-block-wrapper container" id="todo-app-app-js">
+<div class="code-block-caption"><span class="caption-text">ToDo app/app.js</span><a class="headerlink" href="#todo-app-app-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="kr">import</span> <span class="nx">initToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
+</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// All REST requests should send content type, and log failures</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajaxSetup</span><span class="p">({</span><span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">});</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxError</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Ajax call failed:&#39;</span><span class="p">,</span>
+            <span class="nx">settings</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">);</span>
+    <span class="p">});</span>
+
+<span class="hll">    <span class="nx">initToDo</span><span class="p">();</span>
+</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first"><em>Restart/reload</em>. Webpack needs to get the new configuration changes
+in <code class="docutils literal"><span class="pre">webpack.config.js</span></code>. Restart your <code class="docutils literal"><span class="pre">npm</span> <span class="pre">start</span></code> tool window,
+then reload your browser.</p>
+</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>

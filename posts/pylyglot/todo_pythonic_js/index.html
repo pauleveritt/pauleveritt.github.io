@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Pythonic JavaScript for ToDoMVC &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../../">
+                <img src="../../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>Pythonic JavaScript for ToDoMVC</h2>
+                        
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Articles</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Polyglot Python with PyCharm</a>
+                                </li>
+
+                            </ol>
+
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../todo_es6_imports/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../todo_tdd/">Next</a>
+                                </li>
+                            </ul>
+
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="pythonic-javascript-for-todomvc">
+<h1>Pythonic JavaScript for ToDoMVC<a class="headerlink" href="#pythonic-javascript-for-todomvc" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_pythonic_js">Source code</a></p>
+<p>With Babel in place, we can refactor our code to use ES2015 language
+features: classes, array methods, arrow functions, and more, as seen
+in <a class="reference internal" href="../pythonic_js/"><span class="doc">Pythonic JavaScript with ES2015</span></a>.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Our <code class="docutils literal"><span class="pre">app/app.js</span></code> switches to use &#8220;arrow functions&#8221; in two places:</p>
+<div class="literal-block-wrapper container" id="todo-pythonic-js-app-js">
+<div class="code-block-caption"><span class="caption-text">ToDo Pythonic JS app.js</span><a class="headerlink" href="#todo-pythonic-js-app-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
+
+<span class="hll"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span>
+    <span class="c1">// All REST requests should send content type, and log failures</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajaxSetup</span><span class="p">({</span><span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">});</span>
+<span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxError</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span>        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Ajax call failed:&#39;</span><span class="p">,</span>
+            <span class="nx">settings</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">new</span> <span class="nx">ToDo</span><span class="p">();</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">We now have a number of <code class="docutils literal"><span class="pre">app/todo.js</span></code> changes which we will
+will discuss, then show the final result.</p>
+</li>
+<li><p class="first"><em>Class</em>. In the first step, we convert to a basic class:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Convert to a class and put everything in the constructor</li>
+<li>Change app.js to import class and new ToDo()</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Methods for events</em>. We want our event handlers to be methods,
+for create/delete etc. This is a big code re-organization. Let&#8217;s
+start with <code class="docutils literal"><span class="pre">newName</span></code> -&gt; <code class="docutils literal"><span class="pre">create</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>var newName -&gt; this.newName</li>
+<li>create (newName) {</li>
+<li>Cut-and-paste from // Create a new to do</li>
+<li>let, arrow function, name: newName, this.newName</li>
+<li>Demonstrate it failing</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Refresh method</em>. Our CRUD operations finish by refreshing the list.
+Let&#8217;s copy <code class="docutils literal"><span class="pre">renderToDos</span></code> into a new method:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Copy-and-paste renderToDos</p>
+</li>
+<li><p class="first">Arrow function</p>
+</li>
+<li><p class="first">Get rid of intermediate todos = and paste directly</p>
+</li>
+<li><p class="first">todoList.find -&gt; this.todoList.find</p>
+</li>
+<li><p class="first">template -&gt; this.template</p>
+</li>
+<li><p class="first">Add a this.todoList and this.template</p>
+</li>
+<li><p class="first">Replace <code class="docutils literal"><span class="pre">refreshToDos()</span></code> with <code class="docutils literal"><span class="pre">this.refresh()</span></code></p>
+</li>
+<li><p class="first">Hook up to event handler:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Event</span> <span class="n">handlers</span>
+<span class="n">this</span><span class="o">.</span><span class="n">newName</span><span class="o">.</span><span class="n">change</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="n">this</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">newName</span><span class="o">.</span><span class="n">val</span><span class="p">()));</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Delete</em>. Bind for event and call a method.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Event handler:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>this.todoList.on(&#39;click&#39;, &#39;.delete&#39;, (evt) =&gt; {
+    this.delete($(evt.target).closest(&#39;li&#39;)[0].id);
+});
+</pre></div>
+</div>
+</li>
+<li><p class="first">Make a delete method, passed in todoId, arrow function</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<ul>
+<li><p class="first"><em>Editing</em>. Close any currently-editing and open this one
+for editing:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Cut and paste existing handler</li>
+<li>this.todoList</li>
+<li>arrow function (evt)</li>
+<li>$(this) -&gt; $(evt.target)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Edit</em>. Make an event listener that calls a method:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Cut and paste existing handler</p>
+</li>
+<li><p class="first">this.todoList</p>
+</li>
+<li><p class="first">Arrow function evt</p>
+</li>
+<li><p class="first">$(this) -&gt; $(evt.target) in <em>both</em> places</p>
+</li>
+<li><p class="first">var -&gt; let</p>
+</li>
+<li><p class="first">Move $.ajax to method, leaving behind this.update(todoId, data)</p>
+<blockquote>
+<div><ul class="simple">
+<li>.done(() =&gt; this.refresh());</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>ES6 template strings</em>. Switch to multi-line template strings:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Add a renderToDo(todo) method</p>
+</li>
+<li><p class="first">return string literal</p>
+</li>
+<li><p class="first">Copy &lt;li&gt; contents into it</p>
+</li>
+<li><p class="first">Replace todos[i] with todo</p>
+</li>
+<li><p class="first">Change 3 syntax to ${}</p>
+</li>
+<li><p class="first">Change render()</p>
+<blockquote>
+<div><ul class="simple">
+<li>this.todoList.html()</li>
+<li>Inside there</li>
+<li>data[&#8216;objects&#8217;].map(todo =&gt; this.renderTodo(todo))</li>
+<li>.join(&#8216;n&#8217;)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Remove tmpl</em>. It&#8217;s not used:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Remove &lt;script&gt; template from index.html</li>
+<li>&lt;ul id=&#8221;todoList&#8221; class=&#8221;list-group&#8221;&gt;&lt;/ul&gt;</li>
+<li>Remove tmpl.js</li>
+<li>Remove import</li>
+<li>Remove this.tmpl</li>
+<li>Remove function refreshToDos</li>
+<li>Call this.render instead of refreshTodos</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/posts/pylyglot/todo_pythonic_js/';
+        var disqus_title = 'Pythonic JavaScript for ToDoMVC';
+        var disqus_url = 'http://pauleveritt.github.io/posts/pylyglot/todo_pythonic_js/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>

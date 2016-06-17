@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>TDD for ToDoMVC &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav class="ss4header navbar navbar-dark bg-inverse navbar-fixed-top">
+    <ul class="brand nav navbar-nav">
+        <li class="nav-item">
+            <a href="../../../">
+                <img src="../../../_static/headshot-closeup.jpg"
+                     class="img-circle" alt="Logo"/>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../../">Paul Everitt</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" action="../../../search/" method="get">
+                <input class="form-control form-control-sm" placeholder="Search..."
+                       name="q" type="text">
+                <input type="hidden" name="check_keywords" value="yes"/>
+                <input type="hidden" name="area" value="default"/>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<article class="ss4article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="heading text-center">
+                        <h2>TDD for ToDoMVC</h2>
+                        
+                        
+
+                        <nav id="navigation" class="navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Articles</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Polyglot Python with PyCharm</a>
+                                </li>
+
+                            </ol>
+
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../todo_pythonic_js/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../docker_intro/">Next</a>
+                                </li>
+                            </ul>
+
+                            
+                        </nav>
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="tdd-for-todomvc">
+<h1>TDD for ToDoMVC<a class="headerlink" href="#tdd-for-todomvc" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/articles/pylyglot/todo_tdd">Source code</a></p>
+<p>In <a class="reference internal" href="../jsdom/"><span class="doc">DOM TDD with JSDOM</span></a> we saw using Mocha and Chai for frontend unit
+tests, with jsdom as a fake &#8220;browser&#8221;, to let jQuery work. Let&#8217;s write
+some tests for our ToDoMVC frontend.</p>
+<div class="section" id="id1">
+<h2>Source Code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><em>Install dependencies</em>. We need mocha, chai, and jsdom:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save-dev mocha chai jsdom
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Small first test</em>. Let&#8217;s make a file <code class="docutils literal"><span class="pre">tests.js</span></code> with one test:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">describe</span><span class="p">,</span> <span class="nx">it</span><span class="p">,</span> <span class="nx">beforeEach</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mocha&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">expect</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;chai&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ToDos</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;ToDo&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should import&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">ToDos</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>PyCharm run configuration</em>. Make a <code class="docutils literal"><span class="pre">Mocha</span></code> run configuration,
+pointed at this <code class="docutils literal"><span class="pre">tests</span></code> file, with <code class="docutils literal"><span class="pre">Extra</span> <span class="pre">Mocha</span> <span class="pre">options</span></code> set to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">compilers</span> <span class="n">js</span><span class="p">:</span><span class="n">babel</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">register</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Run it</em>.</p>
+</li>
+<li><p class="first"><em>Add test setup</em>. Make a function inside <code class="docutils literal"><span class="pre">describe</span></code> to setup each
+test:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">        &lt;input id=&quot;newName&quot;/&gt;</span>
+<span class="sb">        &lt;ul id=&quot;todoList&quot;&gt;&lt;/ul&gt;</span>
+<span class="sb">        `</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Avoid confusion, just reset these. Each test has to set.</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Helper module</em>. jQuery wants some globals before import. Let&#8217;s
+make a <code class="docutils literal"><span class="pre">helper.js</span></code> module which we import before any other
+imports:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">jsdom</span> <span class="nx">from</span> <span class="s1">&#39;jsdom&#39;</span><span class="p">;</span>
+<span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
+<span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Import helper.js</em>.</p>
+</li>
+<li><p class="first"><em>Add tests</em>. Add, one-by-one, each of the tests:</p>
+<div class="literal-block-wrapper container" id="todomvc-tdd-tests-js">
+<div class="code-block-caption"><span class="caption-text">ToDoMVC TDD tests.js</span><a class="headerlink" href="#todomvc-tdd-tests-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="s1">&#39;./helper&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">describe</span><span class="p">,</span> <span class="nx">it</span><span class="p">,</span> <span class="nx">beforeEach</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mocha&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">expect</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;chai&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ToDos</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;ToDo&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">sampleData</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">}</span>
+    <span class="p">];</span>
+    <span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">            &lt;input id=&quot;newName&quot;/&gt;</span>
+<span class="sb">            &lt;ul id=&quot;todoList&quot;&gt;&lt;/ul&gt;</span>
+<span class="sb">            `</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Avoid confusion, just reset these. Each test has to set.</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should import&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">ToDos</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with a ul and no li&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoList&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoList li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should do an initial render&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">().</span><span class="nx">resolve</span><span class="p">({</span><span class="nx">objects</span><span class="o">:</span> <span class="nx">sampleData</span><span class="p">});</span>
+        <span class="k">new</span> <span class="nx">ToDos</span><span class="p">();</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoList li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="nx">sampleData</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should delete an item&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">().</span><span class="nx">resolve</span><span class="p">({</span><span class="nx">objects</span><span class="o">:</span> <span class="nx">sampleData</span><span class="p">});</span>
+        <span class="kd">let</span> <span class="nx">todos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ToDos</span><span class="p">();</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoList li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="nx">sampleData</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+        <span class="c1">// Wire up $.ajax to simulate HTTP DELETE, then $.get to return</span>
+        <span class="c1">// only one item</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">().</span><span class="nx">resolve</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">().</span><span class="nx">resolve</span><span class="p">({</span>
+            <span class="nx">objects</span><span class="o">:</span> <span class="p">[</span><span class="nx">sampleData</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="p">});</span>
+        <span class="nx">todos</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todoList li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="nx">sampleData</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">});</span>
+
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pauleveritt';
+        var disqus_identifier = '/posts/pylyglot/todo_tdd/';
+        var disqus_title = 'TDD for ToDoMVC';
+        var disqus_url = 'http://pauleveritt.github.io/posts/pylyglot/todo_tdd/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer section-->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-lg-center">
+                <ul>
+                    <li><a href="https://github.com/pauleveritt">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                    </a></li>
+                </ul>
+                &copy; Copyright 2015, Paul Everitt.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+    URL_ROOT:    '../../../',
+    VERSION:     '',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '',
+    HAS_SOURCE:  true
+  };
+</script>
+
+
+</body>
+</html>
