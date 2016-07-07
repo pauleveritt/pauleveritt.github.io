@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Productivity &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../">
+        <img src="../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Productivity</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../">Parent Productive Python with PyCharm</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../running/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../debugging/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="productivity">
+<h1>Productivity<a class="headerlink" href="#productivity" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Note that this somewhat follows Getting Started Productivity screencast</li>
+</ul>
+<div class="section" id="data-models">
+<h2>Data Models<a class="headerlink" href="#data-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Used as an excuse to show Live Templates and Quick Fixes</li>
+<li>Create models.py</li>
+<li>Use Cmd-J main to make a main block with <code class="docutils literal"><span class="pre">populate()</span></code> replacing
+<code class="docutils literal"><span class="pre">pass</span></code></li>
+<li>Alt-Enter to generate <code class="docutils literal"><span class="pre">populate_todos</span></code></li>
+<li>Add global <code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">[]</span></code> and have populate_tpdps <code class="docutils literal"><span class="pre">print(todos)</span></code></li>
+<li>Right-click to run it</li>
+<li>Show the live templates and quick fixes in Preferences</li>
+</ul>
+</div>
+<div class="section" id="todo-dicts">
+<h2>Todo Dicts<a class="headerlink" href="#todo-dicts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Used as an excuse for more intentions, plus quick documentation</li>
+<li>Change populate_todos to append <code class="docutils literal"><span class="pre">{&quot;id&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;First&quot;}</span></code></li>
+<li>Ctrl-R to re-run</li>
+<li>Use intention to change from dict literal to dict constructor</li>
+<li>Add a line in __main__ to join a formatted string representation
+of the list</li>
+<li>Explain autocomplete of .format, with quick documentation</li>
+<li>TODO why does .format external documentation not go to the correct thing?</li>
+<li>Ctrl-R to re-run</li>
+<li>Remind them to run Reformat Code</li>
+</ul>
+</div>
+<div class="section" id="todo-class">
+<h2>Todo Class<a class="headerlink" href="#todo-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Excuse to run some refactorings</li>
+<li>Make class ToDo (yes, should be Todo, will use rename later)</li>
+<li>Use autocomplete to complete __init__</li>
+<li>Use navigation to jump back inside the constructor</li>
+<li>Add <code class="docutils literal"><span class="pre">name</span></code> to constructor, then code intention for <code class="docutils literal"><span class="pre">Add</span> <span class="pre">field</span> <span class="pre">name</span> <span class="pre">to</span>
+<span class="pre">class</span> <span class="pre">ToDo</span></code></li>
+<li>Assign self.id from random.randint, using PyCharm to generate import</li>
+<li>Make a __str__ with .format from code at bottom and explain PyCharm knows
+special methods like __init__ etc.</li>
+<li>Change code at bottom to .join(str(todo)) for all in list</li>
+<li>Reload browser</li>
+<li>Add from models import ToDo in app.py</li>
+<li>We change our mind on ToDo, refactor rename to Todo</li>
+<li>Show that it changes not just in the one file, but everywhere</li>
+<li>Re-run Ctrl-R</li>
+</ul>
+</div>
+<div class="section" id="list-todos">
+<h2>List Todos<a class="headerlink" href="#list-todos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Excuse to show deeper refactorings, plus richer warnings</li>
+<li>Add a class method <code class="docutils literal"><span class="pre">list</span></code> to return the todos, plus refactor the
+string representation</li>
+<li>Add <code class="docutils literal"><span class="pre">def</span> <span class="pre">list(self):</span> <span class="pre">return</span> <span class="pre">todos</span></code></li>
+<li>PyCharm warns that this can be a static method, do the quick fix</li>
+<li>In __str__, Refactor Extract the formatting into another method
+<code class="docutils literal"><span class="pre">display</span></code></li>
+<li>Then, in <code class="docutils literal"><span class="pre">display</span></code>, use extend selection to select the string,
+then Extract into a field in the Todo constructor</li>
+<li>Wire into main block</li>
+<li>Ctrl-R</li>
+</ul>
+</div>
+<div class="section" id="get-single-todo">
+<h2>Get Single Todo<a class="headerlink" href="#get-single-todo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Excuse to show moving lines up/down</li>
+<li>Add a <code class="docutils literal"><span class="pre">get_id</span></code> static method, after __init__</li>
+<li>Wire it into main</li>
+<li>Ctrl-R to re-run</li>
+<li>Decide we want it after <code class="docutils literal"><span class="pre">def</span> <span class="pre">list</span></code></li>
+<li>Extend selection, then use move lines to move down</li>
+<li>Also, re-arrange assignments in constructor</li>
+<li>Ctrl-R</li>
+</ul>
+</div>
+<div class="section" id="web-list-and-show">
+<h2>Web List and Show<a class="headerlink" href="#web-list-and-show" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Excuse to show some more warnings</li>
+<li>First, explain the style of use-it-then-quick-fix-import</li>
+<li>Change the main block to call <code class="docutils literal"><span class="pre">populate_todos()</span></code>, quick fix
+to generate the import</li>
+<li>In home_page use Language Injection in returned string and
+add <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/todos/&quot;&gt;Todos&lt;/a&gt;</span></code></li>
+<li>Re-run in browser to confirm</li>
+<li>Use Cmd-J route to Live Template Flask a route for show_todo</li>
+<li>Put in an error in the route specification, show how PyCharm spots it</li>
+<li>Also, forget to put in the int:todo_id, triggering a problem later</li>
+</ul>
+</div>
+<div class="section" id="jinja2-templates">
+<h2>Jinja2 Templates<a class="headerlink" href="#jinja2-templates" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Excuse to show Emmet and Move Refactoring</li>
+<li></li>
+</ul>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>

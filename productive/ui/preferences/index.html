@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Managing Requirements &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Managing Requirements</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Parent Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Parent Project and Editor UI</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../start_vc/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../rename_file/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="managing-requirements">
+<h1>Managing Requirements<a class="headerlink" href="#managing-requirements" title="Permalink to this headline">¶</a></h1>
+<p>We forgot to add Flask to our <code class="docutils literal"><span class="pre">requirements.txt</span></code> file. In this step we
+let PyCharm do this for us, while showing the IDE&#8217;s <code class="docutils literal"><span class="pre">Preferences</span></code>
+window.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Open PyCharm&#8217;s Preferences with <code class="docutils literal"><span class="pre">PyCharm</span> <span class="pre">-&gt;</span> <span class="pre">Preferences</span></code> (on Mac),
+or use <code class="docutils literal"><span class="pre">Cmd-,</span></code> (command comma) as a shortcut.</p>
+</li>
+<li><p class="first">Click on <code class="docutils literal"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">Python</span> <span class="pre">Integrated</span> <span class="pre">Tools</span></code>.</p>
+</li>
+<li><p class="first">Note the first field <code class="docutils literal"><span class="pre">Package</span> <span class="pre">requirements</span> <span class="pre">file</span></code> is pointed to our
+<code class="docutils literal"><span class="pre">requirements.txt</span></code>.</p>
+</li>
+<li><p class="first">While in Preferences, click on <code class="docutils literal"><span class="pre">Project</span> <span class="pre">-&gt;</span> <span class="pre">Project</span> <span class="pre">Interpreter</span></code>. Note
+that <code class="docutils literal"><span class="pre">SQLAlchemy</span></code> is installed. It was a dependency of
+<code class="docutils literal"><span class="pre">flask-sqlalchemy</span></code>. You can also click <code class="docutils literal"><span class="pre">+</span></code> to add new packages
+via PyCharm.</p>
+</li>
+<li><p class="first">To the far right of <code class="docutils literal"><span class="pre">Project</span> <span class="pre">Interpreter</span></code>, click on the gear, then choose
+<code class="docutils literal"><span class="pre">Add</span> <span class="pre">Remote</span></code>. Note the options.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Cancel</span></code> to dismiss the preferences.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">epc.py</span></code>, click on <code class="docutils literal"><span class="pre">from</span> <span class="pre">flask</span> <span class="pre">import</span> <span class="pre">Flask</span></code>.</p>
+</li>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Alt-Enter</span></code> and use the quick fix to
+<a class="reference external" href="https://www.jetbrains.com/help/pycharm/2016.1/populating-dependencies-management-files.html">add Flask to the requirements</a>.
+<em>TODO This is unreliable.</em></p>
+</li>
+<li><p class="first">Open <code class="docutils literal"><span class="pre">requirements.txt</span></code> and see the new entry. The file should now look
+like this:</p>
+<div class="literal-block-wrapper container" id="requirements-txt">
+<div class="code-block-caption"><span class="caption-text">requirements.txt</span><a class="headerlink" href="#requirements-txt" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flask</span><span class="o">-</span><span class="n">sqlalchemy</span>
+<span class="n">flask</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>In this we looked primarily at preferences:</p>
+<ul class="simple">
+<li><em>Preferences dialog</em>. PyCharm has a visual UI for managing settings with
+lots of stuff in it. LOTS.</li>
+<li><em>Packaging</em>. PyCharm can hook up to Python packaging, with two places in
+preferences that make the connection.</li>
+<li><em>Quick Fix</em>. We let PyCharm automate the work of putting a dependency
+into the requirements file.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Can the Quick Fix be used to pin the version in the <code class="docutils literal"><span class="pre">requirements.txt</span></code>?</li>
+<li>Why do we specify the test runner in the Preferences?</li>
+<li>Can you use search when moving through the Preferences?</li>
+<li>When installing a Python package via Project Interpreter preferences,
+can you simultaneously record it in the <code class="docutils literal"><span class="pre">requirements.txt</span></code>?</li>
+<li><code class="docutils literal"><span class="pre">flask</span></code> is a dependency of <code class="docutils literal"><span class="pre">flask-sqlalchemy</span></code>, per the latter&#8217;s
+<a class="reference external" href="https://github.com/mitsuhiko/flask-sqlalchemy/blob/master/setup.py#L32">setup.py dependencies</a>.
+Does that mean we didn&#8217;t have to list it in <code class="docutils literal"><span class="pre">requirements.txt</span></code>?</li>
+</ul>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>
