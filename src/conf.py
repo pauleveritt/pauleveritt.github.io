@@ -257,7 +257,7 @@ html_theme_options = {
     'montage': '_static/montage.jpg',
     'navigation': [
         {'title': 'Blog', 'link': '/blog/'},
-        {'title': 'Polyglot', 'link': '/polyglot/'},
+        {'title': 'Series', 'link': '/series/'},
         {'title': 'About', 'link': '/about/'}
     ],
     'css_files': [
