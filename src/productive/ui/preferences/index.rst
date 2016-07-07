@@ -37,7 +37,7 @@ Steps
    like this:
 
    .. literalinclude:: requirements.txt
-
+    :caption: requirements.txt
 
 Analysis
 ========

@@ -5,12 +5,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return 'Hello World!'
+    return 'Hello World! <a href="">Todos</a>'
 
 
-@appx.route('/todo')
-def list_todos ():
-    x = 1
+@app.route('/todo')
+def list_todos():
     return 'Todos List'
 
 

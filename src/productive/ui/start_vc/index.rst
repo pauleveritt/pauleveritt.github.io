@@ -36,8 +36,11 @@ Steps
 #. In the message about adding unversioned files, click the ``Cancel``
    link.
 
-#. In ``requirements.txt``, add a line for ``flask-sqlalchemy`` and save
-   the file with ``File -> Save All``.
+#. In ``requirements.txt``, add a line for ``flask-sqlalchemy``. The
+   file should look like this:
+
+   .. literalinclude:: requirements.txt
+    :caption: requirements.txt
 
 #. Close ``requirements.txt`` by clicking the ``x`` on the tab.
 

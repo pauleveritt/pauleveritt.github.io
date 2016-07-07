@@ -26,4 +26,4 @@ Tasks
     start_vc/index.rst
     preferences/index.rst
     rename_file/index.rst
-    gutters/index.rst
+    list_todos/index.rst

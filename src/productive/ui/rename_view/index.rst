@@ -42,6 +42,7 @@ Steps
 #. Afterwards, your ``epc.py`` file should look like this:
 
    .. literalinclude:: epc.py
+    :caption: epc.py
     :language: py
     :emphasize-lines: 6-8
 
