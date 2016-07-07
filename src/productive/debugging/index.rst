@@ -1,6 +1,6 @@
-================
-Debugging Python
-================
+=========
+Debugging
+=========
 
 Switch to Master Template
 =========================

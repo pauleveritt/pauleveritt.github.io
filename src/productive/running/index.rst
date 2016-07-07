@@ -7,6 +7,12 @@ Running Python Code
     The starting point for this section is the last task in
     the :doc:`../ui/index` section.
 
+TODO
+====
+
+- Need to add using the Terminal, not just the Console...perhaps
+  combine in the Console?
+
 Add Show Todo Route
 ===================
 

@@ -23,7 +23,7 @@ Steps
 
 #. Click it again to re-open.
 
-#. In the Project Tool Window toolbar, click the TODO Image collapse button.
+#. In the Project Tool Window toolbar, click the collapse button (|collapse|).
 
 #. Click the ``epc`` folder to expand/open it.
 
@@ -48,24 +48,30 @@ Steps
 
 #. Reload your browser to confirm all is well.
 
+.. |COLLAPSE| image:: https://www.jetbrains.com/help/img/idea/icon_collapse_all_on_title_bar.png
+    :scale: 300
+
+
 Analysis
 ========
 
 In this task we made a small change, but used that change to explore
 much of the PyCharm UI.
 
-- The editor has tabs which can be closed (plus lots more that we'll see
-  later.)
+- *Close tabs*. The editor has tabs which can be closed (plus lots more
+  that we'll see later.)
 
-- The IDE has "tool windows" that are placed on the left, bottom, and right
+- *Placement*. The IDE has "tool windows" that are placed on the left,
+  bottom, and right.
 
-- These tool windows can be toggled open and closed
+- *Toggle*. These tool windows can be toggled open and closed.
 
-- Inside the window, each tool has its own little UI (toolbars, tabs, etc.)
+- *Mini-UI*. Inside the window, each tool has its own little UI (toolbars,
+  tabs, etc.)
 
-- The Project tool is pretty important
+- *Files are good*. The Project tool is pretty important, obviously.
 
-- The Editor
+- *Editor tabs*. The Editor manages files in one or more tabs.
 
 Extra Credit
 ============
@@ -81,4 +87,5 @@ Extra Credit
 
 #. In the Project tool, the ``templates`` directory is a purple. Why?
 
+#. Can you have more than one tab visible at once?
 

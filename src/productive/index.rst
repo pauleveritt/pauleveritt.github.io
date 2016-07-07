@@ -24,5 +24,9 @@ PyCharm, using a number of PyCharm features.
     ui/index.rst
     running/index.rst
     productivity/index.rst
+    debugging/index.rst
+    navigation/index.rst
+    testing/index.rst
+    database/index.rst
 
 
