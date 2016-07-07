@@ -33,7 +33,11 @@ Steps
    `add Flask to the requirements <https://www.jetbrains.com/help/pycharm/2016.1/populating-dependencies-management-files.html>`_.
    *TODO This is unreliable.*
 
-#. Open ``requirements.txt`` and see the new entry.
+#. Open ``requirements.txt`` and see the new entry. The file should now look
+   like this:
+
+   .. literalinclude:: requirements.txt
+
 
 Analysis
 ========
@@ -60,4 +64,7 @@ Extra Credit
 
 - When installing a Python package via Project Interpreter preferences,
   can you simultaneously record it in the ``requirements.txt``?
-å
+
+- ``flask`` is a dependency of ``flask-sqlalchemy``, per the latter's
+  `setup.py dependencies <https://github.com/mitsuhiko/flask-sqlalchemy/blob/master/setup.py#L32>`_.
+  Does that mean we didn't have to list it in ``requirements.txt``?

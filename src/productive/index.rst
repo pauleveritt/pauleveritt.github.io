@@ -15,6 +15,12 @@ using the most PyCharmic techniques possible?
 Here is that tutorial. In it, we construct a Flask application, in
 PyCharm, using a number of PyCharm features.
 
+TODO
+====
+
+- In each step, provide a link to the GitHut URL for the code in
+  that step.
+
 .. toctree::
     :maxdepth: 1
 
@@ -28,5 +34,3 @@ PyCharm, using a number of PyCharm features.
     navigation/index.rst
     testing/index.rst
     database/index.rst
-
-
