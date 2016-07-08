@@ -50,7 +50,6 @@ Steps
 #. Reload your browser to confirm all is well.
 
 .. |COLLAPSE| image:: https://www.jetbrains.com/help/img/idea/icon_collapse_all_on_title_bar.png
-    :scale: 300
 
 
 Analysis

@@ -40,7 +40,7 @@ Add Todo Views
 
 - We decide we want to go run ``models.py`` to confirm that add works
 
-- In ``app.py`, click on Todo, Cmd-B
+- In ``app.py``, click on Todo, Cmd-B
 
 - Put a dummy implementation in main block
 
