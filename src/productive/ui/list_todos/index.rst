@@ -16,7 +16,7 @@ Steps
 
    .. code-block:: python
 
-        @appx.route('/todo')       # Error
+        @appx.route('/todo/')       # Error
         def list_todos() :         # Warning
             x = 1                  # Warning
             return 'Todos List'
@@ -50,7 +50,7 @@ Steps
    Click the ``+`` to expand.
 
 #. Add a link to the new route by changing ``def home_page`` to return
-   ``'Hello World! <a href="">Todos</a>'``. ``app.py`` should now look
+   ``'Hello World! <a href="/todo/">Todos</a>'``. ``app.py`` should now look
    like this:
 
    .. literalinclude:: app.py

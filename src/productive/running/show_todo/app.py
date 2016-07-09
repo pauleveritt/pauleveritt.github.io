@@ -13,5 +13,9 @@ def list_todos():
     return 'Todos List'
 
 
+@app.route('/todo/<todo_id>')
+def show_todo(todo_id):
+    return 'ToDo {todo_id}'.format(todo_id=todo_id)
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -2,7 +2,7 @@
 List of Todos
 =============
 
-- Use this as an excuse to show the Python Console
+- Use this as an excuse to show the Python Console *and* Console
 
 - Add a global todos list with a few entries
 
