@@ -19,7 +19,7 @@ Steps
         @appx.route('/todo/')       # Error
         def list_todos() :         # Warning
             x = 1                  # Warning
-            return 'Todos List'
+            return 'Todo List'
 
 #. Note the traceback in the ``Run`` tool window.
 

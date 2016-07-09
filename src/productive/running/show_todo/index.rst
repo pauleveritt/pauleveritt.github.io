@@ -68,10 +68,17 @@ Steps
 #. In the Run Tool window, close the second tab by right-clicking on it
    and choosing ``Close Tab``.
 
+#. One last housekeeping: we need a web link to get to this view. Change
+   ``list_todos`` to return a link to a todo page:
+
+    .. code-block:: python
+        return 'Todo List <a href="/todo/1">First Todo</a>'
+
+
 #. Our ``app.py`` file should match the following:
 
    .. literalinclude:: app.py
-    :caption: app.py
+    :caption: app.py in Show Todo
     :language: py
 
 

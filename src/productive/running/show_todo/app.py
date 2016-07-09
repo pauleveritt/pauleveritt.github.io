@@ -10,7 +10,7 @@ def home_page():
 
 @app.route('/todo/')
 def list_todos():
-    return 'Todos List'
+    return 'Todo List <a href="/todo/1">First Todo</a>'
 
 
 @app.route('/todo/<todo_id>')
