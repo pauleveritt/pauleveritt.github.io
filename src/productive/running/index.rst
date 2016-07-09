@@ -7,6 +7,9 @@ Running Python Code
     The starting point for this section is the last task in
     the :doc:`../ui/index` section.
 
+Tasks
+=====
+
 
 .. toctree::
     :maxdepth: 1

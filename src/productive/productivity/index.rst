@@ -2,26 +2,22 @@
 Productivity
 ============
 
-- Note that this somewhat follows Getting Started Productivity screencast
+We've now seen the basics of the PyCharm UI and how to run Python code
+in the PyCharm IDE. Along the way, you saw some of the special ninja
+tricks for productive coding in PyCharm.
+
+This section focuses much more on faster, more accurate Python
+development by putting PyCharm to work. We'll cover more Live
+Templates, Code Intentions, refactorings, language injections, and more.
+
+Tasks
+=====
 
 
-Data Models
-===========
+.. toctree::
+    :maxdepth: 1
 
-- Used as an excuse to show Live Templates and Quick Fixes
-
-- Create models.py
-
-- Use Cmd-J main to make a main block with ``populate()`` replacing
-  ``pass``
-
-- Alt-Enter to generate ``populate_todos``
-
-- Add global ``todos = []`` and have populate_tpdps ``print(todos)``
-
-- Right-click to run it
-
-- Show the live templates and quick fixes in Preferences
+    data_model/index.rst
 
 Todo Dicts
 ==========

@@ -61,6 +61,13 @@ Steps
 
 #. Reload your browser and confirm that our data-driven approach works.
 
+#. Your ``app.py`` should match the following:
+
+   .. literalinclude:: app.py
+    :caption: app.py in List of Todos
+    :language: py
+
+
 Analysis
 ========
 
@@ -82,3 +89,5 @@ Extra Credit
 
 #. Is there a way to auto-activate your virtual environment when opening a Terminal?
 
+#. Python extra credit...will Python 3.6 make the ``.format()`` less
+   cumbersome? Passing in the keyword arguments is no fun.
