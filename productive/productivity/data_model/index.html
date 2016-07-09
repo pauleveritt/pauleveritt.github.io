@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-    <title>Rename View &mdash; Paul Everitt  documentation</title>
+    <title>Data Model &mdash; Paul Everitt  documentation</title>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,7 +77,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <section id="preamble">
                     <div class="text-xs-center">
-                        <h1>Rename View</h1>
+                        <h1>Data Model</h1>
                         
                         
 
@@ -91,7 +91,7 @@
                                 </li>
                                 <li>
                                     
-                                    <a href="../">Parent Project and Editor UI</a>
+                                    <a href="../">Parent Productivity</a>
                                 </li>
 
                             </ol>
@@ -102,7 +102,7 @@
                                     <a class="nav-link" href="../">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../start_vc/">Next</a>
+                                    <a class="nav-link" href="../../debugging/">Next</a>
                                 </li>
                             </ul>
 
@@ -117,92 +117,90 @@
                 <section id="content">
 
                     
-  <div class="section" id="rename-view">
-<h1>Rename View<a class="headerlink" href="#rename-view" title="Permalink to this headline">¶</a></h1>
-<p>Our view function is named <code class="docutils literal"><span class="pre">hello_world</span></code>. Let&#8217;s change it to <code class="docutils literal"><span class="pre">home_page</span></code>.
-Along the way, let&#8217;s get introduced to some of the UI elements in PyCharm.</p>
-<p><em>TODO Put in links to PyCharm docs as appropriate, probably the last thing
-done in the tutorial writing.</em></p>
+  <div class="section" id="data-model">
+<h1>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h1>
+<p>In our <a class="reference internal" href="../../running/list_of_todos/"><span class="doc">previous step</span></a> we made
+a list of todos, in a very simple manner. Let&#8217;s turn that into the
+start of a proper &#8220;models&#8221; file. As we do so, we&#8217;ll see some PyCharm
+productivity in action &#8211; Live Templates and Quick Fixes.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Close all the editor tabs by clicking the <code class="docutils literal"><span class="pre">x</span></code> for each.</p>
+<li><p class="first">Create the new file with <code class="docutils literal"><span class="pre">Cmd-N</span> <span class="pre">-&gt;</span> <span class="pre">PF</span> <span class="pre">-&gt;</span> <span class="pre">models</span></code>. The <code class="docutils literal"><span class="pre">PF</span></code> is a
+way PyCharm lets you narrow a list with camel case for the first
+letters in the words in a list.</p>
 </li>
-<li><p class="first">Click the red button in the left side of the <code class="docutils literal"><span class="pre">Run</span></code> window at the bottom.</p>
+<li><p class="first">Answer &#8220;Yes&#8221; to put under version control. PyCharm automatically adds
+<code class="docutils literal"><span class="pre">.py</span></code> to the given filename.</p>
 </li>
-<li><p class="first">Click the <code class="docutils literal"><span class="pre">4.</span> <span class="pre">Run</span></code> tab button in the bottom of the screen to close that
-tool window.</p>
+<li><p class="first">Enter <code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">[]</span></code> on the first line.</p>
 </li>
-<li><p class="first">Click the <code class="docutils literal"><span class="pre">1.</span> <span class="pre">Project</span></code> tab button in the left edge of window to collapse
-the Project Tool Window.</p>
+<li><p class="first">Use Live Templates to add a main run block with <code class="docutils literal"><span class="pre">Cmd-J</span> <span class="pre">main</span></code> then
+enter.</p>
 </li>
-<li><p class="first">Click it again to re-open.</p>
+<li><p class="first">When the cursor is under the <code class="docutils literal"><span class="pre">if</span></code>, type in <code class="docutils literal"><span class="pre">populate_todos()</span></code>.</p>
 </li>
-<li><p class="first">In the Project Tool Window toolbar, click the collapse button (<img alt="COLLAPSE" src="https://www.jetbrains.com/help/img/idea/icon_collapse_all_on_title_bar.png" />).</p>
+<li><p class="first">Back-arrow twice to move before the parentheses.</p>
 </li>
-<li><p class="first">Click the <code class="docutils literal"><span class="pre">epc</span></code> folder to expand/open it.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">Alt-Enter</span></code> to open the code intentions and choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">function</span>
+<span class="pre">'populate_todos'</span></code>.</p>
 </li>
-<li><p class="first">Double-click the <code class="docutils literal"><span class="pre">epc.py</span></code> file to open it in the editor.</p>
+<li><p class="first">With the Live Template prompt on <code class="docutils literal"><span class="pre">pass</span></code> in the new function, type
+<code class="docutils literal"><span class="pre">print(todos)</span></code>. Use autocompletion to finish <code class="docutils literal"><span class="pre">todos</span></code>.</p>
 </li>
-<li><p class="first">Click somewhere inside the symbol <code class="docutils literal"><span class="pre">hello_world</span></code>, putting the caret in that
-function name.</p>
+<li><p class="first">Run <code class="docutils literal"><span class="pre">models.py</span></code> by right-clicking in the editor and choosing
+<code class="docutils literal"><span class="pre">Run</span> <span class="pre">'models'</span></code>. You should now have 2 tabs in the Run Tool window.</p>
 </li>
-<li><p class="first">From the PyCharm menu, choose <code class="docutils literal"><span class="pre">Refactor</span> <span class="pre">-&gt;</span> <span class="pre">Rename</span></code>.</p>
+<li><p class="first">Find the other Live Templates and Code Intentions in Preferences:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">Cmd-,</span></code> to open Preferences</li>
+<li>Start typing <code class="docutils literal"><span class="pre">live</span></code> to filter preferences by the string <code class="docutils literal"><span class="pre">live</span></code></li>
+<li>Expand <code class="docutils literal"><span class="pre">Python</span></code> and click on some of the other Live Templates</li>
+<li>Clear the <code class="docutils literal"><span class="pre">live</span></code> filter and enter <code class="docutils literal"><span class="pre">intentions</span></code></li>
+<li>To the left of the search box, click the icon to collapse all</li>
+<li>Expand the <code class="docutils literal"><span class="pre">Python</span></code> section</li>
+</ul>
+</div></blockquote>
 </li>
-<li><p class="first">In the dialog box, change <code class="docutils literal"><span class="pre">hello_world</span></code> to <code class="docutils literal"><span class="pre">home_page</span></code> and click
-<code class="docutils literal"><span class="pre">Refactor</span></code>.</p>
-</li>
-<li><p class="first">In the next prompt, click the <code class="docutils literal"><span class="pre">Do</span> <span class="pre">Refactor</span></code> button.</p>
-</li>
-<li><p class="first">Afterwards, your <code class="docutils literal"><span class="pre">epc.py</span></code> file should look like this:</p>
-<div class="literal-block-wrapper container" id="epc-py">
-<div class="code-block-caption"><span class="caption-text">epc.py</span><a class="headerlink" href="#epc-py" title="Permalink to this code">¶</a></div>
-<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">models.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper container" id="models-py-in-data-model">
+<div class="code-block-caption"><span class="caption-text">models.py in Data Model</span><a class="headerlink" href="#models-py-in-data-model" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="n">todos</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">todos</span><span class="p">)</span>
 
-<span class="hll"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-</span><span class="hll"><span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
-</span><span class="hll">    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
-</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</li>
-<li><p class="first">Reload your browser to confirm all is well.</p>
 </li>
 </ol>
 </div>
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
-<p>In this task we made a small change, but used that change to explore
-much of the PyCharm UI.</p>
+<p>Now that we have two files, we can do more with PyCharm. We saw:</p>
 <ul class="simple">
-<li><em>Close tabs</em>. The editor has tabs which can be closed (plus lots more
-that we&#8217;ll see later.)</li>
-<li><em>Placement</em>. The IDE has &#8220;tool windows&#8221; that are placed on the left,
-bottom, and right.</li>
-<li><em>Toggle</em>. These tool windows can be toggled open and closed.</li>
-<li><em>Mini-UI</em>. Inside the window, each tool has its own little UI (toolbars,
-tabs, etc.)</li>
-<li><em>Files are good</em>. The Project tool is pretty important, obviously.</li>
-<li><em>Editor tabs</em>. The Editor manages files in one or more tabs.</li>
+<li><em>New File</em>. Letting PyCharm do the work for us when creating a new
+file, including registering with VCS.</li>
+<li><em>Live Templates</em>. PyCharm can automate some of the repetitive work,
+and you can even write your own.</li>
+<li><em>Quick Fixes</em>. Rather than stop what you are doing, create your
+function, then come back...go ahead and type it in a usage and
+let PyCharm make the function. Use it, then define it.</li>
 </ul>
 </div>
 <div class="section" id="extra-credit">
 <h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>What does the <code class="docutils literal"><span class="pre">1</span></code> in the <code class="docutils literal"><span class="pre">1.</span> <span class="pre">Project</span></code> tool window button indicate?</li>
-<li>How do you move a tool window button to another part of the screen?</li>
-<li>What are some ways you can close an editor tab besides clicking the
-<code class="docutils literal"><span class="pre">x</span></code>?</li>
-<li>How do you use the <code class="docutils literal"><span class="pre">Structure</span></code> tool?</li>
-<li>In the Project tool, the <code class="docutils literal"><span class="pre">templates</span></code> directory is a purple. Why?</li>
-<li>Can you have more than one tab visible at once?</li>
+<li>What directory does <code class="docutils literal"><span class="pre">New</span> <span class="pre">File</span></code> put the new file?</li>
+<li>Does the camel case trick work with more than just the first letter?</li>
+<li>How to do the placeholders work in Live Templates?</li>
+<li>Can you share Live Templates?</li>
 </ol>
 </div>
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-    <title>List Todos Route &mdash; Paul Everitt  documentation</title>
+    <title>Fix Typo &mdash; Paul Everitt  documentation</title>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,7 +77,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <section id="preamble">
                     <div class="text-xs-center">
-                        <h1>List Todos Route</h1>
+                        <h1>Fix Typo</h1>
                         
                         
 
@@ -91,7 +91,7 @@
                                 </li>
                                 <li>
                                     
-                                    <a href="../">Parent Project and Editor UI</a>
+                                    <a href="../">Parent Running Python Code</a>
                                 </li>
 
                             </ol>
@@ -99,10 +99,10 @@
                             
                             <ul class="nav navbar-nav pull-right">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../rename_file/">Previous</a>
+                                    <a class="nav-link" href="../show_todo/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../../running/">Next</a>
+                                    <a class="nav-link" href="../list_of_todos/">Next</a>
                                 </li>
                             </ul>
 
@@ -117,58 +117,43 @@
                 <section id="content">
 
                     
-  <div class="section" id="list-todos-route">
-<h1>List Todos Route<a class="headerlink" href="#list-todos-route" title="Permalink to this headline">¶</a></h1>
-<p>PyCharm&#8217;s editor allows, obviously, editing. But the left and right
-margins, aka the gutters, have rich functionality for helping you
-code. Let&#8217;s see these gutters in action by adding a second route.</p>
+  <div class="section" id="fix-typo">
+<h1>Fix Typo<a class="headerlink" href="#fix-typo" title="Permalink to this headline">¶</a></h1>
+<p>Dang, we put <code class="docutils literal"><span class="pre">ToDo</span></code> in the string response instead of <code class="docutils literal"><span class="pre">Todo</span></code>. Let&#8217;s
+fix that, while showing how the Run Tool window makes it easy to jump
+to run-time errors.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Open <code class="docutils literal"><span class="pre">app.py</span></code> in the editor, if it isn&#8217;t already opened.</p>
-</li>
-<li><p class="first">After the first route, add a second route with one error and two
-warnings:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@appx.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>       <span class="c1"># Error</span>
-<span class="k">def</span> <span class="nf">list_todos</span><span class="p">()</span> <span class="p">:</span>         <span class="c1"># Warning</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                  <span class="c1"># Warning</span>
-    <span class="k">return</span> <span class="s1">&#39;Todo List&#39;</span>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, change the <code class="docutils literal"><span class="pre">show_todo</span></code> return value to the following:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">xxxtodo_id</span><span class="p">)</span>
 </pre></div>
 </div>
+</div></blockquote>
 </li>
-<li><p class="first">Note the traceback in the <code class="docutils literal"><span class="pre">Run</span></code> tool window.</p>
+<li><p class="first">Close the editor tab for <code class="docutils literal"><span class="pre">app.py</span></code>.</p>
 </li>
-<li><p class="first">The editor&#8217;s right gutter has one red line (error) and two olive
-lines (warnings). Mouse over each of these to see the actual issue.</p>
+<li><p class="first">In your browser, click the links until you click on <code class="docutils literal"><span class="pre">First</span> <span class="pre">Todo</span></code>,
+which should produce an error.</p>
 </li>
-<li><p class="first">Correct the first warning, the extra space, with <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>
-(Reformat Code).</p>
+<li><p class="first">In PyCharm, find the last line in the traceback:</p>
 </li>
-<li><p class="first">Mouse over the <code class="docutils literal"><span class="pre">x</span></code> to see again the actual error.</p>
+</ol>
+<blockquote>
+<div>File &#8220;/Users/pauleveritt/projects/pycharm/epc2016/epc_tutorial/app.py&#8221;, line 18, in show_todo</div></blockquote>
+<ol class="arabic">
+<li><p class="first">Click on the blue-underlined filename to jump to line 18 in that file.</p>
 </li>
-<li><p class="first">Click on the <code class="docutils literal"><span class="pre">x</span></code>.</p>
+<li><p class="first">Change <code class="docutils literal"><span class="pre">`xxxtodo_id</span></code> to <code class="docutils literal"><span class="pre">todo_id</span></code>.</p>
 </li>
-<li><p class="first">Click on the lightbulb that pops up and choose <code class="docutils literal"><span class="pre">Remove</span> <span class="pre">statement</span></code>.</p>
+<li><p class="first">Reload the web page.</p>
 </li>
-<li><p class="first">Change <code class="docutils literal"><span class="pre">appx</span></code> to <code class="docutils literal"><span class="pre">app</span></code>.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">app.py</span></code> should now look match this:</p>
 </li>
-<li><p class="first">Not only are the 3 gutter warnings gone, but there is a green checkbox at
-top. (Mouse over it for more detail.)</p>
-</li>
-<li><p class="first">Right-click in the left gutter, where the line numbers are shown.</p>
-</li>
-<li><p class="first">In the popup, turn off &#8220;Show Line Numbers&#8221;.</p>
-</li>
-<li><p class="first">Repeat to turn line numbers back on.</p>
-</li>
-<li><p class="first">To the left of <code class="docutils literal"><span class="pre">def</span> <span class="pre">home_page</span></code>, click the <code class="docutils literal"><span class="pre">-</span></code> to collapse the block.
-Click the <code class="docutils literal"><span class="pre">+</span></code> to expand.</p>
-</li>
-<li><p class="first">Add a link to the new route by changing <code class="docutils literal"><span class="pre">def</span> <span class="pre">home_page</span></code> to return
-<code class="docutils literal"><span class="pre">'Hello</span> <span class="pre">World!</span> <span class="pre">&lt;a</span> <span class="pre">href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;'</span></code>. <code class="docutils literal"><span class="pre">app.py</span></code> should now look
-like this:</p>
-<div class="literal-block-wrapper container" id="app-py">
-<div class="code-block-caption"><span class="caption-text">app.py</span><a class="headerlink" href="#app-py" title="Permalink to this code">¶</a></div>
+<li><p class="first">Our <code class="docutils literal"><span class="pre">app.py</span></code> file should match the following:</p>
+<div class="literal-block-wrapper container" id="app-py-in-fix-typo">
+<div class="code-block-caption"><span class="caption-text">app.py in Fix Typo</span><a class="headerlink" href="#app-py-in-fix-typo" title="Permalink to this code">¶</a></div>
 <div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
@@ -181,8 +166,12 @@ like this:</p>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;Todo List&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo List &lt;a href=&quot;/todo/1&quot;&gt;First Todo&lt;/a&gt;&#39;</span>
 
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo_id</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -190,39 +179,23 @@ like this:</p>
 </div>
 </div>
 </li>
-<li><p class="first">In the <code class="docutils literal"><span class="pre">Run</span></code> window, click the green play arrow button to start the
-now-corrected Flask application.</p>
-</li>
-<li><p class="first">Reload browser and click on the <code class="docutils literal"><span class="pre">Todos</span></code> link.</p>
-</li>
 </ol>
 </div>
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
-<p>The PyCharm IDE does a lot of work for you, and reserves areas on the screen
-for interacting with you on that work. The gutters are part of this.</p>
+<p>In this short task we saw primarily how the tool window works.</p>
 <ul class="simple">
-<li><em>Code analysis</em>. PyCharm flags you when it finds something important.
-Errors and warnings are treated differently, showing up both in the
-gutter and in the editor. PyCharm Preferences can be used to configure
-these errors and warnings.</li>
-<li><em>Linting</em>. The code analysis is driven by PyCharm&#8217;s support for various
-Python linting tools, including &#8220;PEP8&#8221; style guide tools.</li>
-<li><em>Gutters</em>. PyCharm puts these gutters to more use. For example, the
-left gutter is used for breakpoints (as discussed in
-<a class="reference internal" href="../../debugging/"><span class="doc">Debugging</span></a>), favorites, bookmarks, etc.</li>
+<li><em>Jump to errors</em>. The Run Tool window helps by providing clickable
+links on exceptions, allowing you to easily jump to the line of an
+error, opening the file if necessary.</li>
 </ul>
 </div>
 <div class="section" id="extra-credit">
 <h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Delete the flask import line, then have PyCharm generate the import for you
-by clicking on <code class="docutils literal"><span class="pre">Flask(__name__)</span></code> and hitting <code class="docutils literal"><span class="pre">Alt-Enter</span></code>.</li>
-<li>What if you don&#8217;t want PEP8 issues to show up as warnings?</li>
-<li>Can you turn off line numbers only for one tab?</li>
-<li>Does the collapse/expand state survive closing and re-opening a file?
-Where is that information stored?</li>
-</ul>
+<ol class="arabic simple">
+<li>Can the Run Tool&#8217;s parsing of output cause problems?</li>
+<li>If your error is a SyntaxError, or a global name error, what happens?</li>
+</ol>
 </div>
 </div>
 

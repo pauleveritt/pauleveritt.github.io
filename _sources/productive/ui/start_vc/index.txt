@@ -40,7 +40,7 @@ Steps
    file should look like this:
 
    .. literalinclude:: requirements.txt
-    :caption: requirements.txt
+    :caption: requirements.txt for Start VC section
 
 #. Close ``requirements.txt`` by clicking the ``x`` on the tab.
 

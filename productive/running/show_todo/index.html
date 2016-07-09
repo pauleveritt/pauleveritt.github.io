@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Show Todo &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Show Todo</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Parent Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Parent Running Python Code</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../fix_typo/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="show-todo">
+<h1>Show Todo<a class="headerlink" href="#show-todo" title="Permalink to this headline">¶</a></h1>
+<p>We need a route for showing an individual todo. Let&#8217;s use this as a
+chance to show more about running Python code in PyCharm. Namely,
+let&#8217;s look more at PyCharm&#8217;s Run Configurations.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, let&#8217;s add a route, with help from PyCharm&#8217;s Live Templates.</p>
+</li>
+<li><p class="first">Let&#8217;s add the route using the LiveTemplate: <code class="docutils literal"><span class="pre">Cmd-J</span> <span class="pre">-&gt;</span> <span class="pre">route</span></code></p>
+</li>
+<li><p class="first">For the function name (when prompted by the red box), enter
+<code class="docutils literal"><span class="pre">show_todo</span></code> and press <code class="docutils literal"><span class="pre">enter</span></code>.</p>
+</li>
+<li><p class="first">The red box moves to the route string. Enter <code class="docutils literal"><span class="pre">/todo/&lt;todo_id&gt;</span></code> and
+press <code class="docutils literal"><span class="pre">enter</span></code> again to move to the end of <code class="docutils literal"><span class="pre">pass</span></code> in the function
+body.</p>
+</li>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Alt-Backspace</span></code> to delete to the beginning of the word.</p>
+</li>
+<li><p class="first">Enter <code class="docutils literal"><span class="pre">return</span> <span class="pre">'ToDo</span> <span class="pre">{todo_id}'.format()</span></code> for now.</p>
+</li>
+<li><p class="first">Note that PyCharm has a warning in <code class="docutils literal"><span class="pre">'/todo/&lt;todo_id&gt;'</span></code>. Mouse over
+the warning. It&#8217;s saying our function is missing a parameter. Smart
+PyCharm!</p>
+</li>
+<li><p class="first">Let&#8217;s correct that warning on the function, changing the function
+to <code class="docutils literal"><span class="pre">def</span> <span class="pre">show_todo(todo_id):</span></code>.</p>
+</li>
+<li><p class="first">Now for the return value. Using PyCharm&#8217;s autocompletion, put the
+cursor inside the parentheses for the <code class="docutils literal"><span class="pre">format()</span></code>. Press <code class="docutils literal"><span class="pre">t</span></code> and
+PyCharm suggests <code class="docutils literal"><span class="pre">todo_id</span></code>. Press <code class="docutils literal"><span class="pre">enter</span></code> to accept. Press <code class="docutils literal"><span class="pre">=t</span></code>
+then accept <code class="docutils literal"><span class="pre">todo_id</span></code> again.</p>
+</li>
+<li><p class="first">Our route should look like this:</p>
+<blockquote>
+<div></div></blockquote>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">4.</span> <span class="pre">Run</span></code> in the bottom of PyCharm to open the Run Tool
+window. Our Flask application should be running. If not, click
+the green play arrow in the Run Tool&#8217;s window.</p>
+</li>
+<li><p class="first">In PyCharm&#8217;s toolbar, near the top, click the green play arrow. Instead
+of running our application, PyCharm pops up a window warning us that
+it is already running. Why? Let&#8217;s take a look.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">Edit</span> <span class="pre">Configurations</span></code> to edit the <code class="docutils literal"><span class="pre">epc</span></code> run
+configuration.</p>
+</li>
+<li><p class="first">Near the top right, there is a checkbox for <code class="docutils literal"><span class="pre">Single</span> <span class="pre">instance</span> <span class="pre">only</span></code>. It
+is checked. Uncheck it and click <code class="docutils literal"><span class="pre">Ok</span></code> to save your changes.</p>
+</li>
+<li><p class="first">Now click the green play arrow in the toolbar again. A second tab opens
+in the Run Tool&#8217;s window, and Flask complains that another application is
+listening on that port. <em>That&#8217;s</em> why PyCharm created the run configuration
+with that checkbox set.</p>
+</li>
+<li><p class="first">Let&#8217;s clean up. First, <code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">Edit</span> <span class="pre">Configurations</span></code> and check the
+box beside <code class="docutils literal"><span class="pre">Single</span> <span class="pre">instance</span> <span class="pre">only</span></code>, then click <code class="docutils literal"><span class="pre">Ok</span></code> to save.</p>
+</li>
+<li><p class="first">In the Run Tool window, close the second tab by right-clicking on it
+and choosing <code class="docutils literal"><span class="pre">Close</span> <span class="pre">Tab</span></code>.</p>
+</li>
+<li><p class="first">One last housekeeping: we need a web link to get to this view. Change
+<code class="docutils literal"><span class="pre">list_todos</span></code> to return a link to a todo page:</p>
+<blockquote>
+<div></div></blockquote>
+</li>
+<li><p class="first">Our <code class="docutils literal"><span class="pre">app.py</span></code> file should match the following:</p>
+<div class="literal-block-wrapper container" id="app-py-in-show-todo">
+<div class="code-block-caption"><span class="caption-text">app.py in Show Todo</span><a class="headerlink" href="#app-py-in-show-todo" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World! &lt;a href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo List &lt;a href=&quot;/todo/1&quot;&gt;First Todo&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;ToDo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo_id</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>PyCharm doesn&#8217;t just run Python code. It provides a configurable, managed
+way to run your code in a smart output window.</p>
+<ul class="simple">
+<li><em>Run Configurations</em>. A list of different configurations for running
+some of your code, including settings.</li>
+<li><em>Run Tool Window</em>.  Like other tools in PyCharm, the Run Tool
+has a window with tabs for each run configuration that is running
+or has been run.</li>
+<li><em>Buttons and Shortcuts</em>. Running, stopping, and re-running can all
+happen from multiple places, including keyboard shortcuts.</li>
+</ul>
+<p>We also saw some other smart PyCharm help in action:</p>
+<ul class="simple">
+<li>Flask-aware Live Templates speed up common tasks, such as adding a route.</li>
+<li>PyCharm was smart about the Flask route parameter not appearing in the
+view function&#8217;s signature.</li>
+<li>Code Insight flagged us when we made mistakes.</li>
+<li>Code Completion helped us avoid extra (and error-prone) typing
+via autocomplete.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>What flavors of run configurations are supported in PyCharm
+Professional?</li>
+<li>Is there a special run configuration for Flask?</li>
+<li>How did we get this</li>
+<li>Can run configurations be shared?</li>
+<li>Does PyCharm use different configurations for running code versus
+debugging code?</li>
+<li>How do you clear all the lines of output in the run tool window?</li>
+<li>Did PyCharm have a Quick Fix for the route string warning?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>
