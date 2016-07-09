@@ -49,6 +49,14 @@ Steps
 
     - Expand the ``Python`` section
 
+#. Your ``models.py`` should match the following:
+
+   .. literalinclude:: models.py
+    :caption: models.py in Data Model
+    :language: py
+
+
+
 Analysis
 ========
 
