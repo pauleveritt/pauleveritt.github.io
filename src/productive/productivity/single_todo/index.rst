@@ -5,6 +5,9 @@ Single Todo
 Steps
 =====
 
+#. The constructor looks funny... ``self.title`` should be on the first line.
+   Click on that line and press ``Shift-Alt-Up`` to move the line up.
+
 
 
 #. Your ``app.py`` should match the following:
@@ -26,6 +29,9 @@ Analysis
 Extra Credit
 ============
 
+
+#. We also use ``Shift-Alt-Up`` to move a line up. Can we select an entire
+   method and move it, using ``Shift-Alt-Up``?
 
 
 

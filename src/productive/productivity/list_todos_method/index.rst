@@ -60,9 +60,6 @@ Steps
 #. PyCharm has added ``self.display_fmt`` to our constructor and changed
    the ``display`` property method to use it.
 
-#. The constructor looks funny... ``self.title`` should be on the first line.
-   Click on that line and press ``Shift-Alt-Up`` to move the line up.
-
 #. That's a lot. Let's re-run ``models.py`` with ``Ctrl-R`` to make sure
    it runs ok. *Make sure the models.py run configuration is selected.*
 
@@ -128,9 +125,6 @@ Extra Credit
 
 #. We use ``Alt-Up`` to extend the selection. Can this extend beyond
    the current line, to an entire block?
-
-#. We also use ``Shift-Alt-Up`` to move a line up. Can we select an entire
-   method and move it, using ``Shift-Alt-Up``?
 
 #. In Python, what's the difference between ``@classmethod`` and
    ``@staticmethod``?

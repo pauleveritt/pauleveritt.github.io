@@ -5,8 +5,8 @@ todos = []
 
 class Todo:
     def __init__(self, title):
-        self.title = title
         self.display_fmt = 'Todo {todo_id}'
+        self.title = title
         self.id = randint(1000, 9999)
 
     def __str__(self):
