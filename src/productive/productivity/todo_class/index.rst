@@ -25,14 +25,14 @@ Steps
      to clean that up later.
 
 #. Left-arrow back into the constructor, after self, and change it to
-   ``(self, name):``.
+   ``(self, title):``.
 
-#. With the cursor still on the ``e`` in ``name``, press ``Alt-Enter``.
+#. With the cursor still on the ``e`` in ``title``, press ``Alt-Enter``.
 
 
-#. Choose ``Add field 'name' to class ToDo`` from the Quick Fix list.
+#. Choose ``Add field 'title' to class ToDo`` from the Quick Fix list.
 
-#. With the red box outlining ``.name``, press enter to accept the
+#. With the red box outlining ``.title``, press enter to accept the
    suggested field name and jump to the end of the line.
 
 #. On the next line in the constructor, add ``self.id = randint(1000, 9999)``

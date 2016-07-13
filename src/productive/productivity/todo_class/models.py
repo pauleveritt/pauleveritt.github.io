@@ -2,7 +2,7 @@ todos = []
 
 
 def populate_todos():
-    todos.append(dict(id=1, name='First'))
+    todos.append(dict(id=1, title='First'))
 
 
 if __name__ == '__main__':

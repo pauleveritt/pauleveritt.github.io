@@ -14,7 +14,7 @@ Steps
 
    .. code-block:: python
 
-     todos.append({'id': 1, 'name': 'First'})
+     todos.append({'id': 1, 'title': 'First'})
 
 #. ``Ctrl-R`` to re-run ``models.py`` and confirm that it prints
    that dictionary.
@@ -26,7 +26,7 @@ Steps
 
    .. code-block:: python
 
-     todos.append({'id': 1, 'name': 'First'})
+     todos.append({'id': 1, 'title': 'First'})
 
 #. Confirm all is well with a ``Ctrl-R`` re-run.
 
