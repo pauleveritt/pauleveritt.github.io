@@ -71,7 +71,7 @@ Steps
    reloading the URL.
 
 #. Our ``app.py`` needs to get its ``todos`` from ``models.py``
-   instead of keeping its own list. Remove the ``todos = `` line
+   instead of keeping its own list. Remove the ``todos`` assignment line
    and add an import at the top:
 
     .. code-block:: python

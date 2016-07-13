@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 
 from models import populate_todos, Todo
 
@@ -7,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return 'Hello World! <a href="/todo/">Todos</a>'
+    return render_template('index.html', title='Home Page')
 
 
 @app.route('/todo/')

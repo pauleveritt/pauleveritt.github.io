@@ -67,7 +67,7 @@ Steps
    application.
 
 #. When the Run Tool window opens in the bottom, click the
-   ``http://127.0.0.1:5000/ `` hyperlink to open the Flask application in
+   ``http://127.0.0.1:5000/`` hyperlink to open the Flask application in
    a browser.
 
 Optional Configuration

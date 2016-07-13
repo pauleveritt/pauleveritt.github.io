@@ -22,11 +22,4 @@ Tasks
     todo_class/index.rst
     list_todos_method/index.rst
     single_todo/index.rst
-
-
-Jinja2 Templates
-================
-
-- Excuse to show Emmet and Move Refactoring
-
--
+    templates/index.rst
