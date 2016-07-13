@@ -87,7 +87,7 @@
                             <ol class="nav navbar-nav breadcrumb pull-left">
                                 <li>
                                     <strong>In:</strong>
-                                    <a href="../">Parent Productive Python with PyCharm</a>
+                                    <a href="../">Productive Python with PyCharm</a>
                                 </li>
 
                             </ol>
@@ -126,94 +126,13 @@ Templates, Code Intentions, refactorings, language injections, and more.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="data_model/">Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_dicts/">Todo Dicts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_class/">Todo Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_todos_method/">List Todos Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="single_todo/">Single Todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates/">Templates</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="todo-dicts">
-<h2>Todo Dicts<a class="headerlink" href="#todo-dicts" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Used as an excuse for more intentions, plus quick documentation</li>
-<li>Change populate_todos to append <code class="docutils literal"><span class="pre">{&quot;id&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;First&quot;}</span></code></li>
-<li>Ctrl-R to re-run</li>
-<li>Use intention to change from dict literal to dict constructor</li>
-<li>Add a line in __main__ to join a formatted string representation
-of the list</li>
-<li>Explain autocomplete of .format, with quick documentation</li>
-<li>TODO why does .format external documentation not go to the correct thing?</li>
-<li>Ctrl-R to re-run</li>
-<li>Remind them to run Reformat Code</li>
-</ul>
-</div>
-<div class="section" id="todo-class">
-<h2>Todo Class<a class="headerlink" href="#todo-class" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to run some refactorings</li>
-<li>Make class ToDo (yes, should be Todo, will use rename later)</li>
-<li>Use autocomplete to complete __init__</li>
-<li>Use navigation to jump back inside the constructor</li>
-<li>Add <code class="docutils literal"><span class="pre">name</span></code> to constructor, then code intention for <code class="docutils literal"><span class="pre">Add</span> <span class="pre">field</span> <span class="pre">name</span> <span class="pre">to</span>
-<span class="pre">class</span> <span class="pre">ToDo</span></code></li>
-<li>Assign self.id from random.randint, using PyCharm to generate import</li>
-<li>Make a __str__ with .format from code at bottom and explain PyCharm knows
-special methods like __init__ etc.</li>
-<li>Change code at bottom to .join(str(todo)) for all in list</li>
-<li>Reload browser</li>
-<li>Add from models import ToDo in app.py</li>
-<li>We change our mind on ToDo, refactor rename to Todo</li>
-<li>Show that it changes not just in the one file, but everywhere</li>
-<li>Re-run Ctrl-R</li>
-</ul>
-</div>
-<div class="section" id="list-todos">
-<h2>List Todos<a class="headerlink" href="#list-todos" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to show deeper refactorings, plus richer warnings</li>
-<li>Add a class method <code class="docutils literal"><span class="pre">list</span></code> to return the todos, plus refactor the
-string representation</li>
-<li>Add <code class="docutils literal"><span class="pre">def</span> <span class="pre">list(self):</span> <span class="pre">return</span> <span class="pre">todos</span></code></li>
-<li>PyCharm warns that this can be a static method, do the quick fix</li>
-<li>In __str__, Refactor Extract the formatting into another method
-<code class="docutils literal"><span class="pre">display</span></code></li>
-<li>Then, in <code class="docutils literal"><span class="pre">display</span></code>, use extend selection to select the string,
-then Extract into a field in the Todo constructor</li>
-<li>Wire into main block</li>
-<li>Ctrl-R</li>
-</ul>
-</div>
-<div class="section" id="get-single-todo">
-<h2>Get Single Todo<a class="headerlink" href="#get-single-todo" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to show moving lines up/down</li>
-<li>Add a <code class="docutils literal"><span class="pre">get_id</span></code> static method, after __init__</li>
-<li>Wire it into main</li>
-<li>Ctrl-R to re-run</li>
-<li>Decide we want it after <code class="docutils literal"><span class="pre">def</span> <span class="pre">list</span></code></li>
-<li>Extend selection, then use move lines to move down</li>
-<li>Also, re-arrange assignments in constructor</li>
-<li>Ctrl-R</li>
-</ul>
-</div>
-<div class="section" id="web-list-and-show">
-<h2>Web List and Show<a class="headerlink" href="#web-list-and-show" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to show some more warnings</li>
-<li>First, explain the style of use-it-then-quick-fix-import</li>
-<li>Change the main block to call <code class="docutils literal"><span class="pre">populate_todos()</span></code>, quick fix
-to generate the import</li>
-<li>In home_page use Language Injection in returned string and
-add <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/todos/&quot;&gt;Todos&lt;/a&gt;</span></code></li>
-<li>Re-run in browser to confirm</li>
-<li>Use Cmd-J route to Live Template Flask a route for show_todo</li>
-<li>Put in an error in the route specification, show how PyCharm spots it</li>
-<li>Also, forget to put in the int:todo_id, triggering a problem later</li>
-</ul>
-</div>
-<div class="section" id="jinja2-templates">
-<h2>Jinja2 Templates<a class="headerlink" href="#jinja2-templates" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to show Emmet and Move Refactoring</li>
-<li></li>
-</ul>
 </div>
 </div>
 

@@ -87,11 +87,11 @@
                             <ol class="nav navbar-nav breadcrumb pull-left">
                                 <li>
                                     <strong>In:</strong>
-                                    <a href="../../">Parent Productive Python with PyCharm</a>
+                                    <a href="../../">Productive Python with PyCharm</a>
                                 </li>
                                 <li>
                                     
-                                    <a href="../">Parent Productivity</a>
+                                    <a href="../">Productivity</a>
                                 </li>
 
                             </ol>
@@ -102,7 +102,7 @@
                                     <a class="nav-link" href="../">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../../debugging/">Next</a>
+                                    <a class="nav-link" href="../todo_dicts/">Next</a>
                                 </li>
                             </ul>
 
@@ -140,13 +140,13 @@ enter.</p>
 </li>
 <li><p class="first">When the cursor is under the <code class="docutils literal"><span class="pre">if</span></code>, type in <code class="docutils literal"><span class="pre">populate_todos()</span></code>.</p>
 </li>
-<li><p class="first">Back-arrow twice to move before the parentheses.</p>
+<li><p class="first">Add another line under that one, in the <code class="docutils literal"><span class="pre">if</span></code> block, with
+<code class="docutils literal"><span class="pre">print(todos)</span></code>. Use autocompletion to finish <code class="docutils literal"><span class="pre">todos</span></code>.</p>
+</li>
+<li><p class="first">Click in the <code class="docutils literal"><span class="pre">populate_todos</span></code> identifier.</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">Alt-Enter</span></code> to open the code intentions and choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">function</span>
 <span class="pre">'populate_todos'</span></code>.</p>
-</li>
-<li><p class="first">With the Live Template prompt on <code class="docutils literal"><span class="pre">pass</span></code> in the new function, type
-<code class="docutils literal"><span class="pre">print(todos)</span></code>. Use autocompletion to finish <code class="docutils literal"><span class="pre">todos</span></code>.</p>
 </li>
 <li><p class="first">Run <code class="docutils literal"><span class="pre">models.py</span></code> by right-clicking in the editor and choosing
 <code class="docutils literal"><span class="pre">Run</span> <span class="pre">'models'</span></code>. You should now have 2 tabs in the Run Tool window.</p>
@@ -170,11 +170,12 @@ enter.</p>
 
 
 <span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">todos</span><span class="p">)</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;First&#39;</span><span class="p">))</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>

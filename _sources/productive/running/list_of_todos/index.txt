@@ -51,7 +51,7 @@ Steps
 #. Activate the Python virtual environment you created during ``New Project``.
    For example:
 
-    .. code-block::
+    .. code-block:: bash
 
         $ source ~/virtualenvs/epc
 

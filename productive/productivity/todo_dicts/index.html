@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Todo Dicts &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Todo Dicts</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Productivity</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../data_model/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../todo_class/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="todo-dicts">
+<h1>Todo Dicts<a class="headerlink" href="#todo-dicts" title="Permalink to this headline">¶</a></h1>
+<p>We don&#8217;t have any todo items to show. Let&#8217;s use some handy PyCharm
+machinery as we implement this: more Code Intentions, Quick Documentation,
+and Reformat Code.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, insert the following as the first line in
+<code class="docutils literal"><span class="pre">populate</span></code> (remembering to use autocomplete on <code class="docutils literal"><span class="pre">.append</span></code>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;First&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">Ctrl-R</span></code> to re-run <code class="docutils literal"><span class="pre">models.py</span></code> and confirm that it prints
+that dictionary.</p>
+</li>
+<li><p class="first">Change from a dictionary literal to dictionary constructor by
+clicking in the dictionary, typing <code class="docutils literal"><span class="pre">Alt-Enter</span></code>, and choosing
+<code class="docutils literal"><span class="pre">Convert</span> <span class="pre">dict</span> <span class="pre">literal</span> <span class="pre">to</span> <span class="pre">dict</span> <span class="pre">constructor</span></code>. It should now
+look match:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;First&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Confirm all is well with a <code class="docutils literal"><span class="pre">Ctrl-R</span></code> re-run.</p>
+</li>
+<li><p class="first">Change the last line, the <code class="docutils literal"><span class="pre">print</span></code>, to print the first todo&#8217;s
+id with a formatted string:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Re-run (<code class="docutils literal"><span class="pre">Ctrl-R</span></code>).</p>
+</li>
+<li><p class="first">How does Python&#8217;s <code class="docutils literal"><span class="pre">format</span></code> string method work? Click on
+<code class="docutils literal"><span class="pre">.format</span></code> and choose <code class="docutils literal"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">Quick</span> <span class="pre">Definition</span></code> from
+the PyCharm menu.</p>
+</li>
+<li><p class="first">Do the same with <code class="docutils literal"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">Quick</span> <span class="pre">Definition</span></code> and
+<code class="docutils literal"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">External</span> <span class="pre">Documentation</span></code>. (The latter has a mis-fire.)</p>
+</li>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> to Reformat Code, if PyCharm shows any PEP8
+style warnings.</p>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">models.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper container" id="models-py-in-todo-dicts">
+<div class="code-block-caption"><span class="caption-text">models.py in Todo Dicts</span><a class="headerlink" href="#models-py-in-todo-dicts" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="n">todos</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;First&#39;</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>In this small step we emphasize PyCharm automation:</p>
+<ul class="simple">
+<li><em>Code Intentions</em>. Put your cursor somewhere, press <code class="docutils literal"><span class="pre">Alt-Enter</span></code>,
+and let PyCharm suggest some things it can do for you.</li>
+<li><em>Help Lookup</em>. You&#8217;re not always going to remember everything about
+Python or some framework. PyCharm gives you two inline (non-distracting)
+ways and one external, full-page way to get context-sensitive information.</li>
+</ul>
+<p>We also showed two things you&#8217;ll do over and over:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Ctrl-R</span></code> to re-run the selected Run Configuration</li>
+<li><code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> to clean up your code with Reformat Code</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>How could we search for the Quick Definition action if we didn&#8217;t
+know where it was in the menu? How could this search tell us
+the keyboard shortcut?</li>
+<li>Does PEP8 get mad if you don&#8217;t have a blank line at the end of a
+file? Will PyCharm&#8217;s Reformat Code do the right thing for this?</li>
+<li>Can the Code Intention (<code class="docutils literal"><span class="pre">Alt-Enter</span></code>) convert back from a dict
+constructor to a dict literal?</li>
+<li>Can PyCharm link to external documentation for add-on packages
+such as SQLAlchemy?</li>
+<li>If you Reformat Code, and it misfires, can you undo it?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>
