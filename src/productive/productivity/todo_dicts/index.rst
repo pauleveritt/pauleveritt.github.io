@@ -50,6 +50,12 @@ Steps
 #. Press ``Ctrl-Alt-L`` to Reformat Code, if PyCharm shows any PEP8
    style warnings.
 
+#. Your ``models.py`` should match the following:
+
+   .. literalinclude:: models.py
+    :caption: models.py in Todo Dicts
+    :language: py
+
 Analysis
 ========
 
