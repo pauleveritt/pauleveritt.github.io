@@ -2,9 +2,9 @@ todos = []
 
 
 def populate_todos():
-    pass
+    todos.append(dict(id=1, name='First'))
 
 
 if __name__ == '__main__':
     populate_todos()
-    print(todos)
+    print('Todo {todo_id}'.format(todo_id=todos[0]['id']))
