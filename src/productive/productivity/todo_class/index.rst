@@ -44,13 +44,13 @@ Steps
 
 #. As always, ``Cmd-Alt-L`` to clean up formatting.
 
-#. Make a string representation by starting a new method:
+#. Make a Python representation by starting a new method:
 
     .. code-block:: python
 
-        def st
+        def rep
 
-    ...and hit ``tab``. PyCharm will complete the ``__str__(self):``.
+    ...and hit ``tab``. PyCharm will complete the ``__repr__(self):``.
 
 #. Finish the method with
    ``return 'Todo {todo_id}'.format(todo_id=self.id)``.
@@ -59,7 +59,7 @@ Steps
    ``todos.append(ToDo('First'))``.
 
 #. Change the ``print`` statement at the bottom to
-   ``print(todos[0])``.
+   ``print(todos)``.
 
 #. Re-run to confirm (``Ctrl-R``).
 
@@ -110,7 +110,7 @@ Analysis
 We did quite a lot in this step, letting PyCharm help us on productivity.
 
 - *Autocomplete*. PyCharm handled a lot of typing for us on ``__init__``
-  and ``__str__``, as well as ``.format``. Even if it isn't a lot of
+  and ``__repr__``, as well as ``.format``. Even if it isn't a lot of
   characters, it's better to let PyCharm do the completion, to avoid typos
   and add in the parens, self, etc.
 

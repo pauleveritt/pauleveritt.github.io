@@ -11,7 +11,7 @@ Steps
 =====
 
 #. In ``models.py``, let's add a method ``list`` to the class. After the
-   ``__str__`` method, start a new method by typing ``def list(``. Hit
+   ``__repr__`` method, start a new method by typing ``def list(``. Hit
    ``enter`` then press ``Shift-Enter`` to start a new line.
 
 #. In the body of this method, type ``return t`` and press ``enter`` to
@@ -25,16 +25,16 @@ Steps
 
 #. Press ``Cmd-Alt-L`` to clean up any line formatting complaints.
 
-#. Our ``__str__`` is doing a lot. Perhaps we can refactor it. First, let's
+#. Our ``__repr__`` is doing a lot. Perhaps we can refactor it. First, let's
    extract the formatting into a property ``display`` that can be overridden
    by subclasses.
 
-#. Click in the ``.format`` of ``__str__`` (or anywhere on the return line)
+#. Click in the ``.format`` of ``__repr__`` (or anywhere on the return line)
    and choose ``Refactor -> Extract -> Method``.
 
 #. In the popup's ``Method name:`` box, enter ``display`` and click ``OK``.
 
-#. PyCharm makes a new class method with the logic, and changes ``__str__``
+#. PyCharm makes a new class method with the logic, and changes ``__repr__``
    to call it.
 
 #. Let's say you changed your mind. Press ``Cmd-Z`` to undo and all of that
@@ -45,7 +45,7 @@ Steps
 #. Something looks fishy about ``display``. Click somewhere in ``def display``
    and press ``Alt-Enter``. Sure enough, PyCharm can convert it to a
    property. Select ``Convert method to property``. PyCharm adds the
-   decorator and changes all usages, such as ``__str__``.
+   decorator and changes all usages, such as ``__repr__``.
 
 #. Next, we'd like the format string to be parameterizable. Click once inside
    ``'Todo {todo_id}'`` then expand the selection by pressing ``Alt-Up``

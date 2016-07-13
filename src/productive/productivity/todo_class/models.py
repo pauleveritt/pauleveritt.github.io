@@ -8,7 +8,7 @@ class ToDo:
         self.title = title
         self.id = randint(1000, 9999)
 
-    def __str__(self):
+    def __repr__(self):
         return 'Todo {todo_id}'.format(todo_id=self.id)
 
 
@@ -18,4 +18,4 @@ def populate_todos():
 
 if __name__ == '__main__':
     populate_todos()
-    print(todos[0])
+    print(todos)

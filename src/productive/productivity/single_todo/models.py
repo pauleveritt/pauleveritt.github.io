@@ -9,7 +9,7 @@ class Todo:
         self.display_fmt = 'Todo {todo_id}'
         self.id = randint(1000, 9999)
 
-    def __str__(self):
+    def __repr__(self):
         return self.display
 
     @property
@@ -27,4 +27,4 @@ def populate_todos():
 
 if __name__ == '__main__':
     populate_todos()
-    print(todos[0])
+    print(todos)
