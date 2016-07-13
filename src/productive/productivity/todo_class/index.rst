@@ -29,7 +29,6 @@ Steps
 
 #. With the cursor still on the ``e`` in ``title``, press ``Alt-Enter``.
 
-
 #. Choose ``Add field 'title' to class ToDo`` from the Quick Fix list.
 
 #. With the red box outlining ``.title``, press enter to accept the
@@ -68,7 +67,36 @@ Steps
    reloading the URL.
 
 #. Our ``app.py`` needs to get its ``todos`` from ``models.py``
-   instead
+   instead of keeping its own list. Remove the ``todos = `` line
+   and add an import at the top:
+
+    .. code-block:: python
+
+      from models import todos
+
+#. ``list_todos`` is using dictionary access. Let's convert it to
+   attribute access:
+
+    .. code-block:: python
+
+      items = [div.format(id=t.id, title=t.title) for t in todos]
+
+   *Remember to use autocomplete on ``.format``!*
+
+#. Finally, we need to populate our todos. In the main block at
+   the bottom for ``app.py``, start a new line and type
+   ``populate_todos``.
+
+#. Before adding parentheses, generate the import by pressing
+   ``Alt-Enter`` and choosing the first choice. Then add ``()``.
+
+#. Now reload your browser and you should see your list of one todo.
+
+#. Your ``app.py`` should match the following:
+
+   .. literalinclude:: app.py
+    :caption: app.py in Todo Class
+    :language: py
 
 #. Your ``models.py`` should match the following:
 
@@ -76,25 +104,29 @@ Steps
     :caption: models.py in Todo Class
     :language: py
 
-
 Analysis
 ========
 
-- *Refactoring*.
+We did quite a lot in this step, letting PyCharm help us on productivity.
 
+- *Autocomplete*. PyCharm handled a lot of typing for us on ``__init__``
+  and ``__str__``, as well as ``.format``. Even if it isn't a lot of
+  characters, it's better to let PyCharm do the completion, to avoid typos
+  and add in the parens, self, etc.
 
+- *Refactoring*. The "Add field 'title' to class ToDo" refactoring was
+  quite helpful. This happens in constructors and methods often.
+
+- *Generate imports*. It's nice to let PyCharm generate the import just
+  by using a symbol. Not only does it generate the import, but it leaves
+  your cursor exactly where you left it.
 
 Extra Credit
 ============
 
+#. If you have to stop your editing and go somewhere to add/fix a line,
+   what is a quick way to jump back to where you were at?
 
-Todo Class
-==========
+#. Does PyCharm have a Code Intention to convert dictionary access
+   (``todo['id']``) to attribute access (``todo.id``)?
 
-- Add from models import ToDo in app.py
-
-- We change our mind on ToDo, refactor rename to Todo
-
-- Show that it changes not just in the one file, but everywhere
-
-- Re-run Ctrl-R

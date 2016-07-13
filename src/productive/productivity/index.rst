@@ -43,6 +43,8 @@ List Todos
 
 - Ctrl-R
 
+- Fix the ToDos typo
+
 
 Get Single Todo
 ===============
