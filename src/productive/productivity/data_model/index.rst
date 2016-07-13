@@ -24,13 +24,13 @@ Steps
 
 #. When the cursor is under the ``if``, type in ``populate_todos()``.
 
-#. Back-arrow twice to move before the parentheses.
+#. Add another line under that one, in the ``if`` block, with
+   ``print(todos)``. Use autocompletion to finish ``todos``.
+
+#. Click in the ``populate_todos`` identifier.
 
 #. ``Alt-Enter`` to open the code intentions and choose ``Create function
    'populate_todos'``.
-
-#. With the Live Template prompt on ``pass`` in the new function, type
-   ``print(todos)``. Use autocompletion to finish ``todos``.
 
 #. Run ``models.py`` by right-clicking in the editor and choosing
    ``Run 'models'``. You should now have 2 tabs in the Run Tool window.

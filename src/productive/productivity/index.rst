@@ -18,28 +18,7 @@ Tasks
     :maxdepth: 1
 
     data_model/index.rst
-
-Todo Dicts
-==========
-
-- Used as an excuse for more intentions, plus quick documentation
-
-- Change populate_todos to append ``{"id": 1, "name": "First"}``
-
-- Ctrl-R to re-run
-
-- Use intention to change from dict literal to dict constructor
-
-- Add a line in __main__ to join a formatted string representation
-  of the list
-
-- Explain autocomplete of .format, with quick documentation
-
-- TODO why does .format external documentation not go to the correct thing?
-
-- Ctrl-R to re-run
-
-- Remind them to run Reformat Code
+    todo_dicts/index.rst
 
 Todo Class
 ==========
