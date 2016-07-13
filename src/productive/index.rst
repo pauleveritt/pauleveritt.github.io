@@ -15,6 +15,12 @@ using the most PyCharmic techniques possible?
 Here is that tutorial. In it, we construct a Flask application, in
 PyCharm, using a number of PyCharm features.
 
+.. note::
+
+    All of the source code for each step along the way is available
+    in the subdirectory for each step, in the
+    `GitHub repo <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive>`_.
+
 .. toctree::
     :maxdepth: 1
 

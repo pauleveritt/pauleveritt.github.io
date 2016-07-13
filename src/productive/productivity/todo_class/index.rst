@@ -38,6 +38,10 @@ Steps
    and, when your cursor is after the last ``9``, press ``Shift-Enter`` to
    Start New Line *after the end* of the current line.
 
+   *Note: By generating random ids, every restart will provide new URLs
+   when going to the ``show_todo`` URL. Keep this in mind. You will
+   have to go back to the ``list_todos`` URL, reload, and click a link.*
+
 #. Click in ``randint``, press ``Alt-Enter``, and choose
    ``Import 'random.randint'``. To move there from the end of the line, you
    can use ``Alt-Left`` to jump by word.

@@ -23,26 +23,6 @@ Tasks
     list_todos_method/index.rst
     single_todo/index.rst
 
-Web List and Show
-=================
-
-- Excuse to show some more warnings
-
-- First, explain the style of use-it-then-quick-fix-import
-
-- Change the main block to call ``populate_todos()``, quick fix
-  to generate the import
-
-- In home_page use Language Injection in returned string and
-  add ``<a href="/todos/">Todos</a>``
-
-- Re-run in browser to confirm
-
-- Use Cmd-J route to Live Template Flask a route for show_todo
-
-- Put in an error in the route specification, show how PyCharm spots it
-
-- Also, forget to put in the int:todo_id, triggering a problem later
 
 Jinja2 Templates
 ================
