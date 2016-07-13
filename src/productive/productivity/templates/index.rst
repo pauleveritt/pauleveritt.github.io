@@ -24,7 +24,7 @@ Steps
         def home_page():
             return render_template('index.html', title='Home Page')
 
-#. PyCharm warns us that ``Template file 'index.html' not found. Let's create
+#. PyCharm warns us that ``Template file 'index.html' not found``. Let's create
    it.
 
 #. Right-click in the Project Tool window on the ``templates`` folder and
