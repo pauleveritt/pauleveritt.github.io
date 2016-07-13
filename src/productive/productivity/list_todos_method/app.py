@@ -1,5 +1,6 @@
 from flask import Flask
-from models import todos, populate_todos
+
+from models import populate_todos, Todo
 
 app = Flask(__name__)
 
@@ -11,6 +12,7 @@ def home_page():
 
 @app.route('/todo/')
 def list_todos():
+    todos = Todo.list()
     div = '<div><a href="/todo/{id}">{title}</a></div>'
     items = [div.format(id=t.id, title=t.title) for t in todos]
     return '\n'.join(items)

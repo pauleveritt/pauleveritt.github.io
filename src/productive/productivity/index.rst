@@ -20,30 +20,7 @@ Tasks
     data_model/index.rst
     todo_dicts/index.rst
     todo_class/index.rst
-
-List Todos
-==========
-
-- Excuse to show deeper refactorings, plus richer warnings
-
-- Add a class method ``list`` to return the todos, plus refactor the
-  string representation
-
-- Add ``def list(self): return todos``
-
-- PyCharm warns that this can be a static method, do the quick fix
-
-- In __str__, Refactor Extract the formatting into another method
-  ``display``
-
-- Then, in ``display``, use extend selection to select the string,
-  then Extract into a field in the Todo constructor
-
-- Wire into main block
-
-- Ctrl-R
-
-- Fix the ToDos typo
+    list_todos_method/index.rst
 
 
 Get Single Todo
