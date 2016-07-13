@@ -21,26 +21,7 @@ Tasks
     todo_dicts/index.rst
     todo_class/index.rst
     list_todos_method/index.rst
-
-
-Get Single Todo
-===============
-
-- Excuse to show moving lines up/down
-
-- Add a ``get_id`` static method, after __init__
-
-- Wire it into main
-
-- Ctrl-R to re-run
-
-- Decide we want it after ``def list``
-
-- Extend selection, then use move lines to move down
-
-- Also, re-arrange assignments in constructor
-
-- Ctrl-R
+    single_todo/index.rst
 
 Web List and Show
 =================
