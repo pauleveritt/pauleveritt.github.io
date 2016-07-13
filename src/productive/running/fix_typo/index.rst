@@ -22,7 +22,7 @@ Steps
 
 #. In PyCharm, find the last line in the traceback::
 
-  File "/Users/pauleveritt/projects/pycharm/epc2016/epc_tutorial/app.py", line 18, in show_todo
+    File "/Users/pauleveritt/projects/pycharm/epc2016/epc_tutorial/app.py", line 18, in show_todo
 
 #. Click on the blue-underlined filename to jump to line 18 in that file.
 

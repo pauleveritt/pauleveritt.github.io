@@ -51,4 +51,4 @@ yourself to a good working state.
 
 When delivered in person, each task in a section will be demonstrated
 first by the instructor. Later, we might bridge that gap for self-paced
-by including a screencast for each
+by including a screencast for each section task.

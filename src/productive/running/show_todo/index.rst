@@ -39,6 +39,7 @@ Steps
 #. Our route should look like this:
 
     .. code-block:: python
+
         @app.route('/todo/<todo_id>')
         def show_todo(todo_id):
             return 'ToDo {todo_id}'.format(todo_id=todo_id)
@@ -72,6 +73,7 @@ Steps
    ``list_todos`` to return a link to a todo page:
 
     .. code-block:: python
+
         return 'Todo List <a href="/todo/1">First Todo</a>'
 
 

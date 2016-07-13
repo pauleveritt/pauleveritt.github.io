@@ -15,18 +15,6 @@ using the most PyCharmic techniques possible?
 Here is that tutorial. In it, we construct a Flask application, in
 PyCharm, using a number of PyCharm features.
 
-TODO
-====
-
-- In each step, provide a link to the GitHut URL for the code in
-  that step.
-
-- In sphinxstrap 4 theme:
-
-    - Don't let breadcrumbs get so long
-
-    - The ``caption`` on code snippets is ugly
-
 .. toctree::
     :maxdepth: 1
 
