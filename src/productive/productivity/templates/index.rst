@@ -36,7 +36,8 @@ Steps
    ``html>head>title`` and press ``tab``. PyCharm will generate much of the markup,
    leaving your cursor in the ``<title>``.
 
-#. Type ``Todo App: {{ title }}`` and press ``Shift-Enter`` to start a new line.
+#. In the ``<title>``, type ``Todo App: {{ title }}`` and press
+   ``Shift-Enter`` to start a new line.
 
 #. Type ``body>h1`` and press ``tab``. Inside the generated ``<h1>``, enter
    ``{{ title }}`` and press ``Shift-Enter``.

@@ -50,10 +50,16 @@ Steps
 
 #. As usual, press ``Cmd-Alt-L`` to clean up any line formatting.
 
-#. We need our web app to use this method for ``show_todo``. In ``app.py``,
-   we're going to add a line ``todo = Todo.get_id(todo_id)``, using
-   autocomplete. Type ``todo = T`` then tab, ``.`` and tab to accept
-   ``get_id``, then ``t`` and tab to complete ``todo_id``.
+#. We need our web app to use this method for ``show_todo``. Let's
+   add a first line in ``show_todo``:
+
+    .. code-block:: python
+
+      todo = Todo.get_id(todo_id)
+
+   using  autocomplete. Type ``todo = T`` then tab, ``.`` and tab to
+   accept ``get_id``, then ``t`` and tab to complete ``todo_id``.
+   Use ``Shift-Enter`` to make a second line.
 
 #. Let's have a bit richer HTML. On the second line in ``show_todo``,
    define a format string ``fmt = ''``.
@@ -63,7 +69,7 @@ Steps
 
     .. code-block:: python
 
-     fmt = '<h1>Todo {todo_id}</h1><p>{{title}}</p>'
+     fmt = '<h1>Todo {todo_id}</h1><p>{title}</p>'
 
    As you type, you'll get the full power of WebStorm HTML editing,
    right in your Python string.

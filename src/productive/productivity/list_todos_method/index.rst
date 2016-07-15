@@ -34,8 +34,8 @@ Steps
 
 #. In the popup's ``Method name:`` box, enter ``display`` and click ``OK``.
 
-#. PyCharm makes a new class method with the logic, and changes ``__repr__``
-   to call it.
+#. PyCharm makes a new ``display`` method with the logic, and changes
+   ``__repr__`` to call it.
 
 #. Let's say you changed your mind. Press ``Cmd-Z`` to undo and all of that
    work is undone in one unit.
@@ -51,7 +51,7 @@ Steps
    ``'Todo {todo_id}'`` then expand the selection by pressing ``Alt-Up``
    three times. PyCharm's selection should highlight the single quotes.
 
-#. Open the ``Refactor`` popup with ``Cmd-T``. Choose ``Field``.
+#. Open the ``Refactor`` popup with ``Ctrl-T``. Choose ``Field``.
 
 #. In the inline popup, change ``Initialize in:`` from ``current method``
    to ``constructor``, then enter ``display_fmt`` into the red box and press
@@ -78,7 +78,11 @@ Steps
 
 #. At long last, we realize our ``ToDo`` typo, and by now, it is used in
    multiple places in multiple files. PyCharm's Rename Refactoring to the
-   rescue! Click on ``Refactor -> Rename``, change to ``Todo``, and click
+   rescue!
+
+#. Click in an occurrence of ``ToDo``.
+
+#. Click on ``Refactor -> Rename``, change to ``Todo``, and click
    ``Refactor``. Confirm that all cases were fixed in both files, then
    reload your browser to confirm the web app still works. Optionally,
    re-run ``models.py``.
