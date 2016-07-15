@@ -30,9 +30,6 @@ Steps
 
 #. Reload the web page.
 
-#. ``app.py`` should now look match this:
-
-
 #. Our ``app.py`` file should match the following:
 
    .. literalinclude:: app.py

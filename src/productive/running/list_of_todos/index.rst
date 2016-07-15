@@ -2,7 +2,7 @@
 List of Todos
 =============
 
-We aren't really really using any data yet. Let's make a small step in
+We aren't really using any data yet. Let's make a small step in
 that direction. Along the way, we'll see other PyCharm ways to execute
 code: the Python Console and the Terminal tool.
 
@@ -16,6 +16,10 @@ Steps
 
         todos = [dict(id=1, title='First'), dict(id=2, title='Second')]
 
+   .. note::
+
+     The code line above extends to the right. Make sure you copy to
+     the end of the line.
 
 #. Our ``list_todos`` view needs to take these list entries, convert
    it to a string of HTML, and return it:
@@ -43,19 +47,18 @@ Steps
 #. Open PyCharm Preferences with ``Cmd-,``
 
 #. Navigate to ``Build, Execution, Deployment -> Console -> Python Console``
-   and look at the options.
+   and look at the options, then click ``Cancel`` to dismiss the Preferences
+   popup.
 
-#. Click on the "Terminal" tool window button in the bottom of the PyCharm
-   window.
+#. Let's open the Terminal tool window. But rather than clicking on the icon button
+   in the bottom of the screen, press ``Alt-F12``.
 
-#. Activate the Python virtual environment you created during ``New Project``.
-   For example:
+#. PyCharm starts you in the project directory. Let's take a look at where
+   PyCharm stores its data for the project preferences:
 
     .. code-block:: bash
 
-        $ source ~/virtualenvs/epc
-
-#. Do the same 3 lines of Python done above.
+        $ ls -l .idea
 
 #. Click the red ``X`` in the Terminal tool window to close the terminal.
 
