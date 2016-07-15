@@ -125,9 +125,11 @@ let&#8217;s look more at PyCharm&#8217;s Run Configurations.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, let&#8217;s add a route, with help from PyCharm&#8217;s Live Templates.</p>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, let&#8217;s add a route, with help from PyCharm&#8217;s Live
+Templates.</p>
 </li>
-<li><p class="first">Let&#8217;s add the route using the LiveTemplate: <code class="docutils literal"><span class="pre">Cmd-J</span> <span class="pre">-&gt;</span> <span class="pre">route</span></code></p>
+<li><p class="first">On the empty line after the <code class="docutils literal"><span class="pre">list_todos</span></code> function,
+type <code class="docutils literal"><span class="pre">Cmd-J</span> <span class="pre">route</span></code> and press <code class="docutils literal"><span class="pre">enter</span></code>.</p>
 </li>
 <li><p class="first">For the function name (when prompted by the red box), enter
 <code class="docutils literal"><span class="pre">show_todo</span></code> and press <code class="docutils literal"><span class="pre">enter</span></code>.</p>
@@ -147,8 +149,8 @@ PyCharm!</p>
 <li><p class="first">Let&#8217;s correct that warning on the function, changing the function
 to <code class="docutils literal"><span class="pre">def</span> <span class="pre">show_todo(todo_id):</span></code>.</p>
 </li>
-<li><p class="first">Now for the return value. Using PyCharm&#8217;s autocompletion, put the
-cursor inside the parentheses for the <code class="docutils literal"><span class="pre">format()</span></code>. Press <code class="docutils literal"><span class="pre">t</span></code> and
+<li><p class="first">Now for the return value. Put the cursor inside the parentheses for
+the <code class="docutils literal"><span class="pre">format()</span></code>. Using PyCharm&#8217;s autocompletion, press <code class="docutils literal"><span class="pre">t</span></code> and
 PyCharm suggests <code class="docutils literal"><span class="pre">todo_id</span></code>. Press <code class="docutils literal"><span class="pre">enter</span></code> to accept. Press <code class="docutils literal"><span class="pre">=t</span></code>
 then accept <code class="docutils literal"><span class="pre">todo_id</span></code> again.</p>
 </li>
@@ -167,7 +169,8 @@ the green play arrow in the Run Tool&#8217;s window.</p>
 </li>
 <li><p class="first">In PyCharm&#8217;s toolbar, near the top, click the green play arrow. Instead
 of running our application, PyCharm pops up a window warning us that
-it is already running. Why? Let&#8217;s take a look.</p>
+it is already running. Why? Dismiss the popup by clicking <code class="docutils literal"><span class="pre">Cancel</span></code>
+and let&#8217;s take a look.</p>
 </li>
 <li><p class="first">Click <code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">Edit</span> <span class="pre">Configurations</span></code> to edit the <code class="docutils literal"><span class="pre">epc</span></code> run
 configuration.</p>
@@ -193,6 +196,8 @@ and choosing <code class="docutils literal"><span class="pre">Close</span> <span
 </pre></div>
 </div>
 </div></blockquote>
+</li>
+<li><p class="first">Reload our browser and confirm that our 3 routes work ok.</p>
 </li>
 <li><p class="first">Our <code class="docutils literal"><span class="pre">app.py</span></code> file should match the following:</p>
 <div class="literal-block-wrapper container" id="app-py-in-show-todo">

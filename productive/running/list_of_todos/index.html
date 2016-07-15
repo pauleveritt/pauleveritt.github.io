@@ -119,7 +119,7 @@
                     
   <div class="section" id="list-of-todos">
 <h1>List of Todos<a class="headerlink" href="#list-of-todos" title="Permalink to this headline">¶</a></h1>
-<p>We aren&#8217;t really really using any data yet. Let&#8217;s make a small step in
+<p>We aren&#8217;t really using any data yet. Let&#8217;s make a small step in
 that direction. Along the way, we&#8217;ll see other PyCharm ways to execute
 code: the Python Console and the Terminal tool.</p>
 <div class="section" id="steps">
@@ -132,6 +132,11 @@ todo items in it:</p>
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The code line above extends to the right. Make sure you copy to
+the end of the line.</p>
+</div>
 </li>
 <li><p class="first">Our <code class="docutils literal"><span class="pre">list_todos</span></code> view needs to take these list entries, convert
 it to a string of HTML, and return it:</p>
@@ -161,20 +166,19 @@ use interactive Python to poke around. Select <code class="docutils literal"><sp
 <li><p class="first">Open PyCharm Preferences with <code class="docutils literal"><span class="pre">Cmd-,</span></code></p>
 </li>
 <li><p class="first">Navigate to <code class="docutils literal"><span class="pre">Build,</span> <span class="pre">Execution,</span> <span class="pre">Deployment</span> <span class="pre">-&gt;</span> <span class="pre">Console</span> <span class="pre">-&gt;</span> <span class="pre">Python</span> <span class="pre">Console</span></code>
-and look at the options.</p>
+and look at the options, then click <code class="docutils literal"><span class="pre">Cancel</span></code> to dismiss the Preferences
+popup.</p>
 </li>
-<li><p class="first">Click on the &#8220;Terminal&#8221; tool window button in the bottom of the PyCharm
-window.</p>
+<li><p class="first">Let&#8217;s open the Terminal tool window. But rather than clicking on the icon button
+in the bottom of the screen, press <code class="docutils literal"><span class="pre">Alt-F12</span></code>.</p>
 </li>
-<li><p class="first">Activate the Python virtual environment you created during <code class="docutils literal"><span class="pre">New</span> <span class="pre">Project</span></code>.
-For example:</p>
+<li><p class="first">PyCharm starts you in the project directory. Let&#8217;s take a look at where
+PyCharm stores its data for the project preferences:</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> ~/virtualenvs/epc
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ls -l .idea
 </pre></div>
 </div>
 </div></blockquote>
-</li>
-<li><p class="first">Do the same 3 lines of Python done above.</p>
 </li>
 <li><p class="first">Click the red <code class="docutils literal"><span class="pre">X</span></code> in the Terminal tool window to close the terminal.</p>
 </li>

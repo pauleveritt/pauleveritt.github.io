@@ -9,9 +9,11 @@ let's look more at PyCharm's Run Configurations.
 Steps
 =====
 
-#. In ``app.py``, let's add a route, with help from PyCharm's Live Templates.
+#. In ``app.py``, let's add a route, with help from PyCharm's Live
+   Templates.
 
-#. Let's add the route using the LiveTemplate: ``Cmd-J -> route``
+#. On the empty line after the ``list_todos`` function,
+   type ``Cmd-J route`` and press ``enter``.
 
 #. For the function name (when prompted by the red box), enter
    ``show_todo`` and press ``enter``.
@@ -31,8 +33,8 @@ Steps
 #. Let's correct that warning on the function, changing the function
    to ``def show_todo(todo_id):``.
 
-#. Now for the return value. Using PyCharm's autocompletion, put the
-   cursor inside the parentheses for the ``format()``. Press ``t`` and
+#. Now for the return value. Put the cursor inside the parentheses for
+   the ``format()``. Using PyCharm's autocompletion, press ``t`` and
    PyCharm suggests ``todo_id``. Press ``enter`` to accept. Press ``=t``
    then accept ``todo_id`` again.
 
@@ -50,7 +52,8 @@ Steps
 
 #. In PyCharm's toolbar, near the top, click the green play arrow. Instead
    of running our application, PyCharm pops up a window warning us that
-   it is already running. Why? Let's take a look.
+   it is already running. Why? Dismiss the popup by clicking ``Cancel``
+   and let's take a look.
 
 #. Click ``Run -> Edit Configurations`` to edit the ``epc`` run
    configuration.
@@ -76,13 +79,13 @@ Steps
 
         return 'Todo List <a href="/todo/1">First Todo</a>'
 
+#. Reload our browser and confirm that our 3 routes work ok.
 
 #. Our ``app.py`` file should match the following:
 
    .. literalinclude:: app.py
     :caption: app.py in Show Todo
     :language: py
-
 
 Analysis
 ========

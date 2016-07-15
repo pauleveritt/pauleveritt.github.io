@@ -125,8 +125,8 @@ and Reformat Code.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, insert the following as the first line in
-<code class="docutils literal"><span class="pre">populate</span></code> (remembering to use autocomplete on <code class="docutils literal"><span class="pre">.append</span></code>):</p>
+<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, replace <code class="docutils literal"><span class="pre">pass</span></code> with the following as the first line
+in <code class="docutils literal"><span class="pre">populate_todos</span></code> (remembering to use autocomplete on <code class="docutils literal"><span class="pre">.append</span></code>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;First&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
@@ -137,22 +137,23 @@ that dictionary.</p>
 <li><p class="first">Change from a dictionary literal to dictionary constructor by
 clicking in the dictionary, typing <code class="docutils literal"><span class="pre">Alt-Enter</span></code>, and choosing
 <code class="docutils literal"><span class="pre">Convert</span> <span class="pre">dict</span> <span class="pre">literal</span> <span class="pre">to</span> <span class="pre">dict</span> <span class="pre">constructor</span></code>. It should now
-look match:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;First&#39;</span><span class="p">})</span>
+match:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;First&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Confirm all is well with a <code class="docutils literal"><span class="pre">Ctrl-R</span></code> re-run.</p>
 </li>
-<li><p class="first">Change the last line, the <code class="docutils literal"><span class="pre">print</span></code>, to print the first todo&#8217;s
-id with a formatted string:</p>
+<li><p class="first">Change the last line in the main block, the <code class="docutils literal"><span class="pre">print</span></code>, to print
+the first todo&#8217;s id with a formatted string:</p>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Re-run (<code class="docutils literal"><span class="pre">Ctrl-R</span></code>).</p>
+<li><p class="first">Re-run (<code class="docutils literal"><span class="pre">Ctrl-R</span></code>). It should now show <code class="docutils literal"><span class="pre">Todo</span> <span class="pre">1</span></code> in the
+output.</p>
 </li>
 <li><p class="first">How does Python&#8217;s <code class="docutils literal"><span class="pre">format</span></code> string method work? Click on
 <code class="docutils literal"><span class="pre">.format</span></code> and choose <code class="docutils literal"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">Quick</span> <span class="pre">Definition</span></code> from

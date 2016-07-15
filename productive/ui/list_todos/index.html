@@ -127,22 +127,23 @@ code. Let&#8217;s see these gutters in action by adding a second route.</p>
 <ol class="arabic">
 <li><p class="first">Open <code class="docutils literal"><span class="pre">app.py</span></code> in the editor, if it isn&#8217;t already opened.</p>
 </li>
-<li><p class="first">After the first route, add a second route with one error and two
+<li><p class="first">After the first route, add a second route with two errors and tonewo
 warnings:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@appx.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>       <span class="c1"># Error</span>
-<span class="k">def</span> <span class="nf">list_todos</span><span class="p">()</span> <span class="p">:</span>         <span class="c1"># Warning</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                  <span class="c1"># Warning</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@appx.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>    <span class="c1"># Error</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">()</span> <span class="p">:</span>       <span class="c1"># Error, extra space before :</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># Warning, unused variable</span>
     <span class="k">return</span> <span class="s1">&#39;Todo List&#39;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Note the traceback in the <code class="docutils literal"><span class="pre">Run</span></code> tool window.</p>
+<li><p class="first">Note the traceback in the <code class="docutils literal"><span class="pre">Run</span></code> tool window. Flask reloaded and
+Python exited due to <code class="docutils literal"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">syntax</span></code>.</p>
 </li>
-<li><p class="first">The editor&#8217;s right gutter has one red line (error) and two olive
-lines (warnings). Mouse over each of these to see the actual issue.</p>
+<li><p class="first">The editor&#8217;s right gutter has two red lines (error) and one olive
+line (warnings). Mouse over each of these to see the actual issue.</p>
 </li>
-<li><p class="first">Correct the first warning, the extra space, with <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>
-(Reformat Code).</p>
+<li><p class="first">Correct the second error, the extra space before the colon, with
+PyCharm&#8217;s <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code> (Reformat Code).</p>
 </li>
 <li><p class="first">Mouse over the <code class="docutils literal"><span class="pre">x</span></code> to see again the actual error.</p>
 </li>

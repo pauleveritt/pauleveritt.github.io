@@ -150,8 +150,8 @@ and choose <code class="docutils literal"><span class="pre">Refactor</span> <spa
 </li>
 <li><p class="first">In the popup&#8217;s <code class="docutils literal"><span class="pre">Method</span> <span class="pre">name:</span></code> box, enter <code class="docutils literal"><span class="pre">display</span></code> and click <code class="docutils literal"><span class="pre">OK</span></code>.</p>
 </li>
-<li><p class="first">PyCharm makes a new class method with the logic, and changes <code class="docutils literal"><span class="pre">__repr__</span></code>
-to call it.</p>
+<li><p class="first">PyCharm makes a new <code class="docutils literal"><span class="pre">display</span></code> method with the logic, and changes
+<code class="docutils literal"><span class="pre">__repr__</span></code> to call it.</p>
 </li>
 <li><p class="first">Let&#8217;s say you changed your mind. Press <code class="docutils literal"><span class="pre">Cmd-Z</span></code> to undo and all of that
 work is undone in one unit.</p>
@@ -167,7 +167,7 @@ decorator and changes all usages, such as <code class="docutils literal"><span c
 <code class="docutils literal"><span class="pre">'Todo</span> <span class="pre">{todo_id}'</span></code> then expand the selection by pressing <code class="docutils literal"><span class="pre">Alt-Up</span></code>
 three times. PyCharm&#8217;s selection should highlight the single quotes.</p>
 </li>
-<li><p class="first">Open the <code class="docutils literal"><span class="pre">Refactor</span></code> popup with <code class="docutils literal"><span class="pre">Cmd-T</span></code>. Choose <code class="docutils literal"><span class="pre">Field</span></code>.</p>
+<li><p class="first">Open the <code class="docutils literal"><span class="pre">Refactor</span></code> popup with <code class="docutils literal"><span class="pre">Ctrl-T</span></code>. Choose <code class="docutils literal"><span class="pre">Field</span></code>.</p>
 </li>
 <li><p class="first">In the inline popup, change <code class="docutils literal"><span class="pre">Initialize</span> <span class="pre">in:</span></code> from <code class="docutils literal"><span class="pre">current</span> <span class="pre">method</span></code>
 to <code class="docutils literal"><span class="pre">constructor</span></code>, then enter <code class="docutils literal"><span class="pre">display_fmt</span></code> into the red box and press
@@ -194,7 +194,11 @@ to confirm.</p>
 </li>
 <li><p class="first">At long last, we realize our <code class="docutils literal"><span class="pre">ToDo</span></code> typo, and by now, it is used in
 multiple places in multiple files. PyCharm&#8217;s Rename Refactoring to the
-rescue! Click on <code class="docutils literal"><span class="pre">Refactor</span> <span class="pre">-&gt;</span> <span class="pre">Rename</span></code>, change to <code class="docutils literal"><span class="pre">Todo</span></code>, and click
+rescue!</p>
+</li>
+<li><p class="first">Click in an occurrence of <code class="docutils literal"><span class="pre">ToDo</span></code>.</p>
+</li>
+<li><p class="first">Click on <code class="docutils literal"><span class="pre">Refactor</span> <span class="pre">-&gt;</span> <span class="pre">Rename</span></code>, change to <code class="docutils literal"><span class="pre">Todo</span></code>, and click
 <code class="docutils literal"><span class="pre">Refactor</span></code>. Confirm that all cases were fixed in both files, then
 reload your browser to confirm the web app still works. Optionally,
 re-run <code class="docutils literal"><span class="pre">models.py</span></code>.</p>

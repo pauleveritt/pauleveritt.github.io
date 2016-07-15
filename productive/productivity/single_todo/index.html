@@ -168,10 +168,16 @@ to including the method <em>and</em> the <code class="docutils literal"><span cl
 </li>
 <li><p class="first">As usual, press <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code> to clean up any line formatting.</p>
 </li>
-<li><p class="first">We need our web app to use this method for <code class="docutils literal"><span class="pre">show_todo</span></code>. In <code class="docutils literal"><span class="pre">app.py</span></code>,
-we&#8217;re going to add a line <code class="docutils literal"><span class="pre">todo</span> <span class="pre">=</span> <span class="pre">Todo.get_id(todo_id)</span></code>, using
-autocomplete. Type <code class="docutils literal"><span class="pre">todo</span> <span class="pre">=</span> <span class="pre">T</span></code> then tab, <code class="docutils literal"><span class="pre">.</span></code> and tab to accept
-<code class="docutils literal"><span class="pre">get_id</span></code>, then <code class="docutils literal"><span class="pre">t</span></code> and tab to complete <code class="docutils literal"><span class="pre">todo_id</span></code>.</p>
+<li><p class="first">We need our web app to use this method for <code class="docutils literal"><span class="pre">show_todo</span></code>. Let&#8217;s
+add a first line in <code class="docutils literal"><span class="pre">show_todo</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>using  autocomplete. Type <code class="docutils literal"><span class="pre">todo</span> <span class="pre">=</span> <span class="pre">T</span></code> then tab, <code class="docutils literal"><span class="pre">.</span></code> and tab to
+accept <code class="docutils literal"><span class="pre">get_id</span></code>, then <code class="docutils literal"><span class="pre">t</span></code> and tab to complete <code class="docutils literal"><span class="pre">todo_id</span></code>.
+Use <code class="docutils literal"><span class="pre">Shift-Enter</span></code> to make a second line.</p>
 </li>
 <li><p class="first">Let&#8217;s have a bit richer HTML. On the second line in <code class="docutils literal"><span class="pre">show_todo</span></code>,
 define a format string <code class="docutils literal"><span class="pre">fmt</span> <span class="pre">=</span> <span class="pre">''</span></code>.</p>
@@ -179,7 +185,7 @@ define a format string <code class="docutils literal"><span class="pre">fmt</spa
 <li><p class="first">With your cursor inside that string, press <code class="docutils literal"><span class="pre">Alt-Enter</span></code> and choose
 <code class="docutils literal"><span class="pre">Inject</span> <span class="pre">language</span> <span class="pre">reference</span> <span class="pre">-&gt;</span> <span class="pre">HTML</span></code>. Now provide this for the value:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Todo {todo_id}&lt;/h1&gt;&lt;p&gt;{{title}}&lt;/p&gt;&#39;</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Todo {todo_id}&lt;/h1&gt;&lt;p&gt;{title}&lt;/p&gt;&#39;</span>
 </pre></div>
 </div>
 </div></blockquote>

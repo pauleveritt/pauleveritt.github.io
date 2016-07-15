@@ -125,9 +125,24 @@ PyCharm can do work for us, with colors indicating VCS status.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first"><code class="docutils literal"><span class="pre">VCS</span> <span class="pre">-&gt;</span> <span class="pre">Import</span> <span class="pre">into</span> <span class="pre">Version</span> <span class="pre">Control</span> <span class="pre">-&gt;</span> <span class="pre">Create</span> <span class="pre">Git</span> <span class="pre">Repository</span></code>.</p>
+<li><p class="first">From the PyCharm menus, select
+<code class="docutils literal"><span class="pre">VCS</span> <span class="pre">-&gt;</span> <span class="pre">Import</span> <span class="pre">into</span> <span class="pre">Version</span> <span class="pre">Control</span> <span class="pre">-&gt;</span> <span class="pre">Create</span> <span class="pre">Git</span> <span class="pre">Repository</span></code>.</p>
 </li>
-<li><p class="first">In <code class="docutils literal"><span class="pre">Project</span></code> tool window, right-click on the <code class="docutils literal"><span class="pre">epc.py</span></code> file.</p>
+<li><p class="first">In the popup window, select the project directory and click
+the <code class="docutils literal"><span class="pre">OK</span></code> button. We now have a <code class="docutils literal"><span class="pre">.git</span></code> directory in our
+project root directory.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">Missing</span> <span class="pre">.gitignore</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">GIT</span> <span class="pre">project</span></code>, click the
+<code class="docutils literal"><span class="pre">Create</span> <span class="pre">.gitignore</span></code> link button.</p>
+</li>
+<li><p class="first">Scroll down and select <code class="docutils literal"><span class="pre">Python</span></code>, then click the <code class="docutils literal"><span class="pre">Generate</span></code> button.</p>
+</li>
+<li><p class="first">In the next popup &#8211; <code class="docutils literal"><span class="pre">Would</span> <span class="pre">you</span> <span class="pre">like</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">unversioned</span> <span class="pre">files</span> <span class="pre">to</span>
+<span class="pre">the</span> <span class="pre">.gitignore</span> <span class="pre">file?</span></code> &#8211; click the <code class="docutils literal"><span class="pre">Cancel</span></code> link button.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">x</span></code> on the <code class="docutils literal"><span class="pre">.gitignore</span></code> tab to close that file.</p>
+</li>
+<li><p class="first">In Project Tool window, right-click on the <code class="docutils literal"><span class="pre">epc.py</span></code> file.</p>
 </li>
 <li><p class="first">At the moment, it is red, meaning, not under version control.</p>
 </li>
@@ -142,15 +157,6 @@ PyCharm can do work for us, with colors indicating VCS status.</p>
 <li><p class="first">Provide <code class="docutils literal"><span class="pre">requirements.txt</span></code> and click <code class="docutils literal"><span class="pre">Ok</span></code>.</p>
 </li>
 <li><p class="first">In the next dialog, accept adding the new file to VCS.</p>
-</li>
-<li><p class="first">You likely will get prompted about a <code class="docutils literal"><span class="pre">Missing</span> <span class="pre">.gitignore</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">Git</span>
-<span class="pre">project</span></code>. Click the <code class="docutils literal"><span class="pre">Create</span> <span class="pre">.gitignore</span></code> link.</p>
-</li>
-<li><p class="first">Click the <code class="docutils literal"><span class="pre">Generate</span></code> button and choose <code class="docutils literal"><span class="pre">Generate</span></code> in the button
-menu.</p>
-</li>
-<li><p class="first">In the message about adding unversioned files, click the <code class="docutils literal"><span class="pre">Cancel</span></code>
-link.</p>
 </li>
 <li><p class="first">In <code class="docutils literal"><span class="pre">requirements.txt</span></code>, add a line for <code class="docutils literal"><span class="pre">flask-sqlalchemy</span></code>. The
 file should look like this:</p>
@@ -199,7 +205,10 @@ systems (VCS).</li>
 </div>
 <div class="section" id="extra-credit">
 <h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ol class="arabic simple">
+<li>Why doesn&#8217;t PyCharm show the <code class="docutils literal"><span class="pre">.git</span></code> directory in the the file
+browser?</li>
+<li>What other hidden directory did PyCharm make in the root directory?</li>
 <li>Can PyCharm help you manage your <code class="docutils literal"><span class="pre">.gitignore</span></code> file?</li>
 <li>What is the keyboard shortcut for committing a file?</li>
 <li>How do you delete a file from the filesystem <em>and</em> from VCS?</li>
@@ -208,7 +217,7 @@ file&#8217;s VCS status appear?</li>
 <li>What is the color for a file that has uncommitted changes?</li>
 <li>What is the visual indicator on a project tool&#8217;s file when it has
 a major Python error in it?</li>
-</ul>
+</ol>
 </div>
 <div class="section" id="todo">
 <h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>

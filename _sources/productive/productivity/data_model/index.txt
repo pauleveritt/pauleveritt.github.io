@@ -10,27 +10,31 @@ productivity in action -- Live Templates and Quick Fixes.
 Steps
 =====
 
-#. Create the new file with ``Cmd-N -> PF -> models``. The ``PF`` is a
-   way PyCharm lets you narrow a list with camel case for the first
-   letters in the words in a list.
+#. Create a new file with ``Cmd-N -> PF -> models`` and press ``enter``.
+   The ``PF`` is a way PyCharm lets you narrow a list with camel case for
+   the first letters in the words in a list.
 
 #. Answer "Yes" to put under version control. PyCharm automatically adds
    ``.py`` to the given filename.
 
-#. Enter ``todos = []`` on the first line.
+#. Enter ``todos = []`` on the first line. Press ``enter`` twice to give
+   a blank line.
 
 #. Use Live Templates to add a main run block with ``Cmd-J main`` then
-   enter.
+   ``enter``.
 
 #. When the cursor is under the ``if``, type in ``populate_todos()``.
 
 #. Add another line under that one, in the ``if`` block, with
    ``print(todos)``. Use autocompletion to finish ``todos``.
 
-#. Click in the ``populate_todos`` identifier.
+#. Click in the ``populate_todos`` identifier. PyCharm gives a *red*
+   lightbulb. It's angry.
 
 #. ``Alt-Enter`` to open the code intentions and choose ``Create function
    'populate_todos'``.
+
+#. When the red box surrounds ``pass``, press ``enter``.
 
 #. Run ``models.py`` by right-clicking in the editor and choosing
    ``Run 'models'``. You should now have 2 tabs in the Run Tool window.
@@ -48,6 +52,8 @@ Steps
     - To the left of the search box, click the icon to collapse all
 
     - Expand the ``Python`` section
+
+    - Click ``Cancel`` to dismiss the Preferences dialog
 
 #. Your ``models.py`` should match the following:
 

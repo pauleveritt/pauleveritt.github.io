@@ -19,11 +19,13 @@ Steps
    tool window.
 
 #. Click the ``1. Project`` tab button in the left edge of window to collapse
-   the Project Tool Window.
+   the Project Tool window.
 
 #. Click it again to re-open.
 
-#. In the Project Tool Window toolbar, click the collapse button (|collapse|).
+#. In the Project Tool window, click to expand the top folder.
+
+#. In the Project Tool window toolbar, click the collapse button (|collapse|).
 
 #. Click the ``epc`` folder to expand/open it.
 
@@ -46,6 +48,8 @@ Steps
     :language: py
     :emphasize-lines: 6-8
 
+#. In the PyCharm top toolbar, click the green play button to run your
+   Python app.
 
 #. Reload your browser to confirm all is well.
 
@@ -82,6 +86,9 @@ Extra Credit
 
 #. What are some ways you can close an editor tab besides clicking the
    ``x``?
+
+#. Same for closing/opening tool windows...what other ways are there,
+   instead of using the mouse?
 
 #. How do you use the ``Structure`` tool?
 

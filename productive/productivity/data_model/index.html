@@ -126,27 +126,31 @@ productivity in action &#8211; Live Templates and Quick Fixes.</p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Create the new file with <code class="docutils literal"><span class="pre">Cmd-N</span> <span class="pre">-&gt;</span> <span class="pre">PF</span> <span class="pre">-&gt;</span> <span class="pre">models</span></code>. The <code class="docutils literal"><span class="pre">PF</span></code> is a
-way PyCharm lets you narrow a list with camel case for the first
-letters in the words in a list.</p>
+<li><p class="first">Create a new file with <code class="docutils literal"><span class="pre">Cmd-N</span> <span class="pre">-&gt;</span> <span class="pre">PF</span> <span class="pre">-&gt;</span> <span class="pre">models</span></code> and press <code class="docutils literal"><span class="pre">enter</span></code>.
+The <code class="docutils literal"><span class="pre">PF</span></code> is a way PyCharm lets you narrow a list with camel case for
+the first letters in the words in a list.</p>
 </li>
 <li><p class="first">Answer &#8220;Yes&#8221; to put under version control. PyCharm automatically adds
 <code class="docutils literal"><span class="pre">.py</span></code> to the given filename.</p>
 </li>
-<li><p class="first">Enter <code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">[]</span></code> on the first line.</p>
+<li><p class="first">Enter <code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">[]</span></code> on the first line. Press <code class="docutils literal"><span class="pre">enter</span></code> twice to give
+a blank line.</p>
 </li>
 <li><p class="first">Use Live Templates to add a main run block with <code class="docutils literal"><span class="pre">Cmd-J</span> <span class="pre">main</span></code> then
-enter.</p>
+<code class="docutils literal"><span class="pre">enter</span></code>.</p>
 </li>
 <li><p class="first">When the cursor is under the <code class="docutils literal"><span class="pre">if</span></code>, type in <code class="docutils literal"><span class="pre">populate_todos()</span></code>.</p>
 </li>
 <li><p class="first">Add another line under that one, in the <code class="docutils literal"><span class="pre">if</span></code> block, with
 <code class="docutils literal"><span class="pre">print(todos)</span></code>. Use autocompletion to finish <code class="docutils literal"><span class="pre">todos</span></code>.</p>
 </li>
-<li><p class="first">Click in the <code class="docutils literal"><span class="pre">populate_todos</span></code> identifier.</p>
+<li><p class="first">Click in the <code class="docutils literal"><span class="pre">populate_todos</span></code> identifier. PyCharm gives a <em>red</em>
+lightbulb. It&#8217;s angry.</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">Alt-Enter</span></code> to open the code intentions and choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">function</span>
 <span class="pre">'populate_todos'</span></code>.</p>
+</li>
+<li><p class="first">When the red box surrounds <code class="docutils literal"><span class="pre">pass</span></code>, press <code class="docutils literal"><span class="pre">enter</span></code>.</p>
 </li>
 <li><p class="first">Run <code class="docutils literal"><span class="pre">models.py</span></code> by right-clicking in the editor and choosing
 <code class="docutils literal"><span class="pre">Run</span> <span class="pre">'models'</span></code>. You should now have 2 tabs in the Run Tool window.</p>
@@ -160,6 +164,7 @@ enter.</p>
 <li>Clear the <code class="docutils literal"><span class="pre">live</span></code> filter and enter <code class="docutils literal"><span class="pre">intentions</span></code></li>
 <li>To the left of the search box, click the icon to collapse all</li>
 <li>Expand the <code class="docutils literal"><span class="pre">Python</span></code> section</li>
+<li>Click <code class="docutils literal"><span class="pre">Cancel</span></code> to dismiss the Preferences dialog</li>
 </ul>
 </div></blockquote>
 </li>
@@ -170,12 +175,12 @@ enter.</p>
 
 
 <span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
-    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;First&#39;</span><span class="p">))</span>
+    <span class="k">pass</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">populate_todos</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">todos</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

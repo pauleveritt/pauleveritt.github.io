@@ -39,7 +39,7 @@ Steps
    Start New Line *after the end* of the current line.
 
    *Note: By generating random ids, every restart will provide new URLs
-   when going to the ``show_todo`` URL. Keep this in mind. You will
+   when going to the show_todo URL. Keep this in mind. You will
    have to go back to the ``list_todos`` URL, reload, and click a link.*
 
 #. Click in ``randint``, press ``Alt-Enter``, and choose
@@ -67,16 +67,18 @@ Steps
 
 #. Re-run to confirm (``Ctrl-R``).
 
-#. Let's confirm nothing has changed or broken in the browser by
-   reloading the URL.
-
 #. Our ``app.py`` needs to get its ``todos`` from ``models.py``
-   instead of keeping its own list. Remove the ``todos`` assignment line
-   and add an import at the top:
+   instead of keeping its own list.
+
+#.  Remove the ``todos`` assignment line from ``app.py``.
+
+#.  Add an import, after the first import:
 
     .. code-block:: python
 
       from models import todos
+
+    *Remember to use autocomplete on models and todos*
 
 #. ``list_todos`` is using dictionary access. Let's convert it to
    attribute access:

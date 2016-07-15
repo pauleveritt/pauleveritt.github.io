@@ -9,9 +9,24 @@ PyCharm can do work for us, with colors indicating VCS status.
 Steps
 =====
 
-#. ``VCS -> Import into Version Control -> Create Git Repository``.
+#. From the PyCharm menus, select
+   ``VCS -> Import into Version Control -> Create Git Repository``.
 
-#. In ``Project`` tool window, right-click on the ``epc.py`` file.
+#. In the popup window, select the project directory and click
+   the ``OK`` button. We now have a ``.git`` directory in our
+   project root directory.
+
+#. In the ``Missing .gitignore file in GIT project``, click the
+   ``Create .gitignore`` link button.
+
+#. Scroll down and select ``Python``, then click the ``Generate`` button.
+
+#. In the next popup -- ``Would you like to add unversioned files to
+   the .gitignore file?`` -- click the ``Cancel`` link button.
+
+#. Click the ``x`` on the ``.gitignore`` tab to close that file.
+
+#. In Project Tool window, right-click on the ``epc.py`` file.
 
 #. At the moment, it is red, meaning, not under version control.
 
@@ -26,15 +41,6 @@ Steps
 #. Provide ``requirements.txt`` and click ``Ok``.
 
 #. In the next dialog, accept adding the new file to VCS.
-
-#. You likely will get prompted about a ``Missing .gitignore file in Git
-   project``. Click the ``Create .gitignore`` link.
-
-#. Click the ``Generate`` button and choose ``Generate`` in the button
-   menu.
-
-#. In the message about adding unversioned files, click the ``Cancel``
-   link.
 
 #. In ``requirements.txt``, add a line for ``flask-sqlalchemy``. The
    file should look like this:
@@ -81,19 +87,24 @@ We also used some other features of PyCharm:
 Extra Credit
 ============
 
-- Can PyCharm help you manage your ``.gitignore`` file?
+#. Why doesn't PyCharm show the ``.git`` directory in the the file
+   browser?
 
-- What is the keyboard shortcut for committing a file?
+#. What other hidden directory did PyCharm make in the root directory?
 
-- How do you delete a file from the filesystem *and* from VCS?
+#. Can PyCharm help you manage your ``.gitignore`` file?
 
-- Besides the project tool window, where else does the color for a
-  file's VCS status appear?
+#. What is the keyboard shortcut for committing a file?
 
-- What is the color for a file that has uncommitted changes?
+#. How do you delete a file from the filesystem *and* from VCS?
 
-- What is the visual indicator on a project tool's file when it has
-  a major Python error in it?
+#. Besides the project tool window, where else does the color for a
+   file's VCS status appear?
+
+#. What is the color for a file that has uncommitted changes?
+
+#. What is the visual indicator on a project tool's file when it has
+   a major Python error in it?
 
 TODO
 ====

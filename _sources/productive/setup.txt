@@ -58,8 +58,11 @@ Steps
 
 #. Click the ``Create`` button.
 
-#. In the file browser on the left, expand the ``epc`` directory and and
-   double-click on the ``epc.py`` file.
+#. Click the ``1. Project`` button in the left margin of PyCharm to
+   open the file browser.
+
+#. Expand the ``epc`` directory and and double-click on the ``epc.py``
+   file.
 
 #. Change the last line to read ``app.run(debug=True)``.
 
