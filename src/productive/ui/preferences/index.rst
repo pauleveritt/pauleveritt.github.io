@@ -31,7 +31,6 @@ Steps
 
 #. Press ``Alt-Enter`` and use the quick fix to
    `add Flask to the requirements <https://www.jetbrains.com/help/pycharm/2016.1/populating-dependencies-management-files.html>`_.
-   *TODO This is unreliable.*
 
 #. Open ``requirements.txt`` and see the new entry. The file should now look
    like this:

@@ -6,10 +6,7 @@ PyCharm. It's...big. Lots of windows, buttons, menus. What's that UI all
 about?
 
 In this section we go over the major parts of the UI -- the menus, toolbar,
-tool windows, editor, etc. -- in the course of some development tasks. In
-some cases, it will be obvious and tortured how we are stretching the "Show
-PyCharm" goal into the "Build ToDo App" workflow. Hopefully, though, it
-will all make sense.
+tool windows, editor, etc. -- in the course of some development tasks.
 
 .. note::
 

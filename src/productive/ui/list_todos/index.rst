@@ -11,23 +11,24 @@ Steps
 
 #. Open ``app.py`` in the editor, if it isn't already opened.
 
-#. After the first route, add a second route with one error and two
+#. After the first route, add a second route with two errors and tonewo
    warnings:
 
    .. code-block:: python
 
-        @appx.route('/todo/')       # Error
-        def list_todos() :         # Warning
-            x = 1                  # Warning
+        @appx.route('/todo/')    # Error
+        def list_todos() :       # Error, extra space before :
+            x = 1                # Warning, unused variable
             return 'Todo List'
 
-#. Note the traceback in the ``Run`` tool window.
+#. Note the traceback in the ``Run`` tool window. Flask reloaded and
+   Python exited due to ``SyntaxError: invalid syntax``.
 
-#. The editor's right gutter has one red line (error) and two olive
-   lines (warnings). Mouse over each of these to see the actual issue.
+#. The editor's right gutter has two red lines (error) and one olive
+   line (warnings). Mouse over each of these to see the actual issue.
 
-#. Correct the first warning, the extra space, with ``Cmd-Alt-L``
-   (Reformat Code).
+#. Correct the second error, the extra space before the colon, with
+   PyCharm's ``Cmd-Alt-L`` (Reformat Code).
 
 #. Mouse over the ``x`` to see again the actual error.
 

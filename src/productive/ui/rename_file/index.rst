@@ -19,15 +19,17 @@ Steps
 
 #. In the menu, choose ``Run -> Edit Configurations``.
 
-#. Note that the ``Script`` field is now pointed at the new name.
+#. Note that the ``Script:`` field is now pointed at the new name.
 
 #. Click ``Cancel`` to close the dialog.
 
 #. Reload your browser to confirm the page is still loading.
 
 #. In the ``Run`` tool window at the bottom, it is still pointing to
-   the old name. Click the green circle arrow to restart with the
-   changed run configuration.
+   the old name.
+
+#. Click the green circle arrow to restart with the changed run
+   configuration.
 
 #. Reload in browser.
 
