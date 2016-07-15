@@ -9,8 +9,8 @@ and Reformat Code.
 Steps
 =====
 
-#. In ``models.py``, insert the following as the first line in
-   ``populate`` (remembering to use autocomplete on ``.append``):
+#. In ``models.py``, replace ``pass`` with the following as the first line
+   in ``populate_todos`` (remembering to use autocomplete on ``.append``):
 
    .. code-block:: python
 
@@ -22,23 +22,23 @@ Steps
 #. Change from a dictionary literal to dictionary constructor by
    clicking in the dictionary, typing ``Alt-Enter``, and choosing
    ``Convert dict literal to dict constructor``. It should now
-   look match:
+   match:
 
    .. code-block:: python
 
-     todos.append({'id': 1, 'title': 'First'})
+     todos.append(dict(id=1, title='First'))
 
 #. Confirm all is well with a ``Ctrl-R`` re-run.
 
-#. Change the last line, the ``print``, to print the first todo's
-   id with a formatted string:
+#. Change the last line in the main block, the ``print``, to print
+   the first todo's id with a formatted string:
 
     .. code-block:: python
 
       print('Todo {todo_id}'.format(todo_id=todos[0]['id']))
 
-
-#. Re-run (``Ctrl-R``).
+#. Re-run (``Ctrl-R``). It should now show ``Todo 1`` in the
+   output.
 
 #. How does Python's ``format`` string method work? Click on
    ``.format`` and choose ``View -> Quick Definition`` from
