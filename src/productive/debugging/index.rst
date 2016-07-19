@@ -16,25 +16,7 @@ Tasks
 
     master/index.rst
     listtodos_templates/index.rst
-
-
-Sorted Listings
-===============
-
-- Excuse to do simple Python debugging (no stepping)
-
-- Back in models.py, we're going to change ``def list`` to return
-  a sorted listing
-
-- First, right-click Debug to run it under the debugger
-
-- Then, refactor to extract the return value into a local variable
-
-- Change to assign a sorted list to that variable
-
-- Set a breakpoint on the assignment
-
-- Ctrl-D and confirm
+    sorted_todos/index.rst
 
 Todo Comment Counts
 ===================
