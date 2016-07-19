@@ -98,7 +98,7 @@
                                     <a class="nav-link" href="../productivity/templates/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../navigation/">Next</a>
+                                    <a class="nav-link" href="master/">Next</a>
                                 </li>
                             </ul>
 
@@ -121,48 +121,15 @@
 2.5 hour tutorial. The code for this and the transcript notes
 are already completed.</p>
 </div>
-<div class="section" id="switch-to-master-template">
-<h2>Switch to Master Template<a class="headerlink" href="#switch-to-master-template" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to run under the debugger and install Cython extensions</li>
-<li>Stop the Run tool window&#8217;s execution</li>
-<li>Make templates/layout.html, using Emmet for completion</li>
-<li>Make home_page.html but <em>not</em> in templates directory</li>
-<li>Change home_page to return render_template(&#8216;index.html&#8217;, title=&#8217;Home Page&#8217;)</li>
-<li>Quick Fix to import render_template</li>
-<li>PyCharm warns us that the template can&#8217;t be found</li>
-<li>Right-click, Refactor, Move (can also be drag-and-drop)</li>
-<li>Right-click on <code class="docutils literal"><span class="pre">app.py</span></code>, Debug</li>
-<li>Reload browser</li>
-<li>All is normal</li>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="master/">Master Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listtodos_templates/">List Todos Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sorted_todos/">Sorted Todos Template</a></li>
 </ul>
 </div>
-<div class="section" id="list-show-todos-template">
-<h2>List/Show Todos Template<a class="headerlink" href="#list-show-todos-template" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to show debugger breakpoint in Jinja2</li>
-<li>Convert other 2 views to Jinja2</li>
-<li>Start with Show Todo, but pass in page_title instead of title,
-get exception in Flask</li>
-<li>Put breakpoint in layout.html, show the local context has
-page_title</li>
-<li>Fix, reload</li>
-<li>Change list_todos to a template with a Jinja2 for loop</li>
-<li>Put a breakpoint in the template, iterate over the loop</li>
-</ul>
-</div>
-<div class="section" id="sorted-listings">
-<h2>Sorted Listings<a class="headerlink" href="#sorted-listings" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to do simple Python debugging (no stepping)</li>
-<li>Back in models.py, we&#8217;re going to change <code class="docutils literal"><span class="pre">def</span> <span class="pre">list</span></code> to return
-a sorted listing</li>
-<li>First, right-click Debug to run it under the debugger</li>
-<li>Then, refactor to extract the return value into a local variable</li>
-<li>Change to assign a sorted list to that variable</li>
-<li>Set a breakpoint on the assignment</li>
-<li>Ctrl-D and confirm</li>
-</ul>
 </div>
 <div class="section" id="todo-comment-counts">
 <h2>Todo Comment Counts<a class="headerlink" href="#todo-comment-counts" title="Permalink to this headline">¶</a></h2>
