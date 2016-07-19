@@ -14,7 +14,7 @@ Steps
 #. Your ``app.py`` should match the following:
 
    .. literalinclude:: app.py
-    :caption: app.py in List Todos
+    :caption: app.py in Sorted Todos
     :language: py
 
 #. Your ``templates/list_todos.html`` should match the following:
