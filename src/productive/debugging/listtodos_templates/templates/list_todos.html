@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+    <ul>
+        {% for todo in todos %}
+            <li>
+                <a href="/todo/{{ todo.id }}">{{ todo.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
