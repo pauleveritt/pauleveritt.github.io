@@ -20,13 +20,13 @@ Steps
 #. Your ``templates/list_todos.html`` should match the following:
 
    .. literalinclude:: templates/list_todos.html
-    :caption: templates/list_todos.html in List Todos Templates
+    :caption: templates/list_todos.html in Sorted Todos
     :language: jinja
 
 #. Your ``templates/show_todo.html`` should match the following:
 
    .. literalinclude:: templates/show_todo.html
-    :caption: templates/list_todos.html in List Todos Templates
+    :caption: templates/list_todos.html in Sorted Todos
     :language: jinja
 
 
