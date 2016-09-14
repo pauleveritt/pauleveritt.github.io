@@ -44,9 +44,9 @@ Steps
 
 #. Click in ``randint``, press ``Alt-Enter``, and choose
    ``Import 'random.randint'``. To move there from the end of the line, you
-   can use ``Alt-Left`` to jump by word.
+   can use ``Ctrl-Left`` to jump by word. (macOS: ``Alt-Left``)
 
-#. As always, ``Cmd-Alt-L`` to clean up formatting.
+#. As always, ``Ctrl-Alt-L`` to clean up formatting. (macOS: ``Cmd-Alt-L``)
 
 #. Make a Python representation by starting a new method:
 
@@ -65,7 +65,7 @@ Steps
 #. Change the ``print`` statement at the bottom to
    ``print(todos)``.
 
-#. Re-run to confirm (``Ctrl-R``).
+#. Re-run to confirm, using ``Shift-F10``. (macOS: ``Ctrl-R``)
 
 #. Our ``app.py`` needs to get its ``todos`` from ``models.py``
    instead of keeping its own list.

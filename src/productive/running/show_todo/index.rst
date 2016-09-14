@@ -13,7 +13,7 @@ Steps
    Templates.
 
 #. On the empty line after the ``list_todos`` function,
-   type ``Cmd-J route`` and press ``enter``.
+   type ``Ctrl-J route`` and press ``enter``. (macOS: ``Cmd-J``)
 
 #. For the function name (when prompted by the red box), enter
    ``show_todo`` and press ``enter``.
@@ -22,7 +22,8 @@ Steps
    press ``enter`` again to move to the end of ``pass`` in the function
    body.
 
-#. Press ``Alt-Backspace`` to delete to the beginning of the word.
+#. Press ``Ctrl-Backspace`` to delete to the beginning of the word.
+   (macOS: ``Alt-Backspace``)
 
 #. Enter ``return 'ToDo {todo_id}'.format()`` for now.
 
@@ -102,6 +103,10 @@ way to run your code in a smart output window.
 
 - *Buttons and Shortcuts*. Running, stopping, and re-running can all
   happen from multiple places, including keyboard shortcuts.
+
+  .. note::
+
+    You can get to the list of shortcuts with ``Help -> Keymap Reference``.
 
 We also saw some other smart PyCharm help in action:
 

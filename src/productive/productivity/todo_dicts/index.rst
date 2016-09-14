@@ -16,8 +16,8 @@ Steps
 
      todos.append({'id': 1, 'title': 'First'})
 
-#. ``Ctrl-R`` to re-run ``models.py`` and confirm that it prints
-   that dictionary.
+#. ``Shift-F10`` to re-run ``models.py`` and confirm that it prints
+   that dictionary. (macOS: ``Ctrl-R``)
 
 #. Change from a dictionary literal to dictionary constructor by
    clicking in the dictionary, typing ``Alt-Enter``, and choosing
@@ -28,7 +28,7 @@ Steps
 
      todos.append(dict(id=1, title='First'))
 
-#. Confirm all is well with a ``Ctrl-R`` re-run.
+#. Confirm all is well with a ``Shift-F10`` re-run. (macOS: ``Ctrl-R``)
 
 #. Change the last line in the main block, the ``print``, to print
    the first todo's id with a formatted string:
@@ -37,8 +37,8 @@ Steps
 
       print('Todo {todo_id}'.format(todo_id=todos[0]['id']))
 
-#. Re-run (``Ctrl-R``). It should now show ``Todo 1`` in the
-   output.
+#. Re-run (``Shift-F10``). It should now show ``Todo 1`` in the
+   output. (macOS: ``Ctrl-R``)
 
 #. How does Python's ``format`` string method work? Click on
    ``.format`` and choose ``View -> Quick Definition`` from
@@ -70,7 +70,7 @@ In this small step we emphasize PyCharm automation:
 
 We also showed two things you'll do over and over:
 
-- ``Ctrl-R`` to re-run the selected Run Configuration
+- ``Shift-F10`` to re-run the selected Run Configuration (macOS: ``Ctrl-R``)
 
 - ``Ctrl-Alt-L`` to clean up your code with Reformat Code
 

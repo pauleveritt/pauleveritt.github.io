@@ -44,14 +44,13 @@ Steps
 
 #. Click the red ``X`` in the ``Python Console`` tool window to close the Python Console.
 
-#. Open PyCharm Preferences with ``Cmd-,``
+#. Open PyCharm Preferences with ``Ctrl-Alt-S``. (macOS: ``Cmd-,``)
 
 #. Navigate to ``Build, Execution, Deployment -> Console -> Python Console``
    and look at the options, then click ``Cancel`` to dismiss the Preferences
    popup.
 
-#. Let's open the Terminal tool window. But rather than clicking on the icon button
-   in the bottom of the screen, press ``Alt-F12``.
+#. Open the command line by clicking in the bottom of the screen in ``Terminal``.
 
 #. PyCharm starts you in the project directory. Let's take a look at where
    PyCharm stores its data for the project preferences:
@@ -79,7 +78,7 @@ executing your project's code. But the interactive prompt is also useful:
 
 - *Python Console*. Get to a Python prompt, in the context of your project.
 
-- *Terminal*. Get to the OS X, Windows, or Linux console prompt, with
+- *Terminal*. Get to the Windows, macOS, or Linux console prompt, with
   the working directory set to your project root.
 
 Extra Credit

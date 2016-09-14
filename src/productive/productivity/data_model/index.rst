@@ -10,9 +10,9 @@ productivity in action -- Live Templates and Quick Fixes.
 Steps
 =====
 
-#. Create a new file with ``Cmd-N -> PF -> models`` and press ``enter``.
+#. Create a new file with ``Alt-Insert -> PF -> models`` and press ``enter``.
    The ``PF`` is a way PyCharm lets you narrow a list with camel case for
-   the first letters in the words in a list.
+   the first letters in the words in a list. (macOS: ``Cmd-N``)
 
 #. Answer "Yes" to put under version control. PyCharm automatically adds
    ``.py`` to the given filename.
@@ -20,8 +20,8 @@ Steps
 #. Enter ``todos = []`` on the first line. Press ``enter`` twice to give
    a blank line.
 
-#. Use Live Templates to add a main run block with ``Cmd-J main`` then
-   ``enter``.
+#. Use Live Templates to add a main run block with ``Ctrl-J main`` then
+   ``enter``. (macOS: ``Cmd-J``)
 
 #. When the cursor is under the ``if``, type in ``populate_todos()``.
 
@@ -41,7 +41,7 @@ Steps
 
 #. Find the other Live Templates and Code Intentions in Preferences:
 
-    - ``Cmd-,`` to open Preferences
+    - ``Ctrl-Alt-S`` to open Preferences (macOS: ``Cmd-,``)
 
     - Start typing ``live`` to filter preferences by the string ``live``
 

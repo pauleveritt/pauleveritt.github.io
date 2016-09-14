@@ -24,7 +24,8 @@ Steps
 
     File "/Users/pauleveritt/projects/pycharm/epc2016/epc_tutorial/app.py", line 18, in show_todo
 
-#. Click on the blue-underlined filename to jump to line 18 in that file.
+#. In the traceback, click on the blue-underlined filename to jump to
+   line 18 in that file.
 
 #. Change ```xxxtodo_id`` to ``todo_id``.
 

@@ -50,7 +50,8 @@ Steps
 
 #. In ``app.py``, note that the ``index.html`` is no longer a warning. Confirm
    that PyCharm can find the template by clicking in ``'index.html'`` and
-   pressing ``Cmd-B``. PyCharm opens ``index.html`` from the ``templates`` folder.
+   pressing ``Ctrl-B``. PyCharm opens ``index.html`` from the ``templates`` folder.
+   (macOS: ``Cmd-B``)
 
 #. Reload your browser on the root URL.
 

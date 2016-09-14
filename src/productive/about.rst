@@ -21,7 +21,7 @@ Prerequisites
 - Recent version of git
 
 *Note: The examples are targeted at Windows, but everything works fine in
-OS X or Linux.*
+macOS or Linux.*
 
 Objectives
 ==========

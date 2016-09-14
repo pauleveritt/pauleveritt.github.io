@@ -23,7 +23,8 @@ Steps
 #. Can PyCharm do this change for us? Click on ``list`` and press
    ``Alt-Enter``. Choose ``Make method static``.
 
-#. Press ``Cmd-Alt-L`` to clean up any line formatting complaints.
+#. Press ``Ctrl-Alt-L`` to clean up any line formatting complaints.
+   (macOS: ``Cmd-Alt-L``)
 
 #. Our ``__repr__`` is doing a lot. Perhaps we can refactor it. First, let's
    extract the formatting into a property ``display`` that can be overridden
@@ -37,10 +38,11 @@ Steps
 #. PyCharm makes a new ``display`` method with the logic, and changes
    ``__repr__`` to call it.
 
-#. Let's say you changed your mind. Press ``Cmd-Z`` to undo and all of that
-   work is undone in one unit.
+#. Let's say you changed your mind. Press ``Ctrl-Z`` to undo and all of that
+   work is undone in one unit. (macOS: ``Cmd-Z``)
 
-#. Or you decided you wanted it. Press ``Shift-Cmd-Z`` to redo.
+#. Or you decided you wanted it. Press ``Shift-Cmd-Z`` to redo. (macOS:
+   ``Shift-Cmd-Z``)
 
 #. Something looks fishy about ``display``. Click somewhere in ``def display``
    and press ``Alt-Enter``. Sure enough, PyCharm can convert it to a
@@ -48,10 +50,12 @@ Steps
    decorator and changes all usages, such as ``__repr__``.
 
 #. Next, we'd like the format string to be parameterizable. Click once inside
-   ``'Todo {todo_id}'`` then expand the selection by pressing ``Alt-Up``
+   ``'Todo {todo_id}'`` then expand the selection by pressing ``Ctrl-W``
    three times. PyCharm's selection should highlight the single quotes.
+   (macOS: ``Alt-Up``)
 
-#. Open the ``Refactor`` popup with ``Ctrl-T``. Choose ``Field``.
+#. Open the ``Refactor`` popup with ``Ctrl-Alt-Shift-T``. Choose ``Field``.
+   (macOS: ``Ctrl-T``)
 
 #. In the inline popup, change ``Initialize in:`` from ``current method``
    to ``constructor``, then enter ``display_fmt`` into the red box and press
@@ -60,8 +64,9 @@ Steps
 #. PyCharm has added ``self.display_fmt`` to our constructor and changed
    the ``display`` property method to use it.
 
-#. That's a lot. Let's re-run ``models.py`` with ``Ctrl-R`` to make sure
+#. That's a lot. Let's re-run ``models.py`` with ``Shift-F10`` to make sure
    it runs ok. *Make sure the models.py run configuration is selected.*
+   (macOS: ``Ctrl-R``)
 
 #. We can now refactor ``app.py`` to use this. On the first line inside
    ``list_todos``, type ``todos = ToDo`` and press ``Alt-Enter`` to
@@ -73,7 +78,7 @@ Steps
    unused imports, but re-organizes your import listing based on a
    configurable policy.
 
-#. Does the web app stll work? Reload the browser and visit the todo listing
+#. Does the web app still work? Reload the browser and visit the todo listing
    to confirm.
 
 #. At long last, we realize our ``ToDo`` typo, and by now, it is used in
@@ -127,7 +132,7 @@ Another step with quite a number of small changes:
 Extra Credit
 ============
 
-#. We use ``Alt-Up`` to extend the selection. Can this extend beyond
+#. We use ``Alt-Shift-Up`` to extend the selection. Can this extend beyond
    the current line, to an entire block?
 
 #. In Python, what's the difference between ``@classmethod`` and
