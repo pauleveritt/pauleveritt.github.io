@@ -16,7 +16,8 @@ in the PyCharm booth for help.*
 Install
 =======
 
-#. *Install Python 3.5*. You can get this from any location.
+#. *Install Python 3.5*. You can get this from any location. For Windows, during
+   the install, ensure you select the box to put Python on your Path.
 
 #. *PyCharm Professional*. Please `download PyCharm Professional
    <https://www.jetbrains.com/pycharm/download/>`_, as this course uses
@@ -43,6 +44,8 @@ Steps
 
 #. Supply the license key.
 
+#. In ``PyCharm Initial Settings``, click ``OK`` to accept the defaults.
+
 #. In the ``Welcome to PyCharm`` dialog, choose ``Create New Project``.
 
 #. In the next panel, choose ``Flask`` from the left-hand side.
@@ -58,16 +61,21 @@ Steps
 
 #. Click the ``Create`` button.
 
-#. Click the ``1. Project`` button in the left margin of PyCharm to
-   open the file browser.
+#. Click ``Close`` to dismiss the tips.
 
-#. Expand the ``epc`` directory and and double-click on the ``epc.py``
-   file.
+#. ``Tool Windows Quick Access`` in the bottom points to a button in the bottom
+   left. Click that button to reveal the tool window buttons on the left, bottom,
+   and right, then dismiss the popup by clicking ``Got it``.
 
 #. Change the last line to read ``app.run(debug=True)``.
 
 #. In the toolbar, click the green arrow play button to run the Flask
    application.
+
+   .. note::
+
+      You might have to wait for PyCharm's initial indexing to finish before
+      the toolbar button turns green.
 
 #. When the Run Tool window opens in the bottom, click the
    ``http://127.0.0.1:5000/`` hyperlink to open the Flask application in
@@ -79,7 +87,7 @@ Optional Configuration
 Many developers like the dark look on their themes. Let's adopt that for
 this tutorial.
 
-#. Press ``Cmd-,`` top open PyCharm preferences.
+#. In PyCharm's menu, click ``File-Settings` to open PyCharm preferences.
 
    .. note::
 
@@ -87,13 +95,13 @@ this tutorial.
       Windows or Linux, no problem. Use ``Ctrl`` instead. For more
       help, check the ``Keymap Reference`` in PyCharm's ``Help`` menu.
 
-#. In the search box, type ``theme`` and select ``Darcula`` from the
-   ``Theme:`` drop-down on the right.
-
 #. In the preferences, go to ``Editor -> Colors & Fonts -> Fonts`` and
    for the ``Scheme:`` dropdown, choose ``Darcula``.
 
-#. Click ``Ok`` to dismiss the Preferences dialog.
+#. In the preferences search box, type ``theme`` and select ``Darcula``
+   from the ``Theme:`` drop-down on the right.
+
+#. Click ``OK`` to dismiss the Preferences dialog.
 
 Analysis
 ========
@@ -116,7 +124,7 @@ Extra Credit
 #. Can PyCharm help me see if my ``pip`` is out-of-date, and if so,
    update it?
 
-#. Where can I compare the featues in different PyCharm editions, such
+#. Where can I compare the features in different PyCharm editions, such
    as Community, Professional, and Edu?
 
 #. Will the Flask app restart if you make a change? Is that PyCharm

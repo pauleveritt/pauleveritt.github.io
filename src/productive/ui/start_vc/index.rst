@@ -30,7 +30,7 @@ Steps
 
 #. At the moment, it is red, meaning, not under version control.
 
-#. In context menu, choose ``Git -> Add to VCS``.
+#. In right-click context menu, choose ``Git -> Add to VCS``.
 
 #. The color changes to green, indicating it is added but not committed.
 
@@ -105,8 +105,3 @@ Extra Credit
 
 #. What is the visual indicator on a project tool's file when it has
    a major Python error in it?
-
-TODO
-====
-
-- Links to VCS docs in PyCharm help

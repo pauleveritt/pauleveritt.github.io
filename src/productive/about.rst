@@ -20,8 +20,8 @@ Prerequisites
 
 - Recent version of git
 
-*Note: The examples are targeted at OS X, but everything works fine in
-Windows or Linux.*
+*Note: The examples are targeted at Windows, but everything works fine in
+OS X or Linux.*
 
 Objectives
 ==========

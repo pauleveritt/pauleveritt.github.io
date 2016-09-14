@@ -11,8 +11,8 @@ Steps
 
 #. Open ``app.py`` in the editor, if it isn't already opened.
 
-#. After the first route, add a second route with two errors and tonewo
-   warnings:
+#. After the first route, add a second route with two errors and one
+   warning:
 
    .. code-block:: python
 
@@ -28,7 +28,7 @@ Steps
    line (warnings). Mouse over each of these to see the actual issue.
 
 #. Correct the second error, the extra space before the colon, with
-   PyCharm's ``Cmd-Alt-L`` (Reformat Code).
+   PyCharm's ``Ctrl-Alt-L`` (Reformat Code). (macOS: ``Cmd-Alt-L``).
 
 #. Mouse over the ``x`` to see again the actual error.
 
@@ -71,7 +71,7 @@ for interacting with you on that work. The gutters are part of this.
 
 - *Code analysis*. PyCharm flags you when it finds something important.
   Errors and warnings are treated differently, showing up both in the
-  gutter and in the editor. PyCharm Preferences can be used to configure
+  gutter and in the editor. PyCharm Settings can be used to configure
   these errors and warnings.
 
 - *Linting*. The code analysis is driven by PyCharm's support for various
