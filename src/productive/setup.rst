@@ -16,13 +16,16 @@ in the PyCharm booth for help.*
 Install
 =======
 
-#. *Install Python 3.5*. You can get this from any location. For Windows, during
-   the install, ensure you select the box to put Python on your Path.
+#. *Install Python 3.5*. You can get this from any location.
 
-#. *PyCharm Professional*. Please `download PyCharm Professional
-   <https://www.jetbrains.com/pycharm/download/>`_, as this course uses
-   Flask. You can request a 30 day evaluation, or wait for us to give out
-   evaluation keys at the conference.
+   .. note::
+
+      For Windows, during the install, ensure you select the box to ``Add
+      Python to your environment variables.``
+
+#. *PyCharm*. Please `download PyCharm Community Edition
+   <https://www.jetbrains.com/pycharm/download/>`_ and install it. For Windows,
+   make sure you click the checkbox to ``Create Desktop shortcut``.
 
 #. *Git*. We have a couple of tasks that rely on ``git`` integration. You
    can skip these tasks, but it's better if you have an installation.
@@ -32,30 +35,30 @@ Install
 .. note::
 
   For a video guide to setup, see our `Getting Started: Setup
-  screencast <https://www.youtube.com/watch?v=5rSBPGGLkW0&list=PLQ176FUIyIUZ1mwB-uImQE-gmkwzjNLjP&index=2>`_ on
-  YouTube.
+  screencast <https://www.youtube.com/watch?v=5rSBPGGLkW0&list=PLQ176FUIyIUZ1mwB-uImQE-gmkwzjNLjP&index=2>`_
+  on YouTube.
 
 Steps
 =====
 
-#. Open PyCharm Professional.
+#. Open PyCharm Community Edition.
 
-#. Say no to importing settings.
+#. Choose ``I do not have a previous edition of PyCharm`` when asked about
+   importing settings..
 
-#. Supply the license key.
+#. Accept the privacy policy.
 
-#. In ``PyCharm Initial Settings``, click ``OK`` to accept the defaults.
+#. In ``PyCharm Initial Configuration``, click ``OK`` to accept the default
+   theme etc.
 
 #. In the ``Welcome to PyCharm`` dialog, choose ``Create New Project``.
 
-#. In the next panel, choose ``Flask`` from the left-hand side.
+#. On the ``Interpreter line``, click on the gear at the end of the line. In
+   the sub-menu, choose ``Create VirtualEnv``.
 
-#. On the right-hand side, click the ``...`` at the right end of the
-   ``Interpreter`` line and choose ``Create VirtualEnv``.
-
-#. In the ``Create Virtual Environment`` dialog, create a virtual environment
-   based on your installed Python 3.5, somewhere on your system. (For example, in
-   ``~/virtualenvs/epc`` for EuroPython.)
+#. In the ``Create Virtual Environment`` dialog, enter ``env35`` in the
+   ``Name`` field. Make sure the ``Base interpreter`` field is pointed at
+   Python 3.5, then click ``OK``.
 
 #. Back in the new project dialog, enter ``epc`` as the name of the project.
 
@@ -67,10 +70,28 @@ Steps
    left. Click that button to reveal the tool window buttons on the left, bottom,
    and right, then dismiss the popup by clicking ``Got it``.
 
-#. Change the last line to read ``app.run(debug=True)``.
+#. Make a new Python file by choosing ``File -> New``, then choose ``File``,
+   and name it ``epc.py``.
 
-#. In the toolbar, click the green arrow play button to run the Flask
-   application.
+#. In the editor for ``epc.py``, enter the following for your starting Flask
+   application:
+
+   .. code-block:: python
+
+    from flask import Flask
+
+    app = Flask(__name__)
+
+
+    @app.route('/')
+    def hello_world():
+        return 'Hello World!'
+
+
+    if __name__ == '__main__':
+        app.run(debug=True)
+
+#. In the ``Run`` menu, choose ``Run``.
 
    .. note::
 
@@ -111,9 +132,9 @@ In this setup step we did quite a number of items:
 - *Python Installation*. PyCharm projects can choose from a number of
   installed Pythons, as well as make virtual environments.
 
-- *Projects*. PyCharm projects are a directory on disk, created from
-  a project template. PyCharm Professional adds support for a number
-  of web-based frameworks.
+- *Projects*. PyCharm projects are simple: a regular directory of your
+  source files, in which PyCharm adds a ``.idea`` subdirectory for its
+  project-y stuff.
 
 - *Configuration*. PyCharm has a number of global and per-project
   settings.

@@ -13,8 +13,7 @@ Prerequisites
 
 - Installation of Python 3.5.1 or later
 
-- Installation of PyCharm Professional (either 30 day evaluation or
-  licensed version)
+- Installation of PyCharm (Community Edition or Professional Edition)
 
 - A web browser
 
