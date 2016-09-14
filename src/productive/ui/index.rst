@@ -21,6 +21,5 @@ Tasks
 
     rename_view/index.rst
     start_vc/index.rst
-    preferences/index.rst
     rename_file/index.rst
     list_todos/index.rst

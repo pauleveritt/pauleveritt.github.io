@@ -4,7 +4,8 @@ Start Version Control
 
 PyCharm's ``Project`` tool is a very smart folder browser. We'll show
 this by putting our Todo app under version control and seeing how
-PyCharm can do work for us, with colors indicating VCS status.
+PyCharm can do work for us, with colors indicating VCS status. We
+also show how PyCharm works with Python requirements.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/start_vc>`_
 
@@ -66,6 +67,15 @@ Steps
 #. Note that the two files in the ``Project`` tool window are now a
    normal color.
 
+#. Open PyCharm's Settings with ``File -> Settings``,  or use ``Ctrl-Alt-S``
+   as a shortcut. (macOS: ``PyCharm -> Preferences`` and ``Cmd-,``.)
+
+#. In Settings (aka Preferences), click on ``Tools -> Python Integrated Tools``.
+   The first field shows which file is registered with PyCharm as this
+   interpreter's requirements file.
+
+#. Click ``Cancel`` to dismiss the preferences.
+
 Analysis
 ========
 
@@ -107,3 +117,7 @@ Extra Credit
 
 #. What is the visual indicator on a project tool's file when it has
    a major Python error in it?
+
+#. When installing a Python package via Project Interpreter preferences,
+   can you simultaneously record it in the ``requirements.txt``?
+
