@@ -5,6 +5,8 @@ Rename View
 Our view function is named ``hello_world``. Let's change it to ``home_page``.
 Along the way, let's get introduced to some of the UI elements in PyCharm.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/rename_view>`_
+
 Steps
 =====
 

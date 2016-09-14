@@ -6,6 +6,8 @@ We aren't really using any data yet. Let's make a small step in
 that direction. Along the way, we'll see other PyCharm ways to execute
 code: the Python Console and the Terminal tool.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/list_of_todos>`_
+
 Steps
 =====
 

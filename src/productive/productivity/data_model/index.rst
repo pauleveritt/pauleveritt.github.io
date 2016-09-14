@@ -7,6 +7,8 @@ a list of todos, in a very simple manner. Let's turn that into the
 start of a proper "models" file. As we do so, we'll see some PyCharm
 productivity in action -- Live Templates and Quick Fixes.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/data_model>`_
+
 Steps
 =====
 

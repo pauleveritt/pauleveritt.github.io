@@ -6,6 +6,8 @@ We forgot to add Flask to our ``requirements.txt`` file. In this step we
 let PyCharm do this for us, while showing the IDE's ``Settings``
 window.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/preferences>`_
+
 Steps
 =====
 

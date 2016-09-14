@@ -87,7 +87,7 @@ Optional Configuration
 Many developers like the dark look on their themes. Let's adopt that for
 this tutorial.
 
-#. In PyCharm's menu, click ``File-Settings` to open PyCharm preferences.
+#. In PyCharm's menu, click ``File-Settings`` to open PyCharm preferences.
 
    .. note::
 

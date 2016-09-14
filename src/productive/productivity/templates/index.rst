@@ -7,6 +7,8 @@ to work in Flask, while showing some PyCharm features such as Emmet
 for code completion. For now, though, we'll just convert one view,
 the home page, to use a template.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/templates>`_
+
 Steps
 =====
 

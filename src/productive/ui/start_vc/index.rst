@@ -6,6 +6,8 @@ PyCharm's ``Project`` tool is a very smart folder browser. We'll show
 this by putting our Todo app under version control and seeing how
 PyCharm can do work for us, with colors indicating VCS status.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/start_vc>`_
+
 Steps
 =====
 

@@ -6,6 +6,8 @@ We're going to start a ``Todo`` class, to replace each dictionary in our
 `todos`` list. We'll let PyCharm help us with this code refactoring,
 including changing our ``app.py`` web app to use ``model.todos``.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/todo_class>`_
+
 Steps
 =====
 

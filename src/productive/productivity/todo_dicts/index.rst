@@ -6,6 +6,8 @@ We don't have any todo items to show. Let's use some handy PyCharm
 machinery as we implement this: more Code Intentions, Quick Documentation,
 and Reformat Code.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/todo_dicts>`_
+
 Steps
 =====
 

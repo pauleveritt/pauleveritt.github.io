@@ -6,6 +6,8 @@ Our ``show_todo`` is still using dummy data. Let's have it use actual data,
 with a lookup static method from ``models.Todo`` similar to how we get the
 list of todos. As we do this, we'll see how to efficiently re-arrange code.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/single_todo>`_
+
 Steps
 =====
 

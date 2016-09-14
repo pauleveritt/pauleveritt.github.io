@@ -7,6 +7,8 @@ What if there's some work involved, such as a database query? Let's
 change to use a class method. We can get PyCharm to help us with
 the refactoring.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/list_todos_method>`_
+
 Steps
 =====
 

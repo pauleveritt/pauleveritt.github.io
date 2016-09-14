@@ -6,6 +6,8 @@ PyCharm's editor allows, obviously, editing. But the left and right
 margins, aka the gutters, have rich functionality for helping you
 code. Let's see these gutters in action by adding a second route.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/list_todos>`_
+
 Steps
 =====
 

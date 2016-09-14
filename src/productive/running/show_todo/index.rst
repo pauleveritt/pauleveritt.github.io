@@ -6,6 +6,8 @@ We need a route for showing an individual todo. Let's use this as a
 chance to show more about running Python code in PyCharm. Namely,
 let's look more at PyCharm's Run Configurations.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/show_todo>`_
+
 Steps
 =====
 
