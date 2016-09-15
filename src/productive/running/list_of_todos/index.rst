@@ -59,7 +59,7 @@ Steps
 
     .. code-block:: bash
 
-        $ ls -l .idea
+        > dir .idea
 
 #. Click the red ``X`` in the Terminal tool window to close the terminal.
 
