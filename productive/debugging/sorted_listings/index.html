@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Sorted Listings &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Sorted Listings</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Debugging</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../add_todo/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../delete_todo/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="sorted-listings">
+<h1>Sorted Listings<a class="headerlink" href="#sorted-listings" title="Permalink to this headline">¶</a></h1>
+<p>Our listings appear in the order they were added, not in alphabetical
+order. Let&#8217;s fix that, while making a bigger database of random
+todos. We&#8217;ll use this to show more debugging featuers:</p>
+<ul class="simple">
+<li>Break on exceptions</li>
+<li>Step Over</li>
+<li>Step Into</li>
+<li>Step Into My Code</li>
+</ul>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">First, make sure you have no breakpoints open and your
+application isn&#8217;t currently stopped at a breakpoint.</p>
+</li>
+<li><p class="first">Let&#8217;s change <code class="docutils literal"><span class="pre">populate_todos</span></code> to dynamically make some
+synthetic data, at first with a <em>typo</em> that we will later
+correct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
+    <span class="n">random_verbs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Make&#39;</span><span class="p">,</span> <span class="s1">&#39;Buy&#39;</span><span class="p">,</span> <span class="s1">&#39;Organize&#39;</span><span class="p">,</span> <span class="s1">&#39;Finish&#39;</span><span class="p">]</span>
+    <span class="n">random_nouns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="s1">&#39;Tomato&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="s1">&#39;Pear&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;Black&#39;</span><span class="p">,</span> <span class="s1">&#39;Bean&#39;</span><span class="p">,</span> <span class="s1">&#39;Yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;Banana&#39;</span><span class="p">,</span> <span class="s1">&#39;Brown&#39;</span><span class="p">,</span> <span class="s1">&#39;Raisin&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">random_verbs</span><span class="p">)</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">random_nouns</span><span class="p">)</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">random_nounsxxx</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;{v} {w1} {w2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">w1</span><span class="o">=</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="o">=</span><span class="n">w2</span><span class="p">)</span>
+        <span class="n">Todo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">When you save, Flask restarts, runs <code class="docutils literal"><span class="pre">populate_todos</span></code>, and has a
+<code class="docutils literal"><span class="pre">NameError</span></code> on startup. You can see the traceback in the <code class="docutils literal"><span class="pre">Debugger</span></code>
+console tab.</p>
+</li>
+<li><p class="first">Let&#8217;s change the debugger to stop on exceptions by clicking
+<code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">View</span> <span class="pre">Breakpoints</span></code>.</p>
+</li>
+<li><p class="first">In the popup, select <code class="docutils literal"><span class="pre">Python</span> <span class="pre">Exception</span> <span class="pre">Breakpoint</span> <span class="pre">-&gt;</span> <span class="pre">Any</span> <span class="pre">Breakpoint</span></code>
+and click the checkbox for <code class="docutils literal"><span class="pre">On</span> <span class="pre">raise</span></code>.</p>
+</li>
+<li><p class="first">Re-run debugger by clicking the green <code class="docutils literal"><span class="pre">Re-run</span></code> button <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> in the
+<code class="docutils literal"><span class="pre">5.</span> <span class="pre">Debug</span></code> tool window&#8217;s toolbar.</p>
+</li>
+<li><p class="first">This time the debugger stops, but in library code. Let&#8217;s fix that.</p>
+</li>
+<li><p class="first">Go back to <code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">View</span> <span class="pre">Breakpoints</span></code>, then
+<code class="docutils literal"><span class="pre">Python</span> <span class="pre">Exception</span> <span class="pre">Breakpoint</span> <span class="pre">-&gt;</span> <span class="pre">Any</span> <span class="pre">Breakpoint</span></code> and click the
+checkbox for <code class="docutils literal"><span class="pre">Ignore</span> <span class="pre">Library</span> <span class="pre">Files</span></code>.</p>
+</li>
+<li><p class="first">Re-run debugger by clicking <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> and execution stops on the exception
+but in our code.</p>
+</li>
+<li><p class="first">Fix the typo by removing <code class="docutils literal"><span class="pre">xxx</span></code> and click the resume button
+<img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</p>
+</li>
+<li><p class="first">Let&#8217;s step through execution. Set a breakpoint on
+<code class="docutils literal"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">choice(random_verbs)</span></code> by clicking in the left margin beside
+that line to create a red circle.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Re-run</span></code> button <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> to restart. Execution will
+stop on that line, the <em>first</em> time through the <code class="docutils literal"><span class="pre">for</span></code> loop.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Step</span> <span class="pre">Over</span></code> button <img alt="stepover" src="https://www.jetbrains.com/help/img/idea/frames_step_over.png" /> then click it again.</p>
+</li>
+<li><p class="first">Clear your breakpoint by clicking on the red circle, then click
+<code class="docutils literal"><span class="pre">Resume</span></code> <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</p>
+</li>
+<li><p class="first">Let&#8217;s use <em>Step Into</em> to go <code class="docutils literal"><span class="pre">populate_todos</span></code>. Set a breakpoint
+on the line for near the end for <code class="docutils literal"><span class="pre">populate_todos()</span></code>.</p>
+</li>
+<li><p class="first">Re-run our debug session by clicking <code class="docutils literal"><span class="pre">Re-run</span></code> <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" />. Execution
+stops on that line.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Step</span> <span class="pre">Into</span></code> <img alt="stepinto" src="https://www.jetbrains.com/help/img/idea/frames_step_into.png" /> to go into <code class="docutils literal"><span class="pre">populate_todos</span></code>. PyCharm
+moves the highlighted line to the first line inside that function.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Step</span> <span class="pre">Into</span></code> <img alt="stepinto" src="https://www.jetbrains.com/help/img/idea/frames_step_into.png" /> six more times. When you reach
+<code class="docutils literal"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">choice(random_verbs)</span></code>, the debugger &#8220;steps into&#8221; the
+<code class="docutils literal"><span class="pre">choice</span></code> function of Python&#8217;s <code class="docutils literal"><span class="pre">random</span></code> modules. Sometimes
+that sucks, so let&#8217;s do something different.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Step</span> <span class="pre">Out</span></code> <img alt="stepout" src="https://www.jetbrains.com/help/img/idea/frames_step_out.png" /> to get out of descending into <code class="docutils literal"><span class="pre">choice</span></code>.
+We&#8217;re back to the surface, in <code class="docutils literal"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">choice(random_verbs)</span></code>.</p>
+</li>
+<li><p class="first">This time, click <code class="docutils literal"><span class="pre">Step</span> <span class="pre">Into</span> <span class="pre">My</span> <span class="pre">Code</span></code> <img alt="mycode" src="https://www.jetbrains.com/help/img/idea/step_into_my_code.png" /> and click a couple
+more times. Note that we jump over <code class="docutils literal"><span class="pre">choice</span></code>, because it isnt part
+of this project&#8217;s code.</p>
+</li>
+<li><p class="first">Remove the breakpoint and click <code class="docutils literal"><span class="pre">Resume</span></code> <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</p>
+</li>
+<li><p class="first">Now that we have a synthetic list, let&#8217;s sort it. Change our
+<code class="docutils literal"><span class="pre">Todo</span></code> class&#8217;s method <code class="docutils literal"><span class="pre">def</span> <span class="pre">list</span></code> to</p>
+</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">return</span> <span class="pre">sorted(todos,</span> <span class="pre">key=lambda</span> <span class="pre">todo:</span> <span class="pre">todo.title)</span></code>.</p>
+<ol class="arabic simple">
+<li>Make sure our debug session is still running, then reload your
+browser on the todo listing page. Note that the todos are sorted.</li>
+<li>Re-run your debug session by clicking <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> and reload your
+browser. Different todo titles, but sorted.</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>

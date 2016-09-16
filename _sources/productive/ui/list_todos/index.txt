@@ -7,6 +7,7 @@ margins, aka the gutters, have rich functionality for helping you
 code. Let's see these gutters in action by adding a second route.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/list_todos>`_
+`View video/audio walkthrough <http://www.youtube.com/watch?v=SaslVpYoakc>`_
 
 Steps
 =====

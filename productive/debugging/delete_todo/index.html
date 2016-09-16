@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-    <title>Debugging &mdash; Paul Everitt  documentation</title>
+    <title>Delete Todo &mdash; Paul Everitt  documentation</title>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css">
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
-    <link rel="stylesheet" href="../../_static/css/sphinxstrap4.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
-    <link href="../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css"/>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
    
   
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
   
   
   <style type="text/css">
@@ -40,10 +40,10 @@
 <body>
 
 <nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
-    <a class="navbar-brand" href="../../">
-        <img src="../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
     </a>
-    <a class="navbar-brand" href="../../">
+    <a class="navbar-brand" href="../../../">
         Paul Everitt
     </a>
     <div class="collapse navbar-toggleable-xs">
@@ -59,7 +59,7 @@
             </li>
 
             <li class="nav-item">
-                <form class="form-inline" action="../../search/" method="get">
+                <form class="form-inline" action="../../../search/" method="get">
                     <input class="form-control form-control-sm" placeholder="Search..."
                            name="q" type="text">
                     <input type="hidden" name="check_keywords" value="yes"/>
@@ -77,7 +77,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <section id="preamble">
                     <div class="text-xs-center">
-                        <h1>Debugging</h1>
+                        <h1>Delete Todo</h1>
                         
                         
 
@@ -87,7 +87,11 @@
                             <ol class="nav navbar-nav breadcrumb pull-left">
                                 <li>
                                     <strong>In:</strong>
-                                    <a href="../">Productive Python with PyCharm</a>
+                                    <a href="../../">Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Debugging</a>
                                 </li>
 
                             </ol>
@@ -95,10 +99,10 @@
                             
                             <ul class="nav navbar-nav pull-right">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../productivity/single_todo/">Previous</a>
+                                    <a class="nav-link" href="../sorted_listings/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="add_todo/">Next</a>
+                                    <a class="nav-link" href="../div_id/">Next</a>
                                 </li>
                             </ul>
 
@@ -113,24 +117,31 @@
                 <section id="content">
 
                     
-  <div class="section" id="debugging">
-<h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
-<p>PyCharm&#8217;s graphical debugger is a key productivity feature. For some, the
-benefit it provides when chasing bugs makes it worthwhile to always run
-under the debugger first.</p>
-<p>In this section we have four steps of development that we use to show
-the major features of debugging Python code using PyCharm.</p>
-<div class="section" id="tasks">
-<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="add_todo/">Add Todo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sorted_listings/">Sorted Listings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="delete_todo/">Delete Todo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="div_id/">Add id to divs</a></li>
+  <div class="section" id="delete-todo">
+<h1>Delete Todo<a class="headerlink" href="#delete-todo" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Let&#8217;s start in reverse, with the UI</li>
+<li>app.py</li>
+<li>Change list_todos to add an X button</li>
+<li>Add a delete_todo route</li>
+<li>Put in a breakpoint</li>
+<li>Click X, confirm we have todo_id as an integer</li>
+<li>Click Resume</li>
+<li>models.py</li>
+<li>Add def delete</li>
+<li>Back in app.py, add <code class="docutils literal"><span class="pre">todo.delete()</span></code></li>
+<li>Reload browser and click X</li>
+<li>Stops at breakpoint</li>
+<li>Put cursor in model.py def delete</li>
+<li>Run to Cursor, make sure it&#8217;s the correct todo</li>
+<li>Use Evaluate when stopped, self.id == 2</li>
+<li>In Debugger Console, click to show the Python Prompt,
+self.id == 2</li>
+<li>Click on Debugger tab</li>
+<li>Move back in scope/frames by clicking on delete_todo, to see
+what was <code class="docutils literal"><span class="pre">todo_int</span></code> in the previous frame</li>
+<li>Show new app.py and models.py</li>
 </ul>
-</div>
-</div>
 </div>
 
   <div class="section">
@@ -179,7 +190,7 @@ the major features of debugging Python code using PyCharm.</p>
 
 <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
-        URL_ROOT: '../../',
+        URL_ROOT: '../../../',
         VERSION: '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '',

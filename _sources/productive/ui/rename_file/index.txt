@@ -7,6 +7,7 @@ Rename Files
 to help us on the renaming.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/rename_file>`_
+| `View video/audio walkthrough <http://www.youtube.com/watch?v=x310V0B8PsE>`_
 
 Steps
 =====
