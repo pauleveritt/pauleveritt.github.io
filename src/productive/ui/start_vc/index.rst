@@ -20,16 +20,6 @@ Steps
    the ``OK`` button. We now have a ``.git`` directory in our
    project root directory.
 
-#. In the ``Missing .gitignore file in GIT project``, click the
-   ``Create .gitignore`` link button.
-
-#. Scroll down and select ``Python``, then click the ``Generate`` button.
-
-#. In the next popup -- ``Would you like to add unversioned files to
-   the .gitignore file?`` -- click the ``Cancel`` link button.
-
-#. Click the ``x`` on the ``.gitignore`` tab to close that file.
-
 #. In Project Tool window, right-click on the ``epc.py`` file.
 
 #. At the moment, it is red, meaning, not under version control.
@@ -46,18 +36,13 @@ Steps
 
 #. In the next dialog, accept adding the new file to VCS.
 
-#. In ``requirements.txt``, add a line for ``flask-sqlalchemy``. The
-   file should look like this:
+#. In ``requirements.txt``, add a line for ``flask``. The file should
+   look like this:
 
    .. literalinclude:: requirements.txt
     :caption: requirements.txt for Start VC section
 
 #. Close ``requirements.txt`` by clicking the ``x`` on the tab.
-
-#. You will now be prompted with
-   ``Package requirement 'flask-sqlalchemy' is not satisfied``.
-
-#. Click the ``Install requirement`` link.
 
 #. Commit these changes to VCS with ``VCS -> Commit Changes``.
 
@@ -88,11 +73,6 @@ windows can be put to work:
 
 - *Tool context menus*. Entries in the project tool can be right-clicked
   on to get context sensitive menus.
-
-We also used some other features of PyCharm:
-
-- *Install packages*. Changing the requirements file prompted for missing
-  packages, then did the work to install.
 
 - *Git*. PyCharm is a great visual front-end for version control
   systems (VCS).
