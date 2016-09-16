@@ -7,6 +7,7 @@ fix that, while showing how the Run Tool window makes it easy to jump
 to run-time errors.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/fix_typo>`_
+`View video/audio walkthrough <http://www.youtube.com/watch?v=GOZb9noMraM>`_
 
 Steps
 =====
