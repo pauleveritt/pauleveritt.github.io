@@ -6,6 +6,8 @@ Rename Files
 ``app.py`` as the entry-point. Let's ask PyCharm's ``Project`` tool window
 to help us on the renaming.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/rename_file>`_
+
 Steps
 =====
 

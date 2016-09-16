@@ -122,13 +122,14 @@
 <p>PyCharm&#8217;s editor allows, obviously, editing. But the left and right
 margins, aka the gutters, have rich functionality for helping you
 code. Let&#8217;s see these gutters in action by adding a second route.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/list_todos">Source for this step</a></p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Open <code class="docutils literal"><span class="pre">app.py</span></code> in the editor, if it isn&#8217;t already opened.</p>
 </li>
-<li><p class="first">After the first route, add a second route with two errors and tonewo
-warnings:</p>
+<li><p class="first">After the first route, add a second route with two errors and one
+warning:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@appx.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>    <span class="c1"># Error</span>
 <span class="k">def</span> <span class="nf">list_todos</span><span class="p">()</span> <span class="p">:</span>       <span class="c1"># Error, extra space before :</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># Warning, unused variable</span>
@@ -143,7 +144,7 @@ Python exited due to <code class="docutils literal"><span class="pre">SyntaxErro
 line (warnings). Mouse over each of these to see the actual issue.</p>
 </li>
 <li><p class="first">Correct the second error, the extra space before the colon, with
-PyCharm&#8217;s <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code> (Reformat Code).</p>
+PyCharm&#8217;s <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> (Reformat Code). (macOS: <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>).</p>
 </li>
 <li><p class="first">Mouse over the <code class="docutils literal"><span class="pre">x</span></code> to see again the actual error.</p>
 </li>
@@ -205,7 +206,7 @@ for interacting with you on that work. The gutters are part of this.</p>
 <ul class="simple">
 <li><em>Code analysis</em>. PyCharm flags you when it finds something important.
 Errors and warnings are treated differently, showing up both in the
-gutter and in the editor. PyCharm Preferences can be used to configure
+gutter and in the editor. PyCharm Settings can be used to configure
 these errors and warnings.</li>
 <li><em>Linting</em>. The code analysis is driven by PyCharm&#8217;s support for various
 Python linting tools, including &#8220;PEP8&#8221; style guide tools.</li>

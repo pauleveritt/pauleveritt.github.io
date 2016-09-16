@@ -22,4 +22,3 @@ Tasks
     todo_class/index.rst
     list_todos_method/index.rst
     single_todo/index.rst
-    templates/index.rst

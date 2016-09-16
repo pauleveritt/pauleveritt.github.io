@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Templates &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Templates</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Templating</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../master/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="templates">
+<h1>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h1>
+<p>Generating HTML from Python can be tiresome. Let&#8217;s put Jinja2 templates
+to work in Flask, while showing some PyCharm features such as Emmet
+for code completion. For now, though, we&#8217;ll just convert one view,
+the home page, to use a template.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/templates">Source for this step</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, let&#8217;s change the return value of <code class="docutils literal"><span class="pre">home_page</span></code> to
+return a template. Replace that line and instead, type
+<code class="docutils literal"><span class="pre">return</span> <span class="pre">render_template</span></code> and press <code class="docutils literal"><span class="pre">Alt-Enter</span></code>.</p>
+</li>
+<li><p class="first">Select <code class="docutils literal"><span class="pre">import</span> <span class="pre">this</span> <span class="pre">name</span></code> and select the first choice, from <code class="docutils literal"><span class="pre">flask</span></code>.</p>
+</li>
+<li><p class="first">Finish typing that line, resulting in:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Home Page&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">PyCharm warns us that <code class="docutils literal"><span class="pre">Template</span> <span class="pre">file</span> <span class="pre">'index.html'</span> <span class="pre">not</span> <span class="pre">found</span></code>. Let&#8217;s create
+it.</p>
+</li>
+<li><p class="first">Right-click in the Project Tool window on the <code class="docutils literal"><span class="pre">templates</span></code> folder and
+select <code class="docutils literal"><span class="pre">New</span> <span class="pre">-&gt;</span> <span class="pre">File</span></code>. Give it a name of <code class="docutils literal"><span class="pre">index.html</span></code> and click
+<code class="docutils literal"><span class="pre">OK</span></code>.</p>
+</li>
+<li><p class="first">Let&#8217;s use <a class="reference external" href="https://www.jetbrains.com/help/pycharm/2016.1/emmet-support.html">Emmet</a>
+as a way to type fast. In the empty file, type
+<code class="docutils literal"><span class="pre">html&gt;head&gt;title</span></code> and press <code class="docutils literal"><span class="pre">tab</span></code>. PyCharm will generate much of the markup,
+leaving your cursor in the <code class="docutils literal"><span class="pre">&lt;title&gt;</span></code>.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">&lt;title&gt;</span></code>, type <code class="docutils literal"><span class="pre">Todo</span> <span class="pre">App:</span> <span class="pre">{{</span> <span class="pre">title</span> <span class="pre">}}</span></code> and press
+<code class="docutils literal"><span class="pre">Shift-Enter</span></code> to start a new line.</p>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">body&gt;h1</span></code> and press <code class="docutils literal"><span class="pre">tab</span></code>. Inside the generated <code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code>, enter
+<code class="docutils literal"><span class="pre">{{</span> <span class="pre">title</span> <span class="pre">}}</span></code> and press <code class="docutils literal"><span class="pre">Shift-Enter</span></code>.</p>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">a</span></code> and press tab. With the red box in the <code class="docutils literal"><span class="pre">href</span></code>, enter
+<code class="docutils literal"><span class="pre">/todo/</span></code> and press <code class="docutils literal"><span class="pre">enter</span></code>. The cursor moves inside the <code class="docutils literal"><span class="pre">&lt;a&gt;</span></code>.
+Type <code class="docutils literal"><span class="pre">Todos</span></code>.</p>
+</li>
+<li><p class="first">Close the <code class="docutils literal"><span class="pre">index.html</span></code> tab.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, note that the <code class="docutils literal"><span class="pre">index.html</span></code> is no longer a warning. Confirm
+that PyCharm can find the template by clicking in <code class="docutils literal"><span class="pre">'index.html'</span></code> and
+pressing <code class="docutils literal"><span class="pre">Ctrl-B</span></code>. PyCharm opens <code class="docutils literal"><span class="pre">index.html</span></code> from the <code class="docutils literal"><span class="pre">templates</span></code> folder.
+(macOS: <code class="docutils literal"><span class="pre">Cmd-B</span></code>)</p>
+</li>
+<li><p class="first">Reload your browser on the root URL.</p>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">app.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper container" id="app-py-in-templates">
+<div class="code-block-caption"><span class="caption-text">app.py in Templates</span><a class="headerlink" href="#app-py-in-templates" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">populate_todos</span><span class="p">,</span> <span class="n">Todo</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Home Page&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="n">div</span> <span class="o">=</span> <span class="s1">&#39;&lt;div&gt;&lt;a href=&quot;/todo/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/div&gt;&#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">div</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">title</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;int:todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Todo {todo_id}&lt;/h1&gt;&lt;p&gt;{title}&lt;/p&gt;&#39;</span>
+    <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">templates/index.html</span></code> should match the following:</p>
+<div class="literal-block-wrapper container" id="templates-index-html-in-templates">
+<div class="code-block-caption"><span class="caption-text">templates/index.html in Templates</span><a class="headerlink" href="#templates-index-html-in-templates" title="Permalink to this code">¶</a></div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Todo App: {{ title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/todo/&quot;</span><span class="p">&gt;</span>Todos<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>We added Flask template support, but saw a few last productivity features along
+the way:</p>
+<ul class="simple">
+<li><em>Emmet support</em>. PyCharm has a number of facilities for generating code. We
+previously saw Live Templates. Emmet is another. Postfix completion is a third
+way.</li>
+<li><em>Templates directory</em>. PyCharm warned us that a file didn&#8217;t exist in the
+Flask templates directory.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>How did PyCharm know that <code class="docutils literal"><span class="pre">index.html</span></code> should be, then was, in a folder
+called <code class="docutils literal"><span class="pre">templates</span></code>?</li>
+<li>Besides HTML, where else can you use Emmet in PyCharm?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>

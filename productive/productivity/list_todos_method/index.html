@@ -123,6 +123,7 @@
 What if there&#8217;s some work involved, such as a database query? Let&#8217;s
 change to use a class method. We can get PyCharm to help us with
 the refactoring.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/list_todos_method">Source for this step</a></p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -139,7 +140,8 @@ tells you <code class="docutils literal"><span class="pre">Method</span> <span c
 <li><p class="first">Can PyCharm do this change for us? Click on <code class="docutils literal"><span class="pre">list</span></code> and press
 <code class="docutils literal"><span class="pre">Alt-Enter</span></code>. Choose <code class="docutils literal"><span class="pre">Make</span> <span class="pre">method</span> <span class="pre">static</span></code>.</p>
 </li>
-<li><p class="first">Press <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code> to clean up any line formatting complaints.</p>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> to clean up any line formatting complaints.
+(macOS: <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>)</p>
 </li>
 <li><p class="first">Our <code class="docutils literal"><span class="pre">__repr__</span></code> is doing a lot. Perhaps we can refactor it. First, let&#8217;s
 extract the formatting into a property <code class="docutils literal"><span class="pre">display</span></code> that can be overridden
@@ -153,10 +155,11 @@ and choose <code class="docutils literal"><span class="pre">Refactor</span> <spa
 <li><p class="first">PyCharm makes a new <code class="docutils literal"><span class="pre">display</span></code> method with the logic, and changes
 <code class="docutils literal"><span class="pre">__repr__</span></code> to call it.</p>
 </li>
-<li><p class="first">Let&#8217;s say you changed your mind. Press <code class="docutils literal"><span class="pre">Cmd-Z</span></code> to undo and all of that
-work is undone in one unit.</p>
+<li><p class="first">Let&#8217;s say you changed your mind. Press <code class="docutils literal"><span class="pre">Ctrl-Z</span></code> to undo and all of that
+work is undone in one unit. (macOS: <code class="docutils literal"><span class="pre">Cmd-Z</span></code>)</p>
 </li>
-<li><p class="first">Or you decided you wanted it. Press <code class="docutils literal"><span class="pre">Shift-Cmd-Z</span></code> to redo.</p>
+<li><p class="first">Or you decided you wanted it. Press <code class="docutils literal"><span class="pre">Shift-Cmd-Z</span></code> to redo. (macOS:
+<code class="docutils literal"><span class="pre">Shift-Cmd-Z</span></code>)</p>
 </li>
 <li><p class="first">Something looks fishy about <code class="docutils literal"><span class="pre">display</span></code>. Click somewhere in <code class="docutils literal"><span class="pre">def</span> <span class="pre">display</span></code>
 and press <code class="docutils literal"><span class="pre">Alt-Enter</span></code>. Sure enough, PyCharm can convert it to a
@@ -164,10 +167,12 @@ property. Select <code class="docutils literal"><span class="pre">Convert</span>
 decorator and changes all usages, such as <code class="docutils literal"><span class="pre">__repr__</span></code>.</p>
 </li>
 <li><p class="first">Next, we&#8217;d like the format string to be parameterizable. Click once inside
-<code class="docutils literal"><span class="pre">'Todo</span> <span class="pre">{todo_id}'</span></code> then expand the selection by pressing <code class="docutils literal"><span class="pre">Alt-Up</span></code>
-three times. PyCharm&#8217;s selection should highlight the single quotes.</p>
+<code class="docutils literal"><span class="pre">'Todo</span> <span class="pre">{todo_id}'</span></code> then expand the selection by pressing <code class="docutils literal"><span class="pre">Ctrl-W</span></code>
+three times. PyCharm&#8217;s selection should highlight the single quotes.
+(macOS: <code class="docutils literal"><span class="pre">Alt-Up</span></code>)</p>
 </li>
-<li><p class="first">Open the <code class="docutils literal"><span class="pre">Refactor</span></code> popup with <code class="docutils literal"><span class="pre">Ctrl-T</span></code>. Choose <code class="docutils literal"><span class="pre">Field</span></code>.</p>
+<li><p class="first">Open the <code class="docutils literal"><span class="pre">Refactor</span></code> popup with <code class="docutils literal"><span class="pre">Ctrl-Alt-Shift-T</span></code>. Choose <code class="docutils literal"><span class="pre">Field</span></code>.
+(macOS: <code class="docutils literal"><span class="pre">Ctrl-T</span></code>)</p>
 </li>
 <li><p class="first">In the inline popup, change <code class="docutils literal"><span class="pre">Initialize</span> <span class="pre">in:</span></code> from <code class="docutils literal"><span class="pre">current</span> <span class="pre">method</span></code>
 to <code class="docutils literal"><span class="pre">constructor</span></code>, then enter <code class="docutils literal"><span class="pre">display_fmt</span></code> into the red box and press
@@ -176,8 +181,9 @@ enter.</p>
 <li><p class="first">PyCharm has added <code class="docutils literal"><span class="pre">self.display_fmt</span></code> to our constructor and changed
 the <code class="docutils literal"><span class="pre">display</span></code> property method to use it.</p>
 </li>
-<li><p class="first">That&#8217;s a lot. Let&#8217;s re-run <code class="docutils literal"><span class="pre">models.py</span></code> with <code class="docutils literal"><span class="pre">Ctrl-R</span></code> to make sure
-it runs ok. <em>Make sure the models.py run configuration is selected.</em></p>
+<li><p class="first">That&#8217;s a lot. Let&#8217;s re-run <code class="docutils literal"><span class="pre">models.py</span></code> with <code class="docutils literal"><span class="pre">Shift-F10</span></code> to make sure
+it runs ok. <em>Make sure the models.py run configuration is selected.</em>
+(macOS: <code class="docutils literal"><span class="pre">Ctrl-R</span></code>)</p>
 </li>
 <li><p class="first">We can now refactor <code class="docutils literal"><span class="pre">app.py</span></code> to use this. On the first line inside
 <code class="docutils literal"><span class="pre">list_todos</span></code>, type <code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">ToDo</span></code> and press <code class="docutils literal"><span class="pre">Alt-Enter</span></code> to
@@ -189,7 +195,7 @@ any longer. PyCharm can help. <code class="docutils literal"><span class="pre">C
 unused imports, but re-organizes your import listing based on a
 configurable policy.</p>
 </li>
-<li><p class="first">Does the web app stll work? Reload the browser and visit the todo listing
+<li><p class="first">Does the web app still work? Reload the browser and visit the todo listing
 to confirm.</p>
 </li>
 <li><p class="first">At long last, we realize our <code class="docutils literal"><span class="pre">ToDo</span></code> typo, and by now, it is used in
@@ -301,7 +307,7 @@ refactoring a trivial task.</li>
 <div class="section" id="extra-credit">
 <h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>We use <code class="docutils literal"><span class="pre">Alt-Up</span></code> to extend the selection. Can this extend beyond
+<li>We use <code class="docutils literal"><span class="pre">Alt-Shift-Up</span></code> to extend the selection. Can this extend beyond
 the current line, to an entire block?</li>
 <li>In Python, what&#8217;s the difference between <code class="docutils literal"><span class="pre">&#64;classmethod</span></code> and
 <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code>?</li>

@@ -6,14 +6,16 @@ Our ``show_todo`` is still using dummy data. Let's have it use actual data,
 with a lookup static method from ``models.Todo`` similar to how we get the
 list of todos. As we do this, we'll see how to efficiently re-arrange code.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/single_todo>`_
+
 Steps
 =====
 
 #. In ``models.py``, let's start by extending ``populate_todos`` to add
    a total of 3 sample todos. Put your cursor on
-   ``todos.append(Todo('First'))`` and press ``Cmd-D`` twice to duplicate
+   ``todos.append(Todo('First'))`` and press ``Ctrl-D`` twice to duplicate
    the line. Changed the next two lines to have an argument of ``'Second'``
-   and ``'Third'``.
+   and ``'Third'``. (macOS: ``Cmd-D``)
 
 #. The ``Todo`` class constructor looks weird. ``self.title`` should be
    assigned on the first line. Click anywhere in that line and press
@@ -43,12 +45,14 @@ Steps
 #. Re-run ``models.py`` (make sure the correct run configuration is selected.)
 
 #. We realize ``get_id`` is probably better under ``list``. With your cursor
-   anywhere in ``get_id``, press ``Alt-Up`` until PyCharm's selection extends
-   to including the method *and* the ``@staticmethod`` decorator.
+   anywhere in ``get_id``, press ``Cmd-W`` until PyCharm's selection extends
+   to including the method *and* the ``@staticmethod`` decorator. (macOS:
+   ``Alt-Up``)
 
 #. Press ``Shift-Alt-Down`` until the method moves after ``list``.
 
-#. As usual, press ``Cmd-Alt-L`` to clean up any line formatting.
+#. As usual, press ``Ctrl-Alt-L`` to clean up any line formatting. (macOS:
+   ``Cmd-Alt-L``)
 
 #. We need our web app to use this method for ``show_todo``. Let's
    add a first line in ``show_todo``:
@@ -119,6 +123,6 @@ Extra Credit
 #. We also use ``Shift-Alt-Up`` to move a line up. Can we select an entire
    method and move it, using ``Shift-Alt-Up``?
 
-#. If we extend our selection too far with ``Alt-Up``, will ``Alt-Down``
-   gradually de-select?
+#. If we extend our selection too far with ``Ctrl-W`` (macOS: ``Alt-Up``),
+   will ``Alt-Down`` gradually de-select?
 

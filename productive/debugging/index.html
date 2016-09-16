@@ -95,10 +95,10 @@
                             
                             <ul class="nav navbar-nav pull-right">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../productivity/templates/">Previous</a>
+                                    <a class="nav-link" href="../productivity/single_todo/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="master/">Next</a>
+                                    <a class="nav-link" href="../templating/">Next</a>
                                 </li>
                             </ul>
 
@@ -115,31 +115,78 @@
                     
   <div class="section" id="debugging">
 <h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This is a placeholder for expanded material to go beyond the
-2.5 hour tutorial. The code for this and the transcript notes
-are already completed.</p>
-</div>
+<p>PyCharm&#8217;s graphical debugger is a key productivity feature. In some
+respects,</p>
 <div class="section" id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="master/">Master Template</a></li>
-<li class="toctree-l1"><a class="reference internal" href="listtodos_templates/">List Todos Template</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sorted_todos/">Sorted Todos Template</a></li>
+<li><p class="first">Add Todo</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Run the code normally with the debugger</p>
+<blockquote>
+<div><ul class="simple">
+<li>Install speedups</li>
 </ul>
-</div>
-</div>
-<div class="section" id="todo-comment-counts">
-<h2>Todo Comment Counts<a class="headerlink" href="#todo-comment-counts" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Excuse to debug by stepping through a loop in Python</li>
-<li>Add a fake count of comments, in parentheses, in the listing of
-todos</li>
-<li>Gets a <code class="docutils literal"><span class="pre">&#64;property</span></code> of comments on the class</li>
-<li>This calls some loop which assembles five primes, then randomly
-selects one (as a way to later use the profiler if possible)</li>
+</div></blockquote>
+</li>
+<li><p class="first">Add a breakpoint and see the values in the scope</p>
+</li>
+<li><p class="first">Continue</p>
+</li>
+<li><p class="first">Clear the breakpoint</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Sorted listings</p>
+<blockquote>
+<div><ul class="simple">
+<li>Add more data, but with a problem in it</li>
+<li>Break on exception: everything to this point is dummy, put
+in real implementation, but have an error</li>
+<li>Use a loop to randomly generate titles</li>
+<li>Step over (in the loop)</li>
+<li>Step into (from the view, but goes into random)</li>
+<li>Step Into My Code</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Delete Todo</p>
+<blockquote>
+<div><ul class="simple">
+<li>Run to Cursor</li>
+<li>Use Evaluate/console when stopped</li>
+<li>Move back in scope/frames (to see which one is being clicked on)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Convert to &lt;ul&gt;</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Claim that we want to see the &lt;li id=&#8221;&#8220;&gt; that&#8217;s being generated</p>
+</li>
+<li><p class="first">We want to see only the last one</p>
+</li>
+<li><p class="first">Put a breakpoint on the list comprehension</p>
+<blockquote>
+<div><ul class="simple">
+<li>Step over</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Set a watch to show the key and the value</p>
+</li>
+<li><p class="first">That&#8217;s inefficient, breakpoint condition</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div>
 </div>

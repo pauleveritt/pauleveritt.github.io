@@ -122,6 +122,7 @@
 <p>We aren&#8217;t really using any data yet. Let&#8217;s make a small step in
 that direction. Along the way, we&#8217;ll see other PyCharm ways to execute
 code: the Python Console and the Terminal tool.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/list_of_todos">Source for this step</a></p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -163,19 +164,18 @@ use interactive Python to poke around. Select <code class="docutils literal"><sp
 </li>
 <li><p class="first">Click the red <code class="docutils literal"><span class="pre">X</span></code> in the <code class="docutils literal"><span class="pre">Python</span> <span class="pre">Console</span></code> tool window to close the Python Console.</p>
 </li>
-<li><p class="first">Open PyCharm Preferences with <code class="docutils literal"><span class="pre">Cmd-,</span></code></p>
+<li><p class="first">Open PyCharm Preferences with <code class="docutils literal"><span class="pre">Ctrl-Alt-S</span></code>. (macOS: <code class="docutils literal"><span class="pre">Cmd-,</span></code>)</p>
 </li>
 <li><p class="first">Navigate to <code class="docutils literal"><span class="pre">Build,</span> <span class="pre">Execution,</span> <span class="pre">Deployment</span> <span class="pre">-&gt;</span> <span class="pre">Console</span> <span class="pre">-&gt;</span> <span class="pre">Python</span> <span class="pre">Console</span></code>
 and look at the options, then click <code class="docutils literal"><span class="pre">Cancel</span></code> to dismiss the Preferences
 popup.</p>
 </li>
-<li><p class="first">Let&#8217;s open the Terminal tool window. But rather than clicking on the icon button
-in the bottom of the screen, press <code class="docutils literal"><span class="pre">Alt-F12</span></code>.</p>
+<li><p class="first">Open the command line by clicking in the bottom of the screen in <code class="docutils literal"><span class="pre">Terminal</span></code>.</p>
 </li>
 <li><p class="first">PyCharm starts you in the project directory. Let&#8217;s take a look at where
 PyCharm stores its data for the project preferences:</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ls -l .idea
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; dir .idea
 </pre></div>
 </div>
 </div></blockquote>
@@ -224,7 +224,7 @@ PyCharm stores its data for the project preferences:</p>
 executing your project&#8217;s code. But the interactive prompt is also useful:</p>
 <ul class="simple">
 <li><em>Python Console</em>. Get to a Python prompt, in the context of your project.</li>
-<li><em>Terminal</em>. Get to the OS X, Windows, or Linux console prompt, with
+<li><em>Terminal</em>. Get to the Windows, macOS, or Linux console prompt, with
 the working directory set to your project root.</li>
 </ul>
 </div>
