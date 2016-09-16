@@ -6,11 +6,15 @@ Add Todo
 
 - Replace self.id with max
 
-- Add a static method that takes title
+- Add a static method ``def add`` that takes title
 
 - Refactor populate_todos to use this
 
-- Run the code normally with the debugger
+- Re-run models.py to confirm
+
+- Code -> Optimize Imports to get rid of the unneeded import
+
+- Run the app normally with the debugger
 
     - Stop the run config
 

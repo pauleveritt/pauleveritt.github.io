@@ -1,5 +1,3 @@
-from random import randint
-
 todos = []
 
 
