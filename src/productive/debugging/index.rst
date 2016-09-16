@@ -2,8 +2,12 @@
 Debugging
 =========
 
-PyCharm's graphical debugger is a key productivity feature. In some
-respects,
+PyCharm's graphical debugger is a key productivity feature. For some, the
+benefit it provides when chasing bugs makes it worthwhile to always run
+under the debugger first.
+
+In this section we have four steps of development that we use to show
+the major features of debugging Python code using PyCharm.
 
 Tasks
 =====
