@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import choice
 
 todos = []
 
@@ -7,7 +7,7 @@ class Todo:
     def __init__(self, title):
         self.title = title
         self.display_fmt = 'Todo {todo_id}'
-        self.id = max([i.id for i in todos], default=0) + 1
+        self.id = max([todo.id for todo in todos], default=0) + 1
 
     def __repr__(self):
         return self.display
@@ -18,12 +18,11 @@ class Todo:
 
     @staticmethod
     def list():
-        return todos
+        return sorted(todos, key=lambda todo: todo.title)
 
     @staticmethod
     def add(title):
         todo = Todo(title)
-        print('ti', todo.id)
         todos.append(todo)
         return todo
 

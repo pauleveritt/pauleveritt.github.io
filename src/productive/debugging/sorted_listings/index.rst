@@ -44,3 +44,8 @@ Sorted Listings
 - Clear the breakpoint
 
 - Click ``Resume`` in the debugger
+
+- Change ``def list`` to
+  ``return sorted(todos, key=lambda todo: todo.title)``
+
+- Reload in browser and compare
