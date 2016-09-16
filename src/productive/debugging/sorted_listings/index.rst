@@ -2,15 +2,45 @@
 Sorted Listings
 ===============
 
-- Add more data, but with a problem in it
+- Add more data, but with a problem in populate
 
-- Break on exception: everything to this point is dummy, put
-  in real implementation, but have an error
+- On Flask reload, it fails with NameError
 
-- Use a loop to randomly generate titles
+- Debugger -> View Breakpoints -> Python Exception Breakpoint
+  Any Breakpoint -> Check ``On Raise``
+
+- Re-run debugger
+
+- Stops in library code, which sucks
+
+- Re-open that View Breakpoints, check ``Ignore Library Files``
+
+- Re-run debugger, stops on the exception
+
+- Fix bug
+
+- Set breakpoint on ``v = choice(random_verbs)``
 
 - Step over (in the loop)
 
-- Step into (from the view, but goes into random)
+- Clear breakpoint, click Resume
 
-- Step Into My Code
+- Set breakpoint on ``todo = Todo(title)``
+
+- Restart debugger
+
+- Step into (goes into __init__)
+
+    - Step into again
+
+    - Eventually goes into randint
+
+    - Step out and close ``random.py``
+
+- Resume and step into __init__
+
+- Now use Step Into My Code, doesn't open
+
+- Clear the breakpoint
+
+- Click ``Resume`` in the debugger
