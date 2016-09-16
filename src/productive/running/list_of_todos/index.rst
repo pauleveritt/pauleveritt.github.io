@@ -7,6 +7,7 @@ that direction. Along the way, we'll see other PyCharm ways to execute
 code: the Python Console and the Terminal tool.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/list_of_todos>`_
+`View video/audio walkthrough <http://www.youtube.com/watch?v=aQF_Ef7YCl4>`_
 
 Steps
 =====

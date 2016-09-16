@@ -7,6 +7,7 @@ chance to show more about running Python code in PyCharm. Namely,
 let's look more at PyCharm's Run Configurations.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/show_todo>`_
+`View video/audio walkthrough <http://www.youtube.com/watch?v=VMD5fLPbzRI>`_
 
 Steps
 =====
