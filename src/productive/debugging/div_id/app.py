@@ -14,7 +14,7 @@ def home_page():
 @app.route('/todo/')
 def list_todos():
     todos = Todo.list()
-    div = '''<div><a href="/todo/{id}/delete">{title}</a>
+    div = '''<div ><a href="/todo/{id}/delete">{title}</a>
     <form method="POST" action="/todo/{id}/delete" style="display: inline">
         <input type="submit" value="x"/>
     </form>
@@ -23,7 +23,7 @@ def list_todos():
         <input name="todo_id" placeholder="Add todo..."/>
         </form>
     '''
-    items = [div.format(id=t.id, title=t.title) for t in todos]
+    items = [div.format(id=t.id, title=t.display) for t in todos]
     items.append(form)
     return '\n'.join(items)
 

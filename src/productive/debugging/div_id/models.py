@@ -6,7 +6,7 @@ todos = []
 class Todo:
     def __init__(self, title):
         self.title = title
-        self.display_fmt = 'Todo {todo_id}'
+        self.display_fmt = '{title} (ID: {todo_id})'
         self.id = max([todo.id for todo in todos], default=0) + 1
 
     def __repr__(self):
@@ -14,7 +14,7 @@ class Todo:
 
     @property
     def display(self):
-        return self.display_fmt.format(todo_id=self.id)
+        return self.display_fmt.format(todo_id=self.id, title=self.title)
 
     @staticmethod
     def list():
