@@ -1,8 +1,8 @@
-=============
-Convert to UL
-=============
+==============
+Add id to divs
+==============
 
-- Claim that we want to see the <li id=""> that's being generated
+- Claim that we want to add a id to each div
 
 - We want to see only the last one
 
