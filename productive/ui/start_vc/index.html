@@ -102,7 +102,7 @@
                                     <a class="nav-link" href="../rename_view/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../preferences/">Next</a>
+                                    <a class="nav-link" href="../rename_file/">Next</a>
                                 </li>
                             </ul>
 
@@ -121,7 +121,10 @@
 <h1>Start Version Control<a class="headerlink" href="#start-version-control" title="Permalink to this headline">¶</a></h1>
 <p>PyCharm&#8217;s <code class="docutils literal"><span class="pre">Project</span></code> tool is a very smart folder browser. We&#8217;ll show
 this by putting our Todo app under version control and seeing how
-PyCharm can do work for us, with colors indicating VCS status.</p>
+PyCharm can do work for us, with colors indicating VCS status. We
+also show how PyCharm works with Python requirements.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/start_vc">Source for this step</a>
+| <a class="reference external" href="http://www.youtube.com/watch?v=fLA2rv--XYM">View video/audio walkthrough</a></p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -132,21 +135,11 @@ PyCharm can do work for us, with colors indicating VCS status.</p>
 the <code class="docutils literal"><span class="pre">OK</span></code> button. We now have a <code class="docutils literal"><span class="pre">.git</span></code> directory in our
 project root directory.</p>
 </li>
-<li><p class="first">In the <code class="docutils literal"><span class="pre">Missing</span> <span class="pre">.gitignore</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">GIT</span> <span class="pre">project</span></code>, click the
-<code class="docutils literal"><span class="pre">Create</span> <span class="pre">.gitignore</span></code> link button.</p>
-</li>
-<li><p class="first">Scroll down and select <code class="docutils literal"><span class="pre">Python</span></code>, then click the <code class="docutils literal"><span class="pre">Generate</span></code> button.</p>
-</li>
-<li><p class="first">In the next popup &#8211; <code class="docutils literal"><span class="pre">Would</span> <span class="pre">you</span> <span class="pre">like</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">unversioned</span> <span class="pre">files</span> <span class="pre">to</span>
-<span class="pre">the</span> <span class="pre">.gitignore</span> <span class="pre">file?</span></code> &#8211; click the <code class="docutils literal"><span class="pre">Cancel</span></code> link button.</p>
-</li>
-<li><p class="first">Click the <code class="docutils literal"><span class="pre">x</span></code> on the <code class="docutils literal"><span class="pre">.gitignore</span></code> tab to close that file.</p>
-</li>
 <li><p class="first">In Project Tool window, right-click on the <code class="docutils literal"><span class="pre">epc.py</span></code> file.</p>
 </li>
 <li><p class="first">At the moment, it is red, meaning, not under version control.</p>
 </li>
-<li><p class="first">In context menu, choose <code class="docutils literal"><span class="pre">Git</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">to</span> <span class="pre">VCS</span></code>.</p>
+<li><p class="first">In right-click context menu, choose <code class="docutils literal"><span class="pre">Git</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">to</span> <span class="pre">VCS</span></code>.</p>
 </li>
 <li><p class="first">The color changes to green, indicating it is added but not committed.</p>
 </li>
@@ -158,21 +151,16 @@ project root directory.</p>
 </li>
 <li><p class="first">In the next dialog, accept adding the new file to VCS.</p>
 </li>
-<li><p class="first">In <code class="docutils literal"><span class="pre">requirements.txt</span></code>, add a line for <code class="docutils literal"><span class="pre">flask-sqlalchemy</span></code>. The
-file should look like this:</p>
+<li><p class="first">In <code class="docutils literal"><span class="pre">requirements.txt</span></code>, add a line for <code class="docutils literal"><span class="pre">flask</span></code>. The file should
+look like this:</p>
 <div class="literal-block-wrapper container" id="requirements-txt-for-start-vc-section">
 <div class="code-block-caption"><span class="caption-text">requirements.txt for Start VC section</span><a class="headerlink" href="#requirements-txt-for-start-vc-section" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flask</span><span class="o">-</span><span class="n">sqlalchemy</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flask</span>
 </pre></div>
 </div>
 </div>
 </li>
 <li><p class="first">Close <code class="docutils literal"><span class="pre">requirements.txt</span></code> by clicking the <code class="docutils literal"><span class="pre">x</span></code> on the tab.</p>
-</li>
-<li><p class="first">You will now be prompted with
-<code class="docutils literal"><span class="pre">Package</span> <span class="pre">requirement</span> <span class="pre">'flask-sqlalchemy'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">satisfied</span></code>.</p>
-</li>
-<li><p class="first">Click the <code class="docutils literal"><span class="pre">Install</span> <span class="pre">requirement</span></code> link.</p>
 </li>
 <li><p class="first">Commit these changes to VCS with <code class="docutils literal"><span class="pre">VCS</span> <span class="pre">-&gt;</span> <span class="pre">Commit</span> <span class="pre">Changes</span></code>.</p>
 </li>
@@ -182,6 +170,15 @@ file should look like this:</p>
 </li>
 <li><p class="first">Note that the two files in the <code class="docutils literal"><span class="pre">Project</span></code> tool window are now a
 normal color.</p>
+</li>
+<li><p class="first">Open PyCharm&#8217;s Settings with <code class="docutils literal"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span></code>,  or use <code class="docutils literal"><span class="pre">Ctrl-Alt-S</span></code>
+as a shortcut. (macOS: <code class="docutils literal"><span class="pre">PyCharm</span> <span class="pre">-&gt;</span> <span class="pre">Preferences</span></code> and <code class="docutils literal"><span class="pre">Cmd-,</span></code>.)</p>
+</li>
+<li><p class="first">In Settings (aka Preferences), click on <code class="docutils literal"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">Python</span> <span class="pre">Integrated</span> <span class="pre">Tools</span></code>.
+The first field shows which file is registered with PyCharm as this
+interpreter&#8217;s requirements file.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Cancel</span></code> to dismiss the preferences.</p>
 </li>
 </ol>
 </div>
@@ -194,11 +191,6 @@ windows can be put to work:</p>
 to start giving us helpful visual information.</li>
 <li><em>Tool context menus</em>. Entries in the project tool can be right-clicked
 on to get context sensitive menus.</li>
-</ul>
-<p>We also used some other features of PyCharm:</p>
-<ul class="simple">
-<li><em>Install packages</em>. Changing the requirements file prompted for missing
-packages, then did the work to install.</li>
 <li><em>Git</em>. PyCharm is a great visual front-end for version control
 systems (VCS).</li>
 </ul>
@@ -217,13 +209,9 @@ file&#8217;s VCS status appear?</li>
 <li>What is the color for a file that has uncommitted changes?</li>
 <li>What is the visual indicator on a project tool&#8217;s file when it has
 a major Python error in it?</li>
+<li>When installing a Python package via Project Interpreter preferences,
+can you simultaneously record it in the <code class="docutils literal"><span class="pre">requirements.txt</span></code>?</li>
 </ol>
-</div>
-<div class="section" id="todo">
-<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Links to VCS docs in PyCharm help</li>
-</ul>
 </div>
 </div>
 

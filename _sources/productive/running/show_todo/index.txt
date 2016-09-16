@@ -6,32 +6,19 @@ We need a route for showing an individual todo. Let's use this as a
 chance to show more about running Python code in PyCharm. Namely,
 let's look more at PyCharm's Run Configurations.
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/show_todo>`_
+
 Steps
 =====
 
-#. In ``app.py``, let's add a route, with help from PyCharm's Live
-   Templates.
+#. In ``app.py``, let's add a route. On the empty line after the
+   ``list_todos`` function, add:
 
-#. On the empty line after the ``list_todos`` function,
-   type ``Cmd-J route`` and press ``enter``.
+   .. code-block:: python
 
-#. For the function name (when prompted by the red box), enter
-   ``show_todo`` and press ``enter``.
-
-#. The red box moves to the route string. Enter ``/todo/<todo_id>`` and
-   press ``enter`` again to move to the end of ``pass`` in the function
-   body.
-
-#. Press ``Alt-Backspace`` to delete to the beginning of the word.
-
-#. Enter ``return 'ToDo {todo_id}'.format()`` for now.
-
-#. Note that PyCharm has a warning in ``'/todo/<todo_id>'``. Mouse over
-   the warning. It's saying our function is missing a parameter. Smart
-   PyCharm!
-
-#. Let's correct that warning on the function, changing the function
-   to ``def show_todo(todo_id):``.
+    @app.route('/todo/<todo_id>')
+    def show_todo(todo_id):
+        return 'ToDo {todo_id}'.format()
 
 #. Now for the return value. Put the cursor inside the parentheses for
    the ``format()``. Using PyCharm's autocompletion, press ``t`` and
@@ -50,27 +37,21 @@ Steps
    window. Our Flask application should be running. If not, click
    the green play arrow in the Run Tool's window.
 
-#. In PyCharm's toolbar, near the top, click the green play arrow. Instead
-   of running our application, PyCharm pops up a window warning us that
-   it is already running. Why? Dismiss the popup by clicking ``Cancel``
-   and let's take a look.
+#. In PyCharm's toolbar, near the top, click the green play arrow. We wind
+   up with a second Flask application listening on the same port. Can
+   PyCharm help us prevent this?
+
+#. In the Run Tool window, close the second tab by right-clicking on it
+   and choosing ``Close Tab``.
 
 #. Click ``Run -> Edit Configurations`` to edit the ``epc`` run
    configuration.
 
-#. Near the top right, there is a checkbox for ``Single instance only``. It
-   is checked. Uncheck it and click ``Ok`` to save your changes.
+#. Near the top right, there is a checkbox for ``Single instance only``.
+   Change it to checked and click ``Ok`` to save your changes.
 
-#. Now click the green play arrow in the toolbar again. A second tab opens
-   in the Run Tool's window, and Flask complains that another application is
-   listening on that port. *That's* why PyCharm created the run configuration
-   with that checkbox set.
-
-#. Let's clean up. First, ``Run -> Edit Configurations`` and check the
-   box beside ``Single instance only``, then click ``Ok`` to save.
-
-#. In the Run Tool window, close the second tab by right-clicking on it
-   and choosing ``Close Tab``.
+#. Now click the green play arrow in the toolbar again. PyCharm warns us
+   that we already have an instance of this run configuration running.
 
 #. One last housekeeping: we need a web link to get to this view. Change
    ``list_todos`` to return a link to a todo page:
@@ -102,6 +83,10 @@ way to run your code in a smart output window.
 
 - *Buttons and Shortcuts*. Running, stopping, and re-running can all
   happen from multiple places, including keyboard shortcuts.
+
+  .. note::
+
+    You can get to the list of shortcuts with ``Help -> Keymap Reference``.
 
 We also saw some other smart PyCharm help in action:
 

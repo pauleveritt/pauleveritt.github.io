@@ -102,7 +102,7 @@
                                     <a class="nav-link" href="../list_todos_method/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../templates/">Next</a>
+                                    <a class="nav-link" href="../../debugging/">Next</a>
                                 </li>
                             </ul>
 
@@ -122,14 +122,15 @@
 <p>Our <code class="docutils literal"><span class="pre">show_todo</span></code> is still using dummy data. Let&#8217;s have it use actual data,
 with a lookup static method from <code class="docutils literal"><span class="pre">models.Todo</span></code> similar to how we get the
 list of todos. As we do this, we&#8217;ll see how to efficiently re-arrange code.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/single_todo">Source for this step</a></p>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, let&#8217;s start by extending <code class="docutils literal"><span class="pre">populate_todos</span></code> to add
 a total of 3 sample todos. Put your cursor on
-<code class="docutils literal"><span class="pre">todos.append(Todo('First'))</span></code> and press <code class="docutils literal"><span class="pre">Cmd-D</span></code> twice to duplicate
+<code class="docutils literal"><span class="pre">todos.append(Todo('First'))</span></code> and press <code class="docutils literal"><span class="pre">Ctrl-D</span></code> twice to duplicate
 the line. Changed the next two lines to have an argument of <code class="docutils literal"><span class="pre">'Second'</span></code>
-and <code class="docutils literal"><span class="pre">'Third'</span></code>.</p>
+and <code class="docutils literal"><span class="pre">'Third'</span></code>. (macOS: <code class="docutils literal"><span class="pre">Cmd-D</span></code>)</p>
 </li>
 <li><p class="first">The <code class="docutils literal"><span class="pre">Todo</span></code> class constructor looks weird. <code class="docutils literal"><span class="pre">self.title</span></code> should be
 assigned on the first line. Click anywhere in that line and press
@@ -161,12 +162,14 @@ and see that it thinks this method can be static. Click on
 <li><p class="first">Re-run <code class="docutils literal"><span class="pre">models.py</span></code> (make sure the correct run configuration is selected.)</p>
 </li>
 <li><p class="first">We realize <code class="docutils literal"><span class="pre">get_id</span></code> is probably better under <code class="docutils literal"><span class="pre">list</span></code>. With your cursor
-anywhere in <code class="docutils literal"><span class="pre">get_id</span></code>, press <code class="docutils literal"><span class="pre">Alt-Up</span></code> until PyCharm&#8217;s selection extends
-to including the method <em>and</em> the <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code> decorator.</p>
+anywhere in <code class="docutils literal"><span class="pre">get_id</span></code>, press <code class="docutils literal"><span class="pre">Cmd-W</span></code> until PyCharm&#8217;s selection extends
+to including the method <em>and</em> the <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code> decorator. (macOS:
+<code class="docutils literal"><span class="pre">Alt-Up</span></code>)</p>
 </li>
 <li><p class="first">Press <code class="docutils literal"><span class="pre">Shift-Alt-Down</span></code> until the method moves after <code class="docutils literal"><span class="pre">list</span></code>.</p>
 </li>
-<li><p class="first">As usual, press <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code> to clean up any line formatting.</p>
+<li><p class="first">As usual, press <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> to clean up any line formatting. (macOS:
+<code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>)</p>
 </li>
 <li><p class="first">We need our web app to use this method for <code class="docutils literal"><span class="pre">show_todo</span></code>. Let&#8217;s
 add a first line in <code class="docutils literal"><span class="pre">show_todo</span></code>:</p>
@@ -307,8 +310,8 @@ is quite useful. Same is true for CSS, SQL, JS, etc.</li>
 <ol class="arabic simple">
 <li>We also use <code class="docutils literal"><span class="pre">Shift-Alt-Up</span></code> to move a line up. Can we select an entire
 method and move it, using <code class="docutils literal"><span class="pre">Shift-Alt-Up</span></code>?</li>
-<li>If we extend our selection too far with <code class="docutils literal"><span class="pre">Alt-Up</span></code>, will <code class="docutils literal"><span class="pre">Alt-Down</span></code>
-gradually de-select?</li>
+<li>If we extend our selection too far with <code class="docutils literal"><span class="pre">Ctrl-W</span></code> (macOS: <code class="docutils literal"><span class="pre">Alt-Up</span></code>),
+will <code class="docutils literal"><span class="pre">Alt-Down</span></code> gradually de-select?</li>
 </ol>
 </div>
 </div>

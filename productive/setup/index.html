@@ -123,49 +123,96 @@ running in PyCharm.</p>
 <p><em>Note: We will be in the hallway 20 minutes before the tutorial, in
 front of the room, to help any installation issues. Or, come visit us
 in the PyCharm booth for help.</em></p>
+<p><a class="reference external" href="http://www.youtube.com/watch?v=ALlDyT-M3eA">View video/audio walkthrough</a></p>
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><em>Install Python 3.5</em>. You can get this from any location.</li>
-<li><em>PyCharm Professional</em>. Please <a class="reference external" href="https://www.jetbrains.com/pycharm/download/">download PyCharm Professional</a>, as this course uses
-Flask. You can request a 30 day evaluation, or wait for us to give out
-evaluation keys at the conference.</li>
-<li><em>Git</em>. We have a couple of tasks that rely on <code class="docutils literal"><span class="pre">git</span></code> integration. You
-can skip these tasks, but it&#8217;s better if you have an installation.</li>
-<li><em>Browser</em>. Any kind of modern browser. We&#8217;re not doing advanced JS.</li>
+<ol class="arabic">
+<li><p class="first"><em>Install Python 3.5</em>. You can get this from any location.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For Windows, during the install, ensure you select the box to <code class="docutils literal"><span class="pre">Add</span>
+<span class="pre">Python</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">environment</span> <span class="pre">variables.</span></code></p>
+</div>
+</li>
+<li><p class="first"><em>PyCharm</em>. Please <a class="reference external" href="https://www.jetbrains.com/pycharm/download/">download PyCharm Community Edition</a> and install it. For Windows,
+make sure you click the checkbox to <code class="docutils literal"><span class="pre">Create</span> <span class="pre">Desktop</span> <span class="pre">shortcut</span></code>.</p>
+</li>
+<li><p class="first"><em>Git</em>. We have a couple of tasks that rely on <code class="docutils literal"><span class="pre">git</span></code> integration. You
+can skip these tasks, but it&#8217;s better if you have an installation.</p>
+</li>
+<li><p class="first"><em>Browser</em>. Any kind of modern browser. We&#8217;re not doing advanced JS.</p>
+</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For a video guide to setup, see our <a class="reference external" href="https://www.youtube.com/watch?v=5rSBPGGLkW0&amp;list=PLQ176FUIyIUZ1mwB-uImQE-gmkwzjNLjP&amp;index=2">Getting Started: Setup
-screencast</a> on
-YouTube.</p>
+screencast</a>
+on YouTube.</p>
 </div>
 </div>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Open PyCharm Professional.</li>
-<li>Say no to importing settings.</li>
-<li>Supply the license key.</li>
-<li>In the <code class="docutils literal"><span class="pre">Welcome</span> <span class="pre">to</span> <span class="pre">PyCharm</span></code> dialog, choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">New</span> <span class="pre">Project</span></code>.</li>
-<li>In the next panel, choose <code class="docutils literal"><span class="pre">Flask</span></code> from the left-hand side.</li>
-<li>On the right-hand side, click the <code class="docutils literal"><span class="pre">...</span></code> at the right end of the
-<code class="docutils literal"><span class="pre">Interpreter</span></code> line and choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">VirtualEnv</span></code>.</li>
-<li>In the <code class="docutils literal"><span class="pre">Create</span> <span class="pre">Virtual</span> <span class="pre">Environment</span></code> dialog, create a virtual environment
-based on your installed Python 3.5, somewhere on your system. (For example, in
-<code class="docutils literal"><span class="pre">~/virtualenvs/epc</span></code> for EuroPython.)</li>
-<li>Back in the new project dialog, enter <code class="docutils literal"><span class="pre">epc</span></code> as the name of the project.</li>
-<li>Click the <code class="docutils literal"><span class="pre">Create</span></code> button.</li>
-<li>Click the <code class="docutils literal"><span class="pre">1.</span> <span class="pre">Project</span></code> button in the left margin of PyCharm to
-open the file browser.</li>
-<li>Expand the <code class="docutils literal"><span class="pre">epc</span></code> directory and and double-click on the <code class="docutils literal"><span class="pre">epc.py</span></code>
-file.</li>
-<li>Change the last line to read <code class="docutils literal"><span class="pre">app.run(debug=True)</span></code>.</li>
-<li>In the toolbar, click the green arrow play button to run the Flask
-application.</li>
-<li>When the Run Tool window opens in the bottom, click the
+<ol class="arabic">
+<li><p class="first">Open PyCharm Community Edition.</p>
+</li>
+<li><p class="first">Choose <code class="docutils literal"><span class="pre">I</span> <span class="pre">do</span> <span class="pre">not</span> <span class="pre">have</span> <span class="pre">a</span> <span class="pre">previous</span> <span class="pre">edition</span> <span class="pre">of</span> <span class="pre">PyCharm</span></code> when asked about
+importing settings..</p>
+</li>
+<li><p class="first">Accept the privacy policy.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">PyCharm</span> <span class="pre">Initial</span> <span class="pre">Configuration</span></code>, click <code class="docutils literal"><span class="pre">OK</span></code> to accept the default
+theme etc.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">Welcome</span> <span class="pre">to</span> <span class="pre">PyCharm</span></code> dialog, choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">New</span> <span class="pre">Project</span></code>.</p>
+</li>
+<li><p class="first">On the <code class="docutils literal"><span class="pre">Interpreter</span> <span class="pre">line</span></code>, click on the gear at the end of the line. In
+the sub-menu, choose <code class="docutils literal"><span class="pre">Create</span> <span class="pre">VirtualEnv</span></code>.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">Create</span> <span class="pre">Virtual</span> <span class="pre">Environment</span></code> dialog, enter <code class="docutils literal"><span class="pre">env35</span></code> in the
+<code class="docutils literal"><span class="pre">Name</span></code> field. Make sure the <code class="docutils literal"><span class="pre">Base</span> <span class="pre">interpreter</span></code> field is pointed at
+Python 3.5, then click <code class="docutils literal"><span class="pre">OK</span></code>.</p>
+</li>
+<li><p class="first">Back in the new project dialog, enter <code class="docutils literal"><span class="pre">epc</span></code> as the name of the project.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Create</span></code> button.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Close</span></code> to dismiss the tips.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">Tool</span> <span class="pre">Windows</span> <span class="pre">Quick</span> <span class="pre">Access</span></code> in the bottom points to a button in the bottom
+left. Click that button to reveal the tool window buttons on the left, bottom,
+and right, then dismiss the popup by clicking <code class="docutils literal"><span class="pre">Got</span> <span class="pre">it</span></code>.</p>
+</li>
+<li><p class="first">Make a new Python file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">New</span></code>, then choose <code class="docutils literal"><span class="pre">File</span></code>,
+and name it <code class="docutils literal"><span class="pre">epc.py</span></code>.</p>
+</li>
+<li><p class="first">In the editor for <code class="docutils literal"><span class="pre">epc.py</span></code>, enter the following for your starting Flask
+application:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">Run</span></code> menu, choose <code class="docutils literal"><span class="pre">Run</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You might have to wait for PyCharm&#8217;s initial indexing to finish before
+the toolbar button turns green.</p>
+</div>
+</li>
+<li><p class="first">When the Run Tool window opens in the bottom, click the
 <code class="docutils literal"><span class="pre">http://127.0.0.1:5000/</span></code> hyperlink to open the Flask application in
-a browser.</li>
+a browser.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="optional-configuration">
@@ -173,7 +220,7 @@ a browser.</li>
 <p>Many developers like the dark look on their themes. Let&#8217;s adopt that for
 this tutorial.</p>
 <ol class="arabic">
-<li><p class="first">Press <code class="docutils literal"><span class="pre">Cmd-,</span></code> top open PyCharm preferences.</p>
+<li><p class="first">In PyCharm&#8217;s menu, click <code class="docutils literal"><span class="pre">File-Settings</span></code> to open PyCharm preferences.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This tutorial uses Mac-based keyboard shortcuts. If you are on
@@ -181,13 +228,13 @@ Windows or Linux, no problem. Use <code class="docutils literal"><span class="pr
 help, check the <code class="docutils literal"><span class="pre">Keymap</span> <span class="pre">Reference</span></code> in PyCharm&#8217;s <code class="docutils literal"><span class="pre">Help</span></code> menu.</p>
 </div>
 </li>
-<li><p class="first">In the search box, type <code class="docutils literal"><span class="pre">theme</span></code> and select <code class="docutils literal"><span class="pre">Darcula</span></code> from the
-<code class="docutils literal"><span class="pre">Theme:</span></code> drop-down on the right.</p>
-</li>
 <li><p class="first">In the preferences, go to <code class="docutils literal"><span class="pre">Editor</span> <span class="pre">-&gt;</span> <span class="pre">Colors</span> <span class="pre">&amp;</span> <span class="pre">Fonts</span> <span class="pre">-&gt;</span> <span class="pre">Fonts</span></code> and
 for the <code class="docutils literal"><span class="pre">Scheme:</span></code> dropdown, choose <code class="docutils literal"><span class="pre">Darcula</span></code>.</p>
 </li>
-<li><p class="first">Click <code class="docutils literal"><span class="pre">Ok</span></code> to dismiss the Preferences dialog.</p>
+<li><p class="first">In the preferences search box, type <code class="docutils literal"><span class="pre">theme</span></code> and select <code class="docutils literal"><span class="pre">Darcula</span></code>
+from the <code class="docutils literal"><span class="pre">Theme:</span></code> drop-down on the right.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">OK</span></code> to dismiss the Preferences dialog.</p>
 </li>
 </ol>
 </div>
@@ -197,9 +244,9 @@ for the <code class="docutils literal"><span class="pre">Scheme:</span></code> d
 <ul class="simple">
 <li><em>Python Installation</em>. PyCharm projects can choose from a number of
 installed Pythons, as well as make virtual environments.</li>
-<li><em>Projects</em>. PyCharm projects are a directory on disk, created from
-a project template. PyCharm Professional adds support for a number
-of web-based frameworks.</li>
+<li><em>Projects</em>. PyCharm projects are simple: a regular directory of your
+source files, in which PyCharm adds a <code class="docutils literal"><span class="pre">.idea</span></code> subdirectory for its
+project-y stuff.</li>
 <li><em>Configuration</em>. PyCharm has a number of global and per-project
 settings.</li>
 </ul>
@@ -209,7 +256,7 @@ settings.</li>
 <ol class="arabic simple">
 <li>Can PyCharm help me see if my <code class="docutils literal"><span class="pre">pip</span></code> is out-of-date, and if so,
 update it?</li>
-<li>Where can I compare the featues in different PyCharm editions, such
+<li>Where can I compare the features in different PyCharm editions, such
 as Community, Professional, and Edu?</li>
 <li>Will the Flask app restart if you make a change? Is that PyCharm
 doing the restart or PyCharm? Will it reload the browser?</li>
