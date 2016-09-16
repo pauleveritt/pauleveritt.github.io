@@ -32,9 +32,12 @@ PyCharm, using a number of PyCharm features.
     productivity/index.rst
     debugging/index.rst
 
+In-Progress
+===========
+
 .. toctree::
     :maxdepth: 1
-    :hidden:
+
     templating/index.rst
     navigation/index.rst
     testing/index.rst

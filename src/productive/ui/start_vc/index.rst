@@ -8,6 +8,7 @@ PyCharm can do work for us, with colors indicating VCS status. We
 also show how PyCharm works with Python requirements.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/start_vc>`_
+| `View video/audio walkthrough <http://www.youtube.com/watch?v=fLA2rv--XYM>`_
 
 Steps
 =====

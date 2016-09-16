@@ -13,6 +13,8 @@ running in PyCharm.
 front of the room, to help any installation issues. Or, come visit us
 in the PyCharm booth for help.*
 
+`View video/audio walkthrough <http://www.youtube.com/watch?v=ALlDyT-M3eA>`_
+
 Install
 =======
 
