@@ -24,7 +24,7 @@ Add Todo
 
   .. code-block:: python
 
-    @app.route('/todo/add', methods=['POST'])
+    @app.route('/todo/add')
     def add_todo():
         todo_id = request.form['todo_id']
         if todo_id:

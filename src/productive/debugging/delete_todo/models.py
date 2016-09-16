@@ -26,6 +26,9 @@ class Todo:
         todos.append(todo)
         return todo
 
+    def delete(self):
+        todos.remove(self)
+
     @staticmethod
     def get_id(todo_id):
         return [todo for todo in todos if todo.id == todo_id][0]

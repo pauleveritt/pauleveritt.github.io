@@ -14,7 +14,11 @@ def home_page():
 @app.route('/todo/')
 def list_todos():
     todos = Todo.list()
-    div = '<div><a href="/todo/{id}">{title}</a></div>'
+    div = '''<div><a href="/todo/{id}/delete">{title}</a>
+    <form method="POST" action="/todo/{id}/delete" style="display: inline">
+        <input type="submit" value="x"/>
+    </form>
+    </div>'''
     form = '''<form method="POST" action="add">
         <input name="todo_id" placeholder="Add todo..."/>
         </form>
@@ -36,6 +40,13 @@ def add_todo():
     todo_id = request.form['todo_id']
     if todo_id:
         Todo.add(todo_id)
+    return redirect('/todo/')
+
+
+@app.route('/todo/<int:todo_id>/delete', methods=['POST'])
+def delete_todo(todo_id):
+    todo = Todo.get_id(todo_id)
+    todo.delete()
     return redirect('/todo/')
 
 
