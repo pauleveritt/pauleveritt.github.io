@@ -200,10 +200,7 @@ do <code class="docutils literal"><span class="pre">Alt-Enter</span></code> to l
 </li>
 <li><p class="first">We need an HTML form that collects and submits the todo title. Change
 <code class="docutils literal"><span class="pre">def</span> <span class="pre">list_todos()</span></code> to add this to the HTML:</p>
-</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
     <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
     <span class="n">div</span> <span class="o">=</span> <span class="s1">&#39;&lt;div&gt;&lt;a href=&quot;/todo/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/div&gt;&#39;</span>
@@ -216,28 +213,37 @@ do <code class="docutils literal"><span class="pre">Alt-Enter</span></code> to l
     <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
-<ol class="arabic simple">
-<li>Let&#8217;s use the debugger, setting a <em>breakpoint</em> to pause execution.
+</li>
+<li><p class="first">Let&#8217;s use the debugger, setting a <em>breakpoint</em> to pause execution.
 In <code class="docutils literal"><span class="pre">add_todo</span></code>, on the line that performs <code class="docutils literal"><span class="pre">Todo.add</span></code>, click in the
 left margin beside the line to create a big red circle, aka a
-breakpoint.</li>
-<li>In your browser, reload the Todo Listing. Type something in the input
-box and press enter.</li>
-<li>PyCharm appears, with the debugger stopped on the line of the breakpoint.
+breakpoint.</p>
+</li>
+<li><p class="first">In your browser, reload the Todo Listing. Type something in the input
+box and press enter.</p>
+</li>
+<li><p class="first">PyCharm appears, with the debugger stopped on the line of the breakpoint.
 Notice also that the browser thinks it is still loading the page, waiting
-for the server response.</li>
-<li>Continue execution by clicking, in the <code class="docutils literal"><span class="pre">Debug</span></code> tool window, the green
-<code class="docutils literal"><span class="pre">Resume</span></code> button (it looks like a right arrow.)</li>
-<li>Let&#8217;s break on the next line. Click on the red circle to remove the
+for the server response.</p>
+</li>
+<li><p class="first">Continue execution by clicking, in the <code class="docutils literal"><span class="pre">Debug</span></code> tool window, the green
+<code class="docutils literal"><span class="pre">Resume</span></code> button (it looks like a right arrow.)</p>
+</li>
+<li><p class="first">Let&#8217;s break on the next line. Click on the red circle to remove the
 first breakpoint, then click in the left margin beside the next line
-(where we return the value) to add a new breakpoint.</li>
-<li>In the browser, type a new value into the input and press enter.</li>
-<li>PyCharm appears, stopped on the next line.</li>
-<li>Note that you did <em>not</em> have to restart PyCharm when changing
-debugger information such as breakpoints.</li>
-<li>Remove this second breakpoint by clicking on the red circle.</li>
-<li>Continue execution by clicking the green <code class="docutils literal"><span class="pre">Resume</span></code> button <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</li>
+(where we return the value) to add a new breakpoint.</p>
+</li>
+<li><p class="first">In the browser, type a new value into the input and press enter.</p>
+</li>
+<li><p class="first">PyCharm appears, stopped on the next line.</p>
+</li>
+<li><p class="first">Note that you did <em>not</em> have to restart PyCharm when changing
+debugger information such as breakpoints.</p>
+</li>
+<li><p class="first">Remove this second breakpoint by clicking on the red circle.</p>
+</li>
+<li><p class="first">Continue execution by clicking the green <code class="docutils literal"><span class="pre">Resume</span></code> button <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="extra-credit">

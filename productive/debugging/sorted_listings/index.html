@@ -211,15 +211,15 @@ of this project&#8217;s code.</p>
 <li><p class="first">Remove the breakpoint and click <code class="docutils literal"><span class="pre">Resume</span></code> <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</p>
 </li>
 <li><p class="first">Now that we have a synthetic list, let&#8217;s sort it. Change our
-<code class="docutils literal"><span class="pre">Todo</span></code> class&#8217;s method <code class="docutils literal"><span class="pre">def</span> <span class="pre">list</span></code> to</p>
+<code class="docutils literal"><span class="pre">Todo</span></code> class&#8217;s method <code class="docutils literal"><span class="pre">def</span> <span class="pre">list</span></code> to
+<code class="docutils literal"><span class="pre">return</span> <span class="pre">sorted(todos,</span> <span class="pre">key=lambda</span> <span class="pre">todo:</span> <span class="pre">todo.title)</span></code>.</p>
 </li>
-</ol>
-<p><code class="docutils literal"><span class="pre">return</span> <span class="pre">sorted(todos,</span> <span class="pre">key=lambda</span> <span class="pre">todo:</span> <span class="pre">todo.title)</span></code>.</p>
-<ol class="arabic simple">
-<li>Make sure our debug session is still running, then reload your
-browser on the todo listing page. Note that the todos are sorted.</li>
-<li>Re-run your debug session by clicking <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> and reload your
-browser. Different todo titles, but sorted.</li>
+<li><p class="first">Make sure our debug session is still running, then reload your
+browser on the todo listing page. Note that the todos are sorted.</p>
+</li>
+<li><p class="first">Re-run your debug session by clicking <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> and reload your
+browser. Different todo titles, but sorted.</p>
+</li>
 </ol>
 </div>
 </div>

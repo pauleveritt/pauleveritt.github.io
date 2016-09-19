@@ -101,7 +101,7 @@ Steps
 
 #. Now that we have a synthetic list, let's sort it. Change our
    ``Todo`` class's method ``def list`` to
-``return sorted(todos, key=lambda todo: todo.title)``.
+   ``return sorted(todos, key=lambda todo: todo.title)``.
 
 #. Make sure our debug session is still running, then reload your
    browser on the todo listing page. Note that the todos are sorted.
