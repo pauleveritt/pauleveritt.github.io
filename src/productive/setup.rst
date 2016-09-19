@@ -114,8 +114,8 @@ this tutorial.
 
    .. note::
 
-      This tutorial uses Mac-based keyboard shortcuts. If you are on
-      Windows or Linux, no problem. Use ``Ctrl`` instead. For more
+      This tutorial uses Windows-based keyboard shortcuts. If you are on
+      Mac, we try to also provide Mac-style alternatives. For more
       help, check the ``Keymap Reference`` in PyCharm's ``Help`` menu.
 
 #. In the preferences, go to ``Editor -> Colors & Fonts -> Fonts`` and
