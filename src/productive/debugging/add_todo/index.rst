@@ -91,7 +91,7 @@ Steps
 #. We need an HTML form that collects and submits the todo title. Change
    ``def list_todos()`` to add this to the HTML:
 
-  .. code-block:: python
+   .. code-block:: python
 
     @app.route('/todo/')
     def list_todos():

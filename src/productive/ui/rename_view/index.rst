@@ -92,7 +92,5 @@ Extra Credit
 
 #. How do you use the ``Structure`` tool?
 
-#. In the Project tool, the ``templates`` directory is a purple. Why?
-
 #. Can you have more than one tab visible at once?
 

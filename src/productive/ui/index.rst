@@ -11,7 +11,7 @@ tool windows, editor, etc. -- in the course of some development tasks.
 .. note::
 
     The starting point for this section is the end of the :doc:`../setup`
-    section. Meaning, a ``New Project -> Flask`` project.
+    section.
 
 Tasks
 =====
