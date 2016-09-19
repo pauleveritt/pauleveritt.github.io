@@ -151,4 +151,4 @@ Extra Credit
    as Community, Professional, and Edu?
 
 #. Will the Flask app restart if you make a change? Is that PyCharm
-   doing the restart or PyCharm? Will it reload the browser?
+   doing the restart or Flask? Will it reload the browser?
