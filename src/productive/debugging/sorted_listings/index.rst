@@ -4,7 +4,7 @@ Sorted Listings
 
 Our listings appear in the order they were added, not in alphabetical
 order. Let's fix that, while making a bigger database of random
-todos. We'll use this to show more debugging featuers:
+todos. We'll use this to show more debugging features:
 
 - Break on exceptions
 
