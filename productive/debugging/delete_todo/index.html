@@ -102,7 +102,7 @@
                                     <a class="nav-link" href="../sorted_listings/">Previous</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../div_id/">Next</a>
+                                    <a class="nav-link" href="../change_display/">Next</a>
                                 </li>
                             </ul>
 
@@ -119,29 +119,97 @@
                     
   <div class="section" id="delete-todo">
 <h1>Delete Todo<a class="headerlink" href="#delete-todo" title="Permalink to this headline">¶</a></h1>
+<p>Deleting a todo is an important part of our application. Let&#8217;s add that
+feature while showing more about debugging:</p>
 <ul class="simple">
-<li>Let&#8217;s start in reverse, with the UI</li>
-<li>app.py</li>
-<li>Change list_todos to add an X button</li>
-<li>Add a delete_todo route</li>
-<li>Put in a breakpoint</li>
-<li>Click X, confirm we have todo_id as an integer</li>
-<li>Click Resume</li>
-<li>models.py</li>
-<li>Add def delete</li>
-<li>Back in app.py, add <code class="docutils literal"><span class="pre">todo.delete()</span></code></li>
-<li>Reload browser and click X</li>
-<li>Stops at breakpoint</li>
-<li>Put cursor in model.py def delete</li>
-<li>Run to Cursor, make sure it&#8217;s the correct todo</li>
-<li>Use Evaluate when stopped, self.id == 2</li>
-<li>In Debugger Console, click to show the Python Prompt,
-self.id == 2</li>
-<li>Click on Debugger tab</li>
-<li>Move back in scope/frames by clicking on delete_todo, to see
-what was <code class="docutils literal"><span class="pre">todo_int</span></code> in the previous frame</li>
-<li>Show new app.py and models.py</li>
+<li>Run to Cursor</li>
+<li>Evaluate Expression</li>
+<li>Console</li>
+<li>Moving backwards in frames</li>
 </ul>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<p>This time we&#8217;re going to reverse our mode of implementation and start
+instead with the UI side in <code class="docutils literal"><span class="pre">app.py</span></code>.</p>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, change <code class="docutils literal"><span class="pre">list_todos</span></code> to have a delete button:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="n">div</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;div&gt;&lt;a href=&quot;/todo/{id}/delete&quot;&gt;{title}&lt;/a&gt;</span>
+<span class="s1">    &lt;form method=&quot;POST&quot; action=&quot;/todo/{id}/delete&quot; style=&quot;display: inline&quot;&gt;</span>
+<span class="s1">        &lt;input type=&quot;submit&quot; value=&quot;x&quot;/&gt;</span>
+<span class="s1">    &lt;/form&gt;</span>
+<span class="s1">    &lt;/div&gt;&#39;&#39;&#39;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;form method=&quot;POST&quot; action=&quot;add&quot;&gt;</span>
+<span class="s1">        &lt;input name=&quot;todo_id&quot; placeholder=&quot;Add todo...&quot;/&gt;</span>
+<span class="s1">        &lt;/form&gt;</span>
+<span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">div</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">title</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">]</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">This form posts to a <code class="docutils literal"><span class="pre">/delete</span></code> route on a todo, so let&#8217;s add
+that route:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;int:todo_id&gt;/delete&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">delete_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Put a breakpoint on the first line inside this <code class="docutils literal"><span class="pre">delete_todo</span></code> route.
+Reload your browser (restarting your app in the debugger if necessary)
+and click on the <code class="docutils literal"><span class="pre">x</span></code> for one of the todos.</p>
+</li>
+<li><p class="first">When execution stops in the route, confirm that <code class="docutils literal"><span class="pre">todo_id</span></code> is an
+integer.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Resume</span></code> <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" /> to continue execution.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, add a method for deletion:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Back in <code class="docutils literal"><span class="pre">app.py</span></code>, add a line to <code class="docutils literal"><span class="pre">delete_todo</span></code> that calls this
+new method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;int:todo_id&gt;/delete&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">delete_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="n">todo</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Reload browser and click X to delete the <em>second</em> todo. Execution
+stops at your breakpoint.</p>
+</li>
+<li><p class="first">Put your cursor in the <code class="docutils literal"><span class="pre">delete</span></code> method in <code class="docutils literal"><span class="pre">models.py</span></code>.</p>
+</li>
+<li><p class="first">In the debugger, click <code class="docutils literal"><span class="pre">Run</span> <span class="pre">to</span> <span class="pre">Cursor</span></code> <img alt="runtocursor" src="https://www.jetbrains.com/help/img/idea/frames_run_to_cursor.png" />.</p>
+</li>
+<li><p class="first">Let&#8217;s make sure this is the correct todo. Click the
+<code class="docutils literal"><span class="pre">Evaluate</span> <span class="pre">Expression</span></code> button <img alt="evaluate" src="https://www.jetbrains.com/help/img/idea/variables_evaluate_expr.png" />.</p>
+</li>
+<li><p class="first">In the popup window, enter <code class="docutils literal"><span class="pre">self.id</span> <span class="pre">==</span> <span class="pre">2</span></code> to confirm that this is the
+correct todo. (Note: it might not be <code class="docutils literal"><span class="pre">2</span></code> based on the sorting and random
+title generation.)</p>
+</li>
+<li><p class="first">Click the Debug Tool Window&#8217;s <code class="docutils literal"><span class="pre">Console</span></code> tab (beside the <code class="docutils literal"><span class="pre">Debugger</span></code>
+tab), then click the <code class="docutils literal"><span class="pre">Show</span> <span class="pre">Python</span> <span class="pre">Prompt</span></code> button <img alt="prompt" src="https://www.jetbrains.com/help/img/idea/icon_showCommandLine.png" />.</p>
+</li>
+<li><p class="first">Let&#8217;s see what <code class="docutils literal"><span class="pre">todo_int</span></code> was defined as in the earlier stack frame
+by clicking <code class="docutils literal"><span class="pre">delete_todo</span></code> in the <code class="docutils literal"><span class="pre">Frames</span></code> window. <code class="docutils literal"><span class="pre">Variables</span></code>
+updates to show us the new scope.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Resume</span></code> button <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" />.</p>
+</li>
+</ol>
+</div>
 </div>
 
   <div class="section">

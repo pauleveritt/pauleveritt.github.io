@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Change Display &mdash; Paul Everitt  documentation</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+    <link rel="stylesheet" href="../../../_static/css/sphinxstrap4.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="../../../_static/img/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css"/>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+   
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+<body>
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="../../../">
+        <img src="../../../_static/headshot-closeup.jpg" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="../../../">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+
+            <li class="nav-item">
+                <form class="form-inline" action="../../../search/" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>Change Display</h1>
+                        
+                        
+
+                        
+                        <nav class="ui navbar">
+                            
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                <li>
+                                    <strong>In:</strong>
+                                    <a href="../../">Productive Python with PyCharm</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="../">Debugging</a>
+                                </li>
+
+                            </ol>
+
+                            
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../delete_todo/">Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../templating/">Next</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                        
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    
+  <div class="section" id="change-display">
+<h1>Change Display<a class="headerlink" href="#change-display" title="Permalink to this headline">¶</a></h1>
+<p>We currently let the route decide what to display in the listing of
+todos. We should let the todo be in charge of its formatting, for
+consistency across our app.</p>
+<p>We will use this change to illustrate the following debugger concepts:</p>
+<ul class="simple">
+<li>Watches</li>
+<li>Conditional breakpoints</li>
+</ul>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, let&#8217;s change the assigned display format to
+also show the <code class="docutils literal"><span class="pre">id</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span> <span class="o">=</span> <span class="s1">&#39;{title} (ID: {todo_id})&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Let&#8217;s change the <code class="docutils literal"><span class="pre">display</span></code> property we use to calculate and return
+the display value:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Just to be clean, let&#8217;s change our <code class="docutils literal"><span class="pre">__repr__</span></code> to use this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, change <code class="docutils literal"><span class="pre">list_todos</span></code> to use <code class="docutils literal"><span class="pre">t.display</span></code> instead of
+<code class="docutils literal"><span class="pre">t.title</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">div</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">display</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Using the debugger, we&#8217;d like to see the calculated value for
+the last todo. Put the breakpoint in <code class="docutils literal"><span class="pre">models.py</span></code> on this line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Click the Debugger&#8217;s <code class="docutils literal"><span class="pre">Rerun</span></code> button <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> then reload the todo
+listing in in the browser.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Resume</span></code> <img alt="resume" src="https://www.jetbrains.com/help/img/idea/debug_resume.png" /> several times until you get to the fifth
+todo, then use <code class="docutils literal"><span class="pre">Evaluate</span> <span class="pre">Expression</span></code> <img alt="evaluate" src="https://www.jetbrains.com/help/img/idea/variables_evaluate_expr.png" /> to see the value
+of <code class="docutils literal"><span class="pre">self.display</span></code>.</p>
+</li>
+<li><p class="first">Let&#8217;s make that more efficient using a <em>watch</em>, which is a way to
+calculate an expression and show in the debugger&#8217;s <code class="docutils literal"><span class="pre">Variables</span></code> as
+you move through code.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">Variables</span></code> panel, click the <code class="docutils literal"><span class="pre">+</span></code> button for <code class="docutils literal"><span class="pre">New</span> <span class="pre">Watch</span></code>.</p>
+</li>
+<li><p class="first">In the input prompt, type this expression and hit enter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sb">``</span><span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="sb">``</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Rerun</span></code> button <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> then reload the todo listing in
+in the browser.</p>
+</li>
+<li><p class="first">This time, as you step through to the last todo, the watch shows you the
+calculated value that will be returned.</p>
+</li>
+<li><p class="first">It is still inefficient to step until you reach the todo. Let&#8217;s make
+a <em>conditional</em> breakpoint, which only stops when an expression is true.</p>
+</li>
+<li><p class="first">Right-click on your breakpoint inside <code class="docutils literal"><span class="pre">def</span> <span class="pre">display</span></code>. In the <code class="docutils literal"><span class="pre">Condition</span></code>
+box, enter <code class="docutils literal"><span class="pre">self.id</span> <span class="pre">==</span> <span class="pre">4</span></code>.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Rerun</span></code> button <img alt="rerun" src="https://www.jetbrains.com/help/img/idea/rerunConsole.png" /> then reload the todo listing in
+in the browser.</p>
+</li>
+<li><p class="first">Note that the debugger this time stops only at the 4th todo.</p>
+</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright 2015, Paul Everitt
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/pauleveritt">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/paulweveritt">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/paeveritt">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '../../../',
+        VERSION: '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE: true
+    };
+</script>
+
+
+</body>
+</html>

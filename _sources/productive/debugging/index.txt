@@ -18,4 +18,4 @@ Tasks
     add_todo/index.rst
     sorted_listings/index.rst
     delete_todo/index.rst
-    div_id/index.rst
+    change_display/index.rst
