@@ -1,3 +1,5 @@
+.. include:: ../../shared.rst
+
 ==============
 Change Display
 ==============
@@ -102,11 +104,4 @@ Steps
     :caption: app.py in Change Display
     :language: py
 
-
-
-.. |resume| image:: https://www.jetbrains.com/help/img/idea/debug_resume.png
-
-.. |evaluate| image:: https://www.jetbrains.com/help/img/idea/variables_evaluate_expr.png
-
-.. |rerun| image:: https://www.jetbrains.com/help/img/idea/rerunConsole.png
 

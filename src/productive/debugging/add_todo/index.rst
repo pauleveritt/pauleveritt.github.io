@@ -1,3 +1,5 @@
+.. include:: ../../shared.rst
+
 ========
 Add Todo
 ========
@@ -17,6 +19,7 @@ In this step we introduce running under the debugger:
   breakpoint
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/debugging/add_todo>`_
+
 
 Steps
 =====
@@ -155,5 +158,3 @@ Extra Credit
 
 #. Should we move the ``todos`` array into the ``Todo`` class as a
    class attribute?
-
-.. |resume| image:: https://www.jetbrains.com/help/img/idea/debug_resume.png

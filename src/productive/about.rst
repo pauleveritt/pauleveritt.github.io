@@ -33,8 +33,8 @@ Objectives
 
 - Cover web development with PyCharm’s HTML/CSS/JS IDE capabilities
 
-- This tutorial is *not* a Flask nor SQLAlchemy tutorial...those are
-  only used for visual illustration
+- This tutorial is *not* a Flask tutorial...Flask is only used for
+  visual illustration
 
 Tutorial Organization
 =====================
