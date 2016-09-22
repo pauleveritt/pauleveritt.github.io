@@ -12,6 +12,8 @@ We will use this change to illustrate the following debugger concepts:
 
 - Conditional breakpoints
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/debugging/change_display>`_
+
 Steps
 =====
 
@@ -87,6 +89,20 @@ Steps
    in the browser.
 
 #. Note that the debugger this time stops only at the 4th todo.
+
+#. Your ``models.py`` should match the following:
+
+   .. literalinclude:: models.py
+    :caption: models.py in Change Display
+    :language: py
+
+#. Your ``app.py`` should match the following:
+
+   .. literalinclude:: app.py
+    :caption: app.py in Change Display
+    :language: py
+
+
 
 .. |resume| image:: https://www.jetbrains.com/help/img/idea/debug_resume.png
 
