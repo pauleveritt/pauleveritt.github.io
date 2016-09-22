@@ -13,6 +13,8 @@ feature while showing more about debugging:
 
 - Moving backwards in frames
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/debugging/delete_todo>`_
+
 Steps
 =====
 
@@ -98,6 +100,20 @@ instead with the UI side in ``app.py``.
    updates to show us the new scope.
 
 #. Click the ``Resume`` button |resume|.
+
+#. Your ``models.py`` should match the following:
+
+   .. literalinclude:: models.py
+    :caption: models.py in Delete Todo
+    :language: py
+
+#. Your ``app.py`` should match the following:
+
+   .. literalinclude:: app.py
+    :caption: app.py in Delete Todo
+    :language: py
+
+
 
 .. |resume| image:: https://www.jetbrains.com/help/img/idea/debug_resume.png
 

@@ -16,6 +16,8 @@ In this step we introduce running under the debugger:
 - Set a breakpoint to stop execution, resume, and remove the
   breakpoint
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/debugging/add_todo>`_
+
 Steps
 =====
 
@@ -134,6 +136,18 @@ Steps
 #. Remove this second breakpoint by clicking on the red circle.
 
 #. Continue execution by clicking the green ``Resume`` button |resume|.
+
+#. Your ``models.py`` should match the following:
+
+   .. literalinclude:: models.py
+    :caption: models.py in Add Todo
+    :language: py
+
+#. Your ``app.py`` should match the following:
+
+   .. literalinclude:: app.py
+    :caption: app.py in Add Todo
+    :language: py
 
 
 Extra Credit

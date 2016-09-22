@@ -1,14 +1,10 @@
 # This
 
-- Debugger steps need to finish with links to working code at start and finish
-
-- Finish writeup of debugging 3/4
+- Record Quick Tour
 
 - Add Analysis and Extra Credit on Debugging
 
-- Decide about "Quick Tour"
-
-- More walkthroughs
+- Record Debugger
 
 # Next
 
@@ -19,3 +15,5 @@
 - Put the id in the generated title so debugging steps can say
   self.id == 2
 
+- Emphasize the coolness that models.py doesn't use Flask by
+  continually Run/Debug on it, without reloading browser
