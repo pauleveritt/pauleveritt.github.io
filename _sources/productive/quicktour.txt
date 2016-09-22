@@ -12,6 +12,8 @@ being covered.
     the next step, return to the project results from
     :doc:`setup`.
 
+`View video/audio walkthrough <http://www.youtube.com/watch?v=JUosj9OZwvk>`_
+
 Steps
 =====
 
@@ -21,25 +23,21 @@ Steps
 
 #. Import into local Git and add ``epc.py``.
 
-#. Create ``requirements.txt`` and add ``flask-sqlalchemy``.
-
 #. Refactor Rename ``epc.py`` to ``app.py``.
 
-#. Add a ``list_todos`` route with 1 error and two warnings, then
-   toggle line numbers.
-
-#. Use Live Templates to add a "Show Todo" route and explore the
-   Edit Configuration for the run.
+#. Introduce spacing errors, then fix with ``Ctrl-Alt-L``.
 
 #. Make an error and show the run window clickable traceback.
 
 #. Looked at the Python Console and the Terminal.
 
-#. Create a ``models.py`` Python File using camel case in ``Cmd-N``.
+#. Create a ``models.py`` Python File using camel case in ``File -> New``.
 
 #. Use Live Templates to create a main block.
 
 #. Use Quick Fix to create a ``populate`` function that prints todos.
 
 #. Right-click to run ``models.py``.
+
+#. Set a breakpoint and run ``models.py`` in the debugger.
 

@@ -55,7 +55,7 @@ fact, it can do some of our work for us.
 Extra Credit
 ============
 
-- The web page still worked even though pointed at the old filename. Why?
+#. The web page still worked even though pointed at the old filename. Why?
 
-- If you opened the ``Terminal`` tool and used the command-line to rename
-  the file, what would happen?
+#. If you opened the ``Terminal`` tool and used the command-line to rename
+   the file, what would happen?

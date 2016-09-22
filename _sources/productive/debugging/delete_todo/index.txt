@@ -1,3 +1,5 @@
+.. include:: ../../shared.rst
+
 ===========
 Delete Todo
 ===========
@@ -112,13 +114,3 @@ instead with the UI side in ``app.py``.
    .. literalinclude:: app.py
     :caption: app.py in Delete Todo
     :language: py
-
-
-
-.. |resume| image:: https://www.jetbrains.com/help/img/idea/debug_resume.png
-
-.. |runtocursor| image:: https://www.jetbrains.com/help/img/idea/frames_run_to_cursor.png
-
-.. |evaluate| image:: https://www.jetbrains.com/help/img/idea/variables_evaluate_expr.png
-
-.. |prompt| image:: https://www.jetbrains.com/help/img/idea/icon_showCommandLine.png

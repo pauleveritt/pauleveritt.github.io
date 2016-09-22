@@ -1,3 +1,5 @@
+.. include:: ../../shared.rst
+
 ===============
 Sorted Listings
 ===============
@@ -121,19 +123,3 @@ Steps
    .. literalinclude:: app.py
     :caption: app.py in Sorted Listings
     :language: py
-
-
-
-.. |rerun| image:: https://www.jetbrains.com/help/img/idea/rerunConsole.png
-
-.. |resume| image:: https://www.jetbrains.com/help/img/idea/debug_resume.png
-
-.. |stepover| image:: https://www.jetbrains.com/help/img/idea/frames_step_over.png
-
-.. |stepinto| image:: https://www.jetbrains.com/help/img/idea/frames_step_into.png
-
-.. |stepout| image:: https://www.jetbrains.com/help/img/idea/frames_step_out.png
-
-.. |runtocursor| image:: https://www.jetbrains.com/help/img/idea/frames_run_to_cursor.png
-
-.. |mycode| image:: https://www.jetbrains.com/help/img/idea/step_into_my_code.png
