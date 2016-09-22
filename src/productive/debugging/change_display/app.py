@@ -14,7 +14,7 @@ def home_page():
 @app.route('/todo/')
 def list_todos():
     todos = Todo.list()
-    div = '''<div ><a href="/todo/{id}/delete">{title}</a>
+    div = '''<div><a href="/todo/{id}/delete">{title}</a>
     <form method="POST" action="/todo/{id}/delete" style="display: inline">
         <input type="submit" value="x"/>
     </form>
