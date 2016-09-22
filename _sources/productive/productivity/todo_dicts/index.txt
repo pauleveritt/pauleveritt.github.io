@@ -7,7 +7,7 @@ machinery as we implement this: more Code Intentions, Quick Documentation,
 and Reformat Code.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/todo_dicts>`_
-`View video/audio walkthrough <http://www.youtube.com/watch?v=GqEvacIiFzg>`_
+| `View video/audio walkthrough <http://www.youtube.com/watch?v=GqEvacIiFzg>`_
 
 Steps
 =====

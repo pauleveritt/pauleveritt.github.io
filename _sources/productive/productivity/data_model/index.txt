@@ -8,7 +8,7 @@ start of a proper "models" file. As we do so, we'll see some PyCharm
 productivity in action -- Live Templates and Quick Fixes.
 
 `Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/data_model>`_
-`View video/audio walkthrough <http://www.youtube.com/watch?v=Ge76EeQhGfI>`_
+| `View video/audio walkthrough <http://www.youtube.com/watch?v=Ge76EeQhGfI>`_
 
 Steps
 =====

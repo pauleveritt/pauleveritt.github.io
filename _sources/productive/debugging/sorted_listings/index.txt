@@ -14,6 +14,7 @@ todos. We'll use this to show more debugging features:
 
 - Step Into My Code
 
+`Source for this step <https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/debugging/sorted_listings>`_
 
 Steps
 =====
@@ -108,6 +109,20 @@ Steps
 
 #. Re-run your debug session by clicking |rerun| and reload your
    browser. Different todo titles, but sorted.
+
+#. Your ``models.py`` should match the following:
+
+   .. literalinclude:: models.py
+    :caption: models.py in Sorted Listings
+    :language: py
+
+#. Your ``app.py`` should match the following:
+
+   .. literalinclude:: app.py
+    :caption: app.py in Sorted Listings
+    :language: py
+
+
 
 .. |rerun| image:: https://www.jetbrains.com/help/img/idea/rerunConsole.png
 
