@@ -8,9 +8,8 @@ being covered.
 
 .. note::
 
-    The instructor will toss out the results of this step and, for
-    the next step, return to the project results from
-    :doc:`setup`.
+    Do *not* perform this step. Rather, watch as the instructor
+    presents it.
 
 `View video/audio walkthrough <http://www.youtube.com/watch?v=JUosj9OZwvk>`_
 
