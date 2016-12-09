@@ -20,7 +20,7 @@ Steps
    .. code-block:: python
 
         @appx.route('/todo/')    # Error
-        def list_todos() :       # Error, extra space before :
+        def list_todos() :       # Warning, extra space before :
             x = 1                # Warning, unused variable
             return 'Todo List'
 

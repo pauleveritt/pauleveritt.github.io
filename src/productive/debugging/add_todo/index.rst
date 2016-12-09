@@ -83,7 +83,7 @@ Steps
 
    .. code-block:: python
 
-    @app.route('/todo/add')
+    @app.route('/todo/add', methods=['POST'])
     def add_todo():
         todo_id = request.form['todo_id']
         if todo_id:
