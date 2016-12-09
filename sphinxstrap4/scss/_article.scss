@@ -1,0 +1,24 @@
+#article {
+  margin-top: 6em;
+
+  .postdate {
+    font-weight: 300;
+  }
+
+  nav {
+    border-bottom: solid lightgray 1px;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+  }
+
+  #content .section:first-of-type h1:first-of-type {
+    display: none;
+  }
+
+  div.note {
+    background-color: #EEE;
+    border: 1px solid #CCC;
+  }
+}

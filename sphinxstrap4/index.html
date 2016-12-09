@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="{{ theme_lang }}">
+<head>
+    {%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ pathto('_static/css/sphinxstrap4.css', 1) }}">
+    <link rel="stylesheet" href="{{ pathto('_static/basic.css', 1) }}" type="text/css">
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="{{ pathto('_static/img/favicon.ico', 1) }}" rel="icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    {%- for cssfile in theme_css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css"/>
+    {%- endfor %}
+
+    {%- for scriptfile in script_files %}
+    <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+
+    {%- block extrahead %} {% endblock %}
+</head>
+<body>
+{%- set is_home = pathto('index') == '#' %}
+
+<nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="{{ pathto(master_doc) }}">
+        <img src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" class="img-circle">
+    </a>
+    <a class="navbar-brand" href="{{ pathto(master_doc) }}">
+        Paul Everitt
+    </a>
+    <div class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav pull-sm-right">
+
+            {%- if theme_navigation %}
+            {%- for nav in theme_navigation %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ nav.link|e }}">{{ nav.title}}</a>
+            </li>
+            {%- endfor %}
+            {%- endif %}
+
+            <li class="nav-item">
+                <form class="form-inline" action="{{ pathto('search') }}" method="get">
+                    <input class="form-control form-control-sm" placeholder="Search..."
+                           name="q" type="text">
+                    <input type="hidden" name="check_keywords" value="yes"/>
+                    <input type="hidden" name="area" value="default"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+{%- if is_home %}
+<section id="montage" class="jumbotron" style="background-image: url('{{theme_montage}}')">
+
+    <div class="container">
+        <div class="row">
+            <div id="montage-text" class="ui col-md-8 col-md-offset-2">
+                <h4>{{theme_description}}</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- else %}
+
+
+<article id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <section id="preamble">
+                    <div class="text-xs-center">
+                        <h1>{{ title|striptags|e }}</h1>
+                        {% set post = ablog[pagename] %}
+                        {% if post.date %}
+                        <h6 class="postdate">{{ post.date.strftime(gettext(ablog.post_date_format)) }}</h6>
+                        {% endif %}
+
+                        {% if parents %}
+                        <nav class="ui navbar">
+                            {% if parents %}
+                            <ol class="nav navbar-nav breadcrumb pull-left">
+                                {%- for parent in parents %}
+                                <li>
+                                    {% if loop.first %}<strong>In:</strong>{% endif %}
+                                    <a href="{{ parent.link|e }}">{{ parent.title}}</a>
+                                </li>
+                                {%- endfor %}
+
+                            </ol>
+                            {%- endif %}
+
+                            {% if prev or next %}
+                            <ul class="nav navbar-nav pull-right">
+                                {%- if prev %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ prev.link|e }}">Previous</a>
+                                </li>
+                                {%- endif %}
+                                {%- if next %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ next.link|e }}">Next</a>
+                                </li>
+                                {%- endif %}
+                            </ul>
+                            {%- endif %}
+
+                        </nav>
+                        {% endif %}
+                        <div style="display: none" class="heading text-center">
+                            <p class="lead">
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="content">
+
+                    {% block body %} {% endblock %}
+
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+{%- endif %}
+
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 text-muted">
+                &copy; Copyright {{ copyright }}
+                <br>
+                For better or worse.
+            </div>
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <ul class="list-unstyled">
+                    {%- if theme_github_user %}
+                    <li>
+                        <a href="https://github.com/{{theme_github_user}}">
+                            <i class="fa fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    {%- endif %}
+                    {%- if theme_twitter_user %}
+                    <li><a href="https://twitter.com/{{theme_twitter_user}}">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a></li>
+                    {%- endif %}
+                    {%- if theme_linkedin_user %}
+                    <li><a href="https://linkedin.com/in/{{theme_linkedin_user}}">
+                        <i class="fa fa-linkedin"></i>
+                        LinkedIn
+                    </a></li>
+                    {%- endif %}
+                    {%- if theme_facebook_user %}
+                    <li><a href="https://facebook.com/{{theme_facebook_user}}">
+                        <i class="fa fa-facebook"></i>
+                        Facebook
+                    </a></li>
+                    {%- endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: '{{ pathto("", 1) }}',
+        VERSION: '{{ release|e }}',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '{{ "" if no_search_suffix else file_suffix }}',
+        HAS_SOURCE: {{ has_source | lower }}
+    };
+</script>
+
+
+</body>
+</html>

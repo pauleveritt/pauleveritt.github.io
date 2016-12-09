@@ -1,0 +1,30 @@
+{
+  "name": "sphinxstrap4",
+  "version": "1.0.0",
+  "description": "Bootstrap4 Sphinx theme",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "scss": "node-sass --watch --output-style compressed -o src/sphinxstrap4/static/css src/sphinxstrap4/scss",
+    "serve": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pauleveritt/sphinxstrap4.git"
+  },
+  "author": "Paul Everitt <pauleveritt@icloud.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pauleveritt/sphinxstrap4/issues"
+  },
+  "homepage": "https://github.com/pauleveritt/sphinxstrap4#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.5"
+  },
+  "devDependencies": {
+    "lite-server": "^2.2.0",
+    "node-sass": "^3.7.0"
+  }
+}

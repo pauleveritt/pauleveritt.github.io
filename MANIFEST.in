@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include sphinxstrap4 *.*
+recursive-exclude sphinxstrap4 .*.swp

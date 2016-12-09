@@ -1,0 +1,7 @@
+{
+  "server": {
+    "baseDir": "docs/_build",
+    "directory": true
+  },
+  "browser": "google chrome"
+}

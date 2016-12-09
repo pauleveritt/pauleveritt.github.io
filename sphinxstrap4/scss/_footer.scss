@@ -1,0 +1,16 @@
+@import "variables";
+
+#main-footer {
+  margin-top: 1rem;
+  h6 {
+    color: #718FA9;
+  }
+  a {
+    color: #6C6F73;
+  }
+  background: #262F36;
+  color: white;
+  padding: 3rem 0;
+  font-size: 0.8rem;
+  font-family: $font-family-sans-serif;
+}

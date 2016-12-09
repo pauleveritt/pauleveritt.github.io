@@ -1,0 +1,39 @@
+/*
+
+Styles only for the homepage.
+
+*/
+@import "variables";
+
+#montage {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background: #fff no-repeat bottom center;
+  background-size: cover;
+  height: 450px;
+
+  #montage-text {
+    background-color: rgba(211, 211, 211, 0.7);
+    margin-top: 4rem;
+    padding: 1.5rem;
+  }
+
+}
+
+#home-cards {
+  .card-header, .card-footer {
+    font-family: $font-family-sans-serif;
+  }
+  .card-footer {
+    background-color: transparent;
+    border: none;
+    text-align: right;
+  }
+  padding: 3rem;
+}
+
+#home-blurb {
+  padding-top: 2rem;
+  font-size: 1.3rem;
+}
