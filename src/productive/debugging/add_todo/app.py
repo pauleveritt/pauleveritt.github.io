@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask import redirect
 
-sfrom models import populate_todos, Todo
+from models import populate_todos, Todo
 
 app = Flask(__name__)
 
