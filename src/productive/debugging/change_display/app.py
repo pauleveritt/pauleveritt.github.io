@@ -6,7 +6,7 @@ from models import populate_todos, Todo
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def home_page():
     return 'Hello World! <a href="/todo/">Todos</a>'
 
@@ -35,9 +35,15 @@ def show_todo(todo_id):
     return fmt.format(todo_id=todo.id, title=todo.title)
 
 
-@app.route('/todo/add', methods=['POST'])
+@app.route('/todo/add', methods=['POST', 'GET'])
 def add_todo():
     todo_id = request.form['todo_id']
+
+    if request.method == 'POST':
+        print('POSTed')
+    else:
+        print('GETed')
+
     if todo_id:
         Todo.add(todo_id)
     return redirect('/todo/')
