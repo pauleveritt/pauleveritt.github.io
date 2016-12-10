@@ -38,3 +38,16 @@ img {
 .content-relations {
   text-align: right;
 }
+
+.content-navigation ul {
+  list-style: none;
+  font-size: $font-size-sm;
+}
+
+.content-navigation ul > li {
+  margin-left: -2.5rem;
+  li {
+    list-style: disc;
+    margin-left: -1rem;
+  }
+}

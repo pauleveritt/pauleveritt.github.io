@@ -74,8 +74,10 @@
 </section>
 
 {%- else %}
+{%- set is_navpage = pagename in ('blog', 'series', 'about') %}
 
 <div class="container content-main">
+    {% if not is_navpage %}
     <div class="row flex-items-xs-between content-navbar">
         <div class="col-xs-9 content-breadcrumbs">
             {% if parents %}
@@ -106,7 +108,7 @@
         </div>
         {%- endif %}
     </div>
-
+    {%- endif %}
     <div class="row">
         <div id="article" class="col-xs-9 content-main">
             <section id="preamble">
@@ -129,9 +131,26 @@
             </section>
 
         </div>
-        <div class="col-xs content-sidebar">Small sidebar area</div>
-    </div>
+        {% if not is_navpage %}
+        <div class="col-xs content-sidebar">
 
+            {% include 'navigation.html' %}
+
+            {% if prev or next %}
+                {%- if prev %}
+                <h4>Previous topic</h4>
+                <p><a href="{{ prev.link|e }}">{{prev.title}}</a></p>
+                {%- endif %}
+                {%- if next %}
+                <h4>Next topic</h4>
+                <p><a href="{{ next.link|e }}">{{next.title}}</a></p>
+                {%- endif %}
+            {%- endif %}
+
+        </div>
+        {%- endif %}
+
+    </div>
 </div>
 
 
