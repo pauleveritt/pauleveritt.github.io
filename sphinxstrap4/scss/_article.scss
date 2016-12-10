@@ -1,16 +1,10 @@
 #article {
-  margin-top: 6em;
-
   .postdate {
     font-weight: 300;
   }
 
-  nav {
-    border-bottom: solid lightgray 1px;
-  }
-
-  .breadcrumb {
-    background-color: transparent;
+  .preamble {
+    margin-bottom: 2rem;
   }
 
   #content .section:first-of-type h1:first-of-type {

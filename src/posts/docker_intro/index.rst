@@ -221,4 +221,4 @@ Conclusion
 With this release we've shown the beginnings of what we can do with
 Docker integration, and the results are promising. Docker has the
 potential to be a first-class part of PyCharm's "Develop With Pleasure"
-workflow.
+workflow.xx
