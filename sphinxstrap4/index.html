@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,300,600,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
     <link href="{{ pathto('_static/img/favicon.ico', 1) }}" rel="icon" type="image/x-icon">
@@ -33,13 +32,13 @@
 
 <nav id="ng2ss-nav" class="navbar navbar-dark bg-inverse navbar-fixed-top">
     <a class="navbar-brand" href="{{ pathto(master_doc) }}">
-        <img src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" class="img-circle">
+        <img src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" class="rounded-circle">
     </a>
     <a class="navbar-brand" href="{{ pathto(master_doc) }}">
         Paul Everitt
     </a>
     <div class="collapse navbar-toggleable-xs">
-        <ul class="nav navbar-nav pull-sm-right">
+        <ul class="nav navbar-nav float-sm-right">
 
             {%- if theme_navigation %}
             {%- for nav in theme_navigation %}
@@ -76,6 +75,42 @@
 
 {%- else %}
 
+
+<div class="container content-main">
+    <div class="row flex-items-xs-between content-navbar">
+        <div class="col-xs-9 content-breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </div>
+        <div class="col-xs content-relations">
+            <a href="#">previous</a> |
+            <a href="#">next</a> |
+            <a href="#">up</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-9 content-main">
+            This is some lorem ipsum of the standard variety, meant to take some space. This is some lorem ipsum of the
+            standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+            This is some lorem ipsum of the standard variety, meant to take some space.
+
+        </div>
+        <div class="col-xs content-sidebar">Small sidebar area</div>
+    </div>
+
+</div>
 
 <article id="article">
     <div class="container">

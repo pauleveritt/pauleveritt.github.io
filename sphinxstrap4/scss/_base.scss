@@ -5,27 +5,36 @@ html, body {
   flex: 1;
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility;
-  font-family: $font-family-serif;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.7;
+img {
+  max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, .ui {
-  color: #333;
+.navbar-brand {
+  img {
+    height: 50px;
+  }
+}
+
+.content-main {
+  padding: 20px;
+  margin-top: 26px;
+}
+
+.content-navbar, .content-sidebar, .content-main {
+  padding: 1.5rem;
+}
+
+.content-breadcrumbs > .breadcrumb {
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.content-navbar, .content-sidebar {
+  background-color: lightgray;
   font-family: $font-family-sans-serif;
 }
 
-//h6 {
-//  text-transform: uppercase;
-//  font-weight: bold;
-//  font-size: 0.8rem;
-//  letter-spacing: 0.1rem;
-//}
-
-img {
-  max-width: 100%;
+.content-relations {
+  text-align: right;
 }

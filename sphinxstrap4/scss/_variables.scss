@@ -145,7 +145,7 @@ $enable-flex:               true !default;
 $font-family-sans-serif:     Lato, Helvetica, Arial, sans-serif !default;
 $font-family-serif:          Lora, Georgia, "Times New Roman", Times, serif !default;
 //$font-family-monospace:      Menlo, Monaco, Consolas, "Courier New", monospace !default;
-//$font-family-base:           $font-family-sans-serif !default;
+$font-family-base:           $font-family-serif !default;
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
 //$font-size-root:             16px !default;
@@ -172,10 +172,10 @@ $font-family-serif:          Lora, Georgia, "Times New Roman", Times, serif !def
 //$display3-weight:             300 !default;
 //$display4-weight:             300 !default;
 
-//$line-height:                1.5 !default;
+$line-height:                1.7 !default;
 
 //$headings-margin-bottom:     ($spacer / 2) !default;
-//$headings-font-family:       inherit !default;
+$headings-font-family:       $font-family-sans-serif;
 //$headings-font-weight:       500 !default;
 //$headings-line-height:       1.1 !default;
 //$headings-color:             inherit !default;

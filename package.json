@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "scss": "node-sass --watch --output-style compressed -o src/sphinxstrap4/static/css src/sphinxstrap4/scss",
+    "scss": "node-sass --watch --output-style compressed -o sphinxstrap4/static/css sphinxstrap4/scss",
     "serve": "lite-server"
   },
   "repository": {
