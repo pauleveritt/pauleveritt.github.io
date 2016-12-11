@@ -74,7 +74,7 @@
 </section>
 
 {%- else %}
-{%- set is_navpage = pagename in ('blog', 'series', 'about') %}
+{%- set is_navpage = pagename in ('blog', 'series', 'about', 'search') %}
 
 <div class="container content-main">
     {% if not is_navpage %}
@@ -135,17 +135,12 @@
         <div class="col-xs content-sidebar">
 
             {% include 'navigation.html' %}
-
-            {% if prev or next %}
-                {%- if prev %}
-                <h4>Previous topic</h4>
-                <p><a href="{{ prev.link|e }}">{{prev.title}}</a></p>
-                {%- endif %}
-                {%- if next %}
-                <h4>Next topic</h4>
-                <p><a href="{{ next.link|e }}">{{next.title}}</a></p>
-                {%- endif %}
-            {%- endif %}
+            {% include 'recentposts.html' %}
+            {% include 'categories.html' %}
+            {% include 'tagcloud.html' %}
+            {% include 'archives.html' %}
+            {% include 'postcard.html' %}
+            {% include 'postcard2.html' %}
 
         </div>
         {%- endif %}

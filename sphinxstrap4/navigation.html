@@ -2,3 +2,14 @@
 <div class="content-navigation">
     {{ toc}}
 </div>
+{% if prev or next %}
+    {%- if prev %}
+    <h4>Previous topic</h4>
+    <p><a href="{{ prev.link|e }}">{{prev.title}}</a></p>
+    {%- endif %}
+    {%- if next %}
+    <h4>Next topic</h4>
+    <p><a href="{{ next.link|e }}">{{next.title}}</a></p>
+    {%- endif %}
+{%- endif %}
+
