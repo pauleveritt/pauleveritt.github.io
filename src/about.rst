@@ -11,4 +11,4 @@ application server through $14M of funding.
 
 I helped bootstrapped both the PSF and the Python Software Foundation.
 Before that, I was an officer in the US Navy, starting www.navy.mil in
-1993.
+1993. xx

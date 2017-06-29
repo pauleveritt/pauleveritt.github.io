@@ -11,8 +11,6 @@
 import ablog
 import alabaster
 
-import sphinxstrap4
-
 # -- General ABlog Options ----------------------------------------------------
 
 # A path relative to the configuration directory for blog archive pages.
@@ -165,8 +163,7 @@ extensions = [
     'sphinx.ext.todo',
     'alabaster',
     'ablog',
-    'sphinxcontrib.youtube',
-    'sphinxstrap4',
+    'sphinxcontrib.youtube'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -243,27 +240,26 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinxstrap4'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'logo': 'headshot-closeup.jpg',
+    # 'logo': 'headshot-closeup.jpg',
     'logo_name': True,
     'github_button': True,
     'github_user': 'pauleveritt',
-    'twitter_user': 'paulweveritt',
-    'linkedin_user': 'paeveritt',
-    'montage': '_static/montage.jpg',
-    'navigation': [
-        {'title': 'Blog', 'link': '/blog/'},
-        {'title': 'Series', 'link': '/series/'},
-        {'title': 'About', 'link': '/about/'}
-    ],
-    'css_files': [
-        '_static/default.css',
-    ],
+    # 'linkedin_user': 'paeveritt',
+    # 'montage': '_static/montage.jpg',
+    # 'navigation': [
+    #     {'title': 'Blog', 'link': '/blog/'},
+    #     {'title': 'Series', 'link': '/series/'},
+    #     {'title': 'About', 'link': '/about/'}
+    # ],
+    # 'css_files': [
+    #     '_static/default.css',
+    # ],
     'description': '''Blog posts and technical articles on
                     Python and PyCharm,
                     Web and WebStorm.'''
@@ -281,7 +277,7 @@ html_theme_path = [alabaster.get_path()]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/headshot-closeup.jpg'
+# html_logo = '_static/headshot-closeup.jpg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
