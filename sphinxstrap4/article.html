@@ -1,0 +1,74 @@
+<div class="container content-main">
+    <div class="row flex-items-xs-between content-navbar">
+        <div class="col-xs-9 content-breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </div>
+        <div class="col-xs content-relations">
+            <a href="#">previous</a> |
+            <a href="#">next</a> |
+            <a href="#">up</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="article" class="col-xs-9 content-main">
+            <section id="preamble">
+                <div class="text-xs-center">
+                    <h1>{{ title|striptags|e }}</h1>
+                    {% set post = ablog[pagename] %}
+                    {% if post.date %}
+                    <h6 class="postdate">{{ post.date.strftime(gettext(ablog.post_date_format)) }}</h6>
+                    {% endif %}
+
+                    {% if parents %}
+                    <nav class="ui navbar">
+                        {% if parents %}
+                        <ol class="nav navbar-nav breadcrumb pull-left">
+                            {%- for parent in parents %}
+                            <li>
+                                {% if loop.first %}<strong>In:</strong>{% endif %}
+                                <a href="{{ parent.link|e }}">{{ parent.title}}</a>
+                            </li>
+                            {%- endfor %}
+
+                        </ol>
+                        {%- endif %}
+
+                        {% if prev or next %}
+                        <ul class="nav navbar-nav pull-right">
+                            {%- if prev %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ prev.link|e }}">Previous</a>
+                            </li>
+                            {%- endif %}
+                            {%- if next %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ next.link|e }}">Next</a>
+                            </li>
+                            {%- endif %}
+                        </ul>
+                        {%- endif %}
+
+                    </nav>
+                    {% endif %}
+                    <div style="display: none" class="heading text-center">
+                        <p class="lead">
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="content">
+
+                {% block body %} {% endblock %}
+
+            </section>
+
+        </div>
+        <div class="col-xs content-sidebar">Small sidebar area</div>
+    </div>
+
+</div>

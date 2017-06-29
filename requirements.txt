@@ -5,4 +5,4 @@ flask
 flask-restless
 sqlalchemy
 flask-sqlalchemy
-sphinx
+sphinx==1.5

@@ -1,0 +1,31 @@
+@import "variables";
+
+html, body {
+  height: 100%;
+  flex: 1;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  font-family: $font-family-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6, .ui {
+  color: #333;
+  font-family: $font-family-sans-serif;
+}
+
+//h6 {
+//  text-transform: uppercase;
+//  font-weight: bold;
+//  font-size: 0.8rem;
+//  letter-spacing: 0.1rem;
+//}
+
+img {
+  max-width: 100%;
+}
