@@ -14,7 +14,5 @@ one-offs, articles and series with source code for tutorial-style content.
     :hidden:
 
     posts/index.rst
+    tutorials/index.rst
     about.rst
-    polyglot/index.rst
-    series.rst
-    productive/index.rst
