@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Start Version Control &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Rename Files" href="../rename_file/" />
+    <link rel="prev" title="Rename View" href="../rename_view/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="start-version-control">
+<h1>Start Version Control<a class="headerlink" href="#start-version-control" title="Permalink to this headline">¶</a></h1>
+<p>PyCharm&#8217;s <code class="docutils literal"><span class="pre">Project</span></code> tool is a very smart folder browser. We&#8217;ll show
+this by putting our Todo app under version control and seeing how
+PyCharm can do work for us, with colors indicating VCS status. We
+also show how PyCharm works with Python requirements.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/start_vc">Source for this step</a>
+| <a class="reference external" href="http://www.youtube.com/watch?v=fLA2rv--XYM">View video/audio walkthrough</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">From the PyCharm menus, select
+<code class="docutils literal"><span class="pre">VCS</span> <span class="pre">-&gt;</span> <span class="pre">Import</span> <span class="pre">into</span> <span class="pre">Version</span> <span class="pre">Control</span> <span class="pre">-&gt;</span> <span class="pre">Create</span> <span class="pre">Git</span> <span class="pre">Repository</span></code>.</p>
+</li>
+<li><p class="first">In the popup window, select the project directory and click
+the <code class="docutils literal"><span class="pre">OK</span></code> button. We now have a <code class="docutils literal"><span class="pre">.git</span></code> directory in our
+project root directory.</p>
+</li>
+<li><p class="first">In Project Tool window, right-click on the <code class="docutils literal"><span class="pre">epc.py</span></code> file.</p>
+</li>
+<li><p class="first">At the moment, it is red, meaning, not under version control.</p>
+</li>
+<li><p class="first">In right-click context menu, choose <code class="docutils literal"><span class="pre">Git</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">to</span> <span class="pre">VCS</span></code>.</p>
+</li>
+<li><p class="first">The color changes to green, indicating it is added but not committed.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">Project</span></code> tool window, right-click on the root folder.</p>
+</li>
+<li><p class="first">Choose <code class="docutils literal"><span class="pre">New</span> <span class="pre">-&gt;</span> <span class="pre">File</span></code>.</p>
+</li>
+<li><p class="first">Provide <code class="docutils literal"><span class="pre">requirements.txt</span></code> and click <code class="docutils literal"><span class="pre">Ok</span></code>.</p>
+</li>
+<li><p class="first">In the next dialog, accept adding the new file to VCS.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">requirements.txt</span></code>, add a line for <code class="docutils literal"><span class="pre">flask</span></code>. The file should
+look like this:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">requirements.txt for Start VC section</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flask</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Close <code class="docutils literal"><span class="pre">requirements.txt</span></code> by clicking the <code class="docutils literal"><span class="pre">x</span></code> on the tab.</p>
+</li>
+<li><p class="first">Commit these changes to VCS with <code class="docutils literal"><span class="pre">VCS</span> <span class="pre">-&gt;</span> <span class="pre">Commit</span> <span class="pre">Changes</span></code>.</p>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">First</span> <span class="pre">commit</span></code> in the <code class="docutils literal"><span class="pre">Commit</span> <span class="pre">Message</span></code> box.</p>
+</li>
+<li><p class="first">Click the <code class="docutils literal"><span class="pre">Commit</span></code> button, then choose <code class="docutils literal"><span class="pre">Commit</span></code> from the button menu.</p>
+</li>
+<li><p class="first">Note that the two files in the <code class="docutils literal"><span class="pre">Project</span></code> tool window are now a
+normal color.</p>
+</li>
+<li><p class="first">Open PyCharm&#8217;s Settings with <code class="docutils literal"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span></code>,  or use <code class="docutils literal"><span class="pre">Ctrl-Alt-S</span></code>
+as a shortcut. (macOS: <code class="docutils literal"><span class="pre">PyCharm</span> <span class="pre">-&gt;</span> <span class="pre">Preferences</span></code> and <code class="docutils literal"><span class="pre">Cmd-,</span></code>.)</p>
+</li>
+<li><p class="first">In Settings (aka Preferences), click on <code class="docutils literal"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">Python</span> <span class="pre">Integrated</span> <span class="pre">Tools</span></code>.
+The first field shows which file is registered with PyCharm as this
+interpreter&#8217;s requirements file.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Cancel</span></code> to dismiss the preferences.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>We did a lot of small steps in this task, showing how the tool
+windows can be put to work:</p>
+<ul class="simple">
+<li><em>Visual cues</em>. Making a local Git repository caused the project tool
+to start giving us helpful visual information.</li>
+<li><em>Tool context menus</em>. Entries in the project tool can be right-clicked
+on to get context sensitive menus.</li>
+<li><em>Git</em>. PyCharm is a great visual front-end for version control
+systems (VCS).</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Why doesn&#8217;t PyCharm show the <code class="docutils literal"><span class="pre">.git</span></code> directory in the the file
+browser?</li>
+<li>What other hidden directory did PyCharm make in the root directory?</li>
+<li>Can PyCharm help you manage your <code class="docutils literal"><span class="pre">.gitignore</span></code> file?</li>
+<li>What is the keyboard shortcut for committing a file?</li>
+<li>How do you delete a file from the filesystem <em>and</em> from VCS?</li>
+<li>Besides the project tool window, where else does the color for a
+file&#8217;s VCS status appear?</li>
+<li>What is the color for a file that has uncommitted changes?</li>
+<li>What is the visual indicator on a project tool&#8217;s file when it has
+a major Python error in it?</li>
+<li>When installing a Python package via Project Interpreter preferences,
+can you simultaneously record it in the <code class="docutils literal"><span class="pre">requirements.txt</span></code>?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../rename_view/">Rename View</a>
+                </li>
+                <li>
+                    Next topic: <a href="../rename_file/">Rename Files</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/ui/start_vc/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

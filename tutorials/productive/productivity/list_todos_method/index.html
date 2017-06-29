@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>List Todos Method &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Single Todo" href="../single_todo/" />
+    <link rel="prev" title="Todo Class" href="../todo_class/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="list-todos-method">
+<h1>List Todos Method<a class="headerlink" href="#list-todos-method" title="Permalink to this headline">¶</a></h1>
+<p>Having our web app import the todos list directly isn&#8217;t that smart.
+What if there&#8217;s some work involved, such as a database query? Let&#8217;s
+change to use a class method. We can get PyCharm to help us with
+the refactoring.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/list_todos_method">Source for this step</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, let&#8217;s add a method <code class="docutils literal"><span class="pre">list</span></code> to the class. After the
+<code class="docutils literal"><span class="pre">__repr__</span></code> method, start a new method by typing <code class="docutils literal"><span class="pre">def</span> <span class="pre">list(</span></code>. Hit
+<code class="docutils literal"><span class="pre">enter</span></code> then press <code class="docutils literal"><span class="pre">Shift-Enter</span></code> to start a new line.</p>
+</li>
+<li><p class="first">In the body of this method, type <code class="docutils literal"><span class="pre">return</span> <span class="pre">t</span></code> and press <code class="docutils literal"><span class="pre">enter</span></code> to
+accept the autocomplete of <code class="docutils literal"><span class="pre">todos</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">list</span></code> has a squiggly underline. Mouse-over it. PyCharm helpfully
+tells you <code class="docutils literal"><span class="pre">Method</span> <span class="pre">'list'</span> <span class="pre">may</span> <span class="pre">be</span> <span class="pre">'static'</span></code>.</p>
+</li>
+<li><p class="first">Can PyCharm do this change for us? Click on <code class="docutils literal"><span class="pre">list</span></code> and press
+<code class="docutils literal"><span class="pre">Alt-Enter</span></code>. Choose <code class="docutils literal"><span class="pre">Make</span> <span class="pre">method</span> <span class="pre">static</span></code>.</p>
+</li>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> to clean up any line formatting complaints.
+(macOS: <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>)</p>
+</li>
+<li><p class="first">Our <code class="docutils literal"><span class="pre">__repr__</span></code> is doing a lot. Perhaps we can refactor it. First, let&#8217;s
+extract the formatting into a property <code class="docutils literal"><span class="pre">display</span></code> that can be overridden
+by subclasses.</p>
+</li>
+<li><p class="first">Click in the <code class="docutils literal"><span class="pre">.format</span></code> of <code class="docutils literal"><span class="pre">__repr__</span></code> (or anywhere on the return line)
+and choose <code class="docutils literal"><span class="pre">Refactor</span> <span class="pre">-&gt;</span> <span class="pre">Extract</span> <span class="pre">-&gt;</span> <span class="pre">Method</span></code>.</p>
+</li>
+<li><p class="first">In the popup&#8217;s <code class="docutils literal"><span class="pre">Method</span> <span class="pre">name:</span></code> box, enter <code class="docutils literal"><span class="pre">display</span></code> and click <code class="docutils literal"><span class="pre">OK</span></code>.</p>
+</li>
+<li><p class="first">PyCharm makes a new <code class="docutils literal"><span class="pre">display</span></code> method with the logic, and changes
+<code class="docutils literal"><span class="pre">__repr__</span></code> to call it.</p>
+</li>
+<li><p class="first">Let&#8217;s say you changed your mind. Press <code class="docutils literal"><span class="pre">Ctrl-Z</span></code> to undo and all of that
+work is undone in one unit. (macOS: <code class="docutils literal"><span class="pre">Cmd-Z</span></code>)</p>
+</li>
+<li><p class="first">Or you decided you wanted it. Press <code class="docutils literal"><span class="pre">Shift-Cmd-Z</span></code> to redo. (macOS:
+<code class="docutils literal"><span class="pre">Shift-Cmd-Z</span></code>)</p>
+</li>
+<li><p class="first">Something looks fishy about <code class="docutils literal"><span class="pre">display</span></code>. Click somewhere in <code class="docutils literal"><span class="pre">def</span> <span class="pre">display</span></code>
+and press <code class="docutils literal"><span class="pre">Alt-Enter</span></code>. Sure enough, PyCharm can convert it to a
+property. Select <code class="docutils literal"><span class="pre">Convert</span> <span class="pre">method</span> <span class="pre">to</span> <span class="pre">property</span></code>. PyCharm adds the
+decorator and changes all usages, such as <code class="docutils literal"><span class="pre">__repr__</span></code>.</p>
+</li>
+<li><p class="first">Next, we&#8217;d like the format string to be parameterizable. Click once inside
+<code class="docutils literal"><span class="pre">'Todo</span> <span class="pre">{todo_id}'</span></code> then expand the selection by pressing <code class="docutils literal"><span class="pre">Ctrl-W</span></code>
+three times. PyCharm&#8217;s selection should highlight the single quotes.
+(macOS: <code class="docutils literal"><span class="pre">Alt-Up</span></code>)</p>
+</li>
+<li><p class="first">Open the <code class="docutils literal"><span class="pre">Refactor</span></code> popup with <code class="docutils literal"><span class="pre">Ctrl-Alt-Shift-T</span></code>. Choose <code class="docutils literal"><span class="pre">Field</span></code>.
+(macOS: <code class="docutils literal"><span class="pre">Ctrl-T</span></code>)</p>
+</li>
+<li><p class="first">In the inline popup, change <code class="docutils literal"><span class="pre">Initialize</span> <span class="pre">in:</span></code> from <code class="docutils literal"><span class="pre">current</span> <span class="pre">method</span></code>
+to <code class="docutils literal"><span class="pre">constructor</span></code>, then enter <code class="docutils literal"><span class="pre">display_fmt</span></code> into the red box and press
+enter.</p>
+</li>
+<li><p class="first">PyCharm has added <code class="docutils literal"><span class="pre">self.display_fmt</span></code> to our constructor and changed
+the <code class="docutils literal"><span class="pre">display</span></code> property method to use it.</p>
+</li>
+<li><p class="first">That&#8217;s a lot. Let&#8217;s re-run <code class="docutils literal"><span class="pre">models.py</span></code> with <code class="docutils literal"><span class="pre">Shift-F10</span></code> to make sure
+it runs ok. <em>Make sure the models.py run configuration is selected.</em>
+(macOS: <code class="docutils literal"><span class="pre">Ctrl-R</span></code>)</p>
+</li>
+<li><p class="first">We can now refactor <code class="docutils literal"><span class="pre">app.py</span></code> to use this. On the first line inside
+<code class="docutils literal"><span class="pre">list_todos</span></code>, type <code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">ToDo</span></code> and press <code class="docutils literal"><span class="pre">Alt-Enter</span></code> to
+import the <code class="docutils literal"><span class="pre">ToDo</span></code> class. Then continue typing <code class="docutils literal"><span class="pre">.list()</span></code>, resulting in
+<code class="docutils literal"><span class="pre">todos</span> <span class="pre">=</span> <span class="pre">ToDo.list()</span></code>.</p>
+</li>
+<li><p class="first">Hmm, we have an unused import, as we don&#8217;t get <code class="docutils literal"><span class="pre">todos</span></code> from <code class="docutils literal"><span class="pre">models.py</span></code>
+any longer. PyCharm can help. <code class="docutils literal"><span class="pre">Code</span> <span class="pre">-&gt;</span> <span class="pre">Optimize</span> <span class="pre">Imports</span></code> not only removes
+unused imports, but re-organizes your import listing based on a
+configurable policy.</p>
+</li>
+<li><p class="first">Does the web app still work? Reload the browser and visit the todo listing
+to confirm.</p>
+</li>
+<li><p class="first">At long last, we realize our <code class="docutils literal"><span class="pre">ToDo</span></code> typo, and by now, it is used in
+multiple places in multiple files. PyCharm&#8217;s Rename Refactoring to the
+rescue!</p>
+</li>
+<li><p class="first">Click in an occurrence of <code class="docutils literal"><span class="pre">ToDo</span></code>.</p>
+</li>
+<li><p class="first">Click on <code class="docutils literal"><span class="pre">Refactor</span> <span class="pre">-&gt;</span> <span class="pre">Rename</span></code>, change to <code class="docutils literal"><span class="pre">Todo</span></code>, and click
+<code class="docutils literal"><span class="pre">Refactor</span></code>. Confirm that all cases were fixed in both files, then
+reload your browser to confirm the web app still works. Optionally,
+re-run <code class="docutils literal"><span class="pre">models.py</span></code>.</p>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">app.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">app.py in List Todos Method</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">populate_todos</span><span class="p">,</span> <span class="n">Todo</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World! &lt;a href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="n">div</span> <span class="o">=</span> <span class="s1">&#39;&lt;div&gt;&lt;a href=&quot;/todo/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/div&gt;&#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">div</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">title</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo_id</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">models.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">models.py in List Todos Method</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="n">todos</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">class</span> <span class="nc">Todo</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span> <span class="o">=</span> <span class="s1">&#39;Todo {todo_id}&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">9999</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">list</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">todos</span>
+
+
+<span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Todo</span><span class="p">(</span><span class="s1">&#39;First&#39;</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">todos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Another step with quite a number of small changes:</p>
+<ul class="simple">
+<li><em>Refactoring static method</em>. The conversion to a static method is not
+only a useful warning, but doing the work for us lets us complete the
+task without much interruption.</li>
+<li><em>Logic refactoring</em>. The sequence of extracting the logic to a method,
+converting it for us into a property, then extracting the format
+string to a constructor field, really showed how PyCharm refactoring
+can keep us in the development flow.</li>
+<li><em>Use, then auto-import</em>. We again see the pattern of typing in a
+symbol, then letting PyCharm generate the import.</li>
+<li><em>Optimize Imports</em>. Cleaning up your imports is tedious, janitorial
+work. Let PyCharm do it for you. New in PyCharm 2016.2: configure
+how the imports are laid out, to match your preferences.</li>
+<li><em>Project-wide Rename</em>. Sometimes you avoid a rename, just to avoid
+all the work to find the symbol and fix it. PyCharm makes this
+refactoring a trivial task.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>We use <code class="docutils literal"><span class="pre">Alt-Shift-Up</span></code> to extend the selection. Can this extend beyond
+the current line, to an entire block?</li>
+<li>In Python, what&#8217;s the difference between <code class="docutils literal"><span class="pre">&#64;classmethod</span></code> and
+<code class="docutils literal"><span class="pre">&#64;staticmethod</span></code>?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../todo_class/">Todo Class</a>
+                </li>
+                <li>
+                    Next topic: <a href="../single_todo/">Single Todo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/productivity/list_todos_method/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

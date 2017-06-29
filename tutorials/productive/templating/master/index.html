@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Master Template &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="List Todos Template" href="../listtodos_templates/" />
+    <link rel="prev" title="Templates" href="../templates/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="master-template">
+<h1>Master Template<a class="headerlink" href="#master-template" title="Permalink to this headline">¶</a></h1>
+<p>We are going to convert some more views to use templates. Along the way,
+we are going to introduce PyCharm&#8217;s debugger.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Stop the Run Tool window&#8217;s execution by clicking the red square button
+in the Run Tool window.</p>
+</li>
+<li><p class="first">Click on the <code class="docutils literal"><span class="pre">templates</span></code> directory and press <code class="docutils literal"><span class="pre">Ctrl-N</span></code> to make a new
+file named <code class="docutils literal"><span class="pre">layout.html</span></code> in the <code class="docutils literal"><span class="pre">templates</span></code> directory.</p>
+</li>
+<li><p class="first">Use Emmet to fill in the HTML for this directory: <code class="docutils literal"><span class="pre">html&gt;head&gt;title</span></code>
+then <code class="docutils literal"><span class="pre">tab</span></code>.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">&lt;title&gt;</span></code> type in <code class="docutils literal"><span class="pre">Todo:</span> <span class="pre">{{</span> <span class="pre">title</span> <span class="pre">}}</span></code>.</p>
+</li>
+<li><p class="first">Use Emmet for the body. After <code class="docutils literal"><span class="pre">&lt;/head&gt;</span></code> type in:
+<code class="docutils literal"><span class="pre">body&gt;h1&gt;a</span></code> then press <code class="docutils literal"><span class="pre">tab</span></code>.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code>: <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/h1&gt;</span></code>.</p>
+</li>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Shift-Enter</span></code> and add:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">&lt;h2&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x">&lt;/h2&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/body&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Right-click on <code class="docutils literal"><span class="pre">templates/index.html</span></code> and choose
+<code class="docutils literal"><span class="pre">Refactor-Rename</span></code> to change the name to <code class="docutils literal"><span class="pre">home_page.html</span></code>.</p>
+</li>
+<li><p class="first">Right-click in the editor tab for <code class="docutils literal"><span class="pre">app.py</span></code> and choose <code class="docutils literal"><span class="pre">Debug</span></code>.</p>
+</li>
+<li><p class="first">(OS and Linux) In the Debugger console, click on the link that says:</p>
+<p>warning: Debugger speedups using cython not found. Run
+&#8216;&#8221;/Users/pauleveritt/virtualenvs/epc/bin/python&#8221;
+&#8220;/Applications/PyCharm.app/Contents/helpers/pydev/setup_cython.py&#8221;
+build_ext &#8211;inplace&#8217; to build.</p>
+</li>
+<li><p class="first">Reload browser on the root URL.</p>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">app.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">app.py in Master</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">populate_todos</span><span class="p">,</span> <span class="n">Todo</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;home_page.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Home Page&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="n">div</span> <span class="o">=</span> <span class="s1">&#39;&lt;div&gt;&lt;a href=&quot;/todo/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/div&gt;&#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">div</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">title</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;int:todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Todo {todo_id}&lt;/h1&gt;&lt;p&gt;{title}&lt;/p&gt;&#39;</span>
+    <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">templates/layout.html</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">templates/layout.html in Master</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Todo: </span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x">&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">&lt;h1&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="x">&lt;h2&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x">&lt;/h2&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/body&gt;&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">templates/home_page.html</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">templates/home_page.html in Master</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;p&gt;&lt;a href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../templates/">Templates</a>
+                </li>
+                <li>
+                    Next topic: <a href="../listtodos_templates/">List Todos Template</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/templating/master/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

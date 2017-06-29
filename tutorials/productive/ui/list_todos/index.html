@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>List Todos Route &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Running Python Code" href="../../running/" />
+    <link rel="prev" title="Rename Files" href="../rename_file/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="list-todos-route">
+<h1>List Todos Route<a class="headerlink" href="#list-todos-route" title="Permalink to this headline">¶</a></h1>
+<p>PyCharm&#8217;s editor allows, obviously, editing. But the left and right
+margins, aka the gutters, have rich functionality for helping you
+code. Let&#8217;s see these gutters in action by adding a second route.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/list_todos">Source for this step</a>
+<a class="reference external" href="http://www.youtube.com/watch?v=SaslVpYoakc">View video/audio walkthrough</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Open <code class="docutils literal"><span class="pre">app.py</span></code> in the editor, if it isn&#8217;t already opened.</p>
+</li>
+<li><p class="first">After the first route, add a second route with two errors and one
+warning:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@appx.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>    <span class="c1"># Error</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">()</span> <span class="p">:</span>       <span class="c1"># Warning, extra space before :</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># Warning, unused variable</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo List&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Note the traceback in the <code class="docutils literal"><span class="pre">Run</span></code> tool window. Flask reloaded and
+Python exited due to <code class="docutils literal"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">syntax</span></code>.</p>
+</li>
+<li><p class="first">The editor&#8217;s right gutter has two red lines (error) and one olive
+line (warnings). Mouse over each of these to see the actual issue.</p>
+</li>
+<li><p class="first">Correct the second error, the extra space before the colon, with
+PyCharm&#8217;s <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> (Reformat Code). (macOS: <code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>).</p>
+</li>
+<li><p class="first">Mouse over the <code class="docutils literal"><span class="pre">x</span></code> to see again the actual error.</p>
+</li>
+<li><p class="first">Click on the <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</li>
+<li><p class="first">Click on the lightbulb that pops up and choose <code class="docutils literal"><span class="pre">Remove</span> <span class="pre">statement</span></code>.</p>
+</li>
+<li><p class="first">Change <code class="docutils literal"><span class="pre">appx</span></code> to <code class="docutils literal"><span class="pre">app</span></code>.</p>
+</li>
+<li><p class="first">Not only are the 3 gutter warnings gone, but there is a green checkbox at
+top. (Mouse over it for more detail.)</p>
+</li>
+<li><p class="first">Right-click in the left gutter, where the line numbers are shown.</p>
+</li>
+<li><p class="first">In the popup, turn off &#8220;Show Line Numbers&#8221;.</p>
+</li>
+<li><p class="first">Repeat to turn line numbers back on.</p>
+</li>
+<li><p class="first">To the left of <code class="docutils literal"><span class="pre">def</span> <span class="pre">home_page</span></code>, click the <code class="docutils literal"><span class="pre">-</span></code> to collapse the block.
+Click the <code class="docutils literal"><span class="pre">+</span></code> to expand.</p>
+</li>
+<li><p class="first">Add a link to the new route by changing <code class="docutils literal"><span class="pre">def</span> <span class="pre">home_page</span></code> to return
+<code class="docutils literal"><span class="pre">'Hello</span> <span class="pre">World!</span> <span class="pre">&lt;a</span> <span class="pre">href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;'</span></code>. <code class="docutils literal"><span class="pre">app.py</span></code> should now look
+like this:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">app.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World! &lt;a href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo List&#39;</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">Run</span></code> window, click the green play arrow button to start the
+now-corrected Flask application.</p>
+</li>
+<li><p class="first">Reload browser and click on the <code class="docutils literal"><span class="pre">Todos</span></code> link.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>The PyCharm IDE does a lot of work for you, and reserves areas on the screen
+for interacting with you on that work. The gutters are part of this.</p>
+<ul class="simple">
+<li><em>Code analysis</em>. PyCharm flags you when it finds something important.
+Errors and warnings are treated differently, showing up both in the
+gutter and in the editor. PyCharm Settings can be used to configure
+these errors and warnings.</li>
+<li><em>Linting</em>. The code analysis is driven by PyCharm&#8217;s support for various
+Python linting tools, including &#8220;PEP8&#8221; style guide tools.</li>
+<li><em>Gutters</em>. PyCharm puts these gutters to more use. For example, the
+left gutter is used for breakpoints (as discussed in
+<a class="reference internal" href="../../debugging/"><span class="doc">Debugging</span></a>), favorites, bookmarks, etc.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Delete the flask import line, then have PyCharm generate the import for you
+by clicking on <code class="docutils literal"><span class="pre">Flask(__name__)</span></code> and hitting <code class="docutils literal"><span class="pre">Alt-Enter</span></code>.</li>
+<li>What if you don&#8217;t want PEP8 issues to show up as warnings?</li>
+<li>Can you turn off line numbers only for one tab?</li>
+<li>Does the collapse/expand state survive closing and re-opening a file?
+Where is that information stored?</li>
+</ul>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../rename_file/">Rename Files</a>
+                </li>
+                <li>
+                    Next topic: <a href="../../running/">Running Python Code</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/ui/list_todos/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

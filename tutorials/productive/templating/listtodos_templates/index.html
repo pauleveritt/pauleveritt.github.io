@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>List Todos Template &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Sorted Todos Template" href="../sorted_todos/" />
+    <link rel="prev" title="Master Template" href="../master/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="list-todos-template">
+<h1>List Todos Template<a class="headerlink" href="#list-todos-template" title="Permalink to this headline">¶</a></h1>
+<p>We&#8217;ll convert another view to use a view template with a master template.
+In the process, we&#8217;ll get our first real use of the debugger by setting
+a breakpoint in the template.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Let&#8217;s make a template in <code class="docutils literal"><span class="pre">templates/list_todos.html</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">templates/list_todos.html in List Todos Templates</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">todo</span> <span class="k">in</span> <span class="nv">todos</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;li&gt;</span>
+<span class="x">                &lt;a href=&quot;/todo/</span><span class="cp">{{</span> <span class="nv">todo.id</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">todo.title</span> <span class="cp">}}</span><span class="x">&lt;/a&gt;</span>
+<span class="x">            &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, change the <code class="docutils literal"><span class="pre">list_todos</span></code>, making it much simpler:
+it just hands data to the template:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;list_todos.html&#39;</span><span class="p">,</span> <span class="n">page_title</span><span class="o">=</span><span class="s1">&#39;List Todos&#39;</span><span class="p">,</span> <span class="n">todos</span><span class="o">=</span><span class="n">todos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Note: The page_title mistake is intentional.</em></p>
+</li>
+<li><p class="first">Next, let&#8217;s do the same for <code class="docutils literal"><span class="pre">show_todo</span></code>. First, create
+<code class="docutils literal"><span class="pre">templates/show_todo.html</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">templates/show_todo.html in List Todos Templates</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;p&gt;</span><span class="cp">{{</span> <span class="nv">todo.title</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, change the <code class="docutils literal"><span class="pre">show_todo</span></code>, also making it much simpler:
+it just hands data to the template:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;show_todo.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Todo &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">todo_id</span><span class="p">),</span> <span class="n">todo</span><span class="o">=</span><span class="n">todo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Note: PyCharm Professional autocompletes the template filename from the
+``templates`` directory, which is very helpful.</em></p>
+</li>
+<li><p class="first">In your browser, visit the <code class="docutils literal"><span class="pre">List</span> <span class="pre">Todos</span></code> page. We aren&#8217;t getting a
+<code class="docutils literal"><span class="pre">title</span></code> displayed. Let&#8217;s debug it.</p>
+</li>
+<li><p class="first">Open <code class="docutils literal"><span class="pre">templates/layout.html</span></code> and click in the left margin on the second
+line, where <code class="docutils literal"><span class="pre">&lt;head&gt;&lt;title&gt;</span></code> occurs. Your click should create a red
+circle for a &#8220;breakpoint&#8221;.</p>
+</li>
+<li><p class="first">Reload your browser. PyCharm switches back in view, with the execution
+&#8220;stopped&#8221; on that line.</p>
+</li>
+<li><p class="first">Look in the &#8220;Variables&#8221; window at the bottom. You see all the Python
+values defined at that point in the template. You realize <code class="docutils literal"><span class="pre">title</span></code>
+isn&#8217;t there, but <code class="docutils literal"><span class="pre">page_title</span></code> is, thus your error.</p>
+</li>
+<li><p class="first">In the Debug Tool window, click the green arrow play button to
+&#8220;Resume Program&#8221;.</p>
+</li>
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, change <code class="docutils literal"><span class="pre">page_title</span></code> to <code class="docutils literal"><span class="pre">title</span></code>.</p>
+</li>
+<li><p class="first">Reload the browser and execution again stops in that place. Confirm
+that a <code class="docutils literal"><span class="pre">title</span></code> variable exists and click the green arrow again
+to Resume Program.</p>
+</li>
+<li><p class="first">Now, the browser provides the List Todos heading.</p>
+</li>
+<li><p class="first">Click the red circle to clear the breakpoint.</p>
+</li>
+<li><p class="first">Let&#8217;s set a breakpoint in the loop. In <code class="docutils literal"><span class="pre">list_todos.html</span></code>, click
+in the left margin on the <code class="docutils literal"><span class="pre">&lt;a&gt;</span></code> in the <code class="docutils literal"><span class="pre">&lt;li&gt;</span></code>.</p>
+</li>
+<li><p class="first">Reload the browser. When execution stops, in the <code class="docutils literal"><span class="pre">Variables</span></code>
+pane, note that <code class="docutils literal"><span class="pre">todo</span></code> is defined. Expand it to see what
+information it contains.</p>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">app.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">app.py in List Todos</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">populate_todos</span><span class="p">,</span> <span class="n">Todo</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;home_page.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Home Page&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;list_todos.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;List Todos&#39;</span><span class="p">,</span> <span class="n">todos</span><span class="o">=</span><span class="n">todos</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;int:todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;show_todo.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Todo &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">todo_id</span><span class="p">),</span> <span class="n">todo</span><span class="o">=</span><span class="n">todo</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">templates/list_todos.html</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">templates/list_todos.html in List Todos Templates</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">todo</span> <span class="k">in</span> <span class="nv">todos</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;li&gt;</span>
+<span class="x">                &lt;a href=&quot;/todo/</span><span class="cp">{{</span> <span class="nv">todo.id</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">todo.title</span> <span class="cp">}}</span><span class="x">&lt;/a&gt;</span>
+<span class="x">            &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">templates/show_todo.html</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">templates/list_todos.html in List Todos Templates</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;p&gt;</span><span class="cp">{{</span> <span class="nv">todo.title</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../master/">Master Template</a>
+                </li>
+                <li>
+                    Next topic: <a href="../sorted_todos/">Sorted Todos Template</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/templating/listtodos_templates/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

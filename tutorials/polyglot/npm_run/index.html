@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Automation with npm run Scripts &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Modules with CommonJS" href="../modules/" />
+    <link rel="prev" title="Linting with ESLint" href="../eslint/" />
+  
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="automation-with-npm-run-scripts">
+<h1>Automation with <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> Scripts<a class="headerlink" href="#automation-with-npm-run-scripts" title="Permalink to this headline">¶</a></h1>
+<p>Python has several ways to register custom scripts to execute during
+development in a workspace. In this section we look at <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code>
+scripts, registered in <code class="docutils literal"><span class="pre">package.json</span></code>, for centralizing repeatable
+frontend tasks.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Explain <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> scripts in the  <code class="docutils literal"><span class="pre">scripts</span></code> block of <code class="docutils literal"><span class="pre">package.json</span></code></li>
+<li>Install a linter and hook into an <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> script</li>
+<li>Show how PyCharm puts a friendly face on such task scripts</li>
+<li>Explain the subtle benefit to <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> as a uniform interface</li>
+</ul>
+</div>
+<div class="section" id="python-command-line-scripts">
+<h2>Python Command Line Scripts<a class="headerlink" href="#python-command-line-scripts" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s say you have some tasks you do frequently during development:</p>
+<ul class="simple">
+<li>Run a linter to check for errors or style warnings</li>
+<li>Start a development server</li>
+<li>Run tests</li>
+<li>Package a release and publish to PyPi</li>
+</ul>
+<p>You&#8217;d like to save yourself some work by automating these steps.
+Even better, you are on a development team and you&#8217;d like the
+automation to be in a natural, easily-discoverable place.</p>
+<p>In Python...well, this is a lesser-known neighborhood. Python has
+two main facilities for command-line scripts:</p>
+<ul class="simple">
+<li>Use <a class="reference external" href="https://docs.python.org/2/distutils/extending.html#integrating-new-commands">setuptools cmdclass</a>
+to register a command that can be run as an argument to <code class="docutils literal"><span class="pre">setup.py</span></code>,
+for example <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">lint</span></code></li>
+<li>Register a <a class="reference external" href="http://python-packaging.readthedocs.org/en/latest/command-line-scripts.html#the-console-scripts-entry-point">console script</a>
+to be added into your Python or virtualenv&#8217;s <code class="docutils literal"><span class="pre">bin</span></code> directory</li>
+</ul>
+<p>These approaches suffer from some of the historical baggage of
+<code class="docutils literal"><span class="pre">distutils</span></code> and <code class="docutils literal"><span class="pre">setuptools</span></code>, plus they are a bit clunky. As such,
+you don&#8217;t often encounter them at the beginner or intermediate level in
+Python.</p>
+<p>Let&#8217;s take a look at how to approach this in the frontend world.</p>
+</div>
+<div class="section" id="npm-run-scripts">
+<h2><code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> scripts<a class="headerlink" href="#npm-run-scripts" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned in the <a class="reference internal" href="../package_json/"><span class="doc">package.json intro</span></a>
+article, the <code class="docutils literal"><span class="pre">package.json</span></code> configuration file can contain more than
+just package name and dependency information.</p>
+<p>Let&#8217;s take a look at the auto-generated <code class="docutils literal"><span class="pre">package.json</span></code> file from the
+<a class="reference internal" href="../eslint/"><span class="doc">the ESLint article</span></a>:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Earlier ESLint package.json</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pylyglot&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Series of articles for Polyglot Python with PyCharm&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<span class="hll">  <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+</span><span class="hll">  <span class="p">},</span>
+</span>  <span class="s2">&quot;repository&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;git+ssh://git@github.com/pauleveritt/pauleveritt.github.io.git&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;Paul Everitt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bugs&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io/issues&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;homepage&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io#readme&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;eslint&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.10.3&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>By default, <code class="docutils literal"><span class="pre">npm</span> <span class="pre">init</span></code> created a <code class="docutils literal"><span class="pre">scripts</span></code> section in your package
+file. In there, it registered one &#8220;run command&#8221;: a <code class="docutils literal"><span class="pre">test</span></code> command.
+With that <code class="docutils literal"><span class="pre">package.json</span></code> file, you could execute the <code class="docutils literal"><span class="pre">echo</span></code> command
+via <code class="docutils literal"><span class="pre">npm</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm run <span class="nb">test</span>
+</pre></div>
+</div>
+<img alt="Screenshot npm run test" src="../../../_images/npm_run_test.png" />
+<p>Note how similar this command&#8217;s structure looks to Python&#8217;s <code class="docutils literal"><span class="pre">python</span>
+<span class="pre">setup.py</span> <span class="pre">test</span></code>: an executable, followed by an argument, followed by the
+custom, plugged-in target.</p>
+<p>As explained in the <a class="reference external" href="https://docs.npmjs.com/misc/scripts">npm run</a>
+documentation, certain
+<code class="docutils literal"><span class="pre">script</span></code> values such as <code class="docutils literal"><span class="pre">test</span></code> are pre-defined as a discoverable
+interface, such as <code class="docutils literal"><span class="pre">test</span></code>, <code class="docutils literal"><span class="pre">start</span></code>, etc. For these, we can skip
+<code class="docutils literal"><span class="pre">run</span></code> and just say:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm <span class="nb">test</span>
+</pre></div>
+</div>
+<p>For these certain, common tasks, you can walk up to a package and
+run <code class="docutils literal"><span class="pre">npm</span> <span class="pre">&lt;taskname&gt;</span></code>, knowing that the project wired up that task
+to do the task with some working implementation.</p>
+</div>
+<div class="section" id="linting-revisited">
+<h2>Linting, Revisited<a class="headerlink" href="#linting-revisited" title="Permalink to this headline">¶</a></h2>
+<p>We can now register a script, both to simplify running our linter
+but to also advertise this task to people that use our project. Let&#8217;s
+replace the (unimplemented) <code class="docutils literal"><span class="pre">test</span></code> entry in <code class="docutils literal"><span class="pre">package.json</span></code> with
+a script for <code class="docutils literal"><span class="pre">lint</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">npm run package.json</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pylyglot&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Series of articles for Polyglot Python with PyCharm&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<span class="hll">  <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;lint&quot;</span><span class="o">:</span> <span class="s2">&quot;eslint app1.js&quot;</span>
+</span><span class="hll">  <span class="p">},</span>
+</span>  <span class="s2">&quot;repository&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;git+ssh://git@github.com/pauleveritt/pauleveritt.github.io.git&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;Paul Everitt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bugs&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io/issues&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;homepage&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/pauleveritt/pauleveritt.github.io#readme&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;eslint&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.10.3&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Presuming we still have the same <code class="docutils literal"><span class="pre">.eslintrc</span></code> file configured:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">.eslintrc</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;quotes&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;single&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>...then we can now run our linter from the command line in a simplified,
+predicatable way:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm run lint
+</pre></div>
+</div>
+<p>This gives the same resulting <code class="docutils literal"><span class="pre">eslint</span></code> output from the previous article:</p>
+<img alt="Screenshot npm run lint" src="../../../_images/npm_run_lint.png" />
+<p>Not in our <code class="docutils literal"><span class="pre">scripts</span></code> block that we didn&#8217;t have to specify the full
+path to <code class="docutils literal"><span class="pre">node_modules/.bin/eslint</span></code>. When you run a script with
+<code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code>, <code class="docutils literal"><span class="pre">node_modules/.bin</span></code> is added to the path automatically.
+Also note that <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> scripts don&#8217;t have to be JavaScript files:
+as we saw in the boilerplate <code class="docutils literal"><span class="pre">test</span></code> command, it ran the system
+<code class="docutils literal"><span class="pre">echo</span></code> command.</p>
+<p>As you can see, this approach is far simpler and more &#8220;first class&#8221;
+than Python automation. It still has rough edges. But it works
+naturally for the basics.</p>
+</div>
+<div class="section" id="pycharm-automation">
+<h2>PyCharm Automation<a class="headerlink" href="#pycharm-automation" title="Permalink to this headline">¶</a></h2>
+<p>Because there is a central place to look for tasks, PyCharm can put
+a UI on finding and running these tasks. Right-click on your
+<code class="docutils literal"><span class="pre">package.json</span></code> file and you will see a menu option for
+<code class="docutils literal"><span class="pre">Show</span> <span class="pre">npm</span> <span class="pre">scripts</span></code>. You then get a panel showing the registered
+run scripts. Double-clicking them runs that script in a tool window:</p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/4HVy4CKcBp4" frameborder="0" allowfullscreen="1">&nbsp;</iframe><p>This workflow is very helpful. It&#8217;s nice to have the <code class="docutils literal"><span class="pre">npm</span></code> tool
+window to browse your tasks, and of course, running a task in its
+own run window is far better than running in the console.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you edit the scripts in <code class="docutils literal"><span class="pre">package.json</span></code>, you&#8217;ll have to
+click the reload button in <code class="docutils literal"><span class="pre">npm</span></code> tool window.</p>
+</div>
+</div>
+<div class="section" id="the-subtle-benefit">
+<h2>The Subtle Benefit<a class="headerlink" href="#the-subtle-benefit" title="Permalink to this headline">¶</a></h2>
+<p>Certainly when compared to Python&#8217;s approach to registering task
+scripts, finding them, and running them, this <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> script
+approach is quite nice. It&#8217;s dead simple to make and use and
+eliminates needing to type the full path. It can run tasks
+implemented in JavaScript or any kind of executable on your path. As
+such, it eliminates much of the need for task automation frameworks
+such as <code class="docutils literal"><span class="pre">gulp</span></code> or <code class="docutils literal"><span class="pre">grunt</span></code>.</p>
+<p>There is, though, a more subtle benefit. Your project now advertises
+certain tasks it implements, registered with simple names, in
+<em>configuration data file</em>, and in a predictable, standard location. Even
+more, certain common task names are pre-defined. Choosing to implement
+these means certain workflows, expected by tools like TravisCI, have a
+&#8220;uniform interface&#8221;, similar to the benefit we get from the HTTP and REST
+uniform interface.</p>
+<p>Because tasks are in a data file in a predictable place, tools such as
+PyCharm can scan, list, and launch your project&#8217;s tasks.</p>
+</div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>In this article we introduced task automation via <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> scripts
+registered in our package configuration file. We hooked up our linter
+command to an automation script and showed the convenience PyCharm
+adds for task automation.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../eslint/">Linting with ESLint</a>
+                </li>
+                <li>
+                    Next topic: <a href="../modules/">Modules with CommonJS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/tutorials/polyglot/npm_run/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

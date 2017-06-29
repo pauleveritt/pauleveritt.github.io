@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Single Todo &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Debugging" href="../../debugging/" />
+    <link rel="prev" title="List Todos Method" href="../list_todos_method/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="single-todo">
+<h1>Single Todo<a class="headerlink" href="#single-todo" title="Permalink to this headline">¶</a></h1>
+<p>Our <code class="docutils literal"><span class="pre">show_todo</span></code> is still using dummy data. Let&#8217;s have it use actual data,
+with a lookup static method from <code class="docutils literal"><span class="pre">models.Todo</span></code> similar to how we get the
+list of todos. As we do this, we&#8217;ll see how to efficiently re-arrange code.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/productivity/single_todo">Source for this step</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">models.py</span></code>, let&#8217;s start by extending <code class="docutils literal"><span class="pre">populate_todos</span></code> to add
+a total of 3 sample todos. Put your cursor on
+<code class="docutils literal"><span class="pre">todos.append(Todo('First'))</span></code> and press <code class="docutils literal"><span class="pre">Ctrl-D</span></code> twice to duplicate
+the line. Changed the next two lines to have an argument of <code class="docutils literal"><span class="pre">'Second'</span></code>
+and <code class="docutils literal"><span class="pre">'Third'</span></code>. (macOS: <code class="docutils literal"><span class="pre">Cmd-D</span></code>)</p>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">Todo</span></code> class constructor looks weird. <code class="docutils literal"><span class="pre">self.title</span></code> should be
+assigned on the first line. Click anywhere in that line and press
+<code class="docutils literal"><span class="pre">Shift-Alt-Up</span></code> to move the line up.</p>
+</li>
+<li><p class="first">After the <code class="docutils literal"><span class="pre">__init__</span></code> constructor, add a new method:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">todo</span> <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">todos</span> <span class="k">if</span> <span class="n">todo</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">todo_id</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Hmm, PyCharm thinks something&#8217;s going on with <code class="docutils literal"><span class="pre">get_id</span></code>. Mouse-over it
+and see that it thinks this method can be static. Click on
+<code class="docutils literal"><span class="pre">def</span> <span class="pre">get_id</span></code>, press <code class="docutils literal"><span class="pre">Alt-Enter</span></code>, and change it to a static method.</p>
+</li>
+<li><p class="first">Let&#8217;s take this for a test drive. Change <code class="docutils literal"><span class="pre">model.py</span></code>&#8216;s main block:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">first_todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">first_id</span> <span class="o">=</span> <span class="n">first_todo</span><span class="o">.</span><span class="n">id</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">first_id</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Re-run <code class="docutils literal"><span class="pre">models.py</span></code> (make sure the correct run configuration is selected.)</p>
+</li>
+<li><p class="first">We realize <code class="docutils literal"><span class="pre">get_id</span></code> is probably better under <code class="docutils literal"><span class="pre">list</span></code>. With your cursor
+anywhere in <code class="docutils literal"><span class="pre">get_id</span></code>, press <code class="docutils literal"><span class="pre">Cmd-W</span></code> until PyCharm&#8217;s selection extends
+to including the method <em>and</em> the <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code> decorator. (macOS:
+<code class="docutils literal"><span class="pre">Alt-Up</span></code>)</p>
+</li>
+<li><p class="first">Press <code class="docutils literal"><span class="pre">Shift-Alt-Down</span></code> until the method moves after <code class="docutils literal"><span class="pre">list</span></code>.</p>
+</li>
+<li><p class="first">As usual, press <code class="docutils literal"><span class="pre">Ctrl-Alt-L</span></code> to clean up any line formatting. (macOS:
+<code class="docutils literal"><span class="pre">Cmd-Alt-L</span></code>)</p>
+</li>
+<li><p class="first">We need our web app to use this method for <code class="docutils literal"><span class="pre">show_todo</span></code>. Let&#8217;s
+add a first line in <code class="docutils literal"><span class="pre">show_todo</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>using  autocomplete. Type <code class="docutils literal"><span class="pre">todo</span> <span class="pre">=</span> <span class="pre">T</span></code> then tab, <code class="docutils literal"><span class="pre">.</span></code> and tab to
+accept <code class="docutils literal"><span class="pre">get_id</span></code>, then <code class="docutils literal"><span class="pre">t</span></code> and tab to complete <code class="docutils literal"><span class="pre">todo_id</span></code>.
+Use <code class="docutils literal"><span class="pre">Shift-Enter</span></code> to make a second line.</p>
+</li>
+<li><p class="first">Let&#8217;s have a bit richer HTML. On the second line in <code class="docutils literal"><span class="pre">show_todo</span></code>,
+define a format string <code class="docutils literal"><span class="pre">fmt</span> <span class="pre">=</span> <span class="pre">''</span></code>.</p>
+</li>
+<li><p class="first">With your cursor inside that string, press <code class="docutils literal"><span class="pre">Alt-Enter</span></code> and choose
+<code class="docutils literal"><span class="pre">Inject</span> <span class="pre">language</span> <span class="pre">reference</span> <span class="pre">-&gt;</span> <span class="pre">HTML</span></code>. Now provide this for the value:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Todo {todo_id}&lt;/h1&gt;&lt;p&gt;{title}&lt;/p&gt;&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>As you type, you&#8217;ll get the full power of WebStorm HTML editing,
+right in your Python string.</p>
+</li>
+<li><p class="first">Change the third line to use this format string:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Reload your browser and go to a todo. You&#8217;ll get an error in <code class="docutils literal"><span class="pre">get_id</span></code>.
+Later we&#8217;ll use the debugger to hunt down the problem. The reason is, the
+route gives us a string and our id&#8217;s are integers. Change the route
+definition to <code class="docutils literal"><span class="pre">&#64;app.route('/todo/&lt;int:todo_id&gt;')</span></code>.</p>
+</li>
+<li><p class="first">Reload your browser.</p>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">app.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">app.py in Single Todo</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">populate_todos</span><span class="p">,</span> <span class="n">Todo</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World! &lt;a href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="n">todos</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="n">div</span> <span class="o">=</span> <span class="s1">&#39;&lt;div&gt;&lt;a href=&quot;/todo/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/div&gt;&#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">div</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">title</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;int:todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Todo {todo_id}&lt;/h1&gt;&lt;p&gt;{title}&lt;/p&gt;&#39;</span>
+    <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">todo</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Your <code class="docutils literal"><span class="pre">models.py</span></code> should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">models.py in Single Todo</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="n">todos</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">class</span> <span class="nc">Todo</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span> <span class="o">=</span> <span class="s1">&#39;Todo {todo_id}&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">9999</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">list</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">todos</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">todo</span> <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">todos</span> <span class="k">if</span> <span class="n">todo</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">todo_id</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">populate_todos</span><span class="p">():</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Todo</span><span class="p">(</span><span class="s1">&#39;First&#39;</span><span class="p">))</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Todo</span><span class="p">(</span><span class="s1">&#39;Second&#39;</span><span class="p">))</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Todo</span><span class="p">(</span><span class="s1">&#39;Third&#39;</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">populate_todos</span><span class="p">()</span>
+    <span class="n">first_todo</span> <span class="o">=</span> <span class="n">Todo</span><span class="o">.</span><span class="n">list</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">first_id</span> <span class="o">=</span> <span class="n">first_todo</span><span class="o">.</span><span class="n">id</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">Todo</span><span class="o">.</span><span class="n">get_id</span><span class="p">(</span><span class="n">first_id</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>PyCharm&#8217;s productivity features are starting to show:</p>
+<ol class="arabic simple">
+<li><em>Moving lines</em>. <code class="docutils literal"><span class="pre">Shift-Alt-Up</span></code> and <code class="docutils literal"><span class="pre">Shift-Alt-Down</span></code> are so much faster
+then cutting and pasting the line. You don&#8217;t even have to select anything,
+just click in the line.</li>
+<li><em>Smart autocomplete</em>. In many places, we get accurate and fast completion.</li>
+<li><em>Language injection</em>. Having HTML-aware editing, in the middle of Python,
+is quite useful. Same is true for CSS, SQL, JS, etc.</li>
+</ol>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>We also use <code class="docutils literal"><span class="pre">Shift-Alt-Up</span></code> to move a line up. Can we select an entire
+method and move it, using <code class="docutils literal"><span class="pre">Shift-Alt-Up</span></code>?</li>
+<li>If we extend our selection too far with <code class="docutils literal"><span class="pre">Ctrl-W</span></code> (macOS: <code class="docutils literal"><span class="pre">Alt-Up</span></code>),
+will <code class="docutils literal"><span class="pre">Alt-Down</span></code> gradually de-select?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../list_todos_method/">List Todos Method</a>
+                </li>
+                <li>
+                    Next topic: <a href="../../debugging/">Debugging</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/productivity/single_todo/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

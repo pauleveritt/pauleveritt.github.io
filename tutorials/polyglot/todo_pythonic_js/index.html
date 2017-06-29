@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pythonic JavaScript for ToDoMVC &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="TDD for ToDoMVC" href="../todo_tdd/" />
+    <link rel="prev" title="ES6 Imports for ToDoMVC" href="../todo_es6_imports/" />
+  
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="pythonic-javascript-for-todomvc">
+<h1>Pythonic JavaScript for ToDoMVC<a class="headerlink" href="#pythonic-javascript-for-todomvc" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/polyglot/todo_pythonic_js">Source code</a></p>
+<p>With Babel in place, we can refactor our code to use ES2015 language
+features: classes, array methods, arrow functions, and more, as seen
+in <a class="reference internal" href="../pythonic_js/"><span class="doc">Pythonic JavaScript with ES2015</span></a>.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Our <code class="docutils literal"><span class="pre">app/app.js</span></code> switches to use &#8220;arrow functions&#8221; in two places:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">ToDo Pythonic JS app.js</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ToDo</span> <span class="nx">from</span> <span class="s1">&#39;./todo&#39;</span><span class="p">;</span>
+
+<span class="hll"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span>
+    <span class="c1">// All REST requests should send content type, and log failures</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajaxSetup</span><span class="p">({</span><span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">});</span>
+<span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxError</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span>        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Ajax call failed:&#39;</span><span class="p">,</span>
+            <span class="nx">settings</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">new</span> <span class="nx">ToDo</span><span class="p">();</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">We now have a number of <code class="docutils literal"><span class="pre">app/todo.js</span></code> changes which we will
+will discuss, then show the final result.</p>
+</li>
+<li><p class="first"><em>Class</em>. In the first step, we convert to a basic class:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Convert to a class and put everything in the constructor</li>
+<li>Change app.js to import class and new ToDo()</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Methods for events</em>. We want our event handlers to be methods,
+for create/delete etc. This is a big code re-organization. Let&#8217;s
+start with <code class="docutils literal"><span class="pre">newName</span></code> -&gt; <code class="docutils literal"><span class="pre">create</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>var newName -&gt; this.newName</li>
+<li>create (newName) {</li>
+<li>Cut-and-paste from // Create a new to do</li>
+<li>let, arrow function, name: newName, this.newName</li>
+<li>Demonstrate it failing</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Refresh method</em>. Our CRUD operations finish by refreshing the list.
+Let&#8217;s copy <code class="docutils literal"><span class="pre">renderToDos</span></code> into a new method:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Copy-and-paste renderToDos</p>
+</li>
+<li><p class="first">Arrow function</p>
+</li>
+<li><p class="first">Get rid of intermediate todos = and paste directly</p>
+</li>
+<li><p class="first">todoList.find -&gt; this.todoList.find</p>
+</li>
+<li><p class="first">template -&gt; this.template</p>
+</li>
+<li><p class="first">Add a this.todoList and this.template</p>
+</li>
+<li><p class="first">Replace <code class="docutils literal"><span class="pre">refreshToDos()</span></code> with <code class="docutils literal"><span class="pre">this.refresh()</span></code></p>
+</li>
+<li><p class="first">Hook up to event handler:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Event</span> <span class="n">handlers</span>
+<span class="n">this</span><span class="o">.</span><span class="n">newName</span><span class="o">.</span><span class="n">change</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="n">this</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">newName</span><span class="o">.</span><span class="n">val</span><span class="p">()));</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Delete</em>. Bind for event and call a method.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Event handler:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>this.todoList.on(&#39;click&#39;, &#39;.delete&#39;, (evt) =&gt; {
+    this.delete($(evt.target).closest(&#39;li&#39;)[0].id);
+});
+</pre></div>
+</div>
+</li>
+<li><p class="first">Make a delete method, passed in todoId, arrow function</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<ul>
+<li><p class="first"><em>Editing</em>. Close any currently-editing and open this one
+for editing:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Cut and paste existing handler</li>
+<li>this.todoList</li>
+<li>arrow function (evt)</li>
+<li>$(this) -&gt; $(evt.target)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Edit</em>. Make an event listener that calls a method:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Cut and paste existing handler</p>
+</li>
+<li><p class="first">this.todoList</p>
+</li>
+<li><p class="first">Arrow function evt</p>
+</li>
+<li><p class="first">$(this) -&gt; $(evt.target) in <em>both</em> places</p>
+</li>
+<li><p class="first">var -&gt; let</p>
+</li>
+<li><p class="first">Move $.ajax to method, leaving behind this.update(todoId, data)</p>
+<blockquote>
+<div><ul class="simple">
+<li>.done(() =&gt; this.refresh());</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>ES6 template strings</em>. Switch to multi-line template strings:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Add a renderToDo(todo) method</p>
+</li>
+<li><p class="first">return string literal</p>
+</li>
+<li><p class="first">Copy &lt;li&gt; contents into it</p>
+</li>
+<li><p class="first">Replace todos[i] with todo</p>
+</li>
+<li><p class="first">Change 3 syntax to ${}</p>
+</li>
+<li><p class="first">Change render()</p>
+<blockquote>
+<div><ul class="simple">
+<li>this.todoList.html()</li>
+<li>Inside there</li>
+<li>data[&#8216;objects&#8217;].map(todo =&gt; this.renderTodo(todo))</li>
+<li>.join(&#8216;n&#8217;)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Remove tmpl</em>. It&#8217;s not used:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Remove &lt;script&gt; template from index.html</li>
+<li>&lt;ul id=&#8221;todoList&#8221; class=&#8221;list-group&#8221;&gt;&lt;/ul&gt;</li>
+<li>Remove tmpl.js</li>
+<li>Remove import</li>
+<li>Remove this.tmpl</li>
+<li>Remove function refreshToDos</li>
+<li>Call this.render instead of refreshTodos</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../todo_es6_imports/">ES6 Imports for ToDoMVC</a>
+                </li>
+                <li>
+                    Next topic: <a href="../todo_tdd/">TDD for ToDoMVC</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/tutorials/polyglot/todo_pythonic_js/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

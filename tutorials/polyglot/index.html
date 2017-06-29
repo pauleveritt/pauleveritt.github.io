@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Polyglot Python with PyCharm &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Introduction" href="intro/" />
+    <link rel="prev" title="Tutorials" href="../" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="polyglot-python-with-pycharm">
+<h1>Polyglot Python with PyCharm<a class="headerlink" href="#polyglot-python-with-pycharm" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This series is a work-in-progress.</p>
+</div>
+<p>If you&#8217;re a long-time Python web developer, you are used to web
+technologies: HTML, CSS, a little JavaScript. But modern frontend
+web development might seem alien and un-Pythonic.</p>
+<p>If so, this series of articles is aimed at you. These frontend ideas
+are important, but you need a Python guide through the thicket. You
+also need a tool that can support your Python <em>and</em> frontend development.
+PyCharm, with the foundation it shares with WebStorm, is uniquely
+suited for this.</p>
+<p>In this series we will introduce ideas and packages in isolation,
+with hands-on code, screenshots, and more. Each article&#8217;s code is
+<a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io">in GitHub</a>. You can
+comment on the articles using Disqus and file bug reportes in the
+<a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/issues">issue tracker</a>.</p>
+<div class="section" id="introduction-to-javascript-technologies">
+<h2>Introduction to JavaScript Technologies<a class="headerlink" href="#introduction-to-javascript-technologies" title="Permalink to this headline">¶</a></h2>
+<p>The frontend world has a dizzying array of choices for each unit of
+functionality. Let&#8217;s go through each piece, showing the minimum and
+explaining why you should care.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hello_node/">NodeJS for Python and PyCharm Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_json/">JavaScript Packaging with <code class="docutils literal"><span class="pre">package.json</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="eslint/">Linting with ESLint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npm_run/">Automation with <code class="docutils literal"><span class="pre">npm</span> <span class="pre">run</span></code> Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/">Modules with CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webpack/">Browser Bundling with Webpack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chrome_debugging/">Browser Debugging from PyCharm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mocha/">TDD with Mocha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="es6_imports/">ES6 Imports with Babel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pythonic_js/">Pythonic JavaScript with ES2015</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jsdom/">DOM TDD with JSDOM</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="todo-mvc-tutorial">
+<h2>ToDo MVC Tutorial<a class="headerlink" href="#todo-mvc-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Based on the topics covered above in isolation, we put it all together
+and write a ToDo application, with a Flask backend and a modern frontend.
+Each article builds on the previous article.</p>
+<div class="section" id="webinar-1">
+<h3>Webinar 1<a class="headerlink" href="#webinar-1" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="todo_initial/">Initial ToDoMVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_tooling/">Frontend Tooling for ToDoMVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_frontend/">Moving the Frontend Out of the Backend</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="webinar-2">
+<h3>Webinar 2<a class="headerlink" href="#webinar-2" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="todo_webpack/">Bundling ToDoMVC with WebPack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_es6_imports/">ES6 Imports for ToDoMVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_pythonic_js/">Pythonic JavaScript for ToDoMVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo_tdd/">TDD for ToDoMVC</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../">Tutorials</a>
+                </li>
+                <li>
+                    Next topic: <a href="intro/">Introduction</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/tutorials/polyglot/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

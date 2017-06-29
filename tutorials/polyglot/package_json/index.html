@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>JavaScript Packaging with package.json &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Linting with ESLint" href="../eslint/" />
+    <link rel="prev" title="NodeJS for Python and PyCharm Developers" href="../hello_node/" />
+  
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="javascript-packaging-with-package-json">
+<h1>JavaScript Packaging with <code class="docutils literal"><span class="pre">package.json</span></code><a class="headerlink" href="#javascript-packaging-with-package-json" title="Permalink to this headline">¶</a></h1>
+<p>Python has infrastructure for installing libraries with dependencies.
+The frontend world does as well, based on <a class="reference external" href="https://npmjs.org/">npm</a>.</p>
+<p>In this article we will turn a directory into a project by creating a
+<code class="docutils literal"><span class="pre">package.json</span></code> file. We will then use this to hold dependency
+information as we install packages needed both for the running of our
+frontend and tooling packages needed in the building of the frontend.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Learn about frontend tooling using the NodeJS universe</li>
+<li>Show the convenient way to get all dependencies</li>
+<li>Discuss reproducible builds</li>
+</ul>
+</div>
+<div class="section" id="installing-dependencies-the-shootout">
+<h2>Installing Dependencies: The Shootout<a class="headerlink" href="#installing-dependencies-the-shootout" title="Permalink to this headline">¶</a></h2>
+<p>Python can install packages. Python can track dependencies. Python can
+do both, and as we who love Python know, it&#8217;s one of the darkest corners
+of Python history. setuptools, distutils, easy_install, setup.py,
+MANIFEST.in, setup.cfg, pip, requirements.txt, eggs, wheels...it&#8217;s been
+a rocky road for Python to get to an emerging point of consistency.</p>
+<p>Let&#8217;s concentrate on making a directory into a &#8220;project&#8221;. In Python,
+you would create a <code class="docutils literal"><span class="pre">setup.py</span></code> file with the <code class="docutils literal"><span class="pre">setuptools</span></code>-compliant
+data, such as the name of the project. You would also supply some
+dependencies, although many people also do that in pip&#8217;s
+<code class="docutils literal"><span class="pre">requirements.txt</span></code> file. Finally, you would make a virtual
+environment, which would install your dependencies into a
+<code class="docutils literal"><span class="pre">site-packages</span></code> directory under, for example, <code class="docutils literal"><span class="pre">lib/python3.5</span></code>.</p>
+<p>Let&#8217;s tackle each part of this, using the new NodeJS/npm toolchain.</p>
+</div>
+<div class="section" id="making-a-project">
+<h2>Making a Project<a class="headerlink" href="#making-a-project" title="Permalink to this headline">¶</a></h2>
+<p>In Python, if you want a directory to be a &#8220;project&#8221;, you create a
+<code class="docutils literal"><span class="pre">setup.py</span></code> file. This contains, for example, the name of the project.</p>
+<p>In the world of Node, a <a class="reference external" href="https://docs.npmjs.com/files/package.json">package.json</a> file performs this role.
+Since it is JSON and not JavaScript, it can only hold configuration data.</p>
+<p>You interact with this file primarily through the <code class="docutils literal"><span class="pre">npm</span></code> command and
+toolchain. For example, you can let <code class="docutils literal"><span class="pre">npm</span></code> ask you question to create a
+new <code class="docutils literal"><span class="pre">package.json</span></code> file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm init
+</pre></div>
+</div>
+<p>If you&#8217;re in a hurry, tell it to accept the defaults for every question:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm init --yes
+</pre></div>
+</div>
+<p>You now have a project area. You can check this <code class="docutils literal"><span class="pre">package.json</span></code> file into
+version control.</p>
+</div>
+<div class="section" id="install-dependencies">
+<h2>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>You have a frontend that depends on jQuery and a backend that depends on
+Flask. You want to easily install those packages, but you also want
+to record them as dependencies, so you can reproduce your setup later.</p>
+<p>In Python, you might do any of the following:</p>
+<ul class="simple">
+<li>Install the package using <code class="docutils literal"><span class="pre">pip</span></code>, then either use <code class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></code> or
+manually edit a <code class="docutils literal"><span class="pre">requirements.txt</span></code> file to record the dependency</li>
+<li>Edit the dependencies list in <code class="docutils literal"><span class="pre">setup.py</span></code> then execute <code class="docutils literal"><span class="pre">python</span>
+<span class="pre">./setup.py</span> <span class="pre">install</span></code></li>
+<li>Use PyCharm&#8217;s visual package installer, then record the fact later</li>
+</ul>
+<p>In Python, installing a package and recording a dependency are distinct.
+For this task, using <code class="docutils literal"><span class="pre">npm</span></code> is a breath of fresh air:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save jquery
+</pre></div>
+</div>
+<p>This command says to download the jQuery package, install it <em>local</em> to
+the project, and record it as a dependency in <code class="docutils literal"><span class="pre">package.json</span></code>. Instead
+of <code class="docutils literal"><span class="pre">lib/python3.5/site-packages</span></code>, though, packages are installed
+in a <code class="docutils literal"><span class="pre">node_modules</span></code> subdirectory under the location of
+<code class="docutils literal"><span class="pre">package.json</span></code>.</p>
+<img alt="jQuery in node_modules" src="../../../_images/node_modules.png" />
+<p>There&#8217;s a lot to talk about for <a class="reference external" href="https://docs.npmjs.com/cli/install">npm install</a>. Just a few points for this
+article:</p>
+<ul class="simple">
+<li>You can pass a flag to install packages globally</li>
+<li>You can save packages as a project dependency or a development
+dependency</li>
+<li>You can record dependency version ranges in rich ways, based on
+semantic versioning or channels</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">One reason <code class="docutils literal"><span class="pre">npm</span></code> has gotten so big, so powerful, so quickly: it&#8217;s
+a company. In 2014 and 2015 it raised $10M in funding. For
+better or worse.</p>
+</div>
+</div>
+<div class="section" id="pycharm-s-friendly-face">
+<h2>PyCharm&#8217;s Friendly Face<a class="headerlink" href="#pycharm-s-friendly-face" title="Permalink to this headline">¶</a></h2>
+<p>For Python, we know that <a class="reference external" href="https://www.jetbrains.com/pycharm/help/installing-uninstalling-and-upgrading-packages.html">PyCharm provides a UI</a>
+for finding and adding packages, removing them, etc. The same is true for
+<code class="docutils literal"><span class="pre">npm</span></code> packages: PyCharm <a class="reference external" href="https://www.jetbrains.com/pycharm/help/node-js-and-npm.html">provides an npm UI</a>
+for these as well:</p>
+<img alt="Node.js and NPM Preferences" src="../../../_images/preferences.png" />
+<p>You can reach this UI at Preferences -&gt; Node.js and NPM. With this, you
+don&#8217;t have to use the command line and learn the <code class="docutils literal"><span class="pre">npm</span></code> interface for
+installing, updating, and removing <code class="docutils literal"><span class="pre">npm</span></code> packages into <code class="docutils literal"><span class="pre">node_modules</span></code>.</p>
+</div>
+<div class="section" id="virtual-environment">
+<h2>Virtual Environment?<a class="headerlink" href="#virtual-environment" title="Permalink to this headline">¶</a></h2>
+<p>We now have our dependency (jQuery) as a file in our project area,
+recorded as a dependency with a minimum version. At the top in
+the shootout, we said we would also show having a virtual
+environment for isolating our software. For Node and npm, this
+last step is...nothing.</p>
+<p>Node packaging was designed to have a two-tier namespace for finding
+packages: either local to the project, in a <code class="docutils literal"><span class="pre">node_modules</span></code>
+subdirectory, or global to the interpreter. The former is checked
+first. We only inherit packages from the global environment if
+we accidentally install them with <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">-g</span></code>.</p>
+<p>If you do want that level of isolation, which is the default in
+the latest <code class="docutils literal"><span class="pre">virtualenv</span></code> and <code class="docutils literal"><span class="pre">pyvenv</span></code> commands, you can use
+<a class="reference external" href="https://github.com/creationix/nvm">nvm</a> to manage your Node
+interpreters.</p>
+</div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>With <code class="docutils literal"><span class="pre">package.json</span></code>, we have a way to make a project area,
+record package information, install packages, and record dependencies.
+This gives us most of what we need for reproducible builds.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../hello_node/">NodeJS for Python and PyCharm Developers</a>
+                </li>
+                <li>
+                    Next topic: <a href="../eslint/">Linting with ESLint</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/tutorials/polyglot/package_json/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

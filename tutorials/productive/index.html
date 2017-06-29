@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Productive Python with PyCharm &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="About This Tutorial" href="about/" />
+    <link rel="prev" title="TDD for ToDoMVC" href="../polyglot/todo_tdd/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="productive-python-with-pycharm">
+<h1>Productive Python with PyCharm<a class="headerlink" href="#productive-python-with-pycharm" title="Permalink to this headline">¶</a></h1>
+<p>Modern Python development has become quite sophisticated, with large
+projects using many dependencies and multiple programming technologies.
+Some Python developers prefer an integrated development environment (IDE).
+PyCharm provides a powerful, mature IDE for Python and other technologies
+such as web development.</p>
+<p>But PyCharm has a ton of features, and getting started with them can be
+daunting. Wouldn&#8217;t it be great to learn by writing a Python application,
+using the most PyCharmic techniques possible?</p>
+<p>Here is that tutorial. In it, we construct a Flask application, in
+PyCharm, using a number of PyCharm features.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All of the source code for each step along the way is available
+in the subdirectory for each step, in the
+<a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive">GitHub repo</a>.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about/">About This Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quicktour/">Quick Tour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui/">Project and Editor UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running/">Running Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productivity/">Productivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging/">Debugging</a></li>
+</ul>
+</div>
+<div class="section" id="in-progress">
+<h2>In-Progress<a class="headerlink" href="#in-progress" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="templating/">Templating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigation/">Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing/">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database/">Database</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../polyglot/todo_tdd/">TDD for ToDoMVC</a>
+                </li>
+                <li>
+                    Next topic: <a href="about/">About This Tutorial</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/tutorials/productive/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

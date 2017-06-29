@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Show Todo &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Fix Typo" href="../fix_typo/" />
+    <link rel="prev" title="Running Python Code" href="../" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="show-todo">
+<h1>Show Todo<a class="headerlink" href="#show-todo" title="Permalink to this headline">¶</a></h1>
+<p>We need a route for showing an individual todo. Let&#8217;s use this as a
+chance to show more about running Python code in PyCharm. Namely,
+let&#8217;s look more at PyCharm&#8217;s Run Configurations.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/running/show_todo">Source for this step</a>
+<a class="reference external" href="http://www.youtube.com/watch?v=VMD5fLPbzRI">View video/audio walkthrough</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal"><span class="pre">app.py</span></code>, let&#8217;s add a route. On the empty line after the
+<code class="docutils literal"><span class="pre">list_todos</span></code> function, add:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;ToDo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now for the return value. Put the cursor inside the parentheses for
+the <code class="docutils literal"><span class="pre">format()</span></code>. Using PyCharm&#8217;s autocompletion, press <code class="docutils literal"><span class="pre">t</span></code> and
+PyCharm suggests <code class="docutils literal"><span class="pre">todo_id</span></code>. Press <code class="docutils literal"><span class="pre">enter</span></code> to accept. Press <code class="docutils literal"><span class="pre">=t</span></code>
+then accept <code class="docutils literal"><span class="pre">todo_id</span></code> again.</p>
+</li>
+<li><p class="first">Our route should look like this:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;ToDo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">4.</span> <span class="pre">Run</span></code> in the bottom of PyCharm to open the Run Tool
+window. Our Flask application should be running. If not, click
+the green play arrow in the Run Tool&#8217;s window.</p>
+</li>
+<li><p class="first">In PyCharm&#8217;s toolbar, near the top, click the green play arrow. We wind
+up with a second Flask application listening on the same port. Can
+PyCharm help us prevent this?</p>
+</li>
+<li><p class="first">In the Run Tool window, close the second tab by right-clicking on it
+and choosing <code class="docutils literal"><span class="pre">Close</span> <span class="pre">Tab</span></code>.</p>
+</li>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">Edit</span> <span class="pre">Configurations</span></code> to edit the <code class="docutils literal"><span class="pre">epc</span></code> run
+configuration.</p>
+</li>
+<li><p class="first">Near the top right, there is a checkbox for <code class="docutils literal"><span class="pre">Single</span> <span class="pre">instance</span> <span class="pre">only</span></code>.
+Change it to checked and click <code class="docutils literal"><span class="pre">Ok</span></code> to save your changes.</p>
+</li>
+<li><p class="first">Now click the green play arrow in the toolbar again. PyCharm warns us
+that we already have an instance of this run configuration running.</p>
+</li>
+<li><p class="first">One last housekeeping: we need a web link to get to this view. Change
+<code class="docutils literal"><span class="pre">list_todos</span></code> to return a link to a todo page:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="s1">&#39;Todo List &lt;a href=&quot;/todo/1&quot;&gt;First Todo&lt;/a&gt;&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Reload our browser and confirm that our 3 routes work ok.</p>
+</li>
+<li><p class="first">Our <code class="docutils literal"><span class="pre">app.py</span></code> file should match the following:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">app.py in Show Todo</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-py"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home_page</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World! &lt;a href=&quot;/todo/&quot;&gt;Todos&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Todo List &lt;a href=&quot;/todo/1&quot;&gt;First Todo&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/todo/&lt;todo_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;ToDo {todo_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="o">=</span><span class="n">todo_id</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>PyCharm doesn&#8217;t just run Python code. It provides a configurable, managed
+way to run your code in a smart output window.</p>
+<ul>
+<li><p class="first"><em>Run Configurations</em>. A list of different configurations for running
+some of your code, including settings.</p>
+</li>
+<li><p class="first"><em>Run Tool Window</em>.  Like other tools in PyCharm, the Run Tool
+has a window with tabs for each run configuration that is running
+or has been run.</p>
+</li>
+<li><p class="first"><em>Buttons and Shortcuts</em>. Running, stopping, and re-running can all
+happen from multiple places, including keyboard shortcuts.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can get to the list of shortcuts with <code class="docutils literal"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Keymap</span> <span class="pre">Reference</span></code>.</p>
+</div>
+</li>
+</ul>
+<p>We also saw some other smart PyCharm help in action:</p>
+<ul class="simple">
+<li>Flask-aware Live Templates speed up common tasks, such as adding a route.</li>
+<li>PyCharm was smart about the Flask route parameter not appearing in the
+view function&#8217;s signature.</li>
+<li>Code Insight flagged us when we made mistakes.</li>
+<li>Code Completion helped us avoid extra (and error-prone) typing
+via autocomplete.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>What flavors of run configurations are supported in PyCharm
+Professional?</li>
+<li>Is there a special run configuration for Flask?</li>
+<li>How did we get this</li>
+<li>Can run configurations be shared?</li>
+<li>Does PyCharm use different configurations for running code versus
+debugging code?</li>
+<li>How do you clear all the lines of output in the run tool window?</li>
+<li>Did PyCharm have a Quick Fix for the route string warning?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../">Running Python Code</a>
+                </li>
+                <li>
+                    Next topic: <a href="../fix_typo/">Fix Typo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/running/show_todo/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

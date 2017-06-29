@@ -1,0 +1,428 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DOM TDD with JSDOM &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Initial ToDoMVC" href="../todo_initial/" />
+    <link rel="prev" title="Pythonic JavaScript with ES2015" href="../pythonic_js/" />
+  
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="dom-tdd-with-jsdom">
+<h1>DOM TDD with JSDOM<a class="headerlink" href="#dom-tdd-with-jsdom" title="Permalink to this headline">¶</a></h1>
+<p>We earlier saw, in <a class="reference internal" href="../mocha/"><span class="doc">TDD with Mocha</span></a>, how we can start on JavaScript
+TDD using Mocha. We used a very simple application and test.</p>
+<p>In this section we show how frontend tooling can combine to provide
+a TDD workflow targeted at browsers, using a fake DOM from the
+<a class="reference external" href="https://github.com/tmpvar/jsdom">jsdom</a> project.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Explain the need for a DOM in frontend TDD</li>
+<li>Install and setup <code class="docutils literal"><span class="pre">jsdom</span></code></li>
+<li>Use Mocha setup/teardown hooks</li>
+<li>Make a &#8220;helpers&#8221; file to re-use common setup</li>
+</ul>
+</div>
+<div class="section" id="fake-dom">
+<h2>Fake DOM<a class="headerlink" href="#fake-dom" title="Permalink to this headline">¶</a></h2>
+<p>We have been doing JavaScript TDD in Node, a headless environment.
+But our goal is to write frontend application that run in the browser.
+That means a DOM, plus some other non-Node machiner such as XHR.</p>
+<p>For example, many frameworks, such as jQuery, expect there to be a DOM.
+Your code won&#8217;t even <em>import</em> without some globals for a <code class="docutils literal"><span class="pre">window</span></code> and
+a <code class="docutils literal"><span class="pre">document</span></code>.</p>
+<p>Fortunately there are solutions, such as
+<a class="reference external" href="https://github.com/tmpvar/jsdom">jsdom</a> which simulate what you need.
+With <code class="docutils literal"><span class="pre">jsdom</span></code>, we can resume our Pythonic workflow: sit in PyCharm,
+writing tests which import code and make assertions.</p>
+</div>
+<div class="section" id="getting-a-dom">
+<h2>Getting a DOM<a class="headerlink" href="#getting-a-dom" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s mix jQuery into the our <code class="docutils literal"><span class="pre">incrementor</span></code> from the Mocha Intro article
+and see what happens. First we install it from npm and save it as a dependency
+in our <code class="docutils literal"><span class="pre">package.json</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install --save jquery
+</pre></div>
+</div>
+<p>We can now change our application code: instead of a function that returns an
+incremented value, we increment the text node value of a <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">JSDOM app.js</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+</span>
+<span class="kd">function</span> <span class="nx">incrementer</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>Our application code imports <code class="docutils literal"><span class="pre">jquery</span></code> using NodesJS/CommonJS
+module imports, then changes the <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code> content to equal
+the incremented value.</p>
+<p>We re-use the previous section&#8217;s <code class="docutils literal"><span class="pre">test4.js</span></code> as <code class="docutils literal"><span class="pre">test1.js</span></code> in this
+article:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">JSDOM test1.js</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+    <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
+    <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
+    <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment a value&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">eql</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<p>When we run the test now, though, armageddon ensues:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Error: jQuery requires a window with a document
+    at module.exports <span class="o">(</span>jsdom/node_modules/jquery/dist/jquery.js:29:12<span class="o">)</span>
+    at incrementer <span class="o">(</span>jsdom/app.js:4:5<span class="o">)</span>
+    at Context.&lt;anonymous&gt; <span class="o">(</span>jsdom/test1.js:6:22<span class="o">)</span>
+</pre></div>
+</div>
+<p>Our first thought is: go get a browser. We could use
+<a class="reference external" href="http://phantomjs.org">PhantomJS</a> which has good package for Mocha
+support. We could start over with the <a class="reference external" href="http://https://karma-runner.github.io/0.13/index.html">Karma test runner</a>. But these are
+<em>big</em> solutions. Slow, with lots of fiddling necessary, and not all headless.</p>
+<p>Enter <a class="reference external" href="https://github.com/tmpvar/jsdom">jsdom</a>. This package simulates a
+DOM, in your browser. While jsdom isn&#8217;t perfect in simulating a browser, it is
+fast and, relatively speaking, lightweight.</p>
+<p>Let&#8217;s install it as a development dependency:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install jsdom --save-dev
+</pre></div>
+</div>
+<p>We now can write a <code class="docutils literal"><span class="pre">test2.js</span></code> which imports <code class="docutils literal"><span class="pre">jsdom</span></code> and sets some
+global variables that <code class="docutils literal"><span class="pre">jQuery</span></code> expects. With that in place, we can import
+<code class="docutils literal"><span class="pre">jQuery</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">JSDOM test2.js</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+    <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
+    <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
+    <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
+
+<span class="hll"><span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;div&gt;1&lt;/div&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
+</span><span class="hll"><span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
+</span><span class="hll"><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+</span>
+<span class="kd">var</span> <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment to 6&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">incrementer</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<p>This test suite has a test that ensures we are setup correctly by
+reading the initial text value of the <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code>. The second test
+executes our function and checks the updated value of the <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code>.</p>
+<p>And our tests pass! All is good...except, it isn&#8217;t.</p>
+</div>
+<div class="section" id="mocha-setup-and-teardown">
+<h2>Mocha Setup and Teardown<a class="headerlink" href="#mocha-setup-and-teardown" title="Permalink to this headline">¶</a></h2>
+<p>Python unit testers will spot the problem quickly: we aren&#8217;t testing
+in isolation! The second test modifies the <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code>. Any subsequent
+tests wouldn&#8217;t be against a fresh <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code>. If we added a third
+test as a copy of the first, we&#8217;d see that:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">JSDOM test3.js</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+    <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
+    <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
+    <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
+
+<span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;div&gt;1&lt;/div&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
+<span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment to 6&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">incrementer</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="hll">    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+</span><span class="hll">    <span class="p">});</span>
+</span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<p>This third test fails, as the <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code> has the value from the second
+test, not the initial value.</p>
+<p>Like Python&#8217;s <code class="docutils literal"><span class="pre">unittest</span></code>, Mocha has concepts of <code class="docutils literal"><span class="pre">before</span></code>,
+<code class="docutils literal"><span class="pre">beforeEach</span></code>, and <code class="docutils literal"><span class="pre">afterEach</span></code>. Let&#8217;s say we want to balance speed
+and isolation. We&#8217;d like to make a DOM once for all tests, but clean
+up the <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> before each test. <code class="docutils literal"><span class="pre">test4.js</span></code> shows this:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">JSDOM test4.js</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+    <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
+    <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
+    <span class="nx">before</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">before</span><span class="p">,</span>
+    <span class="nx">beforeEach</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">beforeEach</span><span class="p">,</span>
+    <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
+
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="hll">    <span class="kd">var</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">incrementer</span><span class="p">;</span>
+</span><span class="hll">    <span class="nx">before</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
+</span><span class="hll">        <span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
+</span><span class="hll">        <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+</span><span class="hll">        <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span>
+</span><span class="hll">    <span class="p">});</span>
+</span><span class="hll">    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;1&lt;/div&gt;&#39;</span><span class="p">);</span>
+</span><span class="hll">    <span class="p">});</span>
+</span>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment to 6&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">incrementer</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<p>Our <code class="docutils literal"><span class="pre">Hello</span> <span class="pre">World</span></code> test suite initializes <code class="docutils literal"><span class="pre">$</span></code> and <code class="docutils literal"><span class="pre">incrementer</span></code>
+at the test-suite scope. The <code class="docutils literal"><span class="pre">before</span></code> function runs once,
+loading our application code once a DOM is setup and initialized. Then,
+before each test, the <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> is reset to <code class="docutils literal"><span class="pre">&lt;div&gt;1&lt;/div&gt;</span></code>.</p>
+<p>Does this look like boilerplate that you&#8217;ll repeat in each test? Let&#8217;s
+make a <code class="docutils literal"><span class="pre">helper.js</span></code> module that we can import at the top of all of
+our tests, to provide such initialization:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">JSDOM helper.js</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">jsdom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsdom&#39;</span><span class="p">);</span>
+<span class="nx">global</span><span class="p">.</span><span class="nb">document</span> <span class="o">=</span> <span class="nx">jsdom</span><span class="p">.</span><span class="nx">jsdom</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt;&lt;/body&gt;&#39;</span><span class="p">);</span>
+<span class="nx">global</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>Our tests, as shown in <code class="docutils literal"><span class="pre">test5.js</span></code>, now look a lot nicer by importing
+<code class="docutils literal"><span class="pre">helper.js</span></code> at the top:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">JSDOM test5.js</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="hll"><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./helper&#39;</span><span class="p">);</span>
+</span><span class="kd">var</span> <span class="nx">describe</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">describe</span><span class="p">,</span>
+    <span class="nx">it</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">it</span><span class="p">,</span>
+    <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">).</span><span class="nx">expect</span><span class="p">,</span>
+    <span class="nx">beforeEach</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mocha&#39;</span><span class="p">).</span><span class="nx">beforeEach</span><span class="p">,</span>
+    <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">),</span>
+    <span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;1&lt;/div&gt;&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should increment to 6&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">incrementer</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should start with 1&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="wrapup">
+<h2>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h2>
+<p>This turned out to be pretty simple. Suspiciously simple, in fact. As it
+turns out, this is one of those areas where frontend development is in
+constant churn. <code class="docutils literal"><span class="pre">jsdom</span></code> won&#8217;t always work, and other approaches will
+have features that you can&#8217;t live without.</p>
+<p>Still, the basics of this article apply: you <em>can</em> do JavaScript TDD,
+not just for server-side JavaScript in Node, but also frontend JavaScript
+in browsers. It takes some patience to get it setup, but it sure beats the
+normal browser development cycle of:</p>
+<ul class="simple">
+<li>Change code</li>
+<li>Switch to browser</li>
+<li>Reload</li>
+<li>Sprinkle <code class="docutils literal"><span class="pre">console.log</span></code> statements</li>
+<li>Sacrifice goats that nothing else broke</li>
+</ul>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../pythonic_js/">Pythonic JavaScript with ES2015</a>
+                </li>
+                <li>
+                    Next topic: <a href="../todo_initial/">Initial ToDoMVC</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/tutorials/polyglot/jsdom/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

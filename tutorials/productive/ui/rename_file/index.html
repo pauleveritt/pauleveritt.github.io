@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rename Files &#8212; Paul Everitt  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about/" />
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="List Todos Route" href="../list_todos/" />
+    <link rel="prev" title="Start Version Control" href="../start_vc/" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="Paul Everitt">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+<div class="documentwrapper">
+    <div class="bodywrapper">
+        <div class="body" role="main">
+            
+  <div class="section" id="rename-files">
+<h1>Rename Files<a class="headerlink" href="#rename-files" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">epc.py</span></code> is an ugly filename. Most Flask apps use something like
+<code class="docutils literal"><span class="pre">app.py</span></code> as the entry-point. Let&#8217;s ask PyCharm&#8217;s <code class="docutils literal"><span class="pre">Project</span></code> tool window
+to help us on the renaming.</p>
+<p><a class="reference external" href="https://github.com/pauleveritt/pauleveritt.github.io/tree/master/src/productive/ui/rename_file">Source for this step</a>
+| <a class="reference external" href="http://www.youtube.com/watch?v=x310V0B8PsE">View video/audio walkthrough</a></p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In the <code class="docutils literal"><span class="pre">Project</span></code> tool, right-click on <code class="docutils literal"><span class="pre">epc.py</span></code>.</li>
+<li>Choose <code class="docutils literal"><span class="pre">Refactor</span> <span class="pre">-&gt;</span> <span class="pre">Rename</span></code>.</li>
+<li>Rename to <code class="docutils literal"><span class="pre">app.py</span></code> and click <code class="docutils literal"><span class="pre">Refactor</span></code>.</li>
+<li>Note the new filename.</li>
+<li>In the menu, choose <code class="docutils literal"><span class="pre">Run</span> <span class="pre">-&gt;</span> <span class="pre">Edit</span> <span class="pre">Configurations</span></code>.</li>
+<li>Note that the <code class="docutils literal"><span class="pre">Script:</span></code> field is now pointed at the new name.</li>
+<li>Click <code class="docutils literal"><span class="pre">Cancel</span></code> to close the dialog.</li>
+<li>Reload your browser to confirm the page is still loading.</li>
+<li>In the <code class="docutils literal"><span class="pre">Run</span></code> tool window at the bottom, it is still pointing to
+the old name.</li>
+<li>Click the green circle arrow to restart with the changed run
+configuration.</li>
+<li>Reload in browser.</li>
+</ol>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>The Project tool window helps us work with the code in our project. In
+fact, it can do some of our work for us.</p>
+<ul class="simple">
+<li><em>Rename Refactoring</em>. PyCharm has &#8220;refactorings&#8221; which do work for you.
+The Rename refactoring: changed the file name, renamed it in VCS, and
+changed the run configuration. As we&#8217;ll see later, it can do more.</li>
+<li><em>Actions everywhere</em>. The Rename refactoring is an &#8220;action&#8221; that we
+used with a right-click in the <code class="docutils literal"><span class="pre">Project</span></code> tool. That action is available
+via right-click in other places (e.g. the editor). But you can get to that
+action via the PyCharm menu, shortcuts, searching for actions, etc.
+We&#8217;ll see that later in <a class="reference internal" href="../../navigation/"><span class="doc">Navigation</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The web page still worked even though pointed at the old filename. Why?</li>
+<li>If you opened the <code class="docutils literal"><span class="pre">Terminal</span></code> tool and used the command-line to rename
+the file, what would happen?</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+            <ul>
+                <li>
+                    Previous topic: <a href="../start_vc/">Start Version Control</a>
+                </li>
+                <li>
+                    Next topic: <a href="../list_todos/">List Todos Route</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../">Paul Everitt</a></h1>
+
+
+
+<p class="blurb">Blog posts and technical articles on
+                    Python and PyCharm,
+                    Web and WebStorm.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../posts/">Posts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About</a></li>
+</ul>
+
+
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../../posts/docker_intro/">Dec 08 - Using Docker in PyCharm</a></li>
+    
+      <li><a href="../../../../posts/type_hinting/">Dec 01 - Python Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/pyrva-type-hinting/">Nov 18 - PyRVA Meetup and Type Hinting</a></li>
+    
+      <li><a href="../../../../posts/first-post/">Nov 17 - Welcome to the new blog</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/category/python/">python (4)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../../blog/2015/">2015 (4)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Paul Everitt.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../../_sources/tutorials/productive/ui/rename_file/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
