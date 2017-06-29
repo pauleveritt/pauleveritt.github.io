@@ -1,0 +1,32 @@
+{% extends '!layout.html' %}
+
+{%- block document %}
+<div class="documentwrapper">
+    {%- if render_sidebar %}
+    <div class="bodywrapper">
+        {%- endif %}
+        <div class="body" role="main">
+            {% block body %} {% endblock %}
+            {%- if 'tutorials/polyglot' in pagename or 'tutorials/productive' in pagename %}
+            <ul>
+                {%- if prev %}
+                <li>
+                    Previous topic: <a href="{{ prev.link|e }}">{{ prev.title
+                    }}</a>
+                </li>
+                {%- endif %}
+
+                {%- if next %}
+                <li>
+                    Next topic: <a href="{{ next.link|e }}">{{ next.title
+                    }}</a>
+                </li>
+                {%- endif %}
+            </ul>
+            {%- endif %}
+        </div>
+        {%- if render_sidebar %}
+    </div>
+    {%- endif %}
+</div>
+{%- endblock %}

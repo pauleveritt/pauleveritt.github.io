@@ -250,6 +250,7 @@ html_theme_options = {
     'logo_name': True,
     'github_button': True,
     'github_user': 'pauleveritt',
+    'show_related': True,
     # 'linkedin_user': 'paeveritt',
     # 'montage': '_static/montage.jpg',
     # 'navigation': [

@@ -8,3 +8,11 @@ Collections of articles that form a tutorial.
 
 - :doc:`./productive/index` puts PyCharm features to practical use in
   building a Flask-based ToDo application.
+
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    polyglot/index.rst
+    productive/index.rst
