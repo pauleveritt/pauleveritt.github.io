@@ -180,7 +180,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Paul Everitt'
-copyright = u'2015, Paul Everitt'
+copyright = u'2017, Paul Everitt'
 author = u'Paul Everitt'
 
 # The version info for the project you're documenting, acts as replacement for

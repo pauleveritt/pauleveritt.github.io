@@ -5,3 +5,4 @@ flask
 flask-restless
 sqlalchemy
 flask-sqlalchemy
+sphinx
